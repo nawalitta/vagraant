@@ -1,0 +1,16 @@
+
+RessourceBunde_FenetreHoraire_index:
+    path:     FenetreHoraire/index
+    defaults: { _controller: RessourceBundle:FenetreHoraire:index }
+
+RessourceBunde_FenetreHoraire_indexedit:
+    path:     FenetreHoraire/edit
+    defaults: { _controller: RessourceBundle:FenetreHoraire:edit }
+
+RessourceBunde_FenetreHoraire_indexdelete:
+    path:     FenetreHoraire/delete
+    defaults: { _controller: RessourceBundle:FenetreHoraire:delete }
+
+RessourceBunde_FenetreHoraire_indexshow:
+    path:     FenetreHoraire/show/{id}
+    defaults: { _controller: RessourceBundle:FenetreHoraire:show }
