@@ -5,7 +5,7 @@ RessourceBunde_FenetreHoraire_index:
 
 RessourceBunde_FenetreHoraire_edit:
     path:     FenetreHoraire/edit/{id}
-    defaults: { _controller: RessourceBundle:FenetreHoraire:edit }
+    defaults: { _controller: RessourceBundle:FenetreHoraire:edit, id : null }
 
 RessourceBunde_FenetreHoraire_delete:
     path:     FenetreHoraire/delete/{id}

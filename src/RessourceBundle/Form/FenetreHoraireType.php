@@ -13,7 +13,17 @@ class FenetreHoraireType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('lundiDebut')->add('lundiFin')->add('mardiDebut')->add('mardiFin')->add('mercrediDebut')->add('mercrediFin')->add('jeudiDebut')->add('jeudiFin')->add('vendrediDebut')->add('vendrediFin')        ;
+        $builder->add('lundiDebut')
+                ->add('lundiFin')
+                ->add('mardiDebut')
+                ->add('mardiFin')
+                ->add('mercrediDebut')
+                ->add('mercrediFin')
+                ->add('jeudiDebut')
+                ->add('jeudiFin')
+                ->add('vendrediDebut')
+                ->add('vendrediFin') 
+                ->add('Enregistrer', \Symfony\Component\Form\Extension\Core\Type\SubmitType::class);
     }
     
     /**

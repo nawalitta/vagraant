@@ -4,6 +4,7 @@ namespace RessourceBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
+use RessourceBundle\Form\FenetreHoraireType;
 
 class FenetreHoraireController extends Controller
 {
@@ -22,7 +23,8 @@ class FenetreHoraireController extends Controller
         
        $fenetreHoraire = $fenetreHoraireRepository->findOneById($id);
        
-       $form = $this->get('form.factory')->create(new \RessourceBundle\Form\FenetreHoraireType(), $fenetreHoraire);
+       $form = $this->createForm(FenetreHoraireType::class,$fenetreHoraire);
+        
         
         $form->handleRequest($request);
         
@@ -35,7 +37,7 @@ class FenetreHoraireController extends Controller
             return $this->redirect($this->generateUrl('RessourceBunde_FenetreHoraire_index'));
         }
         
-        return $this->render('AlexisTestBundle:Default:edit.html.twig', array(
+        return $this->render('RessourceBundle:FenetreHoraire:edit.html.twig', array(
             'fenetreHoraire'=>$fenetreHoraire,
             'form' => $form->createView()
         ));
