@@ -10,8 +10,12 @@ class FenetreHoraireController extends Controller
 {
     public function indexAction()
     {
+        $entityManager = $this->getDoctrine()->getManager();
+           $fenetreHoraireRepository = $entityManager->getRepository("RessourceBundle:FenetreHoraire");
+      $fenetresHoraire = $fenetreHoraireRepository->findAll();
+        
         return $this->render('RessourceBundle:FenetreHoraire:index.html.twig', array(
-            // ...
+            "fenetresHoraire"=>$fenetresHoraire
         ));
     }
 
@@ -22,7 +26,7 @@ class FenetreHoraireController extends Controller
        $fenetreHoraireRepository = $entityManager->getRepository("RessourceBundle:FenetreHoraire");
         
        $fenetreHoraire = $fenetreHoraireRepository->findOneById($id);
-       
+       if($fenetreHoraire==null) $fenetreHoraire=new \RessourceBundle\Entity\FenetreHoraire();
        $form = $this->createForm(FenetreHoraireType::class,$fenetreHoraire);
         
         
@@ -43,17 +47,27 @@ class FenetreHoraireController extends Controller
         ));
     }
 
-    public function deleteAction($id=null)
+    public function deleteAction($id)
     {
-        return $this->render('RessourceBundle:FenetreHoraire:delete.html.twig', array(
-            // ...
-        ));
+        $entityManager = $this->getDoctrine()->getManager();
+  
+       $fenetreHoraireRepository = $entityManager->getRepository("RessourceBundle:FenetreHoraire");
+       $fenetreHoraire = $fenetreHoraireRepository->findOneById($id);
+       if($fenetreHoraire!=null)
+           $entityManager->remove ($fenetreHoraire);
+       $entityManager->flush();
+       
+        return $this->redirect($this->generateUrl('RessourceBunde_FenetreHoraire_index'));
     }
 
     public function showAction($id)
     {
+        $entityManager = $this->getDoctrine()->getManager();
+           $fenetreHoraireRepository = $entityManager->getRepository("RessourceBundle:FenetreHoraire");
+      $fenetreHoraire = $fenetreHoraireRepository->findOneById($id);
+        
         return $this->render('RessourceBundle:FenetreHoraire:show.html.twig', array(
-            // ...
+            "fenetreHoraire"=>$fenetreHoraire
         ));
     }
 
