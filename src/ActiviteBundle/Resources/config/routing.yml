@@ -1,0 +1,24 @@
+ 
+ActiviteBundle_TypeActivite_index :
+    path:     typeActivite/
+    defaults: { _controller: ActiviteBundle:TypeActivite:index }
+
+ActiviteBundle_TypeActivite_edit:
+    path:     typeActivite/edit/{id}
+    defaults: { _controller: ActiviteBundle:TypeActivite:edit }
+
+ActiviteBundle_TypeActivite_delete:
+    path:     typeActivite/delete/{id}
+    defaults: { _controller: ActiviteBundle:TypeActivite:delete }
+
+ActiviteBundle_TypeActivite_show:
+    path:     typeActivite/show/{id}
+    defaults: { _controller: ActiviteBundle:TypeActivite:show }
+    
+ActiviteBundle_activite_edit:
+    path:     activite/edit
+    defaults: { _controller: ActiviteBundle:Activite:edit}
+    
+ActiviteBundle_activiteObligatoire_edit:
+    path: activiteObligatoire/edit
+    defaults: { _controller: ActiviteBundle:ActiviteObligatoire:edit }
