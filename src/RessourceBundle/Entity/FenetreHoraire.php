@@ -3,7 +3,7 @@
 namespace RessourceBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-
+use Symfony\Component\Validator\Constraints as Assert;
 /**
  * FenetreHoraire
  *
@@ -330,5 +330,17 @@ class FenetreHoraire
     public function getVendrediFin()
     {
         return $this->vendrediFin;
+    }
+    
+      /**
+     * @Assert\IsTrue(message = "La date de début doit etre avant la date de fin")
+     */
+    public function isValidDate()
+    {
+        return ($this->lundiDebut<$this->lundiFin 
+                && $this->mardiDebut<$this->mardiFin
+                && $this->mercrediDebut<$this->mercrediFin
+                && $this->jeudiDebut<$this->jeudiFin
+                && $this->vendrediDebut<$this->vendrediFin);
     }
 }

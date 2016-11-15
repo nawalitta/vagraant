@@ -33,7 +33,7 @@ class FenetreHoraireController extends Controller
             $entityManager->persist($fenetreHoraire);
             
             $entityManager->flush();
-            
+             $request->getSession()->getFlashBag()->add('notice', 'FenetreHoraire bien enregistrée.');
             return $this->redirect($this->generateUrl('RessourceBunde_FenetreHoraire_index'));
         }
         
