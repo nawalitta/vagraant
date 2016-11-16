@@ -9,24 +9,50 @@ use Symfony\Component\HttpFoundation\Request;
 
 class ActiviteController extends Controller
 {
-    public function editAction(Request $request)
+    public function editAction($id=null, Request $request)
     {
         #Création formulaire
         $activite = new Activite();
         $form = $this->createForm(ActiviteType::class, $activite);
-        
+        $em = $this->getDoctrine()->getManager();
         
         $form->handleRequest($request);
-        #Ajout
-        if ($form->isValid()) {
+        if ($id==null){
+            #Ajout
+            if ($form->isValid()) {
+                $activite = $form->getData();
+                $em->persist($activite);
+                $em->flush();
+                return $this->redirectToRoute('ActiviteBundle_activite_show');
+            }
+        }else{
+            #Modification
+            $activite = $em->getRepository('ActiviteBundle:Activite')->find($id);
             $activite = $form->getData();
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($activite);
             $em->flush();
+            return $this->redirectToRoute('ActiviteBundle_activite_show');
+            
             
         }
+
         
         return $this->render('ActiviteBundle:Activite:edit.html.twig', array('form' => $form->createView() , ));
     }
+    
+    public function deleteAction($id=null, Request $request)
+    {
+        if($id!=null)
+        {
+            $em = $this->getDoctrine()->getManager();
+            $activite = $em->getRepository('ActiviteBundle:Activite')->find($id);
+            $em->remove($activite);
+            $em->flush();
+        }
 
+        return $this->render('ActiviteBundle:Activite:show.html.twig');
+    }
+    public function showAction($id=null, Request $request)
+    {
+        return $this->render('ActiviteBundle:Activite:show.html.twig');
+    }
 }
