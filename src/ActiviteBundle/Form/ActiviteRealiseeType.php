@@ -1,19 +1,23 @@
 <?php
 
-namespace RessourceBundle\Form;
+namespace ActiviteBundle\Form;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class RessourceType extends AbstractType
+class ActiviteRealiseeType extends AbstractType
 {
     /**
      * {@inheritdoc}
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('designation')->add('activiteesRealisees')->add('fenetreHoraire')  ->add('Enregistrer', \Symfony\Component\Form\Extension\Core\Type\SubmitType::class);      ;
+        $builder->add('heureDebut')
+                ->add('heureFin')
+                ->add('activite')
+                ->add('ressources') 
+                ->add('Enregistrer', \Symfony\Component\Form\Extension\Core\Type\SubmitType::class);
     }
     
     /**
@@ -22,7 +26,7 @@ class RessourceType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'RessourceBundle\Entity\Ressource'
+            'data_class' => 'ActiviteBundle\Entity\ActiviteRealisee'
         ));
     }
 
@@ -31,7 +35,7 @@ class RessourceType extends AbstractType
      */
     public function getBlockPrefix()
     {
-        return 'ressourcebundle_ressource';
+        return 'activitebundle_activiterealisee';
     }
 
 

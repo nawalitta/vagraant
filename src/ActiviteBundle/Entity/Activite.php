@@ -70,6 +70,12 @@ class Activite
     private $typesActivite;
 
     /**
+  * @ORM\OneToOne(targetEntity="ActiviteRealisee")
+  * @ORM\JoinColumn(nullable=false)
+  */
+    private $ActiviteRealisee;
+    
+    /**
      * Get id
      *
      * @return integer
@@ -249,5 +255,29 @@ class Activite
     public function getTypesActivite()
     {
         return $this->typesActivite;
+    }
+
+    /**
+     * Set activiteRealisee
+     *
+     * @param \ActiviteBundle\Entity\ActiviteRealisee $activiteRealisee
+     *
+     * @return Activite
+     */
+    public function setActiviteRealisee(\ActiviteBundle\Entity\ActiviteRealisee $activiteRealisee)
+    {
+        $this->ActiviteRealisee = $activiteRealisee;
+
+        return $this;
+    }
+
+    /**
+     * Get activiteRealisee
+     *
+     * @return \ActiviteBundle\Entity\ActiviteRealisee
+     */
+    public function getActiviteRealisee()
+    {
+        return $this->ActiviteRealisee;
     }
 }

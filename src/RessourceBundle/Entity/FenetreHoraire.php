@@ -91,7 +91,11 @@ class FenetreHoraire
      */
     private $vendrediFin;
 
-
+/**
+   * @ORM\OneToMany(targetEntity="Ressource", mappedBy="FenetreHoraire")
+   */
+    private $ressources;
+    
     /**
      * Get id
      *
@@ -342,5 +346,46 @@ class FenetreHoraire
                 && $this->mercrediDebut<$this->mercrediFin
                 && $this->jeudiDebut<$this->jeudiFin
                 && $this->vendrediDebut<$this->vendrediFin);
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->ressources = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add ressource
+     *
+     * @param \RessourceBundle\Entity\Ressource $ressource
+     *
+     * @return FenetreHoraire
+     */
+    public function addRessource(\RessourceBundle\Entity\Ressource $ressource)
+    {
+        $this->ressources[] = $ressource;
+
+        return $this;
+    }
+
+    /**
+     * Remove ressource
+     *
+     * @param \RessourceBundle\Entity\Ressource $ressource
+     */
+    public function removeRessource(\RessourceBundle\Entity\Ressource $ressource)
+    {
+        $this->ressources->removeElement($ressource);
+    }
+
+    /**
+     * Get ressources
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getRessources()
+    {
+        return $this->ressources;
     }
 }

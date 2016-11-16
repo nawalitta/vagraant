@@ -40,7 +40,7 @@ class ActiviteObligatoire
    * @ORM\ManyToOne(targetEntity="ActiviteBundle\Entity\Activite")
    * @ORM\JoinColumn(nullable=false)
    */
-    private $activites;
+    private $activite;
     /**
      * Get id
      *
@@ -99,14 +99,14 @@ class ActiviteObligatoire
         return $this->ecart;
     }
     
-    public function getActivites()
+    public function getActivite()
     {
-        return $this->activites;
+        return $this->activite;
     }
     
-    public function setActivites($activites)
+    public function setActivite($activite)
     {
-        $this->activites = $activites;
+        $this->activite = $activite;
         return $this;
     }
     

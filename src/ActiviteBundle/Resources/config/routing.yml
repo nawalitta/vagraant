@@ -22,3 +22,19 @@ ActiviteBundle_activite_edit:
 ActiviteBundle_activiteObligatoire_edit:
     path: activiteObligatoire/edit
     defaults: { _controller: ActiviteBundle:ActiviteObligatoire:edit }
+
+ActiviteBundle_ActiviteRealisee_index:
+    path:     ActiviteRealisee/index
+    defaults: { _controller: ActiviteBundle:ActiviteRealisee:index }
+
+ActiviteBundle_ActiviteRealisee_edit:
+    path:     ActiviteRealisee/edit/{id}
+    defaults: { _controller: ActiviteBundle:ActiviteRealisee:edit,id : null }
+
+ActiviteBundle_ActiviteRealisee_delete:
+    path:     ActiviteRealisee/delete/{id}
+    defaults: { _controller: ActiviteBundle:ActiviteRealisee:delete }
+
+ActiviteBundle_ActiviteRealisee_show:
+    path:     ActiviteRealisee/show/{id}
+    defaults: { _controller: ActiviteBundle:ActiviteRealisee:show }

@@ -30,6 +30,19 @@ class Ressource
 
 
     /**
+   * @ORM\ManyToMany(targetEntity="ActiviteBundle\Entity\ActiviteRealisee")
+   */
+  private $activiteesRealisees;
+    
+  /**
+   * @ORM\ManyToOne(targetEntity="FenetreHoraire",inversedBy="Ressource")
+   * @ORM\JoinColumn(nullable=false)
+   */
+  private $fenetreHoraire;
+  
+  
+  
+    /**
      * Get id
      *
      * @return int
@@ -62,5 +75,69 @@ class Ressource
     {
         return $this->designation;
     }
-}
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->activiteesRealisees = new \Doctrine\Common\Collections\ArrayCollection();
+    }
 
+    /**
+     * Add activiteesRealisee
+     *
+     * @param \ActiviteBundle\Entity\ActiviteRealisee $activiteesRealisee
+     *
+     * @return Ressource
+     */
+    public function addActiviteesRealisee(\ActiviteBundle\Entity\ActiviteRealisee $activiteesRealisee)
+    {
+        $this->activiteesRealisees[] = $activiteesRealisee;
+
+        return $this;
+    }
+
+    /**
+     * Remove activiteesRealisee
+     *
+     * @param \ActiviteBundle\Entity\ActiviteRealisee $activiteesRealisee
+     */
+    public function removeActiviteesRealisee(\ActiviteBundle\Entity\ActiviteRealisee $activiteesRealisee)
+    {
+        $this->activiteesRealisees->removeElement($activiteesRealisee);
+    }
+
+    /**
+     * Get activiteesRealisees
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getActiviteesRealisees()
+    {
+        return $this->activiteesRealisees;
+    }
+
+    /**
+     * Set fenetreHoraire
+     *
+     * @param \RessourceBundle\Entity\FenetreHoraire $fenetreHoraire
+     *
+     * @return Ressource
+     */
+    public function setFenetreHoraire(\RessourceBundle\Entity\FenetreHoraire $fenetreHoraire)
+    {
+        $this->fenetreHoraire = $fenetreHoraire;
+
+        return $this;
+    }
+
+    /**
+     * Get fenetreHoraire
+     *
+     * @return \RessourceBundle\Entity\FenetreHoraire
+     */
+    public function getFenetreHoraire()
+    {
+        return $this->fenetreHoraire;
+    }
+}

@@ -3,7 +3,13 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/D:/Users/fpaquere/Documents/Cours/Semestre_9/Projet%20SI/gpac/.gitignore</file>
+            <file>file:/C:/Users/Zakaoai/Documents/NetBeansProjects/gpac/src/RessourceBundle/Resources/views/FenetreHoraire/index.html.twig</file>
+            <file>file:/C:/Users/Zakaoai/Documents/NetBeansProjects/gpac/src/RessourceBundle/Entity/FenetreHoraire.php</file>
+            <file>file:/C:/Users/Zakaoai/Documents/NetBeansProjects/gpac/src/RessourceBundle/Resources/views/FenetreHoraire/show.html.twig</file>
+            <file>file:/C:/Users/Zakaoai/Documents/NetBeansProjects/gpac/src/RessourceBundle/Resources/views/FenetreHoraire/edit.html.twig</file>
+            <file>file:/C:/Users/Zakaoai/Documents/NetBeansProjects/gpac/src/RessourceBundle/Controller/FenetreHoraireController.php</file>
+            <file>file:/C:/Users/Zakaoai/Documents/NetBeansProjects/gpac/src/RessourceBundle/Resources/config/routing.yml</file>
+            <file>file:/C:/Users/Zakaoai/Documents/NetBeansProjects/gpac/src/RessourceBundle/Form/FenetreHoraireType.php</file>
         </group>
     </open-files>
 </project-private>
