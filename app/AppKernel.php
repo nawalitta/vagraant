@@ -18,6 +18,7 @@ class AppKernel extends Kernel
             new RessourceBundle\RessourceBundle(),
             new ActiviteBundle\ActiviteBundle(),
             new CoreBundle\CoreBundle(),
+            new CalendrierBundle\CalendrierBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'), true)) {
