@@ -14,3 +14,19 @@ RessourceBunde_FenetreHoraire_delete:
 RessourceBunde_FenetreHoraire_show:
     path:     FenetreHoraire/show/{id}
     defaults: { _controller: RessourceBundle:FenetreHoraire:show }
+
+RessourceBunde_Ressource_index:
+    path:     Ressource/index
+    defaults: { _controller: RessourceBundle:Ressource:index }
+
+RessourceBunde_Ressource_edit:
+    path:     Ressource/edit/{id}
+    defaults: { _controller: RessourceBundle:Ressource:edit, id : null }
+
+RessourceBunde_Ressource_delete:
+    path:     Ressource/delete/{id}
+    defaults: { _controller: RessourceBundle:Ressource:delete }
+
+RessourceBunde_Ressource_show:
+    path:     Ressource/show/{id}
+    defaults: { _controller: RessourceBundle:Ressource:show }
