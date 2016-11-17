@@ -106,4 +106,7 @@ public $activites;
     {
         return $this->activites;
     }
+    public function __toString() {
+        return $this->designation;
+    }
 }

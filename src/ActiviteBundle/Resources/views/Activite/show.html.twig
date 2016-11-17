@@ -1,0 +1,15 @@
+{% extends "::base.html.twig" %}
+
+{% block title %}ActiviteBundle:Activite:edit{% endblock %}
+
+{% block body %}
+<h1>Welcome to the Activite:show page</h1>
+<table>
+    {% for activite in listActivite %}
+        <tr>
+            <td> {{ activite.designation }} </td> 
+            <td> {{ activite.DureeMin activite.DureeMax }} </td> 
+        </tr>
+    {% endfor %}
+</Table>
+{% endblock %}
