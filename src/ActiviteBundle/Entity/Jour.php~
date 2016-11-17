@@ -94,4 +94,3 @@ class Jour
         return $this->parite;
     }
 }
-

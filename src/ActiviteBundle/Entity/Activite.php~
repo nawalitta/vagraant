@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * activite
  *
  * @ORM\Table(name="Activite")
- * @ORM\Entity(repositoryClass="SaisieBundle\Repository\ActiviteRepository")
+ * @ORM\Entity(repositoryClass="ActiviteBundle\Repository\ActiviteRepository")
  */
 class Activite
 {
@@ -69,6 +69,12 @@ class Activite
    */
     private $typesActivite;
 
+    /**
+  * @ORM\OneToOne(targetEntity="ActiviteRealisee")
+  * @ORM\JoinColumn(nullable=false)
+  */
+    private $ActiviteRealisee;
+    
     /**
      * Get id
      *

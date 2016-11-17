@@ -1,0 +1,16 @@
+{% extends "::base.html.twig" %}
+
+{% block title %}RessourceBundle:Ressource:index{% endblock %}
+
+{% block body %}
+<h1>Welcome to the Ressource:index page</h1>
+
+ {% for ressource in ressources %}
+     
+     Ressource n° : {{ressource.id}}
+     Designation : {{ressource.designation}}
+     
+     
+     {% endfor %}
+
+{% endblock %}
