@@ -4,7 +4,7 @@ namespace ActiviteBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
-use src\ActiviteBundle\Entity\TypeActivite;
+use ActiviteBundle\Entity\TypeActivite;
 
 /**
  * activite

@@ -2,6 +2,7 @@
 
 namespace ActiviteBundle\Controller;
 
+use ActiviteBundle\Entity\Activite;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use ActiviteBundle\Form\TypeActiviteType;
 use ActiviteBundle\Entity\TypeActivite;

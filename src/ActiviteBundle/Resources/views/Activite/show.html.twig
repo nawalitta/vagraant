@@ -8,7 +8,7 @@
     {% for activite in listActivite %}
         <tr>
             <td> {{ activite.designation }} </td> 
-            <td> {{ activite.DureeMin activite.DureeMax }} </td> 
+            <td> {{ activite.DureeMin }} {{ activite.DureeMax }} </td>
         </tr>
     {% endfor %}
 </Table>
