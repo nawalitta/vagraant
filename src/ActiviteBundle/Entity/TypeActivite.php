@@ -4,6 +4,8 @@ namespace ActiviteBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
+
+
 /**
  * TypeActivite
  *
@@ -22,9 +24,9 @@ class TypeActivite
     private $id;
 
     /**
-     * @var string
+     * @var string designation
      *
-     * @ORM\Column(name="designation", type="string", length=255)
+     * @ORM\Column(name="designation", type="string", length=255, unique=true)
      */
     private $designation;
     

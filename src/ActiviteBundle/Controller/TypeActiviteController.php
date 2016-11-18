@@ -21,22 +21,45 @@ class TypeActiviteController extends Controller
     {
         
         #Création formulaire
-        $activite = new Activite();
-        $form = $this->createForm(ActiviteType::class, $activite);
+        $typeactivite = new TypeActivite();
+        $form = $this->createForm(TypeActiviteType::class, $typeactivite);
         $em = $this->getDoctrine()->getManager();
-        return $this->render('ActiviteBundle:TypeActivite:edit.html.twig', array(
-            // ...
-        ));
+        $form->handleRequest($request);
+        if ($id==null){
+            #Ajout
+            if ($form->isValid()) {
+                $typeactivite = $form->getData();
+                $em->persist($typeactivite);
+                $em->flush();
+                return $this->redirectToRoute('ActiviteBundle_TypeActivite_show');
+            }
+        }else{
+            #Modification
+            $typeactivite = $em->getRepository('ActiviteBundle:TypeActivite')->find($id);
+            $typeactivite = $form->getData();
+            $em->flush();
+            return $this->redirectToRoute('ActiviteBundle_TypeActivite_show');
+            
+            
+        }
+        return $this->render('ActiviteBundle:TypeActivite:edit.html.twig', array('form' => $form->createView() , ));
     }
 
     public function deleteAction($id)
     {
+        if($id!=null)
+        {
+            $em = $this->getDoctrine()->getManager();
+            $typeactivite = $em->getRepository('ActiviteBundle:TypeActivite')->find($id);
+            $em->remove($typeactivite);
+            $em->flush();
+        }
         return $this->render('ActiviteBundle:TypeActivite:delete.html.twig', array(
             // ...
         ));
     }
 
-    public function showAction($id)
+    public function showAction()
     {
         return $this->render('ActiviteBundle:TypeActivite:show.html.twig', array(
             // ...

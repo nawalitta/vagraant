@@ -23,14 +23,14 @@ class ActiviteController extends Controller
                 $activite = $form->getData();
                 $em->persist($activite);
                 $em->flush();
-                return $this->redirectToRoute('ActiviteBundle_activite_show');
+                return $this->redirectToRoute('ActiviteBundle_Activite_show');
             }
         }else{
             #Modification
             $activite = $em->getRepository('ActiviteBundle:Activite')->find($id);
             $activite = $form->getData();
             $em->flush();
-            return $this->redirectToRoute('ActiviteBundle_activite_show');
+            return $this->redirectToRoute('ActiviteBundle_Activite_show');
             
             
         }

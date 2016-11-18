@@ -87,12 +87,6 @@ class Activite
     private $typesActivite;
 
     /**
-  * @ORM\OneToOne(targetEntity="ActiviteRealisee")
-  * @ORM\JoinColumn(nullable=false)
-  */
-    private $ActiviteRealisee;
-
-    /**
      * Get id
      *
      * @return integer
