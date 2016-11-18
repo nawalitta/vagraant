@@ -3,6 +3,8 @@
 namespace ActiviteBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+use src\ActiviteBundle\Entity\TypeActivite;
 
 /**
  * activite
@@ -32,6 +34,9 @@ class Activite
      * @var int
      *
      * @ORM\Column(name="duree_max", type="integer")
+     * @Assert\GreaterThan(
+     *     value = 0
+     * )
      */
     private $dureeMax;
 
@@ -39,6 +44,9 @@ class Activite
      * @var int
      *
      * @ORM\Column(name="duree_min", type="integer")
+     * @Assert\GreaterThan(
+     *     value = 0
+     * )
      */
     private $dureeMin;
 
@@ -46,6 +54,9 @@ class Activite
      * @var int
      *
      * @ORM\Column(name="nb_enfants_max", type="integer")
+     * @Assert\GreaterThan(
+     *     value = 0
+     * )
      */
     private $nbEnfantsMax;
 
@@ -53,6 +64,9 @@ class Activite
      * @var int
      *
      * @ORM\Column(name="nb_enfants_min", type="integer")
+     * @Assert\GreaterThan(
+     *     value = 0
+     * )
      */
     private $nbEnfantsMin;
 
@@ -60,6 +74,9 @@ class Activite
      * @var int
      *
      * @ORM\Column(name="duree_transport", type="integer")
+     * @Assert\GreaterThan(
+     *     value = 0
+     * )
      */
     private $dureeTransport;
 
@@ -74,7 +91,7 @@ class Activite
   * @ORM\JoinColumn(nullable=false)
   */
     private $ActiviteRealisee;
-    
+
     /**
      * Get id
      *
@@ -240,7 +257,7 @@ class Activite
      * @param \ActiviteBundle\Entity\TypeActivite $typesActivite
      * @return Activites
      */
-    public function setTypesActivite(\ActiviteBundle\Entity\TypeActivite $typesActivite)
+    public function setTypesActivite($typesActivite)
     {
         $this->typesActivite = $typesActivite;
 
@@ -258,26 +275,27 @@ class Activite
     }
 
     /**
-     * Set activiteRealisee
      *
-     * @param \ActiviteBundle\Entity\ActiviteRealisee $activiteRealisee
-     *
-     * @return Activite
+     * @Assert\isTrue(message =" La durée maximum doit être superieur à la durée minimum")
      */
-    public function setActiviteRealisee(\ActiviteBundle\Entity\ActiviteRealisee $activiteRealisee)
-    {
-        $this->ActiviteRealisee = $activiteRealisee;
+    public function isDureeValid(){
 
-        return $this;
+        return $this->dureeMax >= $this->dureeMin;
     }
 
-    /**
-     * Get activiteRealisee
+        /**
      *
-     * @return \ActiviteBundle\Entity\ActiviteRealisee
+     * @Assert\isTrue(message =" Le nombre d'enfants maximum doit être superieur au nombre d'enfants minimum")
      */
-    public function getActiviteRealisee()
-    {
-        return $this->ActiviteRealisee;
+    public function isNbEnfantValid(){
+
+        return $this->nbEnfantsMax >= $this->nbEnfantsMin;
     }
+
+    public function __toString()
+    {
+        return $this->designation;
+    }
+
+
 }

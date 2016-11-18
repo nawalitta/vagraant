@@ -5,6 +5,7 @@ namespace ActiviteBundle\Form;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 
 class TypeActiviteType extends AbstractType
 {
@@ -13,7 +14,7 @@ class TypeActiviteType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('designation');
+        $builder->add('designation')->add('OK',SubmitType::class);
     }
     
     /**

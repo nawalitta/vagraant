@@ -39,7 +39,7 @@ class ActiviteController extends Controller
         return $this->render('ActiviteBundle:Activite:edit.html.twig', array('form' => $form->createView() , ));
     }
     
-    public function deleteAction($id=null, Request $request)
+    public function deleteAction($id=null)
     {
         if($id!=null)
         {
@@ -51,8 +51,10 @@ class ActiviteController extends Controller
 
         return $this->render('ActiviteBundle:Activite:show.html.twig');
     }
-    public function showAction($id=null, Request $request)
+    public function showAction()
     {
-        return $this->render('ActiviteBundle:Activite:show.html.twig');
+        $em = $this->getDoctrine()->getManager();
+        $listActivite = $em->getRepository("ActiviteBundle:Activite")->findAll();
+        return $this->render('ActiviteBundle:Activite:show.html.twig',array("listActivite"=>$listActivite));
     }
 }

@@ -1,11 +1,11 @@
- 
+ #---------------TYPE ACTIVITE-----------------------------
 ActiviteBundle_TypeActivite_index :
     path:     typeActivite/
     defaults: { _controller: ActiviteBundle:TypeActivite:index }
 
 ActiviteBundle_TypeActivite_edit:
     path:     typeActivite/edit/{id}
-    defaults: { _controller: ActiviteBundle:TypeActivite:edit }
+    defaults: { _controller: ActiviteBundle:TypeActivite:edit,id : null }
 
 ActiviteBundle_TypeActivite_delete:
     path:     typeActivite/delete/{id}
@@ -15,26 +15,28 @@ ActiviteBundle_TypeActivite_show:
     path:     typeActivite/show/{id}
     defaults: { _controller: ActiviteBundle:TypeActivite:show }
     
+# ---------------ACTIVITE--------------------------------------------------------
 ActiviteBundle_activite_edit:
-    path:     activite/edit
-    defaults: { _controller: ActiviteBundle:Activite:edit}
+    path:     activite/edit/{id}
+    defaults: { _controller: ActiviteBundle:Activite:edit,id : null }
+
+ActiviteBundle_activite_show:
+    path: activite/show
+    defaults: { _controller: ActiviteBundle:Activite:show}
     
+ActiviteBundle_activite_delete:
+    path: activite/delete/{id}
+    defaults: { _controller: ActiviteBundle:Activite:delete, id : null }
+
+#---------------ACTIVITE OBLIGATOIRE ---------------------------------------------
 ActiviteBundle_activiteObligatoire_edit:
-    path: activiteObligatoire/edit
-    defaults: { _controller: ActiviteBundle:ActiviteObligatoire:edit }
+    path: activiteObligatoire/edit/{id}
+    defaults: { _controller: ActiviteBundle:ActiviteObligatoire:edit,id : null }
 
-ActiviteBundle_ActiviteRealisee_index:
-    path:     ActiviteRealisee/index
-    defaults: { _controller: ActiviteBundle:ActiviteRealisee:index }
+ActiviteBundle_activiteObligatoire_show:
+    path: activiteObligatoire/show
+    defaults: { _controller: ActiviteBundle:ActiviteObligatoire:show }
 
-ActiviteBundle_ActiviteRealisee_edit:
-    path:     ActiviteRealisee/edit/{id}
-    defaults: { _controller: ActiviteBundle:ActiviteRealisee:edit,id : null }
-
-ActiviteBundle_ActiviteRealisee_delete:
-    path:     ActiviteRealisee/delete/{id}
-    defaults: { _controller: ActiviteBundle:ActiviteRealisee:delete }
-
-ActiviteBundle_ActiviteRealisee_show:
-    path:     ActiviteRealisee/show/{id}
-    defaults: { _controller: ActiviteBundle:ActiviteRealisee:show }
+ActiviteBundle_activiteObligatoire_delete:
+    path: activiteObligatoire/delete/{id}
+    defaults: { _controller: ActiviteBundle:ActiviteObligatoire:delete, id : null }
