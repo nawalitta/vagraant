@@ -14,7 +14,7 @@ class ActiviteObligatoireType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('quotas')->add('ecart')->add('activite')->add('OK',SubmitType::class);        ;
+        $builder->add('quotas')->add('ecart')->add('activite')->add('OK',SubmitType::class);       
     }
     
     /**

@@ -36,7 +36,7 @@ class ActiviteObligatoireController extends Controller
         ));
     }
     
-    public function deleteAction($id=null, Request $request)
+    public function deleteAction($id=null)
     {
         if($id!=null)
         {

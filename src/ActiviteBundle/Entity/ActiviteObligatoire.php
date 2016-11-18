@@ -25,6 +25,9 @@ class ActiviteObligatoire
      * @var int
      *
      * @ORM\Column(name="quotas", type="integer")
+     * @Assert\GreaterThan(
+     *     value = 0
+     * )
      */
     private $quotas;
 
@@ -32,6 +35,9 @@ class ActiviteObligatoire
      * @var int
      *
      * @ORM\Column(name="ecart", type="integer")
+     * @Assert\GreaterThan(
+     *     value = 0
+     * )
      */
     private $ecart;
 
@@ -113,5 +119,9 @@ class ActiviteObligatoire
     public function __construct()
     {
       
+    }
+    
+    public function __toString() {
+        return $this->activite->getDesignation();
     }
 }

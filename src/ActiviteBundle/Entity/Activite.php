@@ -3,6 +3,8 @@
 namespace ActiviteBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+use src\ActiviteBundle\Entity\TypeActivite;
 
 /**
  * activite
@@ -32,6 +34,9 @@ class Activite
      * @var int
      *
      * @ORM\Column(name="duree_max", type="integer")
+     * @Assert\GreaterThan(
+     *     value = 0
+     * )
      */
     private $dureeMax;
 
@@ -39,6 +44,9 @@ class Activite
      * @var int
      *
      * @ORM\Column(name="duree_min", type="integer")
+     * @Assert\GreaterThan(
+     *     value = 0
+     * )
      */
     private $dureeMin;
 
@@ -46,6 +54,9 @@ class Activite
      * @var int
      *
      * @ORM\Column(name="nb_enfants_max", type="integer")
+     * @Assert\GreaterThan(
+     *     value = 0
+     * )
      */
     private $nbEnfantsMax;
 
@@ -53,6 +64,9 @@ class Activite
      * @var int
      *
      * @ORM\Column(name="nb_enfants_min", type="integer")
+     * @Assert\GreaterThan(
+     *     value = 0
+     * )
      */
     private $nbEnfantsMin;
 
@@ -60,6 +74,9 @@ class Activite
      * @var int
      *
      * @ORM\Column(name="duree_transport", type="integer")
+     * @Assert\GreaterThan(
+     *     value = 0
+     * )
      */
     private $dureeTransport;
 
@@ -98,12 +115,11 @@ class Activite
      * Get dureeMax
      *
      * @return integer
-     */
+    */
     public function getDureeMax()
     {
         return $this->dureeMax;
     }
-
     /**
      * Set dureeMin
      *
@@ -199,9 +215,6 @@ class Activite
     {
         return $this->dureeTransport;
     }
-    
-
-
     /**
      * Set designation
      *
@@ -224,17 +237,13 @@ class Activite
     {
         return $this->designation;
     }
-
- 
-
-
     /**
      * Set typesActivite
      *
      * @param \ActiviteBundle\Entity\TypeActivite $typesActivite
      * @return Activites
      */
-    public function setTypesActivite(\ActiviteBundle\Entity\TypeActivite $typesActivite)
+    public function setTypesActivite($typesActivite)
     {
         $this->typesActivite = $typesActivite;
 
@@ -250,4 +259,29 @@ class Activite
     {
         return $this->typesActivite;
     }
+    
+    /**
+     * 
+     * @Assert\isTrue(message =" La durée maximum doit être superieur à la durée minimum")
+     */
+    public function isDureeValid(){
+        
+        return $this->dureeMax >= $this->dureeMin;
+    }
+    
+        /**
+     * 
+     * @Assert\isTrue(message =" Le nombre d'enfants maximum doit être superieur au nombre d'enfants minimum")
+     */
+    public function isNbEnfantValid(){
+        
+        return $this->nbEnfantsMax >= $this->nbEnfantsMin;
+    }
+    
+    public function __toString() 
+    {
+        return $this->designation;
+    }
+    
+    
 }
