@@ -1,3 +1,1 @@
-calendrier_homepage:
-    path:     /
-    defaults: { _controller: CalendrierBundle:Default:index }
+

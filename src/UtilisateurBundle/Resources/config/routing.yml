@@ -1,3 +1,14 @@
-utilisateur_homepage:
-    path:     /
-    defaults: { _controller: UtilisateurBundle:Default:index }
+UtilisateurBundle_Utilisateur_edit:
+    path:     utilisateur/edit
+    defaults: { _controller: UtilisateurBundle:Utilisateur:edit }
+
+UtilisateurBundle_Utilisateur_show:
+    path:     utilisateur/show
+    defaults: { _controller: UtilisateurBundle:Utilisateur:show }
+
+UtilisateurBundle_Utilisateur_delete:
+    path:     utilisateur/delete
+    defaults: { _controller: UtilisateurBundle:Utilisateur:delete }
+UtilisateurBundle_Utilisateur_index:
+    path:     utilisateur/index
+    defaults: { _controller: UtilisateurBundle:Utilisateur:index }

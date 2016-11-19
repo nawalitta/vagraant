@@ -28,8 +28,8 @@ class ActiviteObligatoireController extends Controller
             $activiteObligatoire = $form->getData();
             $em->flush();
             return $this->redirectToRoute('ActiviteBundle_activiteObligatoire_show');
-            
-            
+
+
         }
         
         return $this->render('ActiviteBundle:ActiviteObligatoire:edit.html.twig',array('form' => $form->createView(),

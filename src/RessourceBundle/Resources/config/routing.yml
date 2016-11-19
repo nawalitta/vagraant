@@ -1,4 +1,4 @@
-
+#---------------FENETRE HORAIRE-----------------------------
 RessourceBunde_FenetreHoraire_index:
     path:     FenetreHoraire/index
     defaults: { _controller: RessourceBundle:FenetreHoraire:index }
@@ -15,6 +15,7 @@ RessourceBunde_FenetreHoraire_show:
     path:     FenetreHoraire/show/{id}
     defaults: { _controller: RessourceBundle:FenetreHoraire:show }
 
+#---------------RESSOURCE-----------------------------
 RessourceBunde_Ressource_index:
     path:     Ressource/index
     defaults: { _controller: RessourceBundle:Ressource:index }
@@ -30,3 +31,20 @@ RessourceBunde_Ressource_delete:
 RessourceBunde_Ressource_show:
     path:     Ressource/show/{id}
     defaults: { _controller: RessourceBundle:Ressource:show }
+
+#---------------VEHICULE-----------------------------
+RessourceBundle_Vehicule_edit:
+    path:     vehicule/edit
+    defaults: { _controller: RessourceBundle:Vehicule:edit }
+
+RessourceBundle_Vehicule_delete:
+    path:     vehicule/delete
+    defaults: { _controller: RessourceBundle:Vehicule:delete }
+
+RessourceBundle_Vehicule_show:
+    path:     vehicule/show
+    defaults: { _controller: RessourceBundle:Vehicule:show }
+
+RessourceBundle_Vehicule_index:
+    path:     vehicule/index
+    defaults: { _controller: RessourceBundle:Vehicule:index }

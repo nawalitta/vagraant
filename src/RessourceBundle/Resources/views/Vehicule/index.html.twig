@@ -1,0 +1,10 @@
+{% extends "::base.html.twig" %}
+
+{% block title %}RessourceBundle:Vehicule:index{% endblock %}
+
+{% block body %}
+<h1>Welcome to the Vehicule:index page</h1>
+    {% for vehicule in vehicules %}
+        <li>{{ vehicule.designation }}</li>
+    {% endfor %}
+{% endblock %}

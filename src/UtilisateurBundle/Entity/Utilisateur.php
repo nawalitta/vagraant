@@ -93,5 +93,12 @@ class Utilisateur
     {
         return $this->password;
     }
+
+    public function __toString()
+    {
+        return $this->login;
+    }
+
+
 }
 

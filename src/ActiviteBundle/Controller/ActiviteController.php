@@ -31,14 +31,13 @@ class ActiviteController extends Controller
             $activite = $form->getData();
             $em->flush();
             return $this->redirectToRoute('ActiviteBundle_activite_show');
-            
-            
+
+
         }
 
-        
         return $this->render('ActiviteBundle:Activite:edit.html.twig', array('form' => $form->createView() , ));
     }
-    
+
     public function deleteAction($id=null)
     {
         if($id!=null)
