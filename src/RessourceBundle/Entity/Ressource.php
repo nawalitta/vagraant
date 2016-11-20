@@ -146,4 +146,28 @@ class Ressource
     {
         return $this->fenetreHoraire;
     }
+
+    /**
+     * Set typeRessource
+     *
+     * @param \RessourceBundle\Entity\TypeRessource $typeRessource
+     *
+     * @return Ressource
+     */
+    public function setTypeRessource(\RessourceBundle\Entity\TypeRessource $typeRessource)
+    {
+        $this->typeRessource = $typeRessource;
+
+        return $this;
+    }
+
+    /**
+     * Get typeRessource
+     *
+     * @return \RessourceBundle\Entity\TypeRessource
+     */
+    public function getTypeRessource()
+    {
+        return $this->typeRessource;
+    }
 }

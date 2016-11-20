@@ -138,5 +138,52 @@ class BesoinTypeRessource
     {
         return $this->preference;
     }
-}
 
+    /**
+     * Set activite
+     *
+     * @param \RessourceBundle\Entity\ActiviteBundle/Activite $activite
+     *
+     * @return BesoinTypeRessource
+     */
+    public function setActivite(\RessourceBundle\Entity\ActiviteBundle\Activite $activite)
+    {
+        $this->activite = $activite;
+
+        return $this;
+    }
+
+    /**
+     * Get activite
+     *
+     * @return \RessourceBundle\Entity\ActiviteBundle/Activite
+     */
+    public function getActivite()
+    {
+        return $this->activite;
+    }
+
+    /**
+     * Set typeRessource
+     *
+     * @param \RessourceBundle\Entity\TypeRessource $typeRessource
+     *
+     * @return BesoinTypeRessource
+     */
+    public function setTypeRessource(\RessourceBundle\Entity\TypeRessource $typeRessource)
+    {
+        $this->typeRessource = $typeRessource;
+
+        return $this;
+    }
+
+    /**
+     * Get typeRessource
+     *
+     * @return \RessourceBundle\Entity\TypeRessource
+     */
+    public function getTypeRessource()
+    {
+        return $this->typeRessource;
+    }
+}

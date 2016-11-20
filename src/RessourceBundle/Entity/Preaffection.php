@@ -49,5 +49,76 @@ class Preaffection
     {
         return $this->id;
     }
-}
 
+    /**
+     * Set enfant
+     *
+     * @param \RessourceBundle\Entity\Enfant $enfant
+     *
+     * @return Preaffection
+     */
+    public function setEnfant(\RessourceBundle\Entity\Enfant $enfant)
+    {
+        $this->enfant = $enfant;
+
+        return $this;
+    }
+
+    /**
+     * Get enfant
+     *
+     * @return \RessourceBundle\Entity\Enfant
+     */
+    public function getEnfant()
+    {
+        return $this->enfant;
+    }
+
+    /**
+     * Set activite
+     *
+     * @param \ActiviteBundle\Entity\Activite $activite
+     *
+     * @return Preaffection
+     */
+    public function setActivite(\ActiviteBundle\Entity\Activite $activite)
+    {
+        $this->activite = $activite;
+
+        return $this;
+    }
+
+    /**
+     * Get activite
+     *
+     * @return \ActiviteBundle\Entity\Activite
+     */
+    public function getActivite()
+    {
+        return $this->activite;
+    }
+
+    /**
+     * Set ressource
+     *
+     * @param \RessourceBundle\Entity\Ressource $ressource
+     *
+     * @return Preaffection
+     */
+    public function setRessource(\RessourceBundle\Entity\Ressource $ressource)
+    {
+        $this->ressource = $ressource;
+
+        return $this;
+    }
+
+    /**
+     * Get ressource
+     *
+     * @return \RessourceBundle\Entity\Ressource
+     */
+    public function getRessource()
+    {
+        return $this->ressource;
+    }
+}
