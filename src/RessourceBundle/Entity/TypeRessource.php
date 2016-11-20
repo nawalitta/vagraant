@@ -28,6 +28,15 @@ class TypeRessource
      */
     private $designation;
 
+    /**
+     * @ORM\OneToMany(targetEntity="BesoinTypeRessource", mappedBy="TypeRessource")
+     */
+    private $besoinsTypeRessources;
+    
+    /**
+     * @ORM\OneToMany(targetEntity="Ressource", mappedBy="TypeRessource")
+     */
+    private $ressources;
 
     /**
      * Get id
@@ -60,5 +69,81 @@ class TypeRessource
     public function getDesignation()
     {
         return $this->designation;
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->besoinsTypeRessources = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->ressources = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add besoinsTypeRessource
+     *
+     * @param \RessourceBundle\Entity\BesoinTypeRessource $besoinsTypeRessource
+     *
+     * @return TypeRessource
+     */
+    public function addBesoinsTypeRessource(\RessourceBundle\Entity\BesoinTypeRessource $besoinsTypeRessource)
+    {
+        $this->besoinsTypeRessources[] = $besoinsTypeRessource;
+
+        return $this;
+    }
+
+    /**
+     * Remove besoinsTypeRessource
+     *
+     * @param \RessourceBundle\Entity\BesoinTypeRessource $besoinsTypeRessource
+     */
+    public function removeBesoinsTypeRessource(\RessourceBundle\Entity\BesoinTypeRessource $besoinsTypeRessource)
+    {
+        $this->besoinsTypeRessources->removeElement($besoinsTypeRessource);
+    }
+
+    /**
+     * Get besoinsTypeRessources
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getBesoinsTypeRessources()
+    {
+        return $this->besoinsTypeRessources;
+    }
+
+    /**
+     * Add ressource
+     *
+     * @param \RessourceBundle\Entity\Ressource $ressource
+     *
+     * @return TypeRessource
+     */
+    public function addRessource(\RessourceBundle\Entity\Ressource $ressource)
+    {
+        $this->ressources[] = $ressource;
+
+        return $this;
+    }
+
+    /**
+     * Remove ressource
+     *
+     * @param \RessourceBundle\Entity\Ressource $ressource
+     */
+    public function removeRessource(\RessourceBundle\Entity\Ressource $ressource)
+    {
+        $this->ressources->removeElement($ressource);
+    }
+
+    /**
+     * Get ressources
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getRessources()
+    {
+        return $this->ressources;
     }
 }

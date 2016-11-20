@@ -3,6 +3,8 @@
 namespace ActiviteBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+use ActiviteBundle\Entity\TypeActivite;
 
 /**
  * activite
@@ -32,6 +34,9 @@ class Activite
      * @var int
      *
      * @ORM\Column(name="duree_max", type="integer")
+     * @Assert\GreaterThan(
+     *     value = 0
+     * )
      */
     private $dureeMax;
 
@@ -39,6 +44,9 @@ class Activite
      * @var int
      *
      * @ORM\Column(name="duree_min", type="integer")
+     * @Assert\GreaterThan(
+     *     value = 0
+     * )
      */
     private $dureeMin;
 
@@ -46,6 +54,9 @@ class Activite
      * @var int
      *
      * @ORM\Column(name="nb_enfants_max", type="integer")
+     * @Assert\GreaterThan(
+     *     value = 0
+     * )
      */
     private $nbEnfantsMax;
 
@@ -53,6 +64,9 @@ class Activite
      * @var int
      *
      * @ORM\Column(name="nb_enfants_min", type="integer")
+     * @Assert\GreaterThan(
+     *     value = 0
+     * )
      */
     private $nbEnfantsMin;
 
@@ -60,6 +74,9 @@ class Activite
      * @var int
      *
      * @ORM\Column(name="duree_transport", type="integer")
+     * @Assert\GreaterThan(
+     *     value = 0
+     * )
      */
     private $dureeTransport;
 
@@ -70,10 +87,44 @@ class Activite
     private $typesActivite;
 
     /**
-  * @ORM\OneToOne(targetEntity="ActiviteRealisee")
-  * @ORM\JoinColumn(nullable=false)
-  */
+   * @ORM\ManyToOne(targetEntity="RessourceBundle\Entity\FenetreHoraire",inversedBy="Activite")
+   * @ORM\JoinColumn(nullable=false)
+   */  
+    private $fenetreHoraire;
+    
+    /**
+     * @ORM\ManyToMany(targetEntity="RessourceBundle\Entity\Enfant")
+     */
+    private $enfantsOptionnel;
+    
+    /**
+     * @ORM\OneToOne(targetEntity="ActiviteRealisee")
+     * @ORM\JoinColumn(nullable=false)
+     */
     private $ActiviteRealisee;
+
+    
+    /**
+     * @ORM\OneToMany(targetEntity="RessourceBundle\Entity\Preaffection", mappedBy="Activite")
+     */
+    private $preaffection;
+    
+    
+    /**
+     * @ORM\OneToMany(targetEntity="ActiviteObligatoire", mappedBy="Activite")
+     */    
+    private $enfantObligatoires;
+    
+    
+    /**
+     * @ORM\OneToMany(targetEntity="ActiviteFixee", mappedBy="Activite")
+     */   
+    private $horairefixe;
+    
+    /**
+     * @ORM\OneToMany(targetEntity="RessourceBundle\Entity\BesoinTypeRessource", mappedBy="Activite")
+     */     
+    private $besoinsTypeRessource;
     
     /**
      * Get id
@@ -240,7 +291,7 @@ class Activite
      * @param \ActiviteBundle\Entity\TypeActivite $typesActivite
      * @return Activites
      */
-    public function setTypesActivite(\ActiviteBundle\Entity\TypeActivite $typesActivite)
+    public function setTypesActivite($typesActivite)
     {
         $this->typesActivite = $typesActivite;
 
@@ -255,5 +306,54 @@ class Activite
     public function getTypesActivite()
     {
         return $this->typesActivite;
+    }
+
+    /**
+     *
+     * @Assert\isTrue(message =" La durée maximum doit être superieur à la durée minimum")
+     */
+    public function isDureeValid(){
+
+        return $this->dureeMax >= $this->dureeMin;
+    }
+
+        /**
+     *
+     * @Assert\isTrue(message =" Le nombre d'enfants maximum doit être superieur au nombre d'enfants minimum")
+     */
+    public function isNbEnfantValid(){
+
+        return $this->nbEnfantsMax >= $this->nbEnfantsMin;
+    }
+
+    public function __toString()
+    {
+        return $this->designation;
+    }
+
+
+
+    /**
+     * Set activiteRealisee
+     *
+     * @param \ActiviteBundle\Entity\ActiviteRealisee $activiteRealisee
+     *
+     * @return Activite
+     */
+    public function setActiviteRealisee(\ActiviteBundle\Entity\ActiviteRealisee $activiteRealisee)
+    {
+        $this->ActiviteRealisee = $activiteRealisee;
+
+        return $this;
+    }
+
+    /**
+     * Get activiteRealisee
+     *
+     * @return \ActiviteBundle\Entity\ActiviteRealisee
+     */
+    public function getActiviteRealisee()
+    {
+        return $this->ActiviteRealisee;
     }
 }

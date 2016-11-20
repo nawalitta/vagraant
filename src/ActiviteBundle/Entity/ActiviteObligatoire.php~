@@ -3,6 +3,7 @@
 namespace ActiviteBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * activiteObligatoire
@@ -25,6 +26,9 @@ class ActiviteObligatoire
      * @var int
      *
      * @ORM\Column(name="quotas", type="integer")
+     * @Assert\GreaterThan(
+     *     value = 0
+     * )
      */
     private $quotas;
 
@@ -32,15 +36,26 @@ class ActiviteObligatoire
      * @var int
      *
      * @ORM\Column(name="ecart", type="integer")
+     * @Assert\GreaterThan(
+     *     value = 0
+     * )
      */
     private $ecart;
 
 
    /**
-   * @ORM\ManyToOne(targetEntity="ActiviteBundle\Entity\Activite")
+   * @ORM\ManyToOne(targetEntity="Activite",inversedBy="ActiviteObligatoire")
    * @ORM\JoinColumn(nullable=false)
    */
     private $activite;
+    
+    
+    /**
+   * @ORM\ManyToOne(targetEntity="RessourceBundle\Entity\Enfant",inversedBy="ActiviteObligatoire")
+   * @ORM\JoinColumn(nullable=false)
+   */
+    private $enfant;
+    
     /**
      * Get id
      *
@@ -113,5 +128,9 @@ class ActiviteObligatoire
     public function __construct()
     {
       
+    }
+    
+    public function __toString() {
+        return $this->activite->getDesignation();
     }
 }

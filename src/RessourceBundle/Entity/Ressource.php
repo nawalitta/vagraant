@@ -30,16 +30,26 @@ class Ressource
 
 
     /**
-   * @ORM\ManyToMany(targetEntity="ActiviteBundle\Entity\ActiviteRealisee")
-   */
+     * @ORM\ManyToMany(targetEntity="ActiviteBundle\Entity\ActiviteRealisee")
+     */
   private $activiteesRealisees;
     
-  /**
-   * @ORM\ManyToOne(targetEntity="FenetreHoraire",inversedBy="Ressource")
-   * @ORM\JoinColumn(nullable=false)
-   */
+    /**
+     * @ORM\ManyToOne(targetEntity="FenetreHoraire",inversedBy="Ressource")
+     * @ORM\JoinColumn(nullable=false)
+     */
   private $fenetreHoraire;
   
+    /**
+     * @ORM\ManyToOne(targetEntity="TypeRessource",inversedBy="Ressource")
+     * @ORM\JoinColumn(nullable=false)
+     */
+  private $typeRessource;
+  
+    /**
+     * @ORM\OneToMany(targetEntity="Preaffection", mappedBy="Ressource")
+     */
+  private $preaffection;
   
   
     /**
@@ -139,5 +149,63 @@ class Ressource
     public function getFenetreHoraire()
     {
         return $this->fenetreHoraire;
+    }
+
+    /**
+     * Set typeRessource
+     *
+     * @param \RessourceBundle\Entity\TypeRessource $typeRessource
+     *
+     * @return Ressource
+     */
+    public function setTypeRessource(\RessourceBundle\Entity\TypeRessource $typeRessource)
+    {
+        $this->typeRessource = $typeRessource;
+
+        return $this;
+    }
+
+    /**
+     * Get typeRessource
+     *
+     * @return \RessourceBundle\Entity\TypeRessource
+     */
+    public function getTypeRessource()
+    {
+        return $this->typeRessource;
+    }
+
+    /**
+     * Add preaffection
+     *
+     * @param \RessourceBundle\Entity\Preaffection $preaffection
+     *
+     * @return Ressource
+     */
+    public function addPreaffection(\RessourceBundle\Entity\Preaffection $preaffection)
+    {
+        $this->preaffection[] = $preaffection;
+
+        return $this;
+    }
+
+    /**
+     * Remove preaffection
+     *
+     * @param \RessourceBundle\Entity\Preaffection $preaffection
+     */
+    public function removePreaffection(\RessourceBundle\Entity\Preaffection $preaffection)
+    {
+        $this->preaffection->removeElement($preaffection);
+    }
+
+    /**
+     * Get preaffection
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getPreaffection()
+    {
+        return $this->preaffection;
     }
 }

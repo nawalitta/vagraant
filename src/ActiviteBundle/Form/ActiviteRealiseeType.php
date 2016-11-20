@@ -13,11 +13,7 @@ class ActiviteRealiseeType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('heureDebut')
-                ->add('heureFin')
-                ->add('activite')
-                ->add('ressources') 
-                ->add('Enregistrer', \Symfony\Component\Form\Extension\Core\Type\SubmitType::class);
+        $builder->add('heureDebut')->add('heureFin')->add('activite')->add('ressources')->add('enfant')->add('jour')        ;
     }
     
     /**

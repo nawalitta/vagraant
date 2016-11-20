@@ -91,11 +91,21 @@ class FenetreHoraire
      */
     private $vendrediFin;
 
-/**
-   * @ORM\OneToMany(targetEntity="Ressource", mappedBy="FenetreHoraire")
-   */
+    /**
+     * @ORM\OneToMany(targetEntity="Ressource", mappedBy="FenetreHoraire")
+     */
     private $ressources;
     
+    /**
+     * @ORM\OneToMany(targetEntity="ActiviteBundle\Entity\Activite", mappedBy="FenetreHoraire")
+     */
+    private $activites;
+    
+    /**
+     * @ORM\OneToMany(targetEntity="Enfant", mappedBy="FenetreHoraire")
+     */
+    
+    private $enfants;
     /**
      * Get id
      *
@@ -387,5 +397,73 @@ class FenetreHoraire
     public function getRessources()
     {
         return $this->ressources;
+    }
+
+    /**
+     * Add activite
+     *
+     * @param \ActiviteBundle\Entity\Activite $activite
+     *
+     * @return FenetreHoraire
+     */
+    public function addActivite(\ActiviteBundle\Entity\Activite $activite)
+    {
+        $this->activites[] = $activite;
+
+        return $this;
+    }
+
+    /**
+     * Remove activite
+     *
+     * @param \ActiviteBundle\Entity\Activite $activite
+     */
+    public function removeActivite(\ActiviteBundle\Entity\Activite $activite)
+    {
+        $this->activites->removeElement($activite);
+    }
+
+    /**
+     * Get activites
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getActivites()
+    {
+        return $this->activites;
+    }
+
+    /**
+     * Add enfant
+     *
+     * @param \RessourceBundle\Entity\Enfant $enfant
+     *
+     * @return FenetreHoraire
+     */
+    public function addEnfant(\RessourceBundle\Entity\Enfant $enfant)
+    {
+        $this->enfants[] = $enfant;
+
+        return $this;
+    }
+
+    /**
+     * Remove enfant
+     *
+     * @param \RessourceBundle\Entity\Enfant $enfant
+     */
+    public function removeEnfant(\RessourceBundle\Entity\Enfant $enfant)
+    {
+        $this->enfants->removeElement($enfant);
+    }
+
+    /**
+     * Get enfants
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getEnfants()
+    {
+        return $this->enfants;
     }
 }
