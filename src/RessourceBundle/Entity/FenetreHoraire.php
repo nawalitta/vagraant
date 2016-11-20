@@ -97,6 +97,15 @@ class FenetreHoraire
     private $ressources;
     
     /**
+   * @ORM\OneToMany(targetEntity="ActiviteBundle\Entity\Activite", mappedBy="FenetreHoraire")
+   */
+    private $activites;
+    
+    /**
+   * @ORM\OneToMany(targetEntity="Enfant", mappedBy="FenetreHoraire")
+   */
+    private $enfants;
+    /**
      * Get id
      *
      * @return integer 

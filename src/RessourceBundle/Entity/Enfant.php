@@ -63,6 +63,37 @@ class Enfant
      */
     private $identifiant;
 
+     /**
+   * @ORM\ManyToOne(targetEntity="FenetreHoraire",inversedBy="Enfant")
+   * @ORM\JoinColumn(nullable=false)
+   */ 
+    private $fenetreHoraire;
+    
+     /**
+   * @ORM\ManyToOne(targetEntity="Groupe",inversedBy="Enfant")
+   * @ORM\JoinColumn(nullable=false)
+   */ 
+    private $groupe;
+    
+    /**
+   * @ORM\OneToMany(targetEntity="ActiviteBundle\Entity\ActiviteFixee", mappedBy="Enfant")
+   */
+    private $activitesFixees;
+    
+    /**
+   * @ORM\ManyToMany(targetEntity="ActiviteBundle\Entity\Activite")
+   */
+    private $activitesOptionelles;
+    
+    /**
+   * @ORM\OneToMany(targetEntity="ActiviteBundle\Entity\ActiviteObligatoire", mappedBy="Enfant")
+   */
+    private $activitesObligatoires;
+    
+    /**
+   * @ORM\OneToMany(targetEntity="Preaffection", mappedBy="Enfant")
+   */
+    private $preaffection;
 
     /**
      * Get id

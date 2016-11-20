@@ -28,6 +28,15 @@ class TypeRessource
      */
     private $designation;
 
+    /**
+   * @ORM\OneToMany(targetEntity="BesoinTypeRessource", mappedBy="TypeRessource")
+   */
+    private $besoinsTypeRessources;
+    
+    /**
+   * @ORM\OneToMany(targetEntity="Ressource", mappedBy="TypeRessource")
+   */
+    private $ressources;
 
     /**
      * Get id

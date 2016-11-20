@@ -40,6 +40,12 @@ class Ressource
    */
   private $fenetreHoraire;
   
+  /**
+   * @ORM\ManyToOne(targetEntity="TypeRessource",inversedBy="Ressource")
+   * @ORM\JoinColumn(nullable=false)
+   */
+  private $typeRessource;
+  
   
   
     /**

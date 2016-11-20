@@ -37,8 +37,9 @@ class ActiviteRealisee
     private $heureFin;
 
    /**
-   * @ORM\OneToOne(targetEntity="Activite")
-   */
+   * @ORM\ManyToOne(targetEntity="Activite",inversedBy="ActiviteRealisee")
+   * @ORM\JoinColumn(nullable=false)
+   */  
    public $activite;
 
 
@@ -47,7 +48,20 @@ class ActiviteRealisee
    */
   private $ressources; 
    
-    
+   /**
+   * @ORM\ManyToOne(targetEntity="RessourceBundle/Enfant",inversedBy="ActiviteRealisee")
+   * @ORM\JoinColumn(nullable=false)
+   */  
+  private $enfant;
+  
+     /**
+   * @ORM\ManyToOne(targetEntity="Jour",inversedBy="ActiviteRealisee")
+   * @ORM\JoinColumn(nullable=false)
+   */  
+  private $jour;
+
+  
+  
     /**
      * Get id
      *
