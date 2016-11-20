@@ -293,13 +293,7 @@ class Activite
         return $this->nbEnfantsMax >= $this->nbEnfantsMin;
     }
 
-    /**
-     *
-     * @Assert\isNull(message ="Un type est obligatoire")
-     */
-    public function isActiviteTypeNotNull(){
-        return $this->typesActivite!=null;
-    }
+
 
     public function __toString()
     {

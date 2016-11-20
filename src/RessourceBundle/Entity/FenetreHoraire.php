@@ -92,7 +92,7 @@ class FenetreHoraire
     private $vendrediFin;
 
 /**
-   * @ORM\OneToMany(targetEntity="Ressource", mappedBy="FenetreHoraire")
+   * @ORM\OneToMany(targetEntity="Ressource", mappedBy="fenetreHoraire")
    */
     private $ressources;
     

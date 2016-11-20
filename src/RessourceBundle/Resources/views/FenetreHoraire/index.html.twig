@@ -5,22 +5,11 @@
 {% block body %}
 <h1>Welcome to the FenetreHoraire:index page</h1>
 
-<div class="row">
-    <div class="small-12 columns">
-        {% for type, messages in app.session.flashbag.all() %}
-            {% for message in messages %}
-                <div data-alert class="alert-box {{ type }}">
-                    {{ message }}
-                    <a href="#" class="close">&times;</a>
-                </div>
-            {% endfor %}
-        {% endfor %}
-    </div>
-</div>
+
 
  {% for fenetreHoraire in fenetresHoraire %}
         Fenetre Horaire n° : {{fenetreHoraire.id}}
- {% include 'preview.html.twig' %}
+ {% include 'RessourceBundle:FenetreHoraire:preview.html.twig' %}
             
    
             

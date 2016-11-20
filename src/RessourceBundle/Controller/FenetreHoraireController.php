@@ -23,7 +23,7 @@ class FenetreHoraireController extends Controller
         ));
     }
     
-        /**
+    /**
      * Affichage d'une FenetreHoraire présent dans la bdd
      * @return \Symfony\Component\HttpFoundation\Response
      */

@@ -35,7 +35,7 @@ class Ressource
   private $activiteesRealisees;
     
   /**
-   * @ORM\ManyToOne(targetEntity="FenetreHoraire",inversedBy="Ressource")
+   * @ORM\ManyToOne(targetEntity="FenetreHoraire",inversedBy="ressources")
    * @ORM\JoinColumn(nullable=false)
    */
   private $fenetreHoraire;
