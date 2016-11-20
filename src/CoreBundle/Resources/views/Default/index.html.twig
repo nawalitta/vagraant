@@ -1,27 +1,30 @@
-C'est ma page d'accueil!! This is the only home web page
+{% extends "::base.html.twig" %}
+{% block body %}
+     C'est ma page d'accueil!! This is the only home web page
 <ul>
     <li>Activité
         <ul>
-            <li><a href="activite/edit">Modifier</a></li>
-            <li><a href="activite/index">Lister</a></li>
+            <li><a href="app_dev.php/activite/edit">Modifier</a></li>
+            <li><a href="app_dev.php/activite/index">Lister</a></li>
         </ul>
     </li>
     <li>Ressource
         <ul>
-            <li><a href="ressource/edit">Modifier</a></li>
-            <li><a href="ressource/index">Lister</a></li>
+            <li><a href="app_dev.php/ressource/edit">Modifier</a></li>
+            <li><a href="app_dev.php/app_dev.php/ressource/index">Lister</a></li>
         </ul>
     </li>
     <li>Véhicule
         <ul>
-            <li><a href="vehicule/edit">Modifier</a></li>
-            <li><a href="vehicule/index">Lister</a></li>
+            <li><a href="app_dev.php/vehicule/edit">Modifier</a></li>
+            <li><a href="app_dev.php/vehicule/index">Lister</a></li>
         </ul>
     </li>
     <li>Utilisateur
         <ul>
-            <li><a href="utilisateur/edit">Modifier</a></li>
-            <li><a href="utilisateur/index">Lister</a></li>
+            <li><a href="app_dev.php/utilisateur/edit">Modifier</a></li>
+            <li><a href="app_dev.php/utilisateur/index">Lister</a></li>
         </ul>
     </li>
 </ul>
+ {% endblock %}

@@ -3,16 +3,16 @@
     <head>
         <meta charset="UTF-8" />
         <title>{% block title %}Welcome!{% endblock %}</title>
-        {% stylesheets '@bootstrap_css' %}
-        <link rel="stylesheet" type="text/css" media="screen" href="{{ asset_url }}"/>
-        {% endstylesheets %}
         {% block stylesheets %}
-
+            <link rel="stylesheet" type="text/css" media="screen" href="/gpac/vendor/twitter/bootstrap/dist/css/bootstrap.css"/>
         {% endblock %}
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
     </head>
     <body>
         {% block body %}{% endblock %}
-        {% block javascripts %}{% endblock %}
+        {% block javascripts %}
+            <script src="/gpac/vendor/components/jquery/jquery.js"></script>
+            <script src="/gpac/vendor/twitter/bootstrap/dist/js/bootstrap.js"></script>
+        {% endblock %}
     </body>
 </html>
