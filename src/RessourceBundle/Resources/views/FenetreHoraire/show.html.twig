@@ -5,28 +5,5 @@
 {% block body %}
 <h1>Welcome to the FenetreHoraire:show page</h1>
 
-     <table>
-         <tr>
-             <td>Lundi</td>
-             <td>Mardi</td>
-             <td>Mercredi</td>
-             <td>Jeudi</td>
-             <td>Vendredi</td>
-         </tr>
-         <tr>
-             <td>{{ fenetreHoraire.lundiDebut|date('H:i')}}</td>
-             <td>{{ fenetreHoraire.mardiDebut|date('H:i')}}</td>
-             <td>{{ fenetreHoraire.mercrediDebut|date('H:i')}}</td>
-             <td>{{ fenetreHoraire.jeudiDebut|date('H:i')}}</td>
-             <td>{{ fenetreHoraire.vendrediDebut|date('H:i')}}</td> 
-         </tr>
-         <tr>
-             <td>{{ fenetreHoraire.lundiFin|date('H:i')}}</td>
-             <td>{{ fenetreHoraire.mardiFin|date('H:i')}}</td>
-             <td>{{ fenetreHoraire.mercrediFin|date('H:i')}}</td>
-             <td>{{ fenetreHoraire.jeudiFin|date('H:i')}}</td>
-             <td>{{ fenetreHoraire.vendrediFin|date('H:i')}}</td> 
-         </tr>
-         
-     </table>
+ {% include 'preview.html.twig' %}
 {% endblock %}

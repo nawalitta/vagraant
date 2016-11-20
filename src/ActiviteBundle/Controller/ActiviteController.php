@@ -3,58 +3,93 @@
 namespace ActiviteBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use ActiviteBundle\Form\ActiviteType;
-use ActiviteBundle\Entity\Activite;
 use Symfony\Component\HttpFoundation\Request;
+use ActiviteBundle\Form\ActiviteType;
 
 class ActiviteController extends Controller
 {
-    public function editAction($id=null, Request $request)
+    /**
+     * Affichage de toutes les Activite présentes dans la bdd
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function indexAction()
     {
-        #Création formulaire
-        $activite = new Activite();
-        $form = $this->createForm(ActiviteType::class, $activite);
-        $em = $this->getDoctrine()->getManager();
+        $entityManager = $this->getDoctrine()->getManager();
+        $activiteRepository = $entityManager->getRepository("ActiviteBundle:Activite");
+        $activites = $activiteRepository->findAll();
         
-        $form->handleRequest($request);
-        if ($id==null){
-            #Ajout
-            if ($form->isValid()) {
-                $activite = $form->getData();
-                $em->persist($activite);
-                $em->flush();
-                return $this->redirectToRoute('ActiviteBundle_activite_show');
-            }
-        }else{
-            #Modification
-            $activite = $em->getRepository('ActiviteBundle:Activite')->find($id);
-            $activite = $form->getData();
-            $em->flush();
-            return $this->redirectToRoute('ActiviteBundle_activite_show');
-            
-            
-        }
-
-        
-        return $this->render('ActiviteBundle:Activite:edit.html.twig', array('form' => $form->createView() , ));
+        return $this->render('ActiviteBundle:Activite:index.html.twig', array(
+        "activites"=>$activites
+        ));
     }
     
-    public function deleteAction($id=null)
+    /**
+     * Affichage d'une Activite présent dans la bdd
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function showAction($id)
     {
-        if($id!=null)
-        {
-            $em = $this->getDoctrine()->getManager();
-            $activite = $em->getRepository('ActiviteBundle:Activite')->find($id);
-            $em->remove($activite);
-            $em->flush();
-        }
+        $entityManager = $this->getDoctrine()->getManager();
+        $activiteRepository = $entityManager->getRepository("ActiviteBundle:Activite");
+        $activite = $activiteRepository->findOneById($id);
+        
+        return $this->render('ActiviteBundle:Activite:show.html.twig', array(
+        "activite"=>$activite
+        ));
+    }
 
-        return $this->render('ActiviteBundle:Activite:show.html.twig');
-    }
-    public function showAction()
+    /**
+     * @param null $id : si null alors ajout
+     *                   sinon édition d'une Activite
+     * @param Request $request
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function editAction($id=null,Request $request)
     {
-        $em = $this->getDoctrine()->getManager();
-        $listActivite = $em->getRepository("ActiviteBundle:Activite")->findAll();
-        return $this->render('ActiviteBundle:Activite:show.html.twig',array("listActivite"=>$listActivite));
+        $entityManager = $this->getDoctrine()->getManager();
+        $activiteRepository = $entityManager->getRepository("ActiviteBundle:Activite");
+        $activite = $activiteRepository->findOneById($id);
+        
+        if($activite==null){
+            $activite=new \ActiviteBundle\Entity\Activite();
+        }
+        
+        $form = $this->createForm(ActiviteType::class,$activite);
+        $form->handleRequest($request);
+        
+        if($form->isValid()){
+            
+            $entityManager->persist($activite);
+            $entityManager->flush();
+            
+            $this->get('session')->getFlashBag()->add('notice', 'Activite bien enregistrée.');
+
+            return $this->redirect($this->generateUrl('ActiviteBundle_Activite_index'));
+        }
+        
+        return $this->render('ActiviteBundle:Activite:edit.html.twig', array(
+        'activite'=>$activite,
+        'form' => $form->createView()
+        ));
     }
+
+    /**
+     * Suppression d'une Activite
+     * @param null $id
+     * @return \Symfony\Component\HttpFoundation\Response
+     */    
+    public function deleteAction($id)
+    {
+        $entityManager = $this->getDoctrine()->getManager();
+  
+        $activiteRepository = $entityManager->getRepository("ActiviteBundle:Activite");
+        $activite = $activiteRepository->findOneById($id);
+        if($activite!=null){
+            $entityManager->remove ($activite);
+        }
+        $entityManager->flush();
+       
+        return $this->redirect($this->generateUrl('ActiviteBundle_Activite_index'));
+    }
+
 }

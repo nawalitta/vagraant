@@ -1,127 +1,95 @@
 <?php
 
-namespace ActiviteBundle\Entity;
+namespace ActiviteBundle\Controller;
 
-use Doctrine\ORM\Mapping as ORM;
+use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\Request;
+use ActiviteBundle\Form\ActiviteObligatoireType;
 
-/**
- * activiteObligatoire
- *
- * @ORM\Table(name="activite_obligatoire")
- * @ORM\Entity(repositoryClass="ActiviteBundle\Repository\ActiviteObligatoireRepository")
- */
-class ActiviteObligatoire
+class ActiviteObligatoireController extends Controller
 {
     /**
-     * @var int
-     *
-     * @ORM\Column(name="id", type="integer")
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="AUTO")
+     * Affichage de toutes les ActiviteObligatoire présentes dans la bdd
+     * @return \Symfony\Component\HttpFoundation\Response
      */
-    private $id;
-
-    /**
-     * @var int
-     *
-     * @ORM\Column(name="quotas", type="integer")
-     * @Assert\GreaterThan(
-     *     value = 0
-     * )
-     */
-    private $quotas;
-
-    /**
-     * @var int
-     *
-     * @ORM\Column(name="ecart", type="integer")
-     * @Assert\GreaterThan(
-     *     value = 0
-     * )
-     */
-    private $ecart;
-
-
-   /**
-   * @ORM\ManyToOne(targetEntity="ActiviteBundle\Entity\Activite")
-   * @ORM\JoinColumn(nullable=false)
-   */
-    private $activite;
-    /**
-     * Get id
-     *
-     * @return integer
-     */
-    public function getId()
+    public function indexAction()
     {
-        return $this->id;
-    }
-
-    /**
-     * Set quotas
-     *
-     * @param integer $quotas
-     *
-     * @return activiteObligatoire
-     */
-    public function setQuotas($quotas)
-    {
-        $this->quotas = $quotas;
-   
-        return $this;
-    }
-
-    /**
-     * Get quotas
-     *
-     * @return integer
-     */
-    public function getQuotas()
-    {
-        return $this->quotas;
-    }
-
-    /**
-     * Set ecart
-     *
-     * @param integer $ecart
-     *
-     * @return activiteObligatoire
-     */
-    public function setEcart($ecart)
-    {
-        $this->ecart = $ecart;
-    
-        return $this;
-    }
-
-    /**
-     * Get ecart
-     *
-     * @return integer
-     */
-    public function getEcart()
-    {
-        return $this->ecart;
+        $entityManager = $this->getDoctrine()->getManager();
+        $activiteObligatoireRepository = $entityManager->getRepository("ActiviteBundle:ActiviteObligatoire");
+        $activitesObligatoires = $activiteObligatoireRepository->findAll();
+        
+        return $this->render('ActiviteBundle:ActiviteObligatoire:index.html.twig', array(
+        "activitesObligatoires"=>$activitesObligatoires
+        ));
     }
     
-    public function getActivite()
+    /**
+     * Affichage d'une ActiviteObligatoire présent dans la bdd
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function showAction($id)
     {
-        return $this->activite;
+        $entityManager = $this->getDoctrine()->getManager();
+        $activiteObligatoireRepository = $entityManager->getRepository("ActiviteBundle:ActiviteObligatoire");
+        $activiteObligatoire = $activiteObligatoireRepository->findOneById($id);
+        
+        return $this->render('ActiviteBundle:ActiviteObligatoire:show.html.twig', array(
+        "activiteObligatoire"=>$activiteObligatoire
+        ));
     }
-    
-    public function setActivite($activite)
+
+    /**
+     * @param null $id : si null alors ajout
+     *                   sinon édition d'une ActiviteObligatoire
+     * @param Request $request
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function editAction($id=null,Request $request)
     {
-        $this->activite = $activite;
-        return $this;
+        $entityManager = $this->getDoctrine()->getManager();
+        $activiteObligatoireRepository = $entityManager->getRepository("ActiviteBundle:ActiviteObligatoire");
+        $activiteObligatoire = $activiteObligatoireRepository->findOneById($id);
+        
+        if($activiteObligatoire==null){
+            $activiteObligatoire=new \ActiviteBundle\Entity\ActiviteObligatoire();
+        }
+        
+        $form = $this->createForm(ActiviteObligatoireType::class,$activiteObligatoire);
+        $form->handleRequest($request);
+        
+        if($form->isValid()){
+            
+            $entityManager->persist($activiteObligatoire);
+            $entityManager->flush();
+            
+            $this->get('session')->getFlashBag()->add('notice', 'ActiviteObligatoire bien enregistrée.');
+
+            return $this->redirect($this->generateUrl('ActiviteBundle_ActiviteObligatoire_index'));
+        }
+        
+        return $this->render('ActiviteBundle:ActiviteObligatoire:edit.html.twig', array(
+        'activiteObligatoire'=>$activiteObligatoire,
+        'form' => $form->createView()
+        ));
     }
-    
-    public function __construct()
+
+    /**
+     * Suppression d'une ActiviteObligatoire
+     * @param null $id
+     * @return \Symfony\Component\HttpFoundation\Response
+     */    
+    public function deleteAction($id)
     {
-      
+        $entityManager = $this->getDoctrine()->getManager();
+  
+        $activiteObligatoireRepository = $entityManager->getRepository("ActiviteBundle:ActiviteObligatoire");
+        $activiteObligatoire = $activiteObligatoireRepository->findOneById($id);
+        if($activiteObligatoire!=null){
+            $entityManager->remove ($activiteObligatoire);
+        }
+        $entityManager->flush();
+       
+        return $this->redirect($this->generateUrl('ActiviteBundle_ActiviteObligatoire_index'));
     }
-    
-    public function __toString() {
-        return $this->activite->getDesignation();
-    }
+
 }

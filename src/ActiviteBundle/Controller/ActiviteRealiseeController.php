@@ -4,76 +4,92 @@ namespace ActiviteBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
+use ActiviteBundle\Form\ActiviteRealiseeType;
 
 class ActiviteRealiseeController extends Controller
 {
+    /**
+     * Affichage de toutes les ActiviteRealisee présentes dans la bdd
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
     public function indexAction()
     {
-       $entityManager = $this->getDoctrine()->getManager();
-           $activiteRealiseeRepository = $entityManager->getRepository("ActiviteBundle:ActiviteRealisee");
-      $activitesRealisees = $activiteRealiseeRepository->findAll();
+        $entityManager = $this->getDoctrine()->getManager();
+        $activiteRealiseeRepository = $entityManager->getRepository("ActiviteBundle:ActiviteRealisee");
+        $activitesRealisees = $activiteRealiseeRepository->findAll();
         
         return $this->render('ActiviteBundle:ActiviteRealisee:index.html.twig', array(
-            "activitesRealisees"=>$activitesRealisees
+        "activitesRealisees"=>$activitesRealisees
+        ));
+    }
+    
+    /**
+     * Affichage d'une ActiviteRealisee présent dans la bdd
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function showAction($id)
+    {
+        $entityManager = $this->getDoctrine()->getManager();
+        $activiteRealiseeRepository = $entityManager->getRepository("ActiviteBundle:ActiviteRealisee");
+        $activiteRealisee = $activiteRealiseeRepository->findOneById($id);
+        
+        return $this->render('ActiviteBundle:ActiviteRealisee:show.html.twig', array(
+        "activiteRealisee"=>$activiteRealisee
         ));
     }
 
-    public function editAction($id,Request $request)
+    /**
+     * @param null $id : si null alors ajout
+     *                   sinon édition d'une ActiviteRealisee
+     * @param Request $request
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function editAction($id=null,Request $request)
     {
         $entityManager = $this->getDoctrine()->getManager();
-  
-       $activiteRealiseeRepository = $entityManager->getRepository("ActiviteBundle:ActiviteRealisee");
+        $activiteRealiseeRepository = $entityManager->getRepository("ActiviteBundle:ActiviteRealisee");
+        $activiteRealisee = $activiteRealiseeRepository->findOneById($id);
         
-       $activiteRealisee = $activiteRealiseeRepository->findOneById($id);
-       if($activiteRealisee==null)
-           { 
-           $activiteRealisee=new \ActiviteBundle\Entity\ActiviteRealisee();
-           }
-       $form = $this->createForm(\ActiviteBundle\Form\ActiviteRealiseeType::class,$activiteRealisee);
+        if($activiteRealisee==null){
+            $activiteRealisee=new \ActiviteBundle\Entity\ActiviteRealisee();
+        }
         
-        
+        $form = $this->createForm(ActiviteRealiseeType::class,$activiteRealisee);
         $form->handleRequest($request);
         
         if($form->isValid()){
             
             $entityManager->persist($activiteRealisee);
-            
             $entityManager->flush();
-             $request->getSession()->getFlashBag()->add('notice', 'L \'activite réalisé est bien enregistrée.');
+            
+            $this->get('session')->getFlashBag()->add('notice', 'ActiviteRealisee bien enregistrée.');
+
             return $this->redirect($this->generateUrl('ActiviteBundle_ActiviteRealisee_index'));
         }
         
         return $this->render('ActiviteBundle:ActiviteRealisee:edit.html.twig', array(
-            'activiteRealisee'=>$activiteRealisee,
-            'form' => $form->createView()
+        'activiteRealisee'=>$activiteRealisee,
+        'form' => $form->createView()
         ));
     }
 
+    /**
+     * Suppression d'une ActiviteRealisee
+     * @param null $id
+     * @return \Symfony\Component\HttpFoundation\Response
+     */    
     public function deleteAction($id)
     {
         $entityManager = $this->getDoctrine()->getManager();
   
-       $activiteRealiseeRepository = $entityManager->getRepository("ActiviteBundle:ActiviteRealisee");
-        
-       $activiteRealisee = $activiteRealiseeRepository->findOneById($id);
-       if($activiteRealisee!=null)
-           $entityManager->remove ($activiteRealisee);
-       $entityManager->flush();
+        $activiteRealiseeRepository = $entityManager->getRepository("ActiviteBundle:ActiviteRealisee");
+        $activiteRealisee = $activiteRealiseeRepository->findOneById($id);
+        if($activiteRealisee!=null){
+            $entityManager->remove ($activiteRealisee);
+        }
+        $entityManager->flush();
        
         return $this->redirect($this->generateUrl('ActiviteBundle_ActiviteRealisee_index'));
-    }
-
-    public function showAction($id)
-    {
-        $entityManager = $this->getDoctrine()->getManager();
-  
-       $activiteRealiseeRepository = $entityManager->getRepository("ActiviteBundle:ActiviteRealisee");
-        
-       $activiteRealisee = $activiteRealiseeRepository->findOneById($id);
-        
-        return $this->render('ActiviteBundle:ActiviteRealisee:show.html.twig', array(
-            'activiteRealisee'=>$activiteRealisee,
-        ));
     }
 
 }
