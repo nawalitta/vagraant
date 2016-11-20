@@ -35,6 +35,16 @@ class Jour
      */
     private $parite;
 
+    
+    /**
+   * @ORM\OneToMany(targetEntity="ActiviteRealisee", mappedBy="Jour")
+   */
+    private $activitesrealisees;
+    
+    /**
+   * @ORM\OneToMany(targetEntity="ActiviteFixee", mappedBy="Jour")
+   */
+    private $activitesfixees;
 
     /**
      * Get id

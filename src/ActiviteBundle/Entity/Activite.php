@@ -298,4 +298,28 @@ class Activite
     }
 
 
+
+    /**
+     * Set activiteRealisee
+     *
+     * @param \ActiviteBundle\Entity\ActiviteRealisee $activiteRealisee
+     *
+     * @return Activite
+     */
+    public function setActiviteRealisee(\ActiviteBundle\Entity\ActiviteRealisee $activiteRealisee)
+    {
+        $this->ActiviteRealisee = $activiteRealisee;
+
+        return $this;
+    }
+
+    /**
+     * Get activiteRealisee
+     *
+     * @return \ActiviteBundle\Entity\ActiviteRealisee
+     */
+    public function getActiviteRealisee()
+    {
+        return $this->ActiviteRealisee;
+    }
 }

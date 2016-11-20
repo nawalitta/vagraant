@@ -111,5 +111,76 @@ class ActiviteFixee
     {
         return $this->heureFin;
     }
-}
 
+    /**
+     * Set jour
+     *
+     * @param \ActiviteBundle\Entity\Jour $jour
+     *
+     * @return ActiviteFixee
+     */
+    public function setJour(\ActiviteBundle\Entity\Jour $jour)
+    {
+        $this->jour = $jour;
+
+        return $this;
+    }
+
+    /**
+     * Get jour
+     *
+     * @return \ActiviteBundle\Entity\Jour
+     */
+    public function getJour()
+    {
+        return $this->jour;
+    }
+
+    /**
+     * Set enfant
+     *
+     * @param \ActiviteBundle\Entity\RessourceBundle/Enfant $enfant
+     *
+     * @return ActiviteFixee
+     */
+    public function setEnfant(RessourceBundle\Entity\Enfant $enfant)
+    {
+        $this->enfant = $enfant;
+
+        return $this;
+    }
+
+    /**
+     * Get enfant
+     *
+     * @return \ActiviteBundle\Entity\RessourceBundle/Enfant
+     */
+    public function getEnfant()
+    {
+        return $this->enfant;
+    }
+
+    /**
+     * Set activite
+     *
+     * @param \ActiviteBundle\Entity\Activite $activite
+     *
+     * @return ActiviteFixee
+     */
+    public function setActivite(\ActiviteBundle\Entity\Activite $activite)
+    {
+        $this->activite = $activite;
+
+        return $this;
+    }
+
+    /**
+     * Get activite
+     *
+     * @return \ActiviteBundle\Entity\Activite
+     */
+    public function getActivite()
+    {
+        return $this->activite;
+    }
+}

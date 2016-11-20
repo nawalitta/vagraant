@@ -194,4 +194,52 @@ class ActiviteRealisee
         return ($this->heureDebut<$this->heureFin);
     }
     
+
+    /**
+     * Set enfant
+     *
+     * @param \ActiviteBundle\Entity\RessourceBundle/Enfant $enfant
+     *
+     * @return ActiviteRealisee
+     */
+    public function setEnfant(RessourceBundle\Entity\Enfant $enfant)
+    {
+        $this->enfant = $enfant;
+
+        return $this;
+    }
+
+    /**
+     * Get enfant
+     *
+     * @return \ActiviteBundle\Entity\RessourceBundle/Enfant
+     */
+    public function getEnfant()
+    {
+        return $this->enfant;
+    }
+
+    /**
+     * Set jour
+     *
+     * @param \ActiviteBundle\Entity\Jour $jour
+     *
+     * @return ActiviteRealisee
+     */
+    public function setJour(\ActiviteBundle\Entity\Jour $jour)
+    {
+        $this->jour = $jour;
+
+        return $this;
+    }
+
+    /**
+     * Get jour
+     *
+     * @return \ActiviteBundle\Entity\Jour
+     */
+    public function getJour()
+    {
+        return $this->jour;
+    }
 }
