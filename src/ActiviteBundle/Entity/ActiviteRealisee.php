@@ -36,28 +36,28 @@ class ActiviteRealisee
      */
     private $heureFin;
 
-   /**
-   * @ORM\ManyToOne(targetEntity="Activite",inversedBy="ActiviteRealisee")
-   * @ORM\JoinColumn(nullable=false)
-   */  
+    /**
+     * @ORM\ManyToOne(targetEntity="Activite",inversedBy="ActiviteRealisee")
+     * @ORM\JoinColumn(nullable=false)
+     */  
    public $activite;
 
 
-   /**
-   * @ORM\ManyToMany(targetEntity="RessourceBundle\Entity\Ressource")
-   */
+    /**
+     * @ORM\ManyToMany(targetEntity="RessourceBundle\Entity\Ressource")
+     */
   private $ressources; 
    
-   /**
-   * @ORM\ManyToOne(targetEntity="RessourceBundle/Enfant",inversedBy="ActiviteRealisee")
-   * @ORM\JoinColumn(nullable=false)
-   */  
+    /**
+     * @ORM\ManyToOne(targetEntity="RessourceBundle/Enfant",inversedBy="ActiviteRealisee")
+     * @ORM\JoinColumn(nullable=false)
+     */  
   private $enfant;
   
-     /**
-   * @ORM\ManyToOne(targetEntity="Jour",inversedBy="ActiviteRealisee")
-   * @ORM\JoinColumn(nullable=false)
-   */  
+    /**
+     * @ORM\ManyToOne(targetEntity="Jour",inversedBy="ActiviteRealisee")
+     * @ORM\JoinColumn(nullable=false)
+     */  
   private $jour;
 
   

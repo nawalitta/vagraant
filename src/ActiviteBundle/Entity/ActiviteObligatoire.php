@@ -44,10 +44,18 @@ class ActiviteObligatoire
 
 
    /**
-   * @ORM\ManyToOne(targetEntity="ActiviteBundle\Entity\Activite")
-   * @ORM\JoinColumn(nullable=false)
-   */
+     * @ORM\ManyToOne(targetEntity="Activite",inversedBy="ActiviteObligatoire")
+     * @ORM\JoinColumn(nullable=false)
+     */
     private $activite;
+    
+    
+    /**
+     * @ORM\ManyToOne(targetEntity="RessourceBundle\Entity\Enfant",inversedBy="ActiviteObligatoire")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $enfant;
+    
     /**
      * Get id
      *
@@ -124,5 +132,29 @@ class ActiviteObligatoire
     
     public function __toString() {
         return $this->activite->getDesignation();
+    }
+
+    /**
+     * Set enfant
+     *
+     * @param \RessourceBundle\Entity\Enfant $enfant
+     *
+     * @return ActiviteObligatoire
+     */
+    public function setEnfant(\RessourceBundle\Entity\Enfant $enfant)
+    {
+        $this->enfant = $enfant;
+
+        return $this;
+    }
+
+    /**
+     * Get enfant
+     *
+     * @return \RessourceBundle\Entity\Enfant
+     */
+    public function getEnfant()
+    {
+        return $this->enfant;
     }
 }

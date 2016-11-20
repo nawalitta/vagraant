@@ -81,17 +81,51 @@ class Activite
     private $dureeTransport;
 
     /**
-   * @ORM\ManyToOne(targetEntity="TypeActivite")
-   * @ORM\JoinColumn(nullable=false)
-   */
+     * @ORM\ManyToOne(targetEntity="TypeActivite")
+     * @ORM\JoinColumn(nullable=false)
+     */
     private $typesActivite;
 
     /**
-  * @ORM\OneToOne(targetEntity="ActiviteRealisee")
-  * @ORM\JoinColumn(nullable=false)
-  */
+     * @ORM\ManyToOne(targetEntity="RessourceBundle\Entity\FenetreHoraire",inversedBy="Activite")
+     * @ORM\JoinColumn(nullable=false)
+     */  
+    private $fenetreHoraire;
+    
+    /**
+     * @ORM\ManyToMany(targetEntity="RessourceBundle\Entity\Enfant")
+     */
+    private $enfantsOptionnel;
+    
+    /**
+     * @ORM\OneToOne(targetEntity="ActiviteRealisee")
+     * @ORM\JoinColumn(nullable=false)
+     */
     private $ActiviteRealisee;
 
+    
+    /**
+     * @ORM\OneToMany(targetEntity="RessourceBundle\Entity\Preaffection", mappedBy="Activite")
+     */
+    private $preaffection;
+    
+    
+    /**
+     * @ORM\OneToMany(targetEntity="ActiviteObligatoire", mappedBy="Activite")
+     */    
+    private $enfantObligatoires;
+    
+    
+    /**
+     * @ORM\OneToMany(targetEntity="ActiviteFixee", mappedBy="Activite")
+     */   
+    private $horairefixe;
+    
+    /**
+     * @ORM\OneToMany(targetEntity="RessourceBundle\Entity\BesoinTypeRessource", mappedBy="Activite")
+     */     
+    private $besoinsTypeRessource;
+    
     /**
      * Get id
      *
@@ -321,5 +355,210 @@ class Activite
     public function getActiviteRealisee()
     {
         return $this->ActiviteRealisee;
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->enfantsOptionnel = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->preaffection = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->enfantObligatoires = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->horairefixe = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->besoinsTypeRessource = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Set fenetreHoraire
+     *
+     * @param \RessourceBundle\Entity\FenetreHoraire $fenetreHoraire
+     *
+     * @return Activite
+     */
+    public function setFenetreHoraire(\RessourceBundle\Entity\FenetreHoraire $fenetreHoraire)
+    {
+        $this->fenetreHoraire = $fenetreHoraire;
+
+        return $this;
+    }
+
+    /**
+     * Get fenetreHoraire
+     *
+     * @return \RessourceBundle\Entity\FenetreHoraire
+     */
+    public function getFenetreHoraire()
+    {
+        return $this->fenetreHoraire;
+    }
+
+    /**
+     * Add enfantsOptionnel
+     *
+     * @param \RessourceBundle\Entity\Enfant $enfantsOptionnel
+     *
+     * @return Activite
+     */
+    public function addEnfantsOptionnel(\RessourceBundle\Entity\Enfant $enfantsOptionnel)
+    {
+        $this->enfantsOptionnel[] = $enfantsOptionnel;
+
+        return $this;
+    }
+
+    /**
+     * Remove enfantsOptionnel
+     *
+     * @param \RessourceBundle\Entity\Enfant $enfantsOptionnel
+     */
+    public function removeEnfantsOptionnel(\RessourceBundle\Entity\Enfant $enfantsOptionnel)
+    {
+        $this->enfantsOptionnel->removeElement($enfantsOptionnel);
+    }
+
+    /**
+     * Get enfantsOptionnel
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getEnfantsOptionnel()
+    {
+        return $this->enfantsOptionnel;
+    }
+
+    /**
+     * Add preaffection
+     *
+     * @param \RessourceBundle\Entity\Preaffection $preaffection
+     *
+     * @return Activite
+     */
+    public function addPreaffection(\RessourceBundle\Entity\Preaffection $preaffection)
+    {
+        $this->preaffection[] = $preaffection;
+
+        return $this;
+    }
+
+    /**
+     * Remove preaffection
+     *
+     * @param \RessourceBundle\Entity\Preaffection $preaffection
+     */
+    public function removePreaffection(\RessourceBundle\Entity\Preaffection $preaffection)
+    {
+        $this->preaffection->removeElement($preaffection);
+    }
+
+    /**
+     * Get preaffection
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getPreaffection()
+    {
+        return $this->preaffection;
+    }
+
+    /**
+     * Add enfantObligatoire
+     *
+     * @param \ActiviteBundle\Entity\ActiviteObligatoire $enfantObligatoire
+     *
+     * @return Activite
+     */
+    public function addEnfantObligatoire(\ActiviteBundle\Entity\ActiviteObligatoire $enfantObligatoire)
+    {
+        $this->enfantObligatoires[] = $enfantObligatoire;
+
+        return $this;
+    }
+
+    /**
+     * Remove enfantObligatoire
+     *
+     * @param \ActiviteBundle\Entity\ActiviteObligatoire $enfantObligatoire
+     */
+    public function removeEnfantObligatoire(\ActiviteBundle\Entity\ActiviteObligatoire $enfantObligatoire)
+    {
+        $this->enfantObligatoires->removeElement($enfantObligatoire);
+    }
+
+    /**
+     * Get enfantObligatoires
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getEnfantObligatoires()
+    {
+        return $this->enfantObligatoires;
+    }
+
+    /**
+     * Add horairefixe
+     *
+     * @param \ActiviteBundle\Entity\ActiviteFixee $horairefixe
+     *
+     * @return Activite
+     */
+    public function addHorairefixe(\ActiviteBundle\Entity\ActiviteFixee $horairefixe)
+    {
+        $this->horairefixe[] = $horairefixe;
+
+        return $this;
+    }
+
+    /**
+     * Remove horairefixe
+     *
+     * @param \ActiviteBundle\Entity\ActiviteFixee $horairefixe
+     */
+    public function removeHorairefixe(\ActiviteBundle\Entity\ActiviteFixee $horairefixe)
+    {
+        $this->horairefixe->removeElement($horairefixe);
+    }
+
+    /**
+     * Get horairefixe
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getHorairefixe()
+    {
+        return $this->horairefixe;
+    }
+
+    /**
+     * Add besoinsTypeRessource
+     *
+     * @param \RessourceBundle\Entity\BesoinTypeRessource $besoinsTypeRessource
+     *
+     * @return Activite
+     */
+    public function addBesoinsTypeRessource(\RessourceBundle\Entity\BesoinTypeRessource $besoinsTypeRessource)
+    {
+        $this->besoinsTypeRessource[] = $besoinsTypeRessource;
+
+        return $this;
+    }
+
+    /**
+     * Remove besoinsTypeRessource
+     *
+     * @param \RessourceBundle\Entity\BesoinTypeRessource $besoinsTypeRessource
+     */
+    public function removeBesoinsTypeRessource(\RessourceBundle\Entity\BesoinTypeRessource $besoinsTypeRessource)
+    {
+        $this->besoinsTypeRessource->removeElement($besoinsTypeRessource);
+    }
+
+    /**
+     * Get besoinsTypeRessource
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getBesoinsTypeRessource()
+    {
+        return $this->besoinsTypeRessource;
     }
 }

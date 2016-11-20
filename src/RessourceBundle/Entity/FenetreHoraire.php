@@ -91,19 +91,20 @@ class FenetreHoraire
      */
     private $vendrediFin;
 
-/**
-   * @ORM\OneToMany(targetEntity="Ressource", mappedBy="FenetreHoraire")
-   */
+    /**
+     * @ORM\OneToMany(targetEntity="Ressource", mappedBy="FenetreHoraire")
+     */
     private $ressources;
     
     /**
-   * @ORM\OneToMany(targetEntity="ActiviteBundle\Entity\Activite", mappedBy="FenetreHoraire")
-   */
+     * @ORM\OneToMany(targetEntity="ActiviteBundle\Entity\Activite", mappedBy="FenetreHoraire")
+     */
     private $activites;
     
     /**
-   * @ORM\OneToMany(targetEntity="Enfant", mappedBy="FenetreHoraire")
-   */
+     * @ORM\OneToMany(targetEntity="Enfant", mappedBy="FenetreHoraire")
+     */
+    
     private $enfants;
     /**
      * Get id

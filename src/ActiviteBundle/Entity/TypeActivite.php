@@ -28,6 +28,13 @@ class TypeActivite
      */
     private $designation;
     
+    
+    /**
+     * @ORM\ManyToOne(targetEntity="Activite",inversedBy="TypeActivite")
+     * @ORM\JoinColumn(nullable=false)
+     */  
+    private $activites;
+    
     /**
      * Get id
      *
@@ -69,5 +76,29 @@ class TypeActivite
     }
     public function __toString() {
         return $this->designation;
+    }
+
+    /**
+     * Set activites
+     *
+     * @param \ActiviteBundle\Entity\Activite $activites
+     *
+     * @return TypeActivite
+     */
+    public function setActivites(\ActiviteBundle\Entity\Activite $activites)
+    {
+        $this->activites = $activites;
+
+        return $this;
+    }
+
+    /**
+     * Get activites
+     *
+     * @return \ActiviteBundle\Entity\Activite
+     */
+    public function getActivites()
+    {
+        return $this->activites;
     }
 }

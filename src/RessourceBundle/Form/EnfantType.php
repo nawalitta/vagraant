@@ -6,14 +6,14 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class RessourceType extends AbstractType
+class EnfantType extends AbstractType
 {
     /**
      * {@inheritdoc}
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('designation')->add('activiteesRealisees')->add('fenetreHoraire')->add('typeRessource')        ;
+        $builder->add('prenom')->add('nom')->add('estArchive')->add('dateArrive')->add('regime')->add('identifiant')->add('fenetreHoraire')->add('groupe')->add('activitesOptionelles')        ;
     }
     
     /**
@@ -22,7 +22,7 @@ class RessourceType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'RessourceBundle\Entity\Ressource'
+            'data_class' => 'RessourceBundle\Entity\Enfant'
         ));
     }
 
@@ -31,7 +31,7 @@ class RessourceType extends AbstractType
      */
     public function getBlockPrefix()
     {
-        return 'ressourcebundle_ressource';
+        return 'ressourcebundle_enfant';
     }
 
 

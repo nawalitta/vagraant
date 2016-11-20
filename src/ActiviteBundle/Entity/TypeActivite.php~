@@ -28,6 +28,13 @@ class TypeActivite
      */
     private $designation;
     
+    
+    /**
+     * @ORM\ManyToOne(targetEntity="Activite",inversedBy="TypeActivite")
+     * @ORM\JoinColumn(nullable=false)
+     */  
+    private $activites;
+    
     /**
      * Get id
      *

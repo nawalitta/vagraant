@@ -103,4 +103,80 @@ class Jour
     {
         return $this->parite;
     }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->activitesrealisees = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->activitesfixees = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add activitesrealisee
+     *
+     * @param \ActiviteBundle\Entity\ActiviteRealisee $activitesrealisee
+     *
+     * @return Jour
+     */
+    public function addActivitesrealisee(\ActiviteBundle\Entity\ActiviteRealisee $activitesrealisee)
+    {
+        $this->activitesrealisees[] = $activitesrealisee;
+
+        return $this;
+    }
+
+    /**
+     * Remove activitesrealisee
+     *
+     * @param \ActiviteBundle\Entity\ActiviteRealisee $activitesrealisee
+     */
+    public function removeActivitesrealisee(\ActiviteBundle\Entity\ActiviteRealisee $activitesrealisee)
+    {
+        $this->activitesrealisees->removeElement($activitesrealisee);
+    }
+
+    /**
+     * Get activitesrealisees
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getActivitesrealisees()
+    {
+        return $this->activitesrealisees;
+    }
+
+    /**
+     * Add activitesfixee
+     *
+     * @param \ActiviteBundle\Entity\ActiviteFixee $activitesfixee
+     *
+     * @return Jour
+     */
+    public function addActivitesfixee(\ActiviteBundle\Entity\ActiviteFixee $activitesfixee)
+    {
+        $this->activitesfixees[] = $activitesfixee;
+
+        return $this;
+    }
+
+    /**
+     * Remove activitesfixee
+     *
+     * @param \ActiviteBundle\Entity\ActiviteFixee $activitesfixee
+     */
+    public function removeActivitesfixee(\ActiviteBundle\Entity\ActiviteFixee $activitesfixee)
+    {
+        $this->activitesfixees->removeElement($activitesfixee);
+    }
+
+    /**
+     * Get activitesfixees
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getActivitesfixees()
+    {
+        return $this->activitesfixees;
+    }
 }

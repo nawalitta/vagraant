@@ -64,35 +64,40 @@ class Enfant
     private $identifiant;
 
      /**
-   * @ORM\ManyToOne(targetEntity="FenetreHoraire",inversedBy="Enfant")
-   * @ORM\JoinColumn(nullable=false)
-   */ 
+     * @ORM\ManyToOne(targetEntity="FenetreHoraire",inversedBy="Enfant")
+     * @ORM\JoinColumn(nullable=false)
+     */ 
     private $fenetreHoraire;
     
-     /**
-   * @ORM\ManyToOne(targetEntity="Groupe",inversedBy="Enfant")
-   * @ORM\JoinColumn(nullable=false)
-   */ 
+    /**
+     * @ORM\ManyToOne(targetEntity="Groupe",inversedBy="Enfant")
+     * @ORM\JoinColumn(nullable=false)
+     */ 
     private $groupe;
     
     /**
-   * @ORM\OneToMany(targetEntity="ActiviteBundle\Entity\ActiviteFixee", mappedBy="Enfant")
-   */
-    private $activitesFixees;
-    
-    /**
-   * @ORM\ManyToMany(targetEntity="ActiviteBundle\Entity\Activite")
-   */
+     * @ORM\ManyToMany(targetEntity="ActiviteBundle\Entity\Activite")
+     */
     private $activitesOptionelles;
     
     /**
-   * @ORM\OneToMany(targetEntity="ActiviteBundle\Entity\ActiviteObligatoire", mappedBy="Enfant")
-   */
+     * @ORM\OneToMany(targetEntity="ActiviteBundle\Entity\ActiviteFixee", mappedBy="Enfant")
+     */
+    private $activitesFixees;
+    
+     /**
+     * @ORM\OneToMany(targetEntity="ActiviteBundle\Entity\ActiviteRealisee", mappedBy="Enfant")
+     */   
+    private $activitesRealisees;
+    
+    /**
+     * @ORM\OneToMany(targetEntity="ActiviteBundle\Entity\ActiviteObligatoire", mappedBy="Enfant")
+     */
     private $activitesObligatoires;
     
     /**
-   * @ORM\OneToMany(targetEntity="Preaffection", mappedBy="Enfant")
-   */
+     * @ORM\OneToMany(targetEntity="Preaffection", mappedBy="Enfant")
+     */
     private $preaffection;
 
     /**
@@ -441,5 +446,39 @@ class Enfant
     public function getPreaffection()
     {
         return $this->preaffection;
+    }
+
+    /**
+     * Add activitesRealisee
+     *
+     * @param \ActiviteBundle\Entity\ActiviteRealisee $activitesRealisee
+     *
+     * @return Enfant
+     */
+    public function addActivitesRealisee(\ActiviteBundle\Entity\ActiviteRealisee $activitesRealisee)
+    {
+        $this->activitesRealisees[] = $activitesRealisee;
+
+        return $this;
+    }
+
+    /**
+     * Remove activitesRealisee
+     *
+     * @param \ActiviteBundle\Entity\ActiviteRealisee $activitesRealisee
+     */
+    public function removeActivitesRealisee(\ActiviteBundle\Entity\ActiviteRealisee $activitesRealisee)
+    {
+        $this->activitesRealisees->removeElement($activitesRealisee);
+    }
+
+    /**
+     * Get activitesRealisees
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getActivitesRealisees()
+    {
+        return $this->activitesRealisees;
     }
 }

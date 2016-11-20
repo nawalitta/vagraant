@@ -87,11 +87,45 @@ class Activite
     private $typesActivite;
 
     /**
-  * @ORM\OneToOne(targetEntity="ActiviteRealisee")
-  * @ORM\JoinColumn(nullable=false)
-  */
+   * @ORM\ManyToOne(targetEntity="RessourceBundle\Entity\FenetreHoraire",inversedBy="Activite")
+   * @ORM\JoinColumn(nullable=false)
+   */  
+    private $fenetreHoraire;
+    
+    /**
+     * @ORM\ManyToMany(targetEntity="RessourceBundle\Entity\Enfant")
+     */
+    private $enfantsOptionnel;
+    
+    /**
+     * @ORM\OneToOne(targetEntity="ActiviteRealisee")
+     * @ORM\JoinColumn(nullable=false)
+     */
     private $ActiviteRealisee;
 
+    
+    /**
+     * @ORM\OneToMany(targetEntity="RessourceBundle\Entity\Preaffection", mappedBy="Activite")
+     */
+    private $preaffection;
+    
+    
+    /**
+     * @ORM\OneToMany(targetEntity="ActiviteObligatoire", mappedBy="Activite")
+     */    
+    private $enfantObligatoires;
+    
+    
+    /**
+     * @ORM\OneToMany(targetEntity="ActiviteFixee", mappedBy="Activite")
+     */   
+    private $horairefixe;
+    
+    /**
+     * @ORM\OneToMany(targetEntity="RessourceBundle\Entity\BesoinTypeRessource", mappedBy="Activite")
+     */     
+    private $besoinsTypeRessource;
+    
     /**
      * Get id
      *
@@ -298,4 +332,28 @@ class Activite
     }
 
 
+
+    /**
+     * Set activiteRealisee
+     *
+     * @param \ActiviteBundle\Entity\ActiviteRealisee $activiteRealisee
+     *
+     * @return Activite
+     */
+    public function setActiviteRealisee(\ActiviteBundle\Entity\ActiviteRealisee $activiteRealisee)
+    {
+        $this->ActiviteRealisee = $activiteRealisee;
+
+        return $this;
+    }
+
+    /**
+     * Get activiteRealisee
+     *
+     * @return \ActiviteBundle\Entity\ActiviteRealisee
+     */
+    public function getActiviteRealisee()
+    {
+        return $this->ActiviteRealisee;
+    }
 }

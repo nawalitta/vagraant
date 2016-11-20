@@ -37,13 +37,13 @@ class Jour
 
     
     /**
-   * @ORM\OneToMany(targetEntity="ActiviteRealisee", mappedBy="Jour")
-   */
+     * @ORM\OneToMany(targetEntity="ActiviteRealisee", mappedBy="Jour")
+     */
     private $activitesrealisees;
     
     /**
-   * @ORM\OneToMany(targetEntity="ActiviteFixee", mappedBy="Jour")
-   */
+     * @ORM\OneToMany(targetEntity="ActiviteFixee", mappedBy="Jour")
+     */
     private $activitesfixees;
 
     /**

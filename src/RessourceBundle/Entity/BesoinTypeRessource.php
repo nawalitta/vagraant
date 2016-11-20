@@ -44,16 +44,16 @@ class BesoinTypeRessource
 
 
      /**
-   * @ORM\ManyToOne(targetEntity="ActiviteBundle/Activite",inversedBy="BesoinTypeRessource")
-   * @ORM\JoinColumn(nullable=false)
-   */
+     * @ORM\ManyToOne(targetEntity="ActiviteBundle/Activite",inversedBy="BesoinTypeRessource")
+     * @ORM\JoinColumn(nullable=false)
+     */
     private $activite;
 
 
      /**
-   * @ORM\ManyToOne(targetEntity="TypeRessource",inversedBy="BesoinTypeRessource")
-   * @ORM\JoinColumn(nullable=false)
-   */
+     * @ORM\ManyToOne(targetEntity="TypeRessource",inversedBy="BesoinTypeRessource")
+     * @ORM\JoinColumn(nullable=false)
+     */
     private $typeRessource;
     
     
