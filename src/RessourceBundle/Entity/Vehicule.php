@@ -31,9 +31,9 @@ class Vehicule
     /**
      * @var string
      *
-     * @ORM\Column(name="labelV", type="string", length=255)
+     * @ORM\Column(name="designation", type="string", length=255)
      */
-    private $labelV;
+    private $designation;
 
 
     /**
@@ -70,25 +70,25 @@ class Vehicule
     }
 
     /**
-     * Set labelV
+     * Set designation
      *
-     * @param string $labelV
+     * @param string $designation
      * @return Vehicule
      */
-    public function setLabelV($labelV)
+    public function setDesignation($designation)
     {
-        $this->labelV = $labelV;
+        $this->designation = $designation;
 
         return $this;
     }
 
     /**
-     * Get labelV
+     * Get designation
      *
      * @return string 
      */
-    public function getLabelV()
+    public function getDesignation()
     {
-        return $this->labelV;
+        return $this->designation;
     }
 }

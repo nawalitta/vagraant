@@ -23,9 +23,9 @@ class Groupe
 
     /**
      * @var string
-     * @ORM\Column(name="labelG", type="string", length=255)
+     * @ORM\Column(name="designation", type="string", length=255)
      */
-    private $labelG;
+    private $designation;
 
     /**
      * Get id
@@ -38,27 +38,50 @@ class Groupe
     }
 
     /**
-     * Set labelG
+     * Set designation
      *
-     * @param string $labelG
+     * @param string $designation
      *
      * @return groupe
      */
-    public function setLabelG($labelG)
+    public function setLabelG($designation)
     {
-        $this->labelG = $labelG;
+        $this->designation = $designation;
 
         return $this;
     }
 
     /**
-     * Get labelG
+     * Get designation
      *
      * @return string
      */
     public function getLabelG()
     {
-        return $this->labelG;
+        return $this->designation;
+    }
+
+    /**
+     * Set designation
+     *
+     * @param string $designation
+     *
+     * @return Groupe
+     */
+    public function setDesignation($designation)
+    {
+        $this->designation = $designation;
+    
+        return $this;
+    }
+
+    /**
+     * Get designation
+     *
+     * @return string
+     */
+    public function getDesignation()
+    {
+        return $this->designation;
     }
 }
-

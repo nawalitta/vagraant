@@ -2,6 +2,7 @@
 
 namespace ActiviteBundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -24,9 +25,9 @@ class Jour
     /**
      * @var string
      *
-     * @ORM\Column(name="labelJ", type="string", length=255)
+     * @ORM\Column(name="designation", type="string", length=255)
      */
-    private $labelJ;
+    private $designation;
 
     /**
      * @var int
@@ -57,27 +58,27 @@ class Jour
     }
 
     /**
-     * Set labelJ
+     * Set designation
      *
-     * @param string $labelJ
+     * @param string $designation
      *
      * @return jour
      */
-    public function setLabelJ($labelJ)
+    public function setDesignation($designation)
     {
-        $this->labelJ = $labelJ;
+        $this->designation = $designation;
     
         return $this;
     }
 
     /**
-     * Get labelJ
+     * Get designation
      *
      * @return string
      */
-    public function getLabelJ()
+    public function getDesignation()
     {
-        return $this->labelJ;
+        return $this->designation;
     }
 
     /**
@@ -108,18 +109,18 @@ class Jour
      */
     public function __construct()
     {
-        $this->activitesrealisees = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->activitesfixees = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->activitesrealisees = new ArrayCollection();
+        $this->activitesfixees = new ArrayCollection();
     }
 
     /**
      * Add activitesrealisee
      *
-     * @param \ActiviteBundle\Entity\ActiviteRealisee $activitesrealisee
+     * @param ActiviteRealisee $activitesrealisee
      *
      * @return Jour
      */
-    public function addActivitesrealisee(\ActiviteBundle\Entity\ActiviteRealisee $activitesrealisee)
+    public function addActivitesrealisee(ActiviteRealisee $activitesrealisee)
     {
         $this->activitesrealisees[] = $activitesrealisee;
 
@@ -129,9 +130,9 @@ class Jour
     /**
      * Remove activitesrealisee
      *
-     * @param \ActiviteBundle\Entity\ActiviteRealisee $activitesrealisee
+     * @param ActiviteRealisee $activitesrealisee
      */
-    public function removeActivitesrealisee(\ActiviteBundle\Entity\ActiviteRealisee $activitesrealisee)
+    public function removeActivitesrealisee(ActiviteRealisee $activitesrealisee)
     {
         $this->activitesrealisees->removeElement($activitesrealisee);
     }
@@ -139,7 +140,7 @@ class Jour
     /**
      * Get activitesrealisees
      *
-     * @return \Doctrine\Common\Collections\Collection
+     * @return ArrayCollection
      */
     public function getActivitesrealisees()
     {
@@ -149,11 +150,11 @@ class Jour
     /**
      * Add activitesfixee
      *
-     * @param \ActiviteBundle\Entity\ActiviteFixee $activitesfixee
+     * @param ActiviteFixee $activitesfixee
      *
      * @return Jour
      */
-    public function addActivitesfixee(\ActiviteBundle\Entity\ActiviteFixee $activitesfixee)
+    public function addActivitesfixee(ActiviteFixee $activitesfixee)
     {
         $this->activitesfixees[] = $activitesfixee;
 
@@ -163,9 +164,9 @@ class Jour
     /**
      * Remove activitesfixee
      *
-     * @param \ActiviteBundle\Entity\ActiviteFixee $activitesfixee
+     * @param ActiviteFixee $activitesfixee
      */
-    public function removeActivitesfixee(\ActiviteBundle\Entity\ActiviteFixee $activitesfixee)
+    public function removeActivitesfixee(ActiviteFixee $activitesfixee)
     {
         $this->activitesfixees->removeElement($activitesfixee);
     }
@@ -173,7 +174,7 @@ class Jour
     /**
      * Get activitesfixees
      *
-     * @return \Doctrine\Common\Collections\Collection
+     * @return ArrayCollection
      */
     public function getActivitesfixees()
     {

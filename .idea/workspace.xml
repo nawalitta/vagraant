@@ -1,11 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="6dc076d3-332f-4bc4-8121-fb82bb8217e0" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/symfony2.xml" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/RessourceBundle/Entity/groupe.php" afterPath="" />
+    <list default="true" id="6dc076d3-332f-4bc4-8121-fb82bb8217e0" name="Default" comment="Data base done : all tables and annotations">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ActiviteBundle/Entity/Activite.php" afterPath="$PROJECT_DIR$/src/ActiviteBundle/Entity/Activite.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ActiviteBundle/Entity/ActiviteFixee.php" afterPath="$PROJECT_DIR$/src/ActiviteBundle/Entity/ActiviteFixee.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ActiviteBundle/Entity/ActiviteObligatoire.php" afterPath="$PROJECT_DIR$/src/ActiviteBundle/Entity/ActiviteObligatoire.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ActiviteBundle/Entity/ActiviteRealisee.php" afterPath="$PROJECT_DIR$/src/ActiviteBundle/Entity/ActiviteRealisee.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ActiviteBundle/Entity/Jour.php" afterPath="$PROJECT_DIR$/src/ActiviteBundle/Entity/Jour.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ActiviteBundle/Entity/TypeActivite.php" afterPath="$PROJECT_DIR$/src/ActiviteBundle/Entity/TypeActivite.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/CalendrierBundle/Entity/Evenement.php" afterPath="$PROJECT_DIR$/src/CalendrierBundle/Entity/Evenement.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/RessourceBundle/Entity/BesoinTypeRessource.php" afterPath="$PROJECT_DIR$/src/RessourceBundle/Entity/BesoinTypeRessource.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/RessourceBundle/Entity/Enfant.php" afterPath="$PROJECT_DIR$/src/RessourceBundle/Entity/Enfant.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/RessourceBundle/Entity/FenetreHoraire.php" afterPath="$PROJECT_DIR$/src/RessourceBundle/Entity/FenetreHoraire.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/RessourceBundle/Entity/Groupe.php" afterPath="$PROJECT_DIR$/src/RessourceBundle/Entity/Groupe.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/RessourceBundle/Entity/Preaffection.php" afterPath="$PROJECT_DIR$/src/RessourceBundle/Entity/Preaffection.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/RessourceBundle/Entity/Ressource.php" afterPath="$PROJECT_DIR$/src/RessourceBundle/Entity/Ressource.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/RessourceBundle/Entity/TypeRessource.php" afterPath="$PROJECT_DIR$/src/RessourceBundle/Entity/TypeRessource.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/RessourceBundle/Entity/Vehicule.php" afterPath="$PROJECT_DIR$/src/RessourceBundle/Entity/Vehicule.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/UtilisateurBundle/Entity/Utilisateur.php" afterPath="$PROJECT_DIR$/src/UtilisateurBundle/Entity/Utilisateur.php" />
     </list>
     <ignored path="gpac.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -20,33 +34,149 @@
   <component name="CreatePatchCommitExecutor">
     <option name="PATCH_PATH" value="" />
   </component>
+  <component name="DatabaseView">
+    <option name="GROUP_SCHEMA" value="true" />
+    <option name="GROUP_CONTENTS" value="false" />
+    <option name="SORT_POSITIONED" value="false" />
+    <option name="SHOW_TABLE_DETAILS" value="true" />
+    <option name="SHOW_EMPTY_GROUPS" value="false" />
+    <option name="AUTO_SCROLL_FROM_SOURCE" value="false" />
+  </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FavoritesManager">
     <favorites_list name="gpac" />
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
-      <file leaf-file-name="base.html.twig" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/Resources/views/base.html.twig">
+      <file leaf-file-name="Groupe.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/RessourceBundle/Entity/Groupe.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="66">
-              <caret line="3" column="21" selection-start-line="3" selection-start-column="21" selection-end-line="3" selection-end-column="21" />
+            <state relative-caret-position="396">
+              <caret line="42" column="14" selection-start-line="42" selection-start-column="14" selection-end-line="42" selection-end-column="14" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Groupe.php" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/RessourceBundle/Entity/Groupe.php">
+      <file leaf-file-name="Preaffection.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/RessourceBundle/Entity/Preaffection.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="396">
-              <caret line="24" column="18" selection-start-line="24" selection-start-column="18" selection-end-line="24" selection-end-column="18" />
+            <state relative-caret-position="1936">
+              <caret line="88" column="21" selection-start-line="88" selection-start-column="21" selection-end-line="88" selection-end-column="21" />
+              <folding>
+                <element signature="e#42#77#0#PHP" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Ressource.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/RessourceBundle/Entity/Ressource.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="4158">
+              <caret line="189" column="0" selection-start-line="189" selection-start-column="0" selection-end-line="189" selection-end-column="0" />
+              <folding>
+                <element signature="e#42#85#0#PHP" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="TypeRessource.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/RessourceBundle/Entity/TypeRessource.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1936">
+              <caret line="88" column="7" selection-start-line="88" selection-start-column="7" selection-end-line="88" selection-end-column="7" />
+              <folding>
+                <element signature="e#42#90#0#PHP" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Vehicule.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/RessourceBundle/Entity/Vehicule.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-1059">
+              <caret line="16" column="6" selection-start-line="16" selection-start-column="6" selection-end-line="16" selection-end-column="6" />
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Jour.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/ActiviteBundle/Entity/Jour.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="132">
+              <caret line="6" column="0" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
+              <folding>
+                <element signature="e#41#89#0#PHP" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ActiviteObligatoire.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/ActiviteBundle/Entity/ActiviteObligatoire.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="180">
+              <caret line="133" column="20" selection-start-line="133" selection-start-column="20" selection-end-line="133" selection-end-column="20" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="BesoinTypeRessource.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/RessourceBundle/Entity/BesoinTypeRessource.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="245">
+              <caret line="187" column="32" selection-start-line="187" selection-start-column="32" selection-end-line="187" selection-end-column="32" />
+              <folding>
+                <element signature="e#42#74#0#PHP" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Enfant.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/RessourceBundle/Entity/Enfant.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-2505">
+              <caret line="356" column="6" selection-start-line="356" selection-start-column="6" selection-end-line="356" selection-end-column="6" />
+              <folding>
+                <element signature="e#42#77#0#PHP" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="FenetreHoraire.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/RessourceBundle/Entity/FenetreHoraire.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1125">
+              <caret line="467" column="32" selection-start-line="467" selection-start-column="32" selection-end-line="467" selection-end-column="32" />
+              <folding>
+                <element signature="e#42#77#0#PHP" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
     </leaf>
+  </component>
+  <component name="FrameworkCommandLineHistory">
+    <commandsHistory>
+      <command text="s doctrine:schema:update" />
+      <command text="s doctrine:schema:update -f " />
+      <command text="s doctrine:schema:update" />
+      <command text="s doctrine:generate:entities ActiviteBundle" />
+      <command text="s doctrine:generate:entities RessourceBundle" />
+      <command text="s doctrine:generate:entities CalendrierBundle" />
+      <command text="s doctrine:generate:entities UtilisateurBundle" />
+      <command text="s doctrine:schema:update -f " />
+      <command text="s doctrine:generate:entities ActiviteBundle:Jour" />
+      <command text="s doctrine:schema:update -f " />
+    </commandsHistory>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -63,6 +193,21 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/src/RessourceBundle/Entity/groupe.php" />
+        <option value="$PROJECT_DIR$/src/ActiviteBundle/Entity/ActiviteObligatoire.php" />
+        <option value="$PROJECT_DIR$/src/ActiviteBundle/Entity/TypeActivite.php" />
+        <option value="$PROJECT_DIR$/src/RessourceBundle/Entity/Groupe.php" />
+        <option value="$PROJECT_DIR$/src/RessourceBundle/Entity/Preaffection.php" />
+        <option value="$PROJECT_DIR$/src/RessourceBundle/Entity/Ressource.php" />
+        <option value="$PROJECT_DIR$/src/RessourceBundle/Entity/TypeRessource.php" />
+        <option value="$PROJECT_DIR$/src/UtilisateurBundle/Entity/Utilisateur.php" />
+        <option value="$PROJECT_DIR$/src/ActiviteBundle/Entity/Activite.php" />
+        <option value="$PROJECT_DIR$/src/ActiviteBundle/Entity/ActiviteFixee.php" />
+        <option value="$PROJECT_DIR$/src/ActiviteBundle/Entity/ActiviteRealisee.php" />
+        <option value="$PROJECT_DIR$/src/CalendrierBundle/Entity/Evenement.php" />
+        <option value="$PROJECT_DIR$/src/RessourceBundle/Entity/Enfant.php" />
+        <option value="$PROJECT_DIR$/src/RessourceBundle/Entity/FenetreHoraire.php" />
+        <option value="$PROJECT_DIR$/src/RessourceBundle/Entity/Vehicule.php" />
+        <option value="$PROJECT_DIR$/src/ActiviteBundle/Entity/Jour.php" />
       </list>
     </option>
   </component>
@@ -141,46 +286,6 @@
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
           </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="gpac" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="gpac" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="RessourceBundle" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="gpac" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="gpac" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="RessourceBundle" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Entity" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-          </PATH>
         </subPane>
       </pane>
       <pane id="Scope" />
@@ -192,6 +297,7 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/app/console" />
     <property name="SearchEverywhereHistoryKey" value="grou&#9;FILE&#9;file://D:/Users/fpaquere/Documents/Cours/Semestre_9/Projet SI/gpac/src/RessourceBundle/Entity/Groupe.php" />
+    <property name="com.intellij.database.dataSource.DataSourceTemplate" value="MySQL" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -231,36 +337,37 @@
       <updated>1479650934685</updated>
       <workItem from="1479650939035" duration="1104000" />
       <workItem from="1479653877913" duration="552000" />
+      <workItem from="1479655531242" duration="4262000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1662000" />
+    <option name="totallyTimeSpent" value="5924000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-9" y="-9" width="1938" height="1050" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.20891514" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.21213749" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3290398" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.40398127" sideWeight="0.51611173" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.22126746" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Command Line Tools Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.40398127" sideWeight="0.4838883" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Command Line Tools Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.40515223" sideWeight="0.4838883" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4379391" sideWeight="0.4924812" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2740047" sideWeight="0.48979592" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.17024705" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3290398" sideWeight="0.49785176" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3290398" sideWeight="0.49785176" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39929742" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3290398" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2740047" sideWeight="0.48979592" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Database Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3290398" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3290398" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39929742" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -295,7 +402,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Change &quot;groupe.php&quot; to &quot;Groupe.php&quot;" />
     <MESSAGE value="Remove Groupe.php" />
-    <option name="LAST_COMMIT_MESSAGE" value="Remove Groupe.php" />
+    <MESSAGE value="Data base done : all tables and annotations" />
+    <option name="LAST_COMMIT_MESSAGE" value="Data base done : all tables and annotations" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -304,112 +412,10 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/README.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SPLIT">
-          <first_editor relative-caret-position="0">
-            <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          </first_editor>
-          <second_editor />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Resources/views/default/index.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1452">
-          <caret line="66" column="14" selection-start-line="66" selection-start-column="14" selection-end-line="66" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ActiviteBundle/Controller/TypeActiviteController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="173">
-          <caret line="24" column="42" selection-start-line="24" selection-start-column="42" selection-end-line="24" selection-end-column="42" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ActiviteBundle/Entity/ActiviteFixee.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1477">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ActiviteBundle/Entity/ActiviteObligatoire.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1581">
-          <caret line="126" column="37" selection-start-line="126" selection-start-column="37" selection-end-line="126" selection-end-column="37" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ActiviteBundle/Entity/ActiviteRealisee.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1848">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ActiviteBundle/Entity/Jour.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="396">
-          <caret line="48" column="7" selection-start-line="48" selection-start-column="7" selection-end-line="48" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ActiviteBundle/Entity/TypeActivite.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ActiviteBundle/Form/ActiviteObligatoireType.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="154">
-          <caret line="10" column="1" selection-start-line="10" selection-start-column="1" selection-end-line="10" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ActiviteBundle/Form/ActiviteRealiseeType.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ActiviteBundle/Form/TypeActiviteType.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="88">
-          <caret line="10" column="1" selection-start-line="10" selection-start-column="1" selection-end-line="10" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ActiviteBundle/Repository/ActiviteFixeeRepository.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ActiviteBundle/Repository/ActiviteObligatoireRepository.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/ActiviteBundle/Repository/ActiviteRealiseeRepository.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/CalendrierBundle/Entity/Evenement.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-792">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -484,20 +490,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/UtilisateurBundle/Resources/views/Utilisateur/delete.html.twig" />
-    <entry file="file://$PROJECT_DIR$/src/ActiviteBundle/Entity/Activite.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4642">
-          <caret line="213" column="5" selection-start-line="213" selection-start-column="5" selection-end-line="213" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/UtilisateurBundle/Entity/Utilisateur.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1119">
-          <caret line="94" column="5" selection-start-line="94" selection-start-column="5" selection-end-line="94" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/CoreBundle/Resources/views/Default/index.html.twig">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="418">
@@ -535,13 +527,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/ActiviteBundle/Controller/ActiviteController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="87">
-          <caret line="7" column="0" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="45" />
-        </state>
-      </provider>
-    </entry>
     <entry file="dbDummy://dbtable:/c92415a6/df350063-444d-472e-8b19-9a1beb61241b/gpac.utilisateur" />
     <entry file="file://$PROJECT_DIR$/src/UtilisateurBundle/Controller/UtilisateurController.php" />
     <entry file="file://$PROJECT_DIR$/src/RessourceBundle/Resources/views/Vehicule/edit.html.twig" />
@@ -575,16 +560,24 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/RessourceBundle/Entity/Vehicule.php">
+    <entry file="file://$PROJECT_DIR$/src/RessourceBundle/Controller/VehiculeController.php" />
+    <entry file="file://$PROJECT_DIR$/src/RessourceBundle/Form/VehiculeType.php" />
+    <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/c709e7fb-dda2-4f29-a879-50bc7cf3714b/console.sql">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="396">
-          <caret line="18" column="14" selection-start-line="18" selection-start-column="14" selection-end-line="18" selection-end-column="14" />
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/RessourceBundle/Controller/VehiculeController.php" />
-    <entry file="file://$PROJECT_DIR$/src/RessourceBundle/Form/VehiculeType.php" />
+    <entry file="file://$PROJECT_DIR$/src/ActiviteBundle/Entity/ActiviteRealiseeRepository.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/Resources/views/base.html.twig">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="66">
@@ -593,10 +586,160 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/ActiviteBundle/Controller/ActiviteController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-855">
+          <caret line="7" column="0" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="45" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/UtilisateurBundle/Entity/Utilisateur.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="88" column="6" selection-start-line="88" selection-start-column="6" selection-end-line="88" selection-end-column="6" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ActiviteBundle/Entity/Activite.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="562" column="30" selection-start-line="562" selection-start-column="20" selection-end-line="562" selection-end-column="30" />
+          <folding>
+            <element signature="e#41#89#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ActiviteBundle/Entity/ActiviteFixee.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="176">
+          <caret line="8" column="3" selection-start-line="8" selection-start-column="3" selection-end-line="8" selection-end-column="3" />
+          <folding>
+            <element signature="e#41#54#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ActiviteBundle/Entity/ActiviteRealisee.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="241">
+          <caret line="183" column="6" selection-start-line="183" selection-start-column="6" selection-end-line="183" selection-end-column="6" />
+          <folding>
+            <element signature="e#41#54#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ActiviteBundle/Entity/TypeActivite.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="264">
+          <caret line="96" column="6" selection-start-line="96" selection-start-column="6" selection-end-line="96" selection-end-column="6" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/CalendrierBundle/Entity/Evenement.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="197">
+          <caret line="120" column="6" selection-start-line="120" selection-start-column="6" selection-end-line="120" selection-end-column="6" />
+          <folding>
+            <element signature="e#43#56#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/RessourceBundle/Entity/BesoinTypeRessource.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="245">
+          <caret line="187" column="32" selection-start-line="187" selection-start-column="32" selection-end-line="187" selection-end-column="32" />
+          <folding>
+            <element signature="e#42#74#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/RessourceBundle/Entity/Enfant.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2505">
+          <caret line="356" column="6" selection-start-line="356" selection-start-column="6" selection-end-line="356" selection-end-column="6" />
+          <folding>
+            <element signature="e#42#77#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/RessourceBundle/Entity/FenetreHoraire.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1125">
+          <caret line="467" column="32" selection-start-line="467" selection-start-column="32" selection-end-line="467" selection-end-column="32" />
+          <folding>
+            <element signature="e#42#77#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/RessourceBundle/Entity/Groupe.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="396">
-          <caret line="24" column="18" selection-start-line="24" selection-start-column="18" selection-end-line="24" selection-end-column="18" />
+          <caret line="42" column="14" selection-start-line="42" selection-start-column="14" selection-end-line="42" selection-end-column="14" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/RessourceBundle/Entity/Preaffection.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1936">
+          <caret line="88" column="21" selection-start-line="88" selection-start-column="21" selection-end-line="88" selection-end-column="21" />
+          <folding>
+            <element signature="e#42#77#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/RessourceBundle/Entity/Ressource.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="4158">
+          <caret line="189" column="0" selection-start-line="189" selection-start-column="0" selection-end-line="189" selection-end-column="0" />
+          <folding>
+            <element signature="e#42#85#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/RessourceBundle/Entity/TypeRessource.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1936">
+          <caret line="88" column="7" selection-start-line="88" selection-start-column="7" selection-end-line="88" selection-end-column="7" />
+          <folding>
+            <element signature="e#42#90#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/RessourceBundle/Entity/Vehicule.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1059">
+          <caret line="16" column="6" selection-start-line="16" selection-start-column="6" selection-end-line="16" selection-end-column="6" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ActiviteBundle/Entity/Jour.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="132">
+          <caret line="6" column="0" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
+          <folding>
+            <element signature="e#41#89#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ActiviteBundle/Entity/ActiviteObligatoire.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="133" column="20" selection-start-line="133" selection-start-column="20" selection-end-line="133" selection-end-column="20" />
           <folding />
         </state>
       </provider>

@@ -94,4 +94,3 @@ class Utilisateur
         return $this->password;
     }
 }
-

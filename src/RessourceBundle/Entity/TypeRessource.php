@@ -2,6 +2,7 @@
 
 namespace RessourceBundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -75,18 +76,18 @@ class TypeRessource
      */
     public function __construct()
     {
-        $this->besoinsTypeRessources = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->ressources = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->besoinsTypeRessources = new ArrayCollection();
+        $this->ressources = new ArrayCollection();
     }
 
     /**
      * Add besoinsTypeRessource
      *
-     * @param \RessourceBundle\Entity\BesoinTypeRessource $besoinsTypeRessource
+     * @param BesoinTypeRessource $besoinsTypeRessource
      *
      * @return TypeRessource
      */
-    public function addBesoinsTypeRessource(\RessourceBundle\Entity\BesoinTypeRessource $besoinsTypeRessource)
+    public function addBesoinsTypeRessource(BesoinTypeRessource $besoinsTypeRessource)
     {
         $this->besoinsTypeRessources[] = $besoinsTypeRessource;
 
@@ -96,9 +97,9 @@ class TypeRessource
     /**
      * Remove besoinsTypeRessource
      *
-     * @param \RessourceBundle\Entity\BesoinTypeRessource $besoinsTypeRessource
+     * @param BesoinTypeRessource $besoinsTypeRessource
      */
-    public function removeBesoinsTypeRessource(\RessourceBundle\Entity\BesoinTypeRessource $besoinsTypeRessource)
+    public function removeBesoinsTypeRessource(BesoinTypeRessource $besoinsTypeRessource)
     {
         $this->besoinsTypeRessources->removeElement($besoinsTypeRessource);
     }
@@ -106,7 +107,7 @@ class TypeRessource
     /**
      * Get besoinsTypeRessources
      *
-     * @return \Doctrine\Common\Collections\Collection
+     * @return ArrayCollection
      */
     public function getBesoinsTypeRessources()
     {
@@ -116,11 +117,11 @@ class TypeRessource
     /**
      * Add ressource
      *
-     * @param \RessourceBundle\Entity\Ressource $ressource
+     * @param Ressource $ressource
      *
      * @return TypeRessource
      */
-    public function addRessource(\RessourceBundle\Entity\Ressource $ressource)
+    public function addRessource(Ressource $ressource)
     {
         $this->ressources[] = $ressource;
 
@@ -130,9 +131,9 @@ class TypeRessource
     /**
      * Remove ressource
      *
-     * @param \RessourceBundle\Entity\Ressource $ressource
+     * @param Ressource $ressource
      */
-    public function removeRessource(\RessourceBundle\Entity\Ressource $ressource)
+    public function removeRessource(Ressource $ressource)
     {
         $this->ressources->removeElement($ressource);
     }
@@ -140,7 +141,7 @@ class TypeRessource
     /**
      * Get ressources
      *
-     * @return \Doctrine\Common\Collections\Collection
+     * @return ArrayCollection
      */
     public function getRessources()
     {

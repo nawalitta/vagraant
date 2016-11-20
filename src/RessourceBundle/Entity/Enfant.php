@@ -2,6 +2,12 @@
 
 namespace RessourceBundle\Entity;
 
+use ActiviteBundle\Entity\Activite;
+use ActiviteBundle\Entity\ActiviteFixee;
+use ActiviteBundle\Entity\ActiviteObligatoire;
+use ActiviteBundle\Entity\ActiviteRealisee;
+use DateTime;
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -185,7 +191,7 @@ class Enfant
     /**
      * Set dateArrive
      *
-     * @param \DateTime $dateArrive
+     * @param  DateTime $dateArrive
      *
      * @return Enfant
      */
@@ -199,7 +205,7 @@ class Enfant
     /**
      * Get dateArrive
      *
-     * @return \DateTime
+     * @return DateTime
      */
     public function getDateArrive()
     {
@@ -258,20 +264,20 @@ class Enfant
      */
     public function __construct()
     {
-        $this->activitesFixees = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->activitesOptionelles = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->activitesObligatoires = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->preaffection = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->activitesFixees = new ArrayCollection();
+        $this->activitesOptionelles = new ArrayCollection();
+        $this->activitesObligatoires = new ArrayCollection();
+        $this->preaffection = new ArrayCollection();
     }
 
     /**
      * Set fenetreHoraire
      *
-     * @param \RessourceBundle\Entity\FenetreHoraire $fenetreHoraire
+     * @param FenetreHoraire $fenetreHoraire
      *
      * @return Enfant
      */
-    public function setFenetreHoraire(\RessourceBundle\Entity\FenetreHoraire $fenetreHoraire)
+    public function setFenetreHoraire(FenetreHoraire $fenetreHoraire)
     {
         $this->fenetreHoraire = $fenetreHoraire;
 
@@ -281,7 +287,7 @@ class Enfant
     /**
      * Get fenetreHoraire
      *
-     * @return \RessourceBundle\Entity\FenetreHoraire
+     * @return FenetreHoraire
      */
     public function getFenetreHoraire()
     {
@@ -291,11 +297,11 @@ class Enfant
     /**
      * Set groupe
      *
-     * @param \RessourceBundle\Entity\Groupe $groupe
+     * @param Groupe $groupe
      *
      * @return Enfant
      */
-    public function setGroupe(\RessourceBundle\Entity\Groupe $groupe)
+    public function setGroupe(Groupe $groupe)
     {
         $this->groupe = $groupe;
 
@@ -305,7 +311,7 @@ class Enfant
     /**
      * Get groupe
      *
-     * @return \RessourceBundle\Entity\Groupe
+     * @return Groupe
      */
     public function getGroupe()
     {
@@ -315,11 +321,11 @@ class Enfant
     /**
      * Add activitesFixee
      *
-     * @param \ActiviteBundle\Entity\ActiviteFixee $activitesFixee
+     * @param ActiviteFixee $activitesFixee
      *
      * @return Enfant
      */
-    public function addActivitesFixee(\ActiviteBundle\Entity\ActiviteFixee $activitesFixee)
+    public function addActivitesFixee(ActiviteFixee $activitesFixee)
     {
         $this->activitesFixees[] = $activitesFixee;
 
@@ -329,9 +335,9 @@ class Enfant
     /**
      * Remove activitesFixee
      *
-     * @param \ActiviteBundle\Entity\ActiviteFixee $activitesFixee
+     * @param ActiviteFixee $activitesFixee
      */
-    public function removeActivitesFixee(\ActiviteBundle\Entity\ActiviteFixee $activitesFixee)
+    public function removeActivitesFixee(ActiviteFixee $activitesFixee)
     {
         $this->activitesFixees->removeElement($activitesFixee);
     }
@@ -339,7 +345,7 @@ class Enfant
     /**
      * Get activitesFixees
      *
-     * @return \Doctrine\Common\Collections\Collection
+     * @return ArrayCollection
      */
     public function getActivitesFixees()
     {
@@ -349,11 +355,11 @@ class Enfant
     /**
      * Add activitesOptionelle
      *
-     * @param \ActiviteBundle\Entity\Activite $activitesOptionelle
+     * @param Activite $activitesOptionelle
      *
      * @return Enfant
      */
-    public function addActivitesOptionelle(\ActiviteBundle\Entity\Activite $activitesOptionelle)
+    public function addActivitesOptionelle(Activite $activitesOptionelle)
     {
         $this->activitesOptionelles[] = $activitesOptionelle;
 
@@ -363,9 +369,9 @@ class Enfant
     /**
      * Remove activitesOptionelle
      *
-     * @param \ActiviteBundle\Entity\Activite $activitesOptionelle
+     * @param Activite $activitesOptionelle
      */
-    public function removeActivitesOptionelle(\ActiviteBundle\Entity\Activite $activitesOptionelle)
+    public function removeActivitesOptionelle(Activite $activitesOptionelle)
     {
         $this->activitesOptionelles->removeElement($activitesOptionelle);
     }
@@ -373,7 +379,7 @@ class Enfant
     /**
      * Get activitesOptionelles
      *
-     * @return \Doctrine\Common\Collections\Collection
+     * @return ArrayCollection
      */
     public function getActivitesOptionelles()
     {
@@ -383,11 +389,11 @@ class Enfant
     /**
      * Add activitesObligatoire
      *
-     * @param \ActiviteBundle\Entity\ActiviteObligatoire $activitesObligatoire
+     * @param ActiviteObligatoire $activitesObligatoire
      *
      * @return Enfant
      */
-    public function addActivitesObligatoire(\ActiviteBundle\Entity\ActiviteObligatoire $activitesObligatoire)
+    public function addActivitesObligatoire(ActiviteObligatoire $activitesObligatoire)
     {
         $this->activitesObligatoires[] = $activitesObligatoire;
 
@@ -397,9 +403,9 @@ class Enfant
     /**
      * Remove activitesObligatoire
      *
-     * @param \ActiviteBundle\Entity\ActiviteObligatoire $activitesObligatoire
+     * @param ActiviteObligatoire $activitesObligatoire
      */
-    public function removeActivitesObligatoire(\ActiviteBundle\Entity\ActiviteObligatoire $activitesObligatoire)
+    public function removeActivitesObligatoire(ActiviteObligatoire $activitesObligatoire)
     {
         $this->activitesObligatoires->removeElement($activitesObligatoire);
     }
@@ -407,7 +413,7 @@ class Enfant
     /**
      * Get activitesObligatoires
      *
-     * @return \Doctrine\Common\Collections\Collection
+     * @return ArrayCollection
      */
     public function getActivitesObligatoires()
     {
@@ -417,11 +423,11 @@ class Enfant
     /**
      * Add preaffection
      *
-     * @param \RessourceBundle\Entity\Preaffection $preaffection
+     * @param Preaffection $preaffection
      *
      * @return Enfant
      */
-    public function addPreaffection(\RessourceBundle\Entity\Preaffection $preaffection)
+    public function addPreaffection(Preaffection $preaffection)
     {
         $this->preaffection[] = $preaffection;
 
@@ -431,9 +437,9 @@ class Enfant
     /**
      * Remove preaffection
      *
-     * @param \RessourceBundle\Entity\Preaffection $preaffection
+     * @param Preaffection $preaffection
      */
-    public function removePreaffection(\RessourceBundle\Entity\Preaffection $preaffection)
+    public function removePreaffection(Preaffection $preaffection)
     {
         $this->preaffection->removeElement($preaffection);
     }
@@ -441,7 +447,7 @@ class Enfant
     /**
      * Get preaffection
      *
-     * @return \Doctrine\Common\Collections\Collection
+     * @return ArrayCollection
      */
     public function getPreaffection()
     {
@@ -451,11 +457,11 @@ class Enfant
     /**
      * Add activitesRealisee
      *
-     * @param \ActiviteBundle\Entity\ActiviteRealisee $activitesRealisee
+     * @param ActiviteRealisee $activitesRealisee
      *
      * @return Enfant
      */
-    public function addActivitesRealisee(\ActiviteBundle\Entity\ActiviteRealisee $activitesRealisee)
+    public function addActivitesRealisee(ActiviteRealisee $activitesRealisee)
     {
         $this->activitesRealisees[] = $activitesRealisee;
 
@@ -465,9 +471,9 @@ class Enfant
     /**
      * Remove activitesRealisee
      *
-     * @param \ActiviteBundle\Entity\ActiviteRealisee $activitesRealisee
+     * @param ActiviteRealisee $activitesRealisee
      */
-    public function removeActivitesRealisee(\ActiviteBundle\Entity\ActiviteRealisee $activitesRealisee)
+    public function removeActivitesRealisee(ActiviteRealisee $activitesRealisee)
     {
         $this->activitesRealisees->removeElement($activitesRealisee);
     }
@@ -475,7 +481,7 @@ class Enfant
     /**
      * Get activitesRealisees
      *
-     * @return \Doctrine\Common\Collections\Collection
+     * @return ArrayCollection
      */
     public function getActivitesRealisees()
     {

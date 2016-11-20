@@ -2,6 +2,7 @@
 
 namespace CalendrierBundle\Entity;
 
+use DateTime;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -80,7 +81,7 @@ class Evenement
     /**
      * Set dateDebut
      *
-     * @param \DateTime $dateDebut
+     * @param DateTime $dateDebut
      *
      * @return Evenement
      */
@@ -94,7 +95,7 @@ class Evenement
     /**
      * Get dateDebut
      *
-     * @return \DateTime
+     * @return DateTime
      */
     public function getDateDebut()
     {
@@ -104,7 +105,7 @@ class Evenement
     /**
      * Set dateFin
      *
-     * @param \DateTime $dateFin
+     * @param DateTime $dateFin
      *
      * @return Evenement
      */
@@ -118,11 +119,10 @@ class Evenement
     /**
      * Get dateFin
      *
-     * @return \DateTime
+     * @return DateTime
      */
     public function getDateFin()
     {
         return $this->dateFin;
     }
 }
-

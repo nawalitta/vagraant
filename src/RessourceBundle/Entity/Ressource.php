@@ -2,6 +2,8 @@
 
 namespace RessourceBundle\Entity;
 
+use ActiviteBundle\Entity\ActiviteRealisee;
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -90,17 +92,17 @@ class Ressource
      */
     public function __construct()
     {
-        $this->activiteesRealisees = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->activiteesRealisees = new ArrayCollection();
     }
 
     /**
      * Add activiteesRealisee
      *
-     * @param \ActiviteBundle\Entity\ActiviteRealisee $activiteesRealisee
+     * @param ActiviteRealisee $activiteesRealisee
      *
      * @return Ressource
      */
-    public function addActiviteesRealisee(\ActiviteBundle\Entity\ActiviteRealisee $activiteesRealisee)
+    public function addActiviteesRealisee(ActiviteRealisee $activiteesRealisee)
     {
         $this->activiteesRealisees[] = $activiteesRealisee;
 
@@ -110,9 +112,9 @@ class Ressource
     /**
      * Remove activiteesRealisee
      *
-     * @param \ActiviteBundle\Entity\ActiviteRealisee $activiteesRealisee
+     * @param ActiviteRealisee $activiteesRealisee
      */
-    public function removeActiviteesRealisee(\ActiviteBundle\Entity\ActiviteRealisee $activiteesRealisee)
+    public function removeActiviteesRealisee(ActiviteRealisee $activiteesRealisee)
     {
         $this->activiteesRealisees->removeElement($activiteesRealisee);
     }
@@ -120,7 +122,7 @@ class Ressource
     /**
      * Get activiteesRealisees
      *
-     * @return \Doctrine\Common\Collections\Collection
+     * @return ArrayCollection
      */
     public function getActiviteesRealisees()
     {
@@ -130,11 +132,11 @@ class Ressource
     /**
      * Set fenetreHoraire
      *
-     * @param \RessourceBundle\Entity\FenetreHoraire $fenetreHoraire
+     * @param FenetreHoraire $fenetreHoraire
      *
      * @return Ressource
      */
-    public function setFenetreHoraire(\RessourceBundle\Entity\FenetreHoraire $fenetreHoraire)
+    public function setFenetreHoraire(FenetreHoraire $fenetreHoraire)
     {
         $this->fenetreHoraire = $fenetreHoraire;
 
@@ -144,7 +146,7 @@ class Ressource
     /**
      * Get fenetreHoraire
      *
-     * @return \RessourceBundle\Entity\FenetreHoraire
+     * @return FenetreHoraire
      */
     public function getFenetreHoraire()
     {
@@ -154,11 +156,11 @@ class Ressource
     /**
      * Set typeRessource
      *
-     * @param \RessourceBundle\Entity\TypeRessource $typeRessource
+     * @param TypeRessource $typeRessource
      *
      * @return Ressource
      */
-    public function setTypeRessource(\RessourceBundle\Entity\TypeRessource $typeRessource)
+    public function setTypeRessource(TypeRessource $typeRessource)
     {
         $this->typeRessource = $typeRessource;
 
@@ -168,7 +170,7 @@ class Ressource
     /**
      * Get typeRessource
      *
-     * @return \RessourceBundle\Entity\TypeRessource
+     * @return TypeRessource
      */
     public function getTypeRessource()
     {
@@ -178,11 +180,11 @@ class Ressource
     /**
      * Add preaffection
      *
-     * @param \RessourceBundle\Entity\Preaffection $preaffection
+     * @param Preaffection $preaffection
      *
      * @return Ressource
      */
-    public function addPreaffection(\RessourceBundle\Entity\Preaffection $preaffection)
+    public function addPreaffection(Preaffection $preaffection)
     {
         $this->preaffection[] = $preaffection;
 
@@ -192,9 +194,9 @@ class Ressource
     /**
      * Remove preaffection
      *
-     * @param \RessourceBundle\Entity\Preaffection $preaffection
+     * @param Preaffection $preaffection
      */
-    public function removePreaffection(\RessourceBundle\Entity\Preaffection $preaffection)
+    public function removePreaffection(Preaffection $preaffection)
     {
         $this->preaffection->removeElement($preaffection);
     }
@@ -202,7 +204,7 @@ class Ressource
     /**
      * Get preaffection
      *
-     * @return \Doctrine\Common\Collections\Collection
+     * @return ArrayCollection
      */
     public function getPreaffection()
     {

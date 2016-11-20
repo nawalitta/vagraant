@@ -3,6 +3,7 @@
 namespace ActiviteBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use RessourceBundle\Entity\Enfant;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
@@ -137,11 +138,11 @@ class ActiviteObligatoire
     /**
      * Set enfant
      *
-     * @param \RessourceBundle\Entity\Enfant $enfant
+     * @param Enfant $enfant
      *
      * @return ActiviteObligatoire
      */
-    public function setEnfant(\RessourceBundle\Entity\Enfant $enfant)
+    public function setEnfant(Enfant $enfant)
     {
         $this->enfant = $enfant;
 
@@ -151,7 +152,7 @@ class ActiviteObligatoire
     /**
      * Get enfant
      *
-     * @return \RessourceBundle\Entity\Enfant
+     * @return Enfant
      */
     public function getEnfant()
     {

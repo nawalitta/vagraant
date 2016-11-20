@@ -2,7 +2,9 @@
 
 namespace ActiviteBundle\Entity;
 
+use DateTime;
 use Doctrine\ORM\Mapping as ORM;
+use RessourceBundle\Entity\Enfant;
 
 /**
  * ActiviteFixee
@@ -22,14 +24,14 @@ class ActiviteFixee
     private $id;
 
     /**
-     * @var \DateTime
+     * @var DateTime
      *
      * @ORM\Column(name="heureDebut", type="time")
      */
     private $heureDebut;
 
     /**
-     * @var \DateTime
+     * @var DateTime
      *
      * @ORM\Column(name="heureFin", type="time")
      */
@@ -42,7 +44,7 @@ class ActiviteFixee
     private $jour;
     
     /**
-     * @ORM\ManyToOne(targetEntity="RessourceBundle/Enfant",inversedBy="ActiviteFixee")
+     * @ORM\ManyToOne(targetEntity="RessourceBundle\Entity\Enfant",inversedBy="ActiviteFixee")
      * @ORM\JoinColumn(nullable=false)
      */ 
     private $enfant;
@@ -67,7 +69,7 @@ class ActiviteFixee
     /**
      * Set heureDebut
      *
-     * @param \DateTime $heureDebut
+     * @param DateTime $heureDebut
      *
      * @return ActiviteFixee
      */
@@ -81,7 +83,7 @@ class ActiviteFixee
     /**
      * Get heureDebut
      *
-     * @return \DateTime
+     * @return DateTime
      */
     public function getHeureDebut()
     {
@@ -91,7 +93,7 @@ class ActiviteFixee
     /**
      * Set heureFin
      *
-     * @param \DateTime $heureFin
+     * @param DateTime $heureFin
      *
      * @return ActiviteFixee
      */
@@ -105,7 +107,7 @@ class ActiviteFixee
     /**
      * Get heureFin
      *
-     * @return \DateTime
+     * @return DateTime
      */
     public function getHeureFin()
     {
@@ -115,11 +117,11 @@ class ActiviteFixee
     /**
      * Set jour
      *
-     * @param \ActiviteBundle\Entity\Jour $jour
+     * @param Jour $jour
      *
      * @return ActiviteFixee
      */
-    public function setJour(\ActiviteBundle\Entity\Jour $jour)
+    public function setJour(Jour $jour)
     {
         $this->jour = $jour;
 
@@ -129,7 +131,7 @@ class ActiviteFixee
     /**
      * Get jour
      *
-     * @return \ActiviteBundle\Entity\Jour
+     * @return Jour
      */
     public function getJour()
     {
@@ -139,11 +141,11 @@ class ActiviteFixee
     /**
      * Set enfant
      *
-     * @param \ActiviteBundle\Entity\RessourceBundle/Enfant $enfant
+     * @param Enfant $enfant
      *
      * @return ActiviteFixee
      */
-    public function setEnfant(RessourceBundle\Entity\Enfant $enfant)
+    public function setEnfant(Enfant $enfant)
     {
         $this->enfant = $enfant;
 
@@ -153,7 +155,7 @@ class ActiviteFixee
     /**
      * Get enfant
      *
-     * @return \ActiviteBundle\Entity\RessourceBundle/Enfant
+     * @return Enfant
      */
     public function getEnfant()
     {
@@ -163,11 +165,11 @@ class ActiviteFixee
     /**
      * Set activite
      *
-     * @param \ActiviteBundle\Entity\Activite $activite
+     * @param Activite $activite
      *
      * @return ActiviteFixee
      */
-    public function setActivite(\ActiviteBundle\Entity\Activite $activite)
+    public function setActivite(Activite $activite)
     {
         $this->activite = $activite;
 
@@ -177,7 +179,7 @@ class ActiviteFixee
     /**
      * Get activite
      *
-     * @return \ActiviteBundle\Entity\Activite
+     * @return Activite
      */
     public function getActivite()
     {

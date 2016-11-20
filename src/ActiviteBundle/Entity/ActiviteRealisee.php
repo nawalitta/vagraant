@@ -2,7 +2,11 @@
 
 namespace ActiviteBundle\Entity;
 
+use DateTime;
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
+use RessourceBundle\Entity\Enfant;
+use RessourceBundle\Entity\Ressource;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
@@ -49,7 +53,7 @@ class ActiviteRealisee
   private $ressources; 
    
     /**
-     * @ORM\ManyToOne(targetEntity="RessourceBundle/Enfant",inversedBy="ActiviteRealisee")
+     * @ORM\ManyToOne(targetEntity="RessourceBundle\Entity\Enfant",inversedBy="ActiviteRealisee")
      * @ORM\JoinColumn(nullable=false)
      */  
   private $enfant;
@@ -75,7 +79,7 @@ class ActiviteRealisee
     /**
      * Set heureDebut
      *
-     * @param \DateTime $heureDebut
+     * @param DateTime $heureDebut
      *
      * @return ActiviteRealisee
      */
@@ -89,7 +93,7 @@ class ActiviteRealisee
     /**
      * Get heureDebut
      *
-     * @return \DateTime
+     * @return DateTime
      */
     public function getHeureDebut()
     {
@@ -99,7 +103,7 @@ class ActiviteRealisee
     /**
      * Set heureFin
      *
-     * @param \DateTime $heureFin
+     * @param DateTime $heureFin
      *
      * @return ActiviteRealisee
      */
@@ -113,7 +117,7 @@ class ActiviteRealisee
     /**
      * Get heureFin
      *
-     * @return \DateTime
+     * @return DateTime
      */
     public function getHeureFin()
     {
@@ -124,17 +128,17 @@ class ActiviteRealisee
      */
     public function __construct()
     {
-        $this->ressources = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->ressources = new ArrayCollection();
     }
 
     /**
      * Set activite
      *
-     * @param \ActiviteBundle\Entity\Activite $activite
+     * @param Activite $activite
      *
      * @return ActiviteRealisee
      */
-    public function setActivite(\ActiviteBundle\Entity\Activite $activite = null)
+    public function setActivite(Activite $activite = null)
     {
         $this->activite = $activite;
 
@@ -144,7 +148,7 @@ class ActiviteRealisee
     /**
      * Get activite
      *
-     * @return \ActiviteBundle\Entity\Activite
+     * @return Activite
      */
     public function getActivite()
     {
@@ -154,11 +158,11 @@ class ActiviteRealisee
     /**
      * Add ressource
      *
-     * @param \RessourceBundle\Entity\Ressource $ressource
+     * @param Ressource $ressource
      *
      * @return ActiviteRealisee
      */
-    public function addRessource(\RessourceBundle\Entity\Ressource $ressource)
+    public function addRessource(Ressource $ressource)
     {
         $this->ressources[] = $ressource;
 
@@ -168,9 +172,9 @@ class ActiviteRealisee
     /**
      * Remove ressource
      *
-     * @param \RessourceBundle\Entity\Ressource $ressource
+     * @param Ressource $ressource
      */
-    public function removeRessource(\RessourceBundle\Entity\Ressource $ressource)
+    public function removeRessource(Ressource $ressource)
     {
         $this->ressources->removeElement($ressource);
     }
@@ -178,7 +182,7 @@ class ActiviteRealisee
     /**
      * Get ressources
      *
-     * @return \Doctrine\Common\Collections\Collection
+     * @return ArrayCollection
      */
     public function getRessources()
     {
@@ -186,7 +190,7 @@ class ActiviteRealisee
     }
     
     
-          /**
+    /**
      * @Assert\IsTrue(message = "L'heure de début doit etre avant l'heure de fin")
      */
     public function isValidDate()
@@ -198,11 +202,11 @@ class ActiviteRealisee
     /**
      * Set enfant
      *
-     * @param \ActiviteBundle\Entity\RessourceBundle/Enfant $enfant
+     * @param Enfant $enfant
      *
      * @return ActiviteRealisee
      */
-    public function setEnfant(RessourceBundle\Entity\Enfant $enfant)
+    public function setEnfant(Enfant $enfant)
     {
         $this->enfant = $enfant;
 
@@ -212,7 +216,7 @@ class ActiviteRealisee
     /**
      * Get enfant
      *
-     * @return \ActiviteBundle\Entity\RessourceBundle/Enfant
+     * @return Enfant
      */
     public function getEnfant()
     {
@@ -222,11 +226,11 @@ class ActiviteRealisee
     /**
      * Set jour
      *
-     * @param \ActiviteBundle\Entity\Jour $jour
+     * @param Jour $jour
      *
      * @return ActiviteRealisee
      */
-    public function setJour(\ActiviteBundle\Entity\Jour $jour)
+    public function setJour(Jour $jour)
     {
         $this->jour = $jour;
 
@@ -236,7 +240,7 @@ class ActiviteRealisee
     /**
      * Get jour
      *
-     * @return \ActiviteBundle\Entity\Jour
+     * @return Jour
      */
     public function getJour()
     {

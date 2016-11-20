@@ -2,6 +2,7 @@
 
 namespace RessourceBundle\Entity;
 
+use ActiviteBundle\Entity\Activite;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -53,11 +54,11 @@ class Preaffection
     /**
      * Set enfant
      *
-     * @param \RessourceBundle\Entity\Enfant $enfant
+     * @param Enfant $enfant
      *
      * @return Preaffection
      */
-    public function setEnfant(\RessourceBundle\Entity\Enfant $enfant)
+    public function setEnfant(Enfant $enfant)
     {
         $this->enfant = $enfant;
 
@@ -67,7 +68,7 @@ class Preaffection
     /**
      * Get enfant
      *
-     * @return \RessourceBundle\Entity\Enfant
+     * @return Enfant
      */
     public function getEnfant()
     {
@@ -77,11 +78,11 @@ class Preaffection
     /**
      * Set activite
      *
-     * @param \ActiviteBundle\Entity\Activite $activite
+     * @param Activite $activite
      *
      * @return Preaffection
      */
-    public function setActivite(\ActiviteBundle\Entity\Activite $activite)
+    public function setActivite(Activite $activite)
     {
         $this->activite = $activite;
 
@@ -91,7 +92,7 @@ class Preaffection
     /**
      * Get activite
      *
-     * @return \ActiviteBundle\Entity\Activite
+     * @return Activite
      */
     public function getActivite()
     {
@@ -101,11 +102,11 @@ class Preaffection
     /**
      * Set ressource
      *
-     * @param \RessourceBundle\Entity\Ressource $ressource
+     * @param Ressource $ressource
      *
      * @return Preaffection
      */
-    public function setRessource(\RessourceBundle\Entity\Ressource $ressource)
+    public function setRessource(Ressource $ressource)
     {
         $this->ressource = $ressource;
 
@@ -115,7 +116,7 @@ class Preaffection
     /**
      * Get ressource
      *
-     * @return \RessourceBundle\Entity\Ressource
+     * @return Ressource
      */
     public function getRessource()
     {

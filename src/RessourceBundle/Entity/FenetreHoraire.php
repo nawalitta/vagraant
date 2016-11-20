@@ -2,6 +2,9 @@
 
 namespace RessourceBundle\Entity;
 
+use ActiviteBundle\Entity\Activite;
+use DateTime;
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 /**
@@ -22,70 +25,70 @@ class FenetreHoraire
     private $id;
 
     /**
-     * @var \DateTime
+     * @var DateTime
      *
      * @ORM\Column(name="lundiDebut", type="time")
      */
     private $lundiDebut;
 
     /**
-     * @var \DateTime
+     * @var DateTime
      *
      * @ORM\Column(name="lundiFin", type="time")
      */
     private $lundiFin;
 
     /**
-     * @var \DateTime
+     * @var DateTime
      *
      * @ORM\Column(name="mardiDebut", type="time")
      */
     private $mardiDebut;
 
     /**
-     * @var \DateTime
+     * @var DateTime
      *
      * @ORM\Column(name="mardiFin", type="time")
      */
     private $mardiFin;
 
     /**
-     * @var \DateTime
+     * @var DateTime
      *
      * @ORM\Column(name="mercrediDebut", type="time")
      */
     private $mercrediDebut;
 
     /**
-     * @var \DateTime
+     * @var DateTime
      *
      * @ORM\Column(name="mercrediFin", type="time")
      */
     private $mercrediFin;
 
     /**
-     * @var \DateTime
+     * @var DateTime
      *
      * @ORM\Column(name="jeudiDebut", type="time")
      */
     private $jeudiDebut;
 
     /**
-     * @var \DateTime
+     * @var DateTime
      *
      * @ORM\Column(name="jeudiFin", type="time")
      */
     private $jeudiFin;
 
     /**
-     * @var \DateTime
+     * @var DateTime
      *
      * @ORM\Column(name="vendrediDebut", type="time")
      */
     private $vendrediDebut;
 
     /**
-     * @var \DateTime
+     * @var DateTime
      *
      * @ORM\Column(name="vendrediFin", type="time")
      */
@@ -119,7 +122,7 @@ class FenetreHoraire
     /**
      * Set lundiDebut
      *
-     * @param \DateTime $lundiDebut
+     * @param DateTime $lundiDebut
      * @return FenetreHoraire
      */
     public function setLundiDebut($lundiDebut)
@@ -132,7 +135,7 @@ class FenetreHoraire
     /**
      * Get lundiDebut
      *
-     * @return \DateTime 
+     * @return DateTime
      */
     public function getLundiDebut()
     {
@@ -142,7 +145,7 @@ class FenetreHoraire
     /**
      * Set lundiFin
      *
-     * @param \DateTime $lundiFin
+     * @param DateTime $lundiFin
      * @return FenetreHoraire
      */
     public function setLundiFin($lundiFin)
@@ -155,7 +158,7 @@ class FenetreHoraire
     /**
      * Get lundiFin
      *
-     * @return \DateTime 
+     * @return DateTime
      */
     public function getLundiFin()
     {
@@ -165,7 +168,7 @@ class FenetreHoraire
     /**
      * Set mardiDebut
      *
-     * @param \DateTime $mardiDebut
+     * @param DateTime $mardiDebut
      * @return FenetreHoraire
      */
     public function setMardiDebut($mardiDebut)
@@ -178,7 +181,7 @@ class FenetreHoraire
     /**
      * Get mardiDebut
      *
-     * @return \DateTime 
+     * @return DateTime
      */
     public function getMardiDebut()
     {
@@ -188,7 +191,7 @@ class FenetreHoraire
     /**
      * Set mardiFin
      *
-     * @param \DateTime $mardiFin
+     * @param DateTime $mardiFin
      * @return FenetreHoraire
      */
     public function setMardiFin($mardiFin)
@@ -201,7 +204,7 @@ class FenetreHoraire
     /**
      * Get mardiFin
      *
-     * @return \DateTime 
+     * @return DateTime
      */
     public function getMardiFin()
     {
@@ -211,7 +214,7 @@ class FenetreHoraire
     /**
      * Set mercrediDebut
      *
-     * @param \DateTime $mercrediDebut
+     * @param DateTime $mercrediDebut
      * @return FenetreHoraire
      */
     public function setMercrediDebut($mercrediDebut)
@@ -224,7 +227,7 @@ class FenetreHoraire
     /**
      * Get mercrediDebut
      *
-     * @return \DateTime 
+     * @return DateTime
      */
     public function getMercrediDebut()
     {
@@ -234,7 +237,7 @@ class FenetreHoraire
     /**
      * Set mercrediFin
      *
-     * @param \DateTime $mercrediFin
+     * @param DateTime $mercrediFin
      * @return FenetreHoraire
      */
     public function setMercrediFin($mercrediFin)
@@ -247,7 +250,7 @@ class FenetreHoraire
     /**
      * Get mercrediFin
      *
-     * @return \DateTime 
+     * @return DateTime
      */
     public function getMercrediFin()
     {
@@ -257,7 +260,7 @@ class FenetreHoraire
     /**
      * Set jeudiDebut
      *
-     * @param \DateTime $jeudiDebut
+     * @param DateTime $jeudiDebut
      * @return FenetreHoraire
      */
     public function setJeudiDebut($jeudiDebut)
@@ -270,7 +273,7 @@ class FenetreHoraire
     /**
      * Get jeudiDebut
      *
-     * @return \DateTime 
+     * @return DateTime
      */
     public function getJeudiDebut()
     {
@@ -280,7 +283,7 @@ class FenetreHoraire
     /**
      * Set jeudiFin
      *
-     * @param \DateTime $jeudiFin
+     * @param DateTime $jeudiFin
      * @return FenetreHoraire
      */
     public function setJeudiFin($jeudiFin)
@@ -293,7 +296,7 @@ class FenetreHoraire
     /**
      * Get jeudiFin
      *
-     * @return \DateTime 
+     * @return DateTime
      */
     public function getJeudiFin()
     {
@@ -303,7 +306,7 @@ class FenetreHoraire
     /**
      * Set vendrediDebut
      *
-     * @param \DateTime $vendrediDebut
+     * @param DateTime $vendrediDebut
      * @return FenetreHoraire
      */
     public function setVendrediDebut($vendrediDebut)
@@ -316,7 +319,7 @@ class FenetreHoraire
     /**
      * Get vendrediDebut
      *
-     * @return \DateTime 
+     * @return DateTime
      */
     public function getVendrediDebut()
     {
@@ -326,7 +329,7 @@ class FenetreHoraire
     /**
      * Set vendrediFin
      *
-     * @param \DateTime $vendrediFin
+     * @param DateTime $vendrediFin
      * @return FenetreHoraire
      */
     public function setVendrediFin($vendrediFin)
@@ -339,7 +342,7 @@ class FenetreHoraire
     /**
      * Get vendrediFin
      *
-     * @return \DateTime 
+     * @return DateTime
      */
     public function getVendrediFin()
     {
@@ -362,17 +365,17 @@ class FenetreHoraire
      */
     public function __construct()
     {
-        $this->ressources = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->ressources = new ArrayCollection();
     }
 
     /**
      * Add ressource
      *
-     * @param \RessourceBundle\Entity\Ressource $ressource
+     * @param Ressource $ressource
      *
      * @return FenetreHoraire
      */
-    public function addRessource(\RessourceBundle\Entity\Ressource $ressource)
+    public function addRessource(Ressource $ressource)
     {
         $this->ressources[] = $ressource;
 
@@ -382,9 +385,9 @@ class FenetreHoraire
     /**
      * Remove ressource
      *
-     * @param \RessourceBundle\Entity\Ressource $ressource
+     * @param Ressource $ressource
      */
-    public function removeRessource(\RessourceBundle\Entity\Ressource $ressource)
+    public function removeRessource(Ressource $ressource)
     {
         $this->ressources->removeElement($ressource);
     }
@@ -392,7 +395,7 @@ class FenetreHoraire
     /**
      * Get ressources
      *
-     * @return \Doctrine\Common\Collections\Collection
+     * @return ArrayCollection
      */
     public function getRessources()
     {
@@ -402,11 +405,11 @@ class FenetreHoraire
     /**
      * Add activite
      *
-     * @param \ActiviteBundle\Entity\Activite $activite
+     * @param Activite $activite
      *
      * @return FenetreHoraire
      */
-    public function addActivite(\ActiviteBundle\Entity\Activite $activite)
+    public function addActivite(Activite $activite)
     {
         $this->activites[] = $activite;
 
@@ -416,9 +419,9 @@ class FenetreHoraire
     /**
      * Remove activite
      *
-     * @param \ActiviteBundle\Entity\Activite $activite
+     * @param Activite $activite
      */
-    public function removeActivite(\ActiviteBundle\Entity\Activite $activite)
+    public function removeActivite(Activite $activite)
     {
         $this->activites->removeElement($activite);
     }
@@ -426,7 +429,7 @@ class FenetreHoraire
     /**
      * Get activites
      *
-     * @return \Doctrine\Common\Collections\Collection
+     * @return ArrayCollection
      */
     public function getActivites()
     {
@@ -436,11 +439,11 @@ class FenetreHoraire
     /**
      * Add enfant
      *
-     * @param \RessourceBundle\Entity\Enfant $enfant
+     * @param Enfant $enfant
      *
      * @return FenetreHoraire
      */
-    public function addEnfant(\RessourceBundle\Entity\Enfant $enfant)
+    public function addEnfant(Enfant $enfant)
     {
         $this->enfants[] = $enfant;
 
@@ -450,9 +453,9 @@ class FenetreHoraire
     /**
      * Remove enfant
      *
-     * @param \RessourceBundle\Entity\Enfant $enfant
+     * @param Enfant $enfant
      */
-    public function removeEnfant(\RessourceBundle\Entity\Enfant $enfant)
+    public function removeEnfant(Enfant $enfant)
     {
         $this->enfants->removeElement($enfant);
     }
@@ -460,7 +463,7 @@ class FenetreHoraire
     /**
      * Get enfants
      *
-     * @return \Doctrine\Common\Collections\Collection
+     * @return ArrayCollection
      */
     public function getEnfants()
     {

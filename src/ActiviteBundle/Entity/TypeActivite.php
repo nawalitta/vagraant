@@ -81,11 +81,11 @@ class TypeActivite
     /**
      * Set activites
      *
-     * @param \ActiviteBundle\Entity\Activite $activites
+     * @param Activite $activites
      *
      * @return TypeActivite
      */
-    public function setActivites(\ActiviteBundle\Entity\Activite $activites)
+    public function setActivites(Activite $activites)
     {
         $this->activites = $activites;
 
@@ -95,7 +95,7 @@ class TypeActivite
     /**
      * Get activites
      *
-     * @return \ActiviteBundle\Entity\Activite
+     * @return Activite
      */
     public function getActivites()
     {
