@@ -23,11 +23,9 @@ class Groupe
 
     /**
      * @var string
-     *
      * @ORM\Column(name="labelG", type="string", length=255)
      */
     private $labelG;
-
 
     /**
      * Get id
