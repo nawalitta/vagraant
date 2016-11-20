@@ -3,6 +3,7 @@
 namespace RessourceBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use ActiviteBundle\Entity\Activite;
 
 /**
  * BesoinTypeRessource
@@ -44,7 +45,7 @@ class BesoinTypeRessource
 
 
      /**
-     * @ORM\ManyToOne(targetEntity="ActiviteBundle/Activite",inversedBy="BesoinTypeRessource")
+     * @ORM\ManyToOne(targetEntity="ActiviteBundle\Entity\Activite",inversedBy="BesoinTypeRessource")
      * @ORM\JoinColumn(nullable=false)
      */
     private $activite;
@@ -142,11 +143,11 @@ class BesoinTypeRessource
     /**
      * Set activite
      *
-     * @param \RessourceBundle\Entity\ActiviteBundle/Activite $activite
+     * @param Activite $activite
      *
      * @return BesoinTypeRessource
      */
-    public function setActivite(\RessourceBundle\Entity\ActiviteBundle\Activite $activite)
+    public function setActivite(Activite $activite)
     {
         $this->activite = $activite;
 
@@ -156,7 +157,7 @@ class BesoinTypeRessource
     /**
      * Get activite
      *
-     * @return \RessourceBundle\Entity\ActiviteBundle/Activite
+     * @return Activite
      */
     public function getActivite()
     {
@@ -166,11 +167,11 @@ class BesoinTypeRessource
     /**
      * Set typeRessource
      *
-     * @param \RessourceBundle\Entity\TypeRessource $typeRessource
+     * @param TypeRessource $typeRessource
      *
      * @return BesoinTypeRessource
      */
-    public function setTypeRessource(\RessourceBundle\Entity\TypeRessource $typeRessource)
+    public function setTypeRessource(TypeRessource $typeRessource)
     {
         $this->typeRessource = $typeRessource;
 
@@ -180,7 +181,7 @@ class BesoinTypeRessource
     /**
      * Get typeRessource
      *
-     * @return \RessourceBundle\Entity\TypeRessource
+     * @return TypeRessource
      */
     public function getTypeRessource()
     {
