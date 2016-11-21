@@ -4,5 +4,5 @@
 !app/cache/.gitkeep
 !app/logs/.gitkeep
 /web/bundles/*
-
+/.idea/*
 
