@@ -1,0 +1,37 @@
+{% extends "::base.html.twig" %}
+
+{% block title %}UtilisateurBundle:Utilisateur:edit{% endblock %}
+
+{% block body %}
+    <h3 class="h3">Créer un nouvel utilisateur</h3>
+    {{ form_start(form) }}
+        <div class="container-fluid">
+            <div class="form-group row">
+                <label for="login" class="col-md-offset-1 col-md-1 col-form-label">Login</label>
+                <div class="col-md-4">
+                    {{ form_widget(form.login) }}
+                </div>
+                <div class="col-md-6"></div>
+            </div>
+            <div class="form-group row">
+                <label for="password" class="col-md-offset-1 col-md-1 col-form-label">Password</label>
+                <div class="col-md-4">
+                    {{ form_widget(form.password) }}
+                </div>
+                <div class="col-md-6"></div>
+            </div>
+            <!--<div class="form-group row">
+                <label for="checkPassword" class="col-md-offset-1 col-md-1 col-form-label">Password</label>
+                <div class="col-md-6">
+                    <input class="form-control" type="text" id="checkPassword" name="form[checkPassword]">
+                </div>
+                <div class="col-md-4"></div>
+            </div>-->
+            <div class="form-group row">
+                <div class="col-md-offset-5">
+                    {{ form_widget(form.OK,{ 'label': 'Enregistrer' }, { 'attr': {'class': 'btn btn-primary btn', 'type': 'button'} }) }}
+                </div>
+            </div>
+        </div>
+    {{ form_end(form) }}
+{% endblock %}

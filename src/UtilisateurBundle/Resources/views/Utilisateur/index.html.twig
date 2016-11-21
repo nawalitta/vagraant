@@ -1,0 +1,13 @@
+{% extends "::base.html.twig" %}
+
+{% block title %}UtilisateurBundle:Utilisateur:index{% endblock %}
+
+{% block body %}
+    <h1>Welcome to the Utilisateur:index page</h1>
+    <ul class="list-group">
+        {% for utilisateur in utilisateurs %}
+            <li class="list-group-item">{{ utilisateur.login }}</li>
+        {% endfor %}
+    </ul>
+
+{% endblock %}
