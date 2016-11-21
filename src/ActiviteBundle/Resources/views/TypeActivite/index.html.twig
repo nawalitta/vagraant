@@ -3,5 +3,11 @@
 {% block title %}ActiviteBundle:TypeActivite:edit{% endblock %}
 
 {% block body %}
-<h1>Welcome to the TypeActivite:edit page</h1>
+<h1>Welcome to the TypeActivite:index page</h1>
+
+{% for typeActivite in TypesActivites %}
+    Activite Fixee n° : {{typeActivite.id}}
+    {% include 'ActiviteBundle:TypeActivite:preview.html.twig' %}  
+{% endfor %}
+
 {% endblock %}

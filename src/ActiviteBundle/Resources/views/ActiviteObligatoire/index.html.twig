@@ -1,0 +1,13 @@
+{% extends "::base.html.twig" %}
+
+{% block title %}ActiviteBundle:ActiviteObligatoire:index{% endblock %}
+
+{% block body %}
+<h1>Welcome to the ActiviteObligatoire:index page</h1>
+
+{% for activiteObligatoire in activitesObligatoires %}
+    Activite Obligatoire n° : {{activiteObligatoire.id}}
+    {% include 'ActiviteBundle:ActiviteObligatoire:preview.html.twig' %}  
+{% endfor %}
+
+{% endblock %}

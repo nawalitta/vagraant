@@ -8,29 +8,26 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 
-class ActiviteType extends AbstractType
-{
+class ActiviteType extends AbstractType {
+
     /**
      * {@inheritdoc}
      */
-    public function buildForm(FormBuilderInterface $builder, array $options)
-    {
+    public function buildForm(FormBuilderInterface $builder, array $options) {
         $builder->add('designation')
-                ->add('dureeMax')
                 ->add('dureeMin')
-                ->add('nbEnfantsMax')
+                ->add('dureeMax')
                 ->add('nbEnfantsMin')
+                ->add('nbEnfantsMax')
                 ->add('dureeTransport')
-                ->add('typesActivite')
-                ->add('activiteRealisee')
-                ->add('OK',SubmitType::class)     ;
+                ->add('typesActivite', null, array('required' => true))
+                ->add('OK', SubmitType::class);
     }
     
     /**
      * {@inheritdoc}
      */
-    public function configureOptions(OptionsResolver $resolver)
-    {
+    public function configureOptions(OptionsResolver $resolver) {
         $resolver->setDefaults(array(
             'data_class' => 'ActiviteBundle\Entity\Activite'
         ));
@@ -39,8 +36,7 @@ class ActiviteType extends AbstractType
     /**
      * {@inheritdoc}
      */
-    public function getBlockPrefix()
-    {
+    public function getBlockPrefix() {
         return 'activitebundle_activite';
     }
 

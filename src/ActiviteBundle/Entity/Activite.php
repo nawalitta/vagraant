@@ -38,6 +38,16 @@ class Activite
     /**
      * @var int
      *
+     * @ORM\Column(name="duree_min", type="integer")
+     * @Assert\GreaterThan(
+     *     value = 0
+     * )
+     */
+    private $dureeMin;
+    
+    /**
+     * @var int
+     *
      * @ORM\Column(name="duree_max", type="integer")
      * @Assert\GreaterThan(
      *     value = 0
@@ -48,12 +58,12 @@ class Activite
     /**
      * @var int
      *
-     * @ORM\Column(name="duree_min", type="integer")
+     * @ORM\Column(name="nb_enfants_min", type="integer")
      * @Assert\GreaterThan(
      *     value = 0
      * )
      */
-    private $dureeMin;
+    private $nbEnfantsMin;
 
     /**
      * @var int
@@ -65,15 +75,6 @@ class Activite
      */
     private $nbEnfantsMax;
 
-    /**
-     * @var int
-     *
-     * @ORM\Column(name="nb_enfants_min", type="integer")
-     * @Assert\GreaterThan(
-     *     value = 0
-     * )
-     */
-    private $nbEnfantsMin;
 
     /**
      * @var int
@@ -330,6 +331,8 @@ class Activite
 
         return $this->nbEnfantsMax >= $this->nbEnfantsMin;
     }
+
+
 
     public function __toString()
     {

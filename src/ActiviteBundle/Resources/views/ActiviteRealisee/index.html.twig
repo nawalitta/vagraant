@@ -4,4 +4,9 @@
 
 {% block body %}
 <h1>Welcome to the ActiviteRealisee:index page</h1>
+
+{% for activiteRealisee in activitesRealisees %}
+    Activite Realisee n° : {{activiteRealisee.id}}
+    {% include 'ActiviteBundle:ActiviteRealisee:preview.html.twig' %}  
+{% endfor %}
 {% endblock %}

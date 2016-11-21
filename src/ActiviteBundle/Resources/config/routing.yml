@@ -12,23 +12,32 @@ ActiviteBundle_TypeActivite_delete:
     defaults: { _controller: ActiviteBundle:TypeActivite:delete }
 
 ActiviteBundle_TypeActivite_show:
-    path:     typeActivite/show/
+    path:     typeActivite/show/{id}
     defaults: { _controller: ActiviteBundle:TypeActivite:show }
     
 # ---------------ACTIVITE--------------------------------------------------------
+ActiviteBundle_Activite_index :
+    path:     activite/
+    defaults: { _controller: ActiviteBundle:Activite:index }
+
 ActiviteBundle_Activite_edit:
     path:     activite/edit/{id}
     defaults: { _controller: ActiviteBundle:Activite:edit,id : null }
 
-ActiviteBundle_Activite_index:
+ActiviteBundle_Activite_show:
     path: activite/show
-    defaults: { _controller: ActiviteBundle:Activite:index}
+    defaults: { _controller: ActiviteBundle:Activite:show}
     
 ActiviteBundle_Activite_delete:
     path: activite/delete/{id}
     defaults: { _controller: ActiviteBundle:Activite:delete, id : null }
 
 #---------------ACTIVITE OBLIGATOIRE ---------------------------------------------
+
+ActiviteBundle_ActiviteObligatoire_index :
+    path:     activiteObligatoire/
+    defaults: { _controller: ActiviteBundle:ActiviteObligatoire:index }
+
 ActiviteBundle_ActiviteObligatoire_edit:
     path: activiteObligatoire/edit/{id}
     defaults: { _controller: ActiviteBundle:ActiviteObligatoire:edit,id : null }
@@ -40,3 +49,32 @@ ActiviteBundle_ActiviteObligatoire_show:
 ActiviteBundle_ActiviteObligatoire_delete:
     path: activiteObligatoire/delete/{id}
     defaults: { _controller: ActiviteBundle:ActiviteObligatoire:delete, id : null }
+
+ #---------------ACTIVITE FIXEE-----------------------------
+
+ActiviteBundle_ActiviteFixee_index:
+    path:     ActiviteFixee/
+    defaults: { _controller: ActiviteBundle:ActiviteFixee:index }
+
+
+ActiviteBundle_ActiviteFixee_show:
+    path:     ActiviteFixee/show/{id}
+    defaults: { _controller: ActiviteBundle:ActiviteFixee:show }
+
+ActiviteBundle_ActiviteFixee_delete:
+    path:     ActiviteFixee/delete/{id}
+    defaults: { _controller: ActiviteBundle:ActiviteFixee:delete }
+
+ActiviteBundle_ActiviteFixee_edit:
+    path:     ActiviteFixee/edit/{id}
+    defaults: { _controller: ActiviteBundle:ActiviteFixee:edit , id : null }
+
+ #---------------Jour-----------------------------
+
+ActiviteBundle_Jour_index:
+    path:     Jour/
+    defaults: { _controller: ActiviteBundle:Jour:index }
+
+ActiviteBundle_Jour_show:
+    path:     Jour/show/{id}
+    defaults: { _controller: ActiviteBundle:Jour:show }

@@ -3,54 +3,93 @@
 namespace ActiviteBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use ActiviteBundle\Form\ActiviteObligatoireType;
-use ActiviteBundle\Entity\ActiviteObligatoire;
 use Symfony\Component\HttpFoundation\Request;
+use ActiviteBundle\Form\ActiviteObligatoireType;
 
 class ActiviteObligatoireController extends Controller
 {
-    public function editAction($id=null, Request $request)
+    /**
+     * Affichage de toutes les ActiviteObligatoire présentes dans la bdd
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function indexAction()
     {
-        $activiteObligatoire = new ActiviteObligatoire();
-        $form = $this->createForm(ActiviteObligatoireType::class,$activiteObligatoire);
-         $form->handleRequest($request);
-        if ($id==null){
-            #Ajout
-            if ($form->isValid()) {
-                $activiteObligatoire = $form->getData();
-                $em->persist($activiteObligatoire);
-                $em->flush();
-                return $this->redirectToRoute('ActiviteBundle_activiteObligatoire_show');
-            }
-        }else{
-            #Modification
-            $activiteObligatoire = $em->getRepository('ActiviteBundle:ActiviteObligatoire')->find($id);
-            $activiteObligatoire = $form->getData();
-            $em->flush();
-            return $this->redirectToRoute('ActiviteBundle_activiteObligatoire_show');
-            
-            
-        }
+        $entityManager = $this->getDoctrine()->getManager();
+        $activiteObligatoireRepository = $entityManager->getRepository("ActiviteBundle:ActiviteObligatoire");
+        $activitesFixees = $activiteObligatoireRepository->findAll();
         
-        return $this->render('ActiviteBundle:ActiviteObligatoire:edit.html.twig',array('form' => $form->createView(),
+        return $this->render('ActiviteBundle:ActiviteObligatoire:index.html.twig', array(
+        "activitesFixees"=>$activitesFixees
         ));
     }
     
-    public function deleteAction($id=null)
+    /**
+     * Affichage d'une ActiviteObligatoire présent dans la bdd
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function showAction($id)
     {
-        if($id!=null)
-        {
-            $em = $this->getDoctrine()->getManager();
-            $activiteObligatoire = $em->getRepository('ActiviteBundle:ActiviteObligatoire')->find($id);
-            $em->remove($activiteObligatoire);
-            $em->flush();
-        }
-        return $this->render('ActiviteBundle:ActiviteObligatoire:show.html.twig');
+        $entityManager = $this->getDoctrine()->getManager();
+        $activiteObligatoireRepository = $entityManager->getRepository("ActiviteBundle:ActiviteObligatoire");
+        $activiteObligatoire = $activiteObligatoireRepository->findOneById($id);
+        
+        return $this->render('ActiviteBundle:ActiviteObligatoire:show.html.twig', array(
+        "activiteObligatoire"=>$activiteObligatoire
+        ));
     }
-    
-    public function showAction()
+
+    /**
+     * @param null $id : si null alors ajout
+     *                   sinon édition d'une ActiviteObligatoire
+     * @param Request $request
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function editAction($id=null,Request $request)
     {
-        return $this->render('ActiviteBundle:ActiviteObligatoire:show.html.twig');
+        $entityManager = $this->getDoctrine()->getManager();
+        $activiteObligatoireRepository = $entityManager->getRepository("ActiviteBundle:ActiviteObligatoire");
+        $activiteObligatoire = $activiteObligatoireRepository->findOneById($id);
+        
+        if($activiteObligatoire==null){
+            $activiteObligatoire=new \ActiviteBundle\Entity\ActiviteObligatoire();
+        }
+        
+        $form = $this->createForm(ActiviteObligatoireType::class,$activiteObligatoire);
+        $form->handleRequest($request);
+        
+        if($form->isValid()){
+            
+            $entityManager->persist($activiteObligatoire);
+            $entityManager->flush();
+            
+            $this->get('session')->getFlashBag()->add('notice', 'ActiviteObligatoire bien enregistrée.');
+
+            return $this->redirect($this->generateUrl('ActiviteBundle_ActiviteObligatoire_index'));
+        }
+        
+        return $this->render('ActiviteBundle:ActiviteObligatoire:edit.html.twig', array(
+        'activiteObligatoire'=>$activiteObligatoire,
+        'form' => $form->createView()
+        ));
+    }
+
+    /**
+     * Suppression d'une ActiviteObligatoire
+     * @param null $id
+     * @return \Symfony\Component\HttpFoundation\Response
+     */    
+    public function deleteAction($id)
+    {
+        $entityManager = $this->getDoctrine()->getManager();
+  
+        $activiteObligatoireRepository = $entityManager->getRepository("ActiviteBundle:ActiviteObligatoire");
+        $activiteObligatoire = $activiteObligatoireRepository->findOneById($id);
+        if($activiteObligatoire!=null){
+            $entityManager->remove ($activiteObligatoire);
+        }
+        $entityManager->flush();
+       
+        return $this->redirect($this->generateUrl('ActiviteBundle_ActiviteObligatoire_index'));
     }
 
 }
