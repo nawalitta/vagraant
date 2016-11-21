@@ -275,7 +275,6 @@ class Enfant
     {
         return $this->nom . ' ' . $this->prenom ;
     }
-}
 
     /**
      * Set fenetreHoraire

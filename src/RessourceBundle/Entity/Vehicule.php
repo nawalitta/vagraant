@@ -4,6 +4,7 @@ namespace RessourceBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
+
 /**
  * Vehicule
  *
@@ -96,6 +97,6 @@ class Vehicule
     }
     
     public function __toString() {
-        return $this->labelV;
+        return $this->designation;
     }
 }
