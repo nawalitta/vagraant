@@ -30,3 +30,19 @@ RessourceBunde_Ressource_delete:
 RessourceBunde_Ressource_show:
     path:     Ressource/show/{id}
     defaults: { _controller: RessourceBundle:Ressource:show }
+
+edit:
+    path:     besoinTypeRessource
+    defaults: { _controller: RessourceBundle:BesoinTypeRessourceController:edit }
+
+delete:
+    path:     besoinTypeRessource
+    defaults: { _controller: RessourceBundle:BesoinTypeRessourceController:delete }
+
+index:
+    path:     besoinTypeRessource
+    defaults: { _controller: RessourceBundle:BesoinTypeRessourceController:index }
+
+show:
+    path:     besoinTypeRessource
+    defaults: { _controller: RessourceBundle:BesoinTypeRessourceController:show }
