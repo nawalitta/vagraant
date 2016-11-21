@@ -86,51 +86,51 @@ class Activite
     private $dureeTransport;
 
     /**
-     * @ORM\ManyToOne(targetEntity="TypeActivite")
-     * @ORM\JoinColumn(nullable=false)
-     */
+   * @ORM\ManyToOne(targetEntity="TypeActivite")
+   * @ORM\JoinColumn(nullable=false)
+   */
     private $typesActivite;
 
     /**
      * @ORM\ManyToOne(targetEntity="RessourceBundle\Entity\FenetreHoraire",inversedBy="Activite")
      * @ORM\JoinColumn(nullable=false)
-     */  
+     */
     private $fenetreHoraire;
-    
+
     /**
      * @ORM\ManyToMany(targetEntity="RessourceBundle\Entity\Enfant")
      */
     private $enfantsOptionnel;
-    
+
     /**
      * @ORM\OneToOne(targetEntity="ActiviteRealisee")
      * @ORM\JoinColumn(nullable=false)
      */
     private $ActiviteRealisee;
 
-    
+
     /**
      * @ORM\OneToMany(targetEntity="RessourceBundle\Entity\Preaffection", mappedBy="Activite")
      */
     private $preaffection;
-    
-    
+
+
     /**
      * @ORM\OneToMany(targetEntity="ActiviteObligatoire", mappedBy="Activite")
-     */    
+     */
     private $enfantObligatoires;
-    
-    
+
+
     /**
      * @ORM\OneToMany(targetEntity="ActiviteFixee", mappedBy="Activite")
-     */   
+     */
     private $horairefixe;
-    
+
     /**
      * @ORM\OneToMany(targetEntity="RessourceBundle\Entity\BesoinTypeRessource", mappedBy="Activite")
-     */     
+     */
     private $besoinsTypeRessource;
-    
+
     /**
      * Get id
      *

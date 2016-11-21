@@ -9,6 +9,7 @@ use ActiviteBundle\Entity\ActiviteRealisee;
 use DateTime;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Enfant
@@ -72,35 +73,35 @@ class Enfant
      /**
      * @ORM\ManyToOne(targetEntity="FenetreHoraire",inversedBy="Enfant")
      * @ORM\JoinColumn(nullable=false)
-     */ 
+     */
     private $fenetreHoraire;
-    
+
     /**
      * @ORM\ManyToOne(targetEntity="Groupe",inversedBy="Enfant")
      * @ORM\JoinColumn(nullable=false)
-     */ 
+     */
     private $groupe;
-    
+
     /**
      * @ORM\ManyToMany(targetEntity="ActiviteBundle\Entity\Activite")
      */
     private $activitesOptionelles;
-    
+
     /**
      * @ORM\OneToMany(targetEntity="ActiviteBundle\Entity\ActiviteFixee", mappedBy="Enfant")
      */
     private $activitesFixees;
-    
+
      /**
      * @ORM\OneToMany(targetEntity="ActiviteBundle\Entity\ActiviteRealisee", mappedBy="Enfant")
-     */   
+     */
     private $activitesRealisees;
-    
+
     /**
      * @ORM\OneToMany(targetEntity="ActiviteBundle\Entity\ActiviteObligatoire", mappedBy="Enfant")
      */
     private $activitesObligatoires;
-    
+
     /**
      * @ORM\OneToMany(targetEntity="Preaffection", mappedBy="Enfant")
      */
@@ -269,6 +270,12 @@ class Enfant
         $this->activitesObligatoires = new ArrayCollection();
         $this->preaffection = new ArrayCollection();
     }
+
+    public function __toString()
+    {
+        return $this->nom . ' ' . $this->prenom ;
+    }
+}
 
     /**
      * Set fenetreHoraire

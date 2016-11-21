@@ -49,14 +49,14 @@ class ActiviteObligatoire
      * @ORM\JoinColumn(nullable=false)
      */
     private $activite;
-    
-    
+
+
     /**
      * @ORM\ManyToOne(targetEntity="RessourceBundle\Entity\Enfant",inversedBy="ActiviteObligatoire")
      * @ORM\JoinColumn(nullable=false)
      */
     private $enfant;
-    
+
     /**
      * Get id
      *

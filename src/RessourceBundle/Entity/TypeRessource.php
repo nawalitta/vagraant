@@ -33,7 +33,7 @@ class TypeRessource
      * @ORM\OneToMany(targetEntity="BesoinTypeRessource", mappedBy="TypeRessource")
      */
     private $besoinsTypeRessources;
-    
+
     /**
      * @ORM\OneToMany(targetEntity="Ressource", mappedBy="TypeRessource")
      */
@@ -146,5 +146,9 @@ class TypeRessource
     public function getRessources()
     {
         return $this->ressources;
+    }
+
+    public function __toString(){
+        return $this->designation;
     }
 }

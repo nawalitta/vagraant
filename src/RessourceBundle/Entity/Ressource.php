@@ -47,12 +47,12 @@ class Ressource
      * @ORM\JoinColumn(nullable=false)
      */
   private $typeRessource;
-  
+
     /**
      * @ORM\OneToMany(targetEntity="Preaffection", mappedBy="Ressource")
      */
   private $preaffection;
-  
+
   
     /**
      * Get id
@@ -209,5 +209,9 @@ class Ressource
     public function getPreaffection()
     {
         return $this->preaffection;
+    }
+
+    public function __toString() {
+        return $this->designation;
     }
 }

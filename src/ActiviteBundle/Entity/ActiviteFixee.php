@@ -40,21 +40,21 @@ class ActiviteFixee
     /**
      * @ORM\ManyToOne(targetEntity="Jour",inversedBy="ActiviteFixee")
      * @ORM\JoinColumn(nullable=false)
-     */ 
+     */
     private $jour;
-    
+
     /**
      * @ORM\ManyToOne(targetEntity="RessourceBundle\Entity\Enfant",inversedBy="ActiviteFixee")
      * @ORM\JoinColumn(nullable=false)
-     */ 
+     */
     private $enfant;
-    
+
     /**
      * @ORM\ManyToOne(targetEntity="Activite",inversedBy="ActiviteFixee")
      * @ORM\JoinColumn(nullable=false)
-     */ 
+     */
     private $activite;
-    
+
 
     /**
      * Get id
@@ -112,6 +112,15 @@ class ActiviteFixee
     public function getHeureFin()
     {
         return $this->heureFin;
+    }
+
+    /**
+     *
+     * @Assert\isTrue(message ="L'heure de fin doit être superieur a l'heure de début")
+     */
+    public function isHeureValid()
+    {
+        return $this->heureFin >= $this->heureDebut;
     }
 
     /**
