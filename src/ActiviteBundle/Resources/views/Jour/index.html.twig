@@ -4,4 +4,9 @@
 
 {% block body %}
 <h1>Welcome to the Jour:index page</h1>
+{% for jour in jours %}
+    Activite Fixee n° : {{jour.id}}
+    {% include 'ActiviteBundle:Jour:preview.html.twig' %}  
+{% endfor %}
+
 {% endblock %}

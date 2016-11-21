@@ -20,20 +20,25 @@ ActiviteBundle_Activite_index :
     path:     activite/
     defaults: { _controller: ActiviteBundle:Activite:index }
 
-ActiviteBundle_activite_edit:
+ActiviteBundle_Activite_edit:
     path:     activite/edit/{id}
     defaults: { _controller: ActiviteBundle:Activite:edit,id : null }
 
-ActiviteBundle_activite_show:
+ActiviteBundle_Activite_show:
     path: activite/show
     defaults: { _controller: ActiviteBundle:Activite:show}
     
-ActiviteBundle_activite_delete:
+ActiviteBundle_Activite_delete:
     path: activite/delete/{id}
     defaults: { _controller: ActiviteBundle:Activite:delete, id : null }
 
 #---------------ACTIVITE OBLIGATOIRE ---------------------------------------------
-ActiviteBundle_activiteObligatoire_edit:
+
+ActiviteBundle_ActiviteObligatoire_index :
+    path:     activiteObligatoire/
+    defaults: { _controller: ActiviteBundle:ActiviteObligatoire:index }
+
+ActiviteBundle_ActiviteObligatoire_edit:
     path: activiteObligatoire/edit/{id}
     defaults: { _controller: ActiviteBundle:ActiviteObligatoire:edit,id : null }
 
@@ -41,15 +46,16 @@ ActiviteBundle_activiteObligatoire_show:
     path: activiteObligatoire/show
     defaults: { _controller: ActiviteBundle:ActiviteObligatoire:show }
 
-ActiviteBundle_activiteObligatoire_delete:
+ActiviteBundle_ActiviteObligatoire_delete:
     path: activiteObligatoire/delete/{id}
     defaults: { _controller: ActiviteBundle:ActiviteObligatoire:delete, id : null }
+
+ #---------------ACTIVITE FIXEE-----------------------------
 
 ActiviteBundle_ActiviteFixee_index:
     path:     ActiviteFixee/
     defaults: { _controller: ActiviteBundle:ActiviteFixee:index }
 
- #---------------ACTIVITE FIXEE-----------------------------
 
 ActiviteBundle_ActiviteFixee_show:
     path:     ActiviteFixee/show/{id}

@@ -3,5 +3,11 @@
 {% block title %}ActiviteBundle:ActiviteFixee:index{% endblock %}
 
 {% block body %}
-<h1>Welcome to the ActiviteFixee:index page</h1>
+<h1>Welcome to the Activite:index page</h1>
+
+{% for activite in activites %}
+    Activite n° : {{activite.id}}
+    {% include 'ActiviteBundle:Activite:preview.html.twig' %}  
+{% endfor %}
+
 {% endblock %}
