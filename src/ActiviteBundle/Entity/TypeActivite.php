@@ -32,7 +32,7 @@ class TypeActivite
     
     
     /**
-     * @ORM\ManyToOne(targetEntity="Activite",inversedBy="TypeActivite")
+     * @ORM\ManyToOne(targetEntity="Activite",inversedBy="typeActivite")
      * @ORM\JoinColumn(nullable=false)
      */  
     private $activites;

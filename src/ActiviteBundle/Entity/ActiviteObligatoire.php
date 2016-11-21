@@ -45,7 +45,7 @@ class ActiviteObligatoire
 
 
    /**
-     * @ORM\ManyToOne(targetEntity="Activite",inversedBy="ActiviteObligatoire")
+     * @ORM\ManyToOne(targetEntity="Activite",inversedBy="enfantObligatoire")
      * @ORM\JoinColumn(nullable=false)
      */
     private $activite;

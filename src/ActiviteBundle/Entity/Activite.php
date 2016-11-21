@@ -87,13 +87,13 @@ class Activite
     private $dureeTransport;
 
     /**
-   * @ORM\ManyToOne(targetEntity="TypeActivite")
+   * @ORM\ManyToOne(targetEntity="ActiviteBundle\Entity\TypeActivite",inversedBy="activites")
    * @ORM\JoinColumn(nullable=false)
    */
-    private $typesActivite;
+    private $typeActivite;
 
     /**
-     * @ORM\ManyToOne(targetEntity="RessourceBundle\Entity\FenetreHoraire",inversedBy="Activite")
+     * @ORM\ManyToOne(targetEntity="RessourceBundle\Entity\FenetreHoraire",inversedBy="activites")
      * @ORM\JoinColumn(nullable=false)
      */
     private $fenetreHoraire;
@@ -104,33 +104,32 @@ class Activite
     private $enfantsOptionnel;
 
     /**
-     * @ORM\OneToOne(targetEntity="ActiviteRealisee")
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\OneToMany(targetEntity="ActiviteBundle\Entity\ActiviteRealisee", mappedBy="activite")
      */
-    private $ActiviteRealisee;
+    private $activitesRealisees;
 
 
     /**
-     * @ORM\OneToMany(targetEntity="RessourceBundle\Entity\Preaffection", mappedBy="Activite")
+     * @ORM\OneToMany(targetEntity="RessourceBundle\Entity\Preaffection", mappedBy="activite")
      */
-    private $preaffection;
+    private $preaffections;
 
 
     /**
-     * @ORM\OneToMany(targetEntity="ActiviteObligatoire", mappedBy="Activite")
+     * @ORM\OneToMany(targetEntity="ActiviteObligatoire", mappedBy="activite")
      */
-    private $enfantObligatoires;
+    private $enfantsObligatoires;
 
 
     /**
-     * @ORM\OneToMany(targetEntity="ActiviteFixee", mappedBy="Activite")
+     * @ORM\OneToMany(targetEntity="ActiviteFixee", mappedBy="activite")
      */
-    private $horairefixe;
+    private $horairesfixes;
 
     /**
-     * @ORM\OneToMany(targetEntity="RessourceBundle\Entity\BesoinTypeRessource", mappedBy="Activite")
+     * @ORM\OneToMany(targetEntity="RessourceBundle\Entity\BesoinTypeRessource", mappedBy="activite")
      */
-    private $besoinsTypeRessource;
+    private $besoinsTypeRessources;
 
     /**
      * Get id
