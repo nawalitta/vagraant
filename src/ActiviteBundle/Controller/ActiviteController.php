@@ -23,7 +23,7 @@ class ActiviteController extends Controller
                 $activite = $form->getData();
                 $em->persist($activite);
                 $em->flush();
-                return $this->redirectToRoute('ActiviteBundle_Activite_show');
+                return $this->redirectToRoute('ActiviteBundle_Activite_index');
             }
         }else{
             #Modification
@@ -49,12 +49,12 @@ class ActiviteController extends Controller
             $em->flush();
         }
 
-        return $this->render('ActiviteBundle:Activite:show.html.twig');
+        return $this->render('ActiviteBundle:Activite:index.html.twig');
     }
-    public function showAction()
+    public function indexAction()
     {
         $em = $this->getDoctrine()->getManager();
         $listActivite = $em->getRepository("ActiviteBundle:Activite")->findAll();
-        return $this->render('ActiviteBundle:Activite:show.html.twig',array("listActivite"=>$listActivite));
+        return $this->render('ActiviteBundle:Activite:index.html.twig',array("listActivite"=>$listActivite));
     }
 }

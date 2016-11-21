@@ -61,4 +61,8 @@ class TypeRessource
     {
         return $this->designation;
     }
+    
+    public function __toString(){
+        return $this->designation;
+    }
 }

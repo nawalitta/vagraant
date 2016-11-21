@@ -3,6 +3,7 @@
 namespace RessourceBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Enfant
@@ -62,7 +63,6 @@ class Enfant
      * @ORM\Column(name="identifiant", type="string", length=255)
      */
     private $identifiant;
-
 
     /**
      * Get id
@@ -207,7 +207,6 @@ class Enfant
     
         return $this;
     }
-
     /**
      * Get identifiant
      *
@@ -216,6 +215,15 @@ class Enfant
     public function getIdentifiant()
     {
         return $this->identifiant;
+    }
+    
+    public function __construct()
+    {
+       
+    }
+    public function __toString()
+    {
+        return $this->nom . ' ' . $this->prenom ;
     }
 }
 

@@ -2,6 +2,7 @@
 
 namespace ActiviteBundle\Entity;
 
+use Symfony\Component\Validator\Constraints as Assert;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -92,6 +93,18 @@ class ActiviteFixee
     public function getHeureFin()
     {
         return $this->heureFin;
+    }       
+    
+    /**
+     *
+     * @Assert\isTrue(message ="L'heure de fin doit être superieur a l'heure de début")
+     */
+    public function isHeureValid()
+    {
+        return $this->heureFin >= $this->heureDebut;
     }
+    
+    
+    
 }
 

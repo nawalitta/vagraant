@@ -3,7 +3,7 @@
 namespace RessourceBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-
+use Symfony\Component\Validator\Constraints as Assert;
 /**
  * BesoinTypeRessource
  *
@@ -25,6 +25,9 @@ class BesoinTypeRessource
      * @var int
      *
      * @ORM\Column(name="quantiteRessource", type="integer")
+     * @Assert\GreaterThan(
+     *     value = 0
+     * )
      */
     private $quantiteRessource;
 
@@ -32,6 +35,9 @@ class BesoinTypeRessource
      * @var int
      *
      * @ORM\Column(name="ratio", type="integer")
+     * @Assert\GreaterThan(
+     *     value = 0
+     * )
      */
     private $ratio;
 

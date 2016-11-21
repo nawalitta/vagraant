@@ -3,7 +3,7 @@
 namespace RessourceBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-
+use Symfony\Component\Validator\Constraints as Assert;
 /**
  * Vehicule
  *
@@ -25,6 +25,9 @@ class Vehicule
      * @var int
      *
      * @ORM\Column(name="nbPlaceAssise", type="integer")
+     * @Assert\GreaterThan(
+     *     value = 0
+     * )
      */
     private $nbPlaceAssise;
 
@@ -89,6 +92,10 @@ class Vehicule
      */
     public function getLabelV()
     {
+        return $this->labelV;
+    }
+    
+    public function __toString() {
         return $this->labelV;
     }
 }

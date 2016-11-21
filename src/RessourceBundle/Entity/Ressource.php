@@ -140,4 +140,8 @@ class Ressource
     {
         return $this->fenetreHoraire;
     }
+    
+    public function __toString() {
+        return $this->designation;
+    }
 }

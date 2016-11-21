@@ -20,9 +20,9 @@ ActiviteBundle_Activite_edit:
     path:     activite/edit/{id}
     defaults: { _controller: ActiviteBundle:Activite:edit,id : null }
 
-ActiviteBundle_Activite_show:
+ActiviteBundle_Activite_index:
     path: activite/show
-    defaults: { _controller: ActiviteBundle:Activite:show}
+    defaults: { _controller: ActiviteBundle:Activite:index}
     
 ActiviteBundle_Activite_delete:
     path: activite/delete/{id}
