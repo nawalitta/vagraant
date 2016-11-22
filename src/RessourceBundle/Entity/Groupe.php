@@ -27,6 +27,11 @@ class Groupe
      */
     private $designation;
 
+        /**
+     * @ORM\OneToMany(targetEntity="Enfant", mappedBy="groupe")
+     */
+    private $enfants;
+    
     /**
      * Get id
      *
@@ -83,5 +88,46 @@ class Groupe
     public function getDesignation()
     {
         return $this->designation;
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->enfants = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add enfant
+     *
+     * @param \RessourceBundle\Entity\Enfant $enfant
+     *
+     * @return Groupe
+     */
+    public function addEnfant(\RessourceBundle\Entity\Enfant $enfant)
+    {
+        $this->enfants[] = $enfant;
+
+        return $this;
+    }
+
+    /**
+     * Remove enfant
+     *
+     * @param \RessourceBundle\Entity\Enfant $enfant
+     */
+    public function removeEnfant(\RessourceBundle\Entity\Enfant $enfant)
+    {
+        $this->enfants->removeElement($enfant);
+    }
+
+    /**
+     * Get enfants
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getEnfants()
+    {
+        return $this->enfants;
     }
 }

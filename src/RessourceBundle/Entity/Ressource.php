@@ -37,21 +37,21 @@ class Ressource
   private $activiteesRealisees;
     
     /**
-     * @ORM\ManyToOne(targetEntity="FenetreHoraire",inversedBy="Ressource")
+     * @ORM\ManyToOne(targetEntity="FenetreHoraire",inversedBy="ressource")
      * @ORM\JoinColumn(nullable=false)
      */
   private $fenetreHoraire;
   
     /**
-     * @ORM\ManyToOne(targetEntity="TypeRessource",inversedBy="Ressource")
+     * @ORM\ManyToOne(targetEntity="TypeRessource",inversedBy="ressources")
      * @ORM\JoinColumn(nullable=false)
      */
   private $typeRessource;
 
     /**
-     * @ORM\OneToMany(targetEntity="Preaffection", mappedBy="Ressource")
+     * @ORM\OneToMany(targetEntity="Preaffection", mappedBy="ressource")
      */
-  private $preaffection;
+  private $preaffections;
 
   
     /**
@@ -213,5 +213,15 @@ class Ressource
 
     public function __toString() {
         return $this->designation;
+    }
+
+    /**
+     * Get preaffections
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getPreaffections()
+    {
+        return $this->preaffections;
     }
 }

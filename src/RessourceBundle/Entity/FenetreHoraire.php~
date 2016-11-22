@@ -2,9 +2,6 @@
 
 namespace RessourceBundle\Entity;
 
-use ActiviteBundle\Entity\Activite;
-use DateTime;
-use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 /**
@@ -94,21 +91,21 @@ class FenetreHoraire
      */
     private $vendrediFin;
 
-    /**
-     * @ORM\OneToMany(targetEntity="Ressource", mappedBy="FenetreHoraire")
-     */
+/**
+   * @ORM\OneToMany(targetEntity="Ressource", mappedBy="fenetreHoraire")
+   */
     private $ressources;
     
     /**
-     * @ORM\OneToMany(targetEntity="ActiviteBundle\Entity\Activite", mappedBy="FenetreHoraire")
+     * @ORM\OneToMany(targetEntity="ActiviteBundle\Entity\Activite", mappedBy="fenetreHoraire")
      */
     private $activites;
-    
+
     /**
-     * @ORM\OneToMany(targetEntity="Enfant", mappedBy="FenetreHoraire")
+     * @ORM\OneToMany(targetEntity="Enfant", mappedBy="fenetreHoraire")
      */
-    
     private $enfants;
+    
     /**
      * Get id
      *

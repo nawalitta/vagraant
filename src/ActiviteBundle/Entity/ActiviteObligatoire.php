@@ -52,7 +52,7 @@ class ActiviteObligatoire
 
 
     /**
-     * @ORM\ManyToOne(targetEntity="RessourceBundle\Entity\Enfant",inversedBy="ActiviteObligatoire")
+     * @ORM\ManyToOne(targetEntity="RessourceBundle\Entity\Enfant",inversedBy="activitesObligatoires")
      * @ORM\JoinColumn(nullable=false)
      */
     private $enfant;

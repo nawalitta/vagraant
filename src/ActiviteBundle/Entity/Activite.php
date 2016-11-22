@@ -568,4 +568,150 @@ class Activite
     {
         return $this->besoinsTypeRessource;
     }
+
+    /**
+     * Set typeActivite
+     *
+     * @param \ActiviteBundle\Entity\TypeActivite $typeActivite
+     *
+     * @return Activite
+     */
+    public function setTypeActivite(\ActiviteBundle\Entity\TypeActivite $typeActivite)
+    {
+        $this->typeActivite = $typeActivite;
+
+        return $this;
+    }
+
+    /**
+     * Get typeActivite
+     *
+     * @return \ActiviteBundle\Entity\TypeActivite
+     */
+    public function getTypeActivite()
+    {
+        return $this->typeActivite;
+    }
+
+    /**
+     * Add activitesRealisee
+     *
+     * @param \ActiviteBundle\Entity\ActiviteRealisee $activitesRealisee
+     *
+     * @return Activite
+     */
+    public function addActivitesRealisee(\ActiviteBundle\Entity\ActiviteRealisee $activitesRealisee)
+    {
+        $this->activitesRealisees[] = $activitesRealisee;
+
+        return $this;
+    }
+
+    /**
+     * Remove activitesRealisee
+     *
+     * @param \ActiviteBundle\Entity\ActiviteRealisee $activitesRealisee
+     */
+    public function removeActivitesRealisee(\ActiviteBundle\Entity\ActiviteRealisee $activitesRealisee)
+    {
+        $this->activitesRealisees->removeElement($activitesRealisee);
+    }
+
+    /**
+     * Get activitesRealisees
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getActivitesRealisees()
+    {
+        return $this->activitesRealisees;
+    }
+
+    /**
+     * Get preaffections
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getPreaffections()
+    {
+        return $this->preaffections;
+    }
+
+    /**
+     * Add enfantsObligatoire
+     *
+     * @param \ActiviteBundle\Entity\ActiviteObligatoire $enfantsObligatoire
+     *
+     * @return Activite
+     */
+    public function addEnfantsObligatoire(\ActiviteBundle\Entity\ActiviteObligatoire $enfantsObligatoire)
+    {
+        $this->enfantsObligatoires[] = $enfantsObligatoire;
+
+        return $this;
+    }
+
+    /**
+     * Remove enfantsObligatoire
+     *
+     * @param \ActiviteBundle\Entity\ActiviteObligatoire $enfantsObligatoire
+     */
+    public function removeEnfantsObligatoire(\ActiviteBundle\Entity\ActiviteObligatoire $enfantsObligatoire)
+    {
+        $this->enfantsObligatoires->removeElement($enfantsObligatoire);
+    }
+
+    /**
+     * Get enfantsObligatoires
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getEnfantsObligatoires()
+    {
+        return $this->enfantsObligatoires;
+    }
+
+    /**
+     * Add horairesfix
+     *
+     * @param \ActiviteBundle\Entity\ActiviteFixee $horairesfix
+     *
+     * @return Activite
+     */
+    public function addHorairesfix(\ActiviteBundle\Entity\ActiviteFixee $horairesfix)
+    {
+        $this->horairesfixes[] = $horairesfix;
+
+        return $this;
+    }
+
+    /**
+     * Remove horairesfix
+     *
+     * @param \ActiviteBundle\Entity\ActiviteFixee $horairesfix
+     */
+    public function removeHorairesfix(\ActiviteBundle\Entity\ActiviteFixee $horairesfix)
+    {
+        $this->horairesfixes->removeElement($horairesfix);
+    }
+
+    /**
+     * Get horairesfixes
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getHorairesfixes()
+    {
+        return $this->horairesfixes;
+    }
+
+    /**
+     * Get besoinsTypeRessources
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getBesoinsTypeRessources()
+    {
+        return $this->besoinsTypeRessources;
+    }
 }

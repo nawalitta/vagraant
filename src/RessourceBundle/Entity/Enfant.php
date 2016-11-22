@@ -71,13 +71,13 @@ class Enfant
     private $identifiant;
 
      /**
-     * @ORM\ManyToOne(targetEntity="FenetreHoraire",inversedBy="Enfant")
+     * @ORM\ManyToOne(targetEntity="FenetreHoraire",inversedBy="enfants")
      * @ORM\JoinColumn(nullable=false)
      */
     private $fenetreHoraire;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Groupe",inversedBy="Enfant")
+     * @ORM\ManyToOne(targetEntity="Groupe",inversedBy="enfants")
      * @ORM\JoinColumn(nullable=false)
      */
     private $groupe;
@@ -88,24 +88,24 @@ class Enfant
     private $activitesOptionelles;
 
     /**
-     * @ORM\OneToMany(targetEntity="ActiviteBundle\Entity\ActiviteFixee", mappedBy="Enfant")
+     * @ORM\OneToMany(targetEntity="ActiviteBundle\Entity\ActiviteFixee", mappedBy="enfant")
      */
     private $activitesFixees;
 
      /**
-     * @ORM\OneToMany(targetEntity="ActiviteBundle\Entity\ActiviteRealisee", mappedBy="Enfant")
+     * @ORM\OneToMany(targetEntity="ActiviteBundle\Entity\ActiviteRealisee", mappedBy="enfant")
      */
     private $activitesRealisees;
 
     /**
-     * @ORM\OneToMany(targetEntity="ActiviteBundle\Entity\ActiviteObligatoire", mappedBy="Enfant")
+     * @ORM\OneToMany(targetEntity="ActiviteBundle\Entity\ActiviteObligatoire", mappedBy="enfant")
      */
     private $activitesObligatoires;
 
     /**
-     * @ORM\OneToMany(targetEntity="Preaffection", mappedBy="Enfant")
+     * @ORM\OneToMany(targetEntity="Preaffection", mappedBy="enfant")
      */
-    private $preaffection;
+    private $preaffections;
 
     /**
      * Get id
@@ -492,5 +492,15 @@ class Enfant
     public function getActivitesRealisees()
     {
         return $this->activitesRealisees;
+    }
+
+    /**
+     * Get preaffections
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getPreaffections()
+    {
+        return $this->preaffections;
     }
 }

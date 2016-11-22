@@ -59,7 +59,7 @@ class BesoinTypeRessource
 
 
      /**
-     * @ORM\ManyToOne(targetEntity="TypeRessource",inversedBy="besoinTypeRessource")
+     * @ORM\ManyToOne(targetEntity="TypeRessource",inversedBy="besoinsTypeRessources")
      * @ORM\JoinColumn(nullable=false)
      */
     private $typeRessource;

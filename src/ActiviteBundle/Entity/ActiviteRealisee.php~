@@ -53,13 +53,13 @@ class ActiviteRealisee
   private $ressources; 
    
     /**
-     * @ORM\ManyToOne(targetEntity="RessourceBundle\Entity\Enfant",inversedBy="ActiviteRealisee")
+     * @ORM\ManyToOne(targetEntity="RessourceBundle\Entity\Enfant",inversedBy="$activitesRealisees")
      * @ORM\JoinColumn(nullable=false)
      */  
   private $enfant;
   
     /**
-     * @ORM\ManyToOne(targetEntity="Jour",inversedBy="ActiviteRealisee")
+     * @ORM\ManyToOne(targetEntity="Jour",inversedBy="$activitesRealisees")
      * @ORM\JoinColumn(nullable=false)
      */  
   private $jour;
@@ -131,6 +131,10 @@ class ActiviteRealisee
         $this->ressources = new ArrayCollection();
     }
 
+    public function __toString() {
+        
+        return $this->activite->getDesignation();
+    }
     /**
      * Set activite
      *
@@ -193,9 +197,9 @@ class ActiviteRealisee
     /**
      * @Assert\IsTrue(message = "L'heure de début doit etre avant l'heure de fin")
      */
-    public function isValidDate()
+    public function isValidHeure()
     {
-        return ($this->heureDebut<$this->heureFin);
+        return ($this->heureDebut<=$this->heureFin);
     }
     
 
