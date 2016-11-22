@@ -3,7 +3,9 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/wamp/www/gpac/</file>
+            <file>file:/C:/wamp64/www/gpac/src/RessourceBundle/Entity/BesoinTypeRessource.php</file>
+            <file>file:/C:/wamp64/www/gpac/src/RessourceBundle/Controller/RessourceController.php</file>
+            <file>file:/C:/wamp64/www/gpac/src/RessourceBundle/Controller/FenetreHoraireController.php</file>
         </group>
     </open-files>
 </project-private>

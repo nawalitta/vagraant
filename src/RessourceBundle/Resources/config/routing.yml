@@ -46,3 +46,35 @@ index:
 show:
     path:     besoinTypeRessource
     defaults: { _controller: RessourceBundle:BesoinTypeRessourceController:show }
+
+edit:
+    path:     besoinTypeRessource
+    defaults: { _controller: RessourceBundle:BesoinTypeRessource:edit }
+
+delete:
+    path:     besoinTypeRessource
+    defaults: { _controller: RessourceBundle:BesoinTypeRessource:delete }
+
+index:
+    path:     besoinTypeRessource
+    defaults: { _controller: RessourceBundle:BesoinTypeRessource:index }
+
+show:
+    path:     besoinTypeRessource
+    defaults: { _controller: RessourceBundle:BesoinTypeRessource:show }
+
+edit:
+    path:     typeRessource
+    defaults: { _controller: RessourceBundle:TypeRessource:edit }
+
+delete:
+    path:     typeRessource
+    defaults: { _controller: RessourceBundle:TypeRessource:delete }
+
+index:
+    path:     typeRessource
+    defaults: { _controller: RessourceBundle:TypeRessource:index }
+
+show:
+    path:     typeRessource
+    defaults: { _controller: RessourceBundle:TypeRessource:show }

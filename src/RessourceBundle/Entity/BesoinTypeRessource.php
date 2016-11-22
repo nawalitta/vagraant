@@ -194,4 +194,12 @@ class BesoinTypeRessource
     {
         return $this->typeRessource;
     }
+    
+    /**
+     * 
+     * @return type
+     */
+    public function __toString() {
+        return $this->designation;
+    }
 }
