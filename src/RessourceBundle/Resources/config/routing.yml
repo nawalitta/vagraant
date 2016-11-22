@@ -78,3 +78,19 @@ index:
 show:
     path:     typeRessource
     defaults: { _controller: RessourceBundle:TypeRessource:show }
+
+edit:
+    path:     enfant
+    defaults: { _controller: RessourceBundle:Enfant:edit }
+
+show:
+    path:     enfant
+    defaults: { _controller: RessourceBundle:Enfant:show }
+
+delete:
+    path:     enfant
+    defaults: { _controller: RessourceBundle:Enfant:delete }
+
+index:
+    path:     enfant
+    defaults: { _controller: RessourceBundle:Enfant:index }
