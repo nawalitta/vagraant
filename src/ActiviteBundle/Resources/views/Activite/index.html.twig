@@ -1,13 +1,48 @@
 {% extends "::base.html.twig" %}
 
-{% block title %}ActiviteBundle:ActiviteFixee:index{% endblock %}
+{% block title %}ActiviteBundle:Activite:index{% endblock %}
 
 {% block body %}
-<h1>Welcome to the Activite:index page</h1>
-
-{% for activite in activites %}
-    Activite n° : {{activite.id}}
-    {% include 'ActiviteBundle:Activite:preview.html.twig' %}  
-{% endfor %}
-
+ <h2 class="sub-header">Liste Activite</h2>
+ <form>
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                  <th>#</th>
+                  <th>Designation</th>
+                  <th>durée min</th>
+                  <th>durée max</th>
+                  <th>Nombre d'enfant min</th>
+                  <th>Nombre d'enfant max</th>
+                  <th>durée transport</th>
+                  <th>Type d'activité</th>
+                  <th> Case à cocher </th>
+                </tr>
+              </thead>
+            <tbody>
+                {% for activite in activites %}
+                    <tr>
+                      <td>{{activite.id}}</td>
+                      <td>{{activite.designation}}/td>
+                      <td>{{activite.dureeMin}}</td>
+                      <td>{{activite.dureeMax}}</td>
+                      <td>{{activite.nbEnfantsMin}}</td>
+                      <td>{{activite.nbEnfantsMax}}</td>
+                      <td>{{activite.dureeTransport}}</td>
+                      <td>{{activite.typesActivite}}</td>
+                      <td>  <div class="form-check">
+                                <label class="form-check-label">
+                                  <input name="activite[]" value="{{activite.id}}" type="checkbox" class="form-check-input">
+                                </label>
+                            </div>
+                      </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    <button type="submit" class="btn btn-primary">Supprimer</button>
+ </form>
+    
 {% endblock %}

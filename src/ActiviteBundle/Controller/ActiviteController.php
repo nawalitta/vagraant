@@ -44,14 +44,14 @@ class ActiviteController extends Controller {
      */
     public function editAction($id = null, Request $request) {
         $entityManager = $this->getDoctrine()->getManager();
-
+        /*
         $typeActivitRepository = $entityManager->getRepository('ActiviteBundle:TypeActivite');
         if ($typeActivitRepository->findOneBy(array()) == null) {
             $this->get('session')->getFlashBag()->add('alert', 'Type Activite requis.');
             return $this->redirect($this->generateUrl('ActiviteBundle_TypeActivite_edit'));
         }
 
-
+        */
         $activiteRepository = $entityManager->getRepository("ActiviteBundle:Activite");
         $activite = $activiteRepository->findOneById($id);
 
