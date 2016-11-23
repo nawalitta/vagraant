@@ -1,3 +1,7 @@
+ressource_enfant:
+    resource: "@RessourceBundle/Resources/config/routing/enfant.yml"
+    prefix:   /Enfant
+
 
 RessourceBunde_FenetreHoraire_index:
     path:     FenetreHoraire/index
