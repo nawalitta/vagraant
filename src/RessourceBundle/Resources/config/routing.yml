@@ -1,4 +1,4 @@
-ressource_enfant:
+Ressource_Enfant:
     resource: "@RessourceBundle/Resources/config/routing/enfant.yml"
     prefix:   /Enfant
 
