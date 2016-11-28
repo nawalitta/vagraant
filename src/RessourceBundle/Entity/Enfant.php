@@ -70,7 +70,7 @@ class Enfant
      */
     private $identifiant;
 
-     /**
+    /**
      * @ORM\ManyToOne(targetEntity="FenetreHoraire",inversedBy="enfants")
      * @ORM\JoinColumn(nullable=false)
      */
@@ -83,7 +83,11 @@ class Enfant
     private $groupe;
 
     /**
-     * @ORM\ManyToMany(targetEntity="ActiviteBundle\Entity\Activite")
+     * @ORM\ManyToMany(targetEntity="ActiviteBundle\Entity\Activite", inversedBy="enfantsOptionnels")
+     * @ORM\JoinTable(name="activite_optionnelle",
+     *      joinColumns={@ORM\JoinColumn(name="enfant_id", referencedColumnName="id")},
+     *      inverseJoinColumns={@ORM\JoinColumn(name="activite_id", referencedColumnName="id")}
+     *      )
      */
     private $activitesOptionelles;
 
@@ -92,7 +96,7 @@ class Enfant
      */
     private $activitesFixees;
 
-     /**
+    /**
      * @ORM\OneToMany(targetEntity="ActiviteBundle\Entity\ActiviteRealisee", mappedBy="enfant")
      */
     private $activitesRealisees;
@@ -105,7 +109,7 @@ class Enfant
     /**
      * @ORM\OneToMany(targetEntity="Preaffection", mappedBy="enfant")
      */
-    private $preaffections;
+    private $preAffections;
 
     /**
      * Get id
@@ -127,7 +131,7 @@ class Enfant
     public function setPrenom($prenom)
     {
         $this->prenom = $prenom;
-    
+
         return $this;
     }
 
@@ -151,7 +155,7 @@ class Enfant
     public function setNom($nom)
     {
         $this->nom = $nom;
-    
+
         return $this;
     }
 
@@ -175,7 +179,7 @@ class Enfant
     public function setEstArchive($estArchive)
     {
         $this->estArchive = $estArchive;
-    
+
         return $this;
     }
 
@@ -199,7 +203,7 @@ class Enfant
     public function setDateArrive($dateArrive)
     {
         $this->dateArrive = $dateArrive;
-    
+
         return $this;
     }
 
@@ -223,7 +227,7 @@ class Enfant
     public function setRegime($regime)
     {
         $this->regime = $regime;
-    
+
         return $this;
     }
 
@@ -247,7 +251,7 @@ class Enfant
     public function setIdentifiant($identifiant)
     {
         $this->identifiant = $identifiant;
-    
+
         return $this;
     }
 
@@ -260,6 +264,7 @@ class Enfant
     {
         return $this->identifiant;
     }
+
     /**
      * Constructor
      */
@@ -273,7 +278,7 @@ class Enfant
 
     public function __toString()
     {
-        return $this->nom . ' ' . $this->prenom ;
+        return $this->nom . ' ' . $this->prenom;
     }
 
     /**
@@ -499,8 +504,8 @@ class Enfant
      *
      * @return \Doctrine\Common\Collections\Collection
      */
-    public function getPreaffections()
+    public function getPreAffections()
     {
-        return $this->preaffections;
+        return $this->preAffections;
     }
 }

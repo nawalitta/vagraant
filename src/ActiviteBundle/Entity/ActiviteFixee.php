@@ -50,11 +50,10 @@ class ActiviteFixee
     private $enfant;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Activite",inversedBy="horairesfixes")
+     * @ORM\ManyToOne(targetEntity="Activite",inversedBy="activitesFixees")
      * @ORM\JoinColumn(nullable=false)
      */
     private $activite;
-
 
     /**
      * Get id

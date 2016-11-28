@@ -23,23 +23,22 @@ class Preaffection
     private $id;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Enfant",inversedBy="preaffections")
+     * @ORM\ManyToOne(targetEntity="Enfant",inversedBy="preAffections")
      * @ORM\JoinColumn(nullable=false)
      */ 
     private $enfant;
     
     /**
-     * @ORM\ManyToOne(targetEntity="ActiviteBundle\Entity\Activite",inversedBy="preaffections")
+     * @ORM\ManyToOne(targetEntity="ActiviteBundle\Entity\Activite",inversedBy="preAffections")
      * @ORM\JoinColumn(nullable=false)
      */ 
     private $activite;
     
     /**
-     * @ORM\ManyToOne(targetEntity="Ressource",inversedBy="preaffections")
+     * @ORM\ManyToOne(targetEntity="Ressource",inversedBy="preAffections")
      * @ORM\JoinColumn(nullable=false)
      */ 
     private $ressource;
-
 
     /**
      * Get id

@@ -99,32 +99,29 @@ class Activite
     private $fenetreHoraire;
 
     /**
-     * @ORM\ManyToMany(targetEntity="RessourceBundle\Entity\Enfant")
+     * @ORM\ManyToMany(targetEntity="RessourceBundle\Entity\Enfant", mappedBy="activitesOptionelles")
      */
-    private $enfantsOptionnel;
+    private $enfantsOptionnels;
 
     /**
      * @ORM\OneToMany(targetEntity="ActiviteBundle\Entity\ActiviteRealisee", mappedBy="activite")
      */
     private $activitesRealisees;
 
-
     /**
      * @ORM\OneToMany(targetEntity="RessourceBundle\Entity\Preaffection", mappedBy="activite")
      */
-    private $preaffections;
-
+    private $preAffections;
 
     /**
      * @ORM\OneToMany(targetEntity="ActiviteObligatoire", mappedBy="activite")
      */
     private $enfantsObligatoires;
 
-
     /**
      * @ORM\OneToMany(targetEntity="ActiviteFixee", mappedBy="activite")
      */
-    private $horairesfixes;
+    private $activitesFixees;
 
     /**
      * @ORM\OneToMany(targetEntity="RessourceBundle\Entity\BesoinTypeRessource", mappedBy="activite")
@@ -141,7 +138,6 @@ class Activite
         return $this->id;
     }
 
- 
     /**
      * Set dureeMax
      *
@@ -261,8 +257,6 @@ class Activite
     {
         return $this->dureeTransport;
     }
-    
-
 
     /**
      * Set designation
@@ -368,7 +362,7 @@ class Activite
      */
     public function __construct()
     {
-        $this->enfantsOptionnel = new ArrayCollection();
+        $this->enfantsOptionnels = new ArrayCollection();
         $this->preaffection = new ArrayCollection();
         $this->enfantObligatoires = new ArrayCollection();
         $this->horairefixe = new ArrayCollection();
@@ -408,7 +402,7 @@ class Activite
      */
     public function addEnfantsOptionnel(Enfant $enfantsOptionnel)
     {
-        $this->enfantsOptionnel[] = $enfantsOptionnel;
+        $this->enfantsOptionnels[] = $enfantsOptionnel;
 
         return $this;
     }
@@ -420,7 +414,7 @@ class Activite
      */
     public function removeEnfantsOptionnel(Enfant $enfantsOptionnel)
     {
-        $this->enfantsOptionnel->removeElement($enfantsOptionnel);
+        $this->enfantsOptionnels->removeElement($enfantsOptionnel);
     }
 
     /**
@@ -428,9 +422,9 @@ class Activite
      *
      * @return ArrayCollection
      */
-    public function getEnfantsOptionnel()
+    public function getEnfantsOptionnels()
     {
-        return $this->enfantsOptionnel;
+        return $this->enfantsOptionnels;
     }
 
     /**
@@ -632,9 +626,9 @@ class Activite
      *
      * @return \Doctrine\Common\Collections\Collection
      */
-    public function getPreaffections()
+    public function getPreAffections()
     {
-        return $this->preaffections;
+        return $this->preAffections;
     }
 
     /**
@@ -680,7 +674,7 @@ class Activite
      */
     public function addHorairesfix(\ActiviteBundle\Entity\ActiviteFixee $horairesfix)
     {
-        $this->horairesfixes[] = $horairesfix;
+        $this->activitesFixees[] = $horairesfix;
 
         return $this;
     }
@@ -692,7 +686,7 @@ class Activite
      */
     public function removeHorairesfix(\ActiviteBundle\Entity\ActiviteFixee $horairesfix)
     {
-        $this->horairesfixes->removeElement($horairesfix);
+        $this->activitesFixees->removeElement($horairesfix);
     }
 
     /**
@@ -700,9 +694,9 @@ class Activite
      *
      * @return \Doctrine\Common\Collections\Collection
      */
-    public function getHorairesfixes()
+    public function getActivitesFixees()
     {
-        return $this->horairesfixes;
+        return $this->activitesFixees;
     }
 
     /**
@@ -713,5 +707,29 @@ class Activite
     public function getBesoinsTypeRessources()
     {
         return $this->besoinsTypeRessources;
+    }
+
+    /**
+     * Add activitesFixee
+     *
+     * @param \ActiviteBundle\Entity\ActiviteFixee $activitesFixee
+     *
+     * @return Activite
+     */
+    public function addActivitesFixee(\ActiviteBundle\Entity\ActiviteFixee $activitesFixee)
+    {
+        $this->activitesFixees[] = $activitesFixee;
+    
+        return $this;
+    }
+
+    /**
+     * Remove activitesFixee
+     *
+     * @param \ActiviteBundle\Entity\ActiviteFixee $activitesFixee
+     */
+    public function removeActivitesFixee(\ActiviteBundle\Entity\ActiviteFixee $activitesFixee)
+    {
+        $this->activitesFixees->removeElement($activitesFixee);
     }
 }
