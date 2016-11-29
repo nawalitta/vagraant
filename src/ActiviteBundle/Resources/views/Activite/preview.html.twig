@@ -1,8 +1,28 @@
 <table>
 
     <tr>
-        <td> {{ activite.designation }} </td> 
-        <td> {{ activite.DureeMin }} {{ activite.DureeMax }} </td>
+        <td> Designation : </td>
+        <td> {{ activite.designation }} </td>     
+    </tr>
+    <tr>
+        <td>Duree Minimum</td>
+        <td> {{ activite.DureeMin }}  </td>
+    </tr>
+    <tr>
+        <td>Duree Max</td>
+        <td>{{ activite.DureeMax }}</td>
+    </tr>
+    <tr>
+        <td>Nombre minimum d'enfants</td>
+        <td>{{ activite.nbEnfantsMin }}</td>
+    </tr>
+    <tr>
+        <td>Nombre maximum d'enfants</td>
+        <td>{{ activite.nbEnfantsMax }}</td>
+    </tr>
+    <tr>
+        <td>Duree Transport</td>
+        <td>{{ activite.dureeTransport }}</td>
     </tr>
 
 </table>

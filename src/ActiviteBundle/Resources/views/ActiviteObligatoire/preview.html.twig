@@ -1,7 +1,18 @@
-{% extends "::base.html.twig" %}
-
-{% block title %}ActiviteBundle:ActiviteFixee:delete{% endblock %}
-
-{% block body %}
-<h1>Welcome to the ActiviteFixee:delete page</h1>
-{% endblock %}
+<table>
+    <tr>
+        <td>Enfant</td>
+        <td>{{ activiteObligatoire.enfant.prenom }} {{ activiteObligatoire.enfant.nom }}</td>
+    </tr>
+    <tr>
+        <td>Activite</td>
+        <td>{{ activiteObligatoire.activite.designation }}</td>
+    </tr>
+    <tr>
+        <td>Quotas</td>
+        <td>{{ activiteObligatoire.quotas }}</td>
+    </tr>
+    <tr>
+        <td>Ecart</td>
+        <td>{{ activiteObligatoire.ecart }}</td>
+    </tr>
+</table>
