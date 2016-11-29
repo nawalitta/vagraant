@@ -44,7 +44,7 @@ class Activite
      * )
      */
     private $dureeMin;
-    
+
     /**
      * @var int
      *
@@ -87,9 +87,9 @@ class Activite
     private $dureeTransport;
 
     /**
-   * @ORM\ManyToOne(targetEntity="ActiviteBundle\Entity\TypeActivite",inversedBy="activites")
-   * @ORM\JoinColumn(nullable=false)
-   */
+     * @ORM\ManyToOne(targetEntity="ActiviteBundle\Entity\TypeActivite", inversedBy="activites")
+     * @ORM\JoinColumn(nullable=false)
+     */
     private $typeActivite;
 
     /**
@@ -148,7 +148,7 @@ class Activite
     public function setDureeMax($dureeMax)
     {
         $this->dureeMax = $dureeMax;
-    
+
         return $this;
     }
 
@@ -172,7 +172,7 @@ class Activite
     public function setDureeMin($dureeMin)
     {
         $this->dureeMin = $dureeMin;
-    
+
         return $this;
     }
 
@@ -196,7 +196,7 @@ class Activite
     public function setNbEnfantsMax($nbEnfantsMax)
     {
         $this->nbEnfantsMax = $nbEnfantsMax;
-    
+
         return $this;
     }
 
@@ -220,7 +220,7 @@ class Activite
     public function setNbEnfantsMin($nbEnfantsMin)
     {
         $this->nbEnfantsMin = $nbEnfantsMin;
-    
+
         return $this;
     }
 
@@ -244,7 +244,7 @@ class Activite
     public function setDureeTransport($dureeTransport)
     {
         $this->dureeTransport = $dureeTransport;
-    
+
         return $this;
     }
 
@@ -274,14 +274,12 @@ class Activite
     /**
      * Get designation
      *
-     * @return string 
+     * @return string
      */
     public function getDesignation()
     {
         return $this->designation;
     }
-
- 
 
 
     /**
@@ -311,27 +309,27 @@ class Activite
      *
      * @Assert\isTrue(message =" La durée maximum doit être superieur à la durée minimum")
      */
-    public function isDureeValid(){
+    public function isDureeValid()
+    {
 
         return $this->dureeMax >= $this->dureeMin;
     }
 
-        /**
+    /**
      *
      * @Assert\isTrue(message =" Le nombre d'enfants maximum doit être superieur au nombre d'enfants minimum")
      */
-    public function isNbEnfantValid(){
+    public function isNbEnfantValid()
+    {
 
         return $this->nbEnfantsMax >= $this->nbEnfantsMin;
     }
-
 
 
     public function __toString()
     {
         return $this->designation;
     }
-
 
 
     /**
@@ -357,6 +355,7 @@ class Activite
     {
         return $this->ActiviteRealisee;
     }
+
     /**
      * Constructor
      */
@@ -719,7 +718,7 @@ class Activite
     public function addActivitesFixee(\ActiviteBundle\Entity\ActiviteFixee $activitesFixee)
     {
         $this->activitesFixees[] = $activitesFixee;
-    
+
         return $this;
     }
 
