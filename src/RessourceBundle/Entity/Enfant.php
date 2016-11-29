@@ -70,42 +70,46 @@ class Enfant
      */
     private $identifiant;
 
-     /**
-     * @ORM\ManyToOne(targetEntity="FenetreHoraire",inversedBy="Enfant")
+    /**
+     * @ORM\ManyToOne(targetEntity="FenetreHoraire",inversedBy="enfants")
      * @ORM\JoinColumn(nullable=false)
      */
     private $fenetreHoraire;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Groupe",inversedBy="Enfant")
+     * @ORM\ManyToOne(targetEntity="Groupe",inversedBy="enfants")
      * @ORM\JoinColumn(nullable=false)
      */
     private $groupe;
 
     /**
-     * @ORM\ManyToMany(targetEntity="ActiviteBundle\Entity\Activite")
+     * @ORM\ManyToMany(targetEntity="ActiviteBundle\Entity\Activite", inversedBy="enfantsOptionnels")
+     * @ORM\JoinTable(name="activite_optionnelle",
+     *      joinColumns={@ORM\JoinColumn(name="enfant_id", referencedColumnName="id")},
+     *      inverseJoinColumns={@ORM\JoinColumn(name="activite_id", referencedColumnName="id")}
+     *      )
      */
     private $activitesOptionelles;
 
     /**
-     * @ORM\OneToMany(targetEntity="ActiviteBundle\Entity\ActiviteFixee", mappedBy="Enfant")
+     * @ORM\OneToMany(targetEntity="ActiviteBundle\Entity\ActiviteFixee", mappedBy="enfant")
      */
     private $activitesFixees;
 
-     /**
-     * @ORM\OneToMany(targetEntity="ActiviteBundle\Entity\ActiviteRealisee", mappedBy="Enfant")
+    /**
+     * @ORM\OneToMany(targetEntity="ActiviteBundle\Entity\ActiviteRealisee", mappedBy="enfant")
      */
     private $activitesRealisees;
 
     /**
-     * @ORM\OneToMany(targetEntity="ActiviteBundle\Entity\ActiviteObligatoire", mappedBy="Enfant")
+     * @ORM\OneToMany(targetEntity="ActiviteBundle\Entity\ActiviteObligatoire", mappedBy="enfant")
      */
     private $activitesObligatoires;
 
     /**
-     * @ORM\OneToMany(targetEntity="Preaffection", mappedBy="Enfant")
+     * @ORM\OneToMany(targetEntity="Preaffection", mappedBy="enfant")
      */
-    private $preaffection;
+    private $preAffections;
 
     /**
      * Get id
@@ -127,7 +131,7 @@ class Enfant
     public function setPrenom($prenom)
     {
         $this->prenom = $prenom;
-    
+
         return $this;
     }
 
@@ -151,7 +155,7 @@ class Enfant
     public function setNom($nom)
     {
         $this->nom = $nom;
-    
+
         return $this;
     }
 
@@ -175,7 +179,7 @@ class Enfant
     public function setEstArchive($estArchive)
     {
         $this->estArchive = $estArchive;
-    
+
         return $this;
     }
 
@@ -199,7 +203,7 @@ class Enfant
     public function setDateArrive($dateArrive)
     {
         $this->dateArrive = $dateArrive;
-    
+
         return $this;
     }
 
@@ -223,7 +227,7 @@ class Enfant
     public function setRegime($regime)
     {
         $this->regime = $regime;
-    
+
         return $this;
     }
 
@@ -247,7 +251,7 @@ class Enfant
     public function setIdentifiant($identifiant)
     {
         $this->identifiant = $identifiant;
-    
+
         return $this;
     }
 
@@ -260,6 +264,7 @@ class Enfant
     {
         return $this->identifiant;
     }
+
     /**
      * Constructor
      */
@@ -273,7 +278,7 @@ class Enfant
 
     public function __toString()
     {
-        return $this->nom . ' ' . $this->prenom ;
+        return $this->nom . ' ' . $this->prenom;
     }
 
     /**
@@ -492,5 +497,15 @@ class Enfant
     public function getActivitesRealisees()
     {
         return $this->activitesRealisees;
+    }
+
+    /**
+     * Get preaffections
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getPreAffections()
+    {
+        return $this->preAffections;
     }
 }

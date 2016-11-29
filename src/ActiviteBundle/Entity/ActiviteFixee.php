@@ -38,23 +38,22 @@ class ActiviteFixee
     private $heureFin;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Jour",inversedBy="ActiviteFixee")
+     * @ORM\ManyToOne(targetEntity="Jour",inversedBy="activitesFixees")
      * @ORM\JoinColumn(nullable=false)
      */
     private $jour;
 
     /**
-     * @ORM\ManyToOne(targetEntity="RessourceBundle\Entity\Enfant",inversedBy="ActiviteFixee")
+     * @ORM\ManyToOne(targetEntity="RessourceBundle\Entity\Enfant",inversedBy="activitesFixees")
      * @ORM\JoinColumn(nullable=false)
      */
     private $enfant;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Activite",inversedBy="ActiviteFixee")
+     * @ORM\ManyToOne(targetEntity="Activite",inversedBy="activitesFixees")
      * @ORM\JoinColumn(nullable=false)
      */
     private $activite;
-
 
     /**
      * Get id

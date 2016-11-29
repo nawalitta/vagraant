@@ -50,20 +50,17 @@ class BesoinTypeRessource
      */
     private $preference;
 
-
      /**
-     * @ORM\ManyToOne(targetEntity="ActiviteBundle\Entity\Activite",inversedBy="BesoinTypeRessource")
+     * @ORM\ManyToOne(targetEntity="ActiviteBundle\Entity\Activite",inversedBy="besoinsTypeRessources")
      * @ORM\JoinColumn(nullable=false)
      */
     private $activite;
 
-
      /**
-     * @ORM\ManyToOne(targetEntity="TypeRessource",inversedBy="BesoinTypeRessource")
+     * @ORM\ManyToOne(targetEntity="TypeRessource",inversedBy="besoinsTypeRessources")
      * @ORM\JoinColumn(nullable=false)
      */
     private $typeRessource;
-
 
     /**
      * Get id

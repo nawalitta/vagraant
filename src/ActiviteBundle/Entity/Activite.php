@@ -87,50 +87,46 @@ class Activite
     private $dureeTransport;
 
     /**
-   * @ORM\ManyToOne(targetEntity="TypeActivite")
+   * @ORM\ManyToOne(targetEntity="ActiviteBundle\Entity\TypeActivite",inversedBy="activites")
    * @ORM\JoinColumn(nullable=false)
    */
-    private $typesActivite;
+    private $typeActivite;
 
     /**
-     * @ORM\ManyToOne(targetEntity="RessourceBundle\Entity\FenetreHoraire",inversedBy="Activite")
+     * @ORM\ManyToOne(targetEntity="RessourceBundle\Entity\FenetreHoraire",inversedBy="activites")
      * @ORM\JoinColumn(nullable=false)
      */
     private $fenetreHoraire;
 
     /**
-     * @ORM\ManyToMany(targetEntity="RessourceBundle\Entity\Enfant")
+     * @ORM\ManyToMany(targetEntity="RessourceBundle\Entity\Enfant", mappedBy="activitesOptionelles")
      */
-    private $enfantsOptionnel;
+    private $enfantsOptionnels;
 
     /**
-     * @ORM\OneToOne(targetEntity="ActiviteRealisee")
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\OneToMany(targetEntity="ActiviteBundle\Entity\ActiviteRealisee", mappedBy="activite")
      */
-    private $ActiviteRealisee;
-
+    private $activitesRealisees;
 
     /**
-     * @ORM\OneToMany(targetEntity="RessourceBundle\Entity\Preaffection", mappedBy="Activite")
+     * @ORM\OneToMany(targetEntity="RessourceBundle\Entity\Preaffection", mappedBy="activite")
      */
-    private $preaffection;
-
+    private $preAffections;
 
     /**
-     * @ORM\OneToMany(targetEntity="ActiviteObligatoire", mappedBy="Activite")
+     * @ORM\OneToMany(targetEntity="ActiviteObligatoire", mappedBy="activite")
      */
-    private $enfantObligatoires;
-
-
-    /**
-     * @ORM\OneToMany(targetEntity="ActiviteFixee", mappedBy="Activite")
-     */
-    private $horairefixe;
+    private $enfantsObligatoires;
 
     /**
-     * @ORM\OneToMany(targetEntity="RessourceBundle\Entity\BesoinTypeRessource", mappedBy="Activite")
+     * @ORM\OneToMany(targetEntity="ActiviteFixee", mappedBy="activite")
      */
-    private $besoinsTypeRessource;
+    private $activitesFixees;
+
+    /**
+     * @ORM\OneToMany(targetEntity="RessourceBundle\Entity\BesoinTypeRessource", mappedBy="activite")
+     */
+    private $besoinsTypeRessources;
 
     /**
      * Get id
@@ -142,7 +138,6 @@ class Activite
         return $this->id;
     }
 
- 
     /**
      * Set dureeMax
      *
@@ -262,8 +257,6 @@ class Activite
     {
         return $this->dureeTransport;
     }
-    
-
 
     /**
      * Set designation
@@ -369,7 +362,7 @@ class Activite
      */
     public function __construct()
     {
-        $this->enfantsOptionnel = new ArrayCollection();
+        $this->enfantsOptionnels = new ArrayCollection();
         $this->preaffection = new ArrayCollection();
         $this->enfantObligatoires = new ArrayCollection();
         $this->horairefixe = new ArrayCollection();
@@ -409,7 +402,7 @@ class Activite
      */
     public function addEnfantsOptionnel(Enfant $enfantsOptionnel)
     {
-        $this->enfantsOptionnel[] = $enfantsOptionnel;
+        $this->enfantsOptionnels[] = $enfantsOptionnel;
 
         return $this;
     }
@@ -421,7 +414,7 @@ class Activite
      */
     public function removeEnfantsOptionnel(Enfant $enfantsOptionnel)
     {
-        $this->enfantsOptionnel->removeElement($enfantsOptionnel);
+        $this->enfantsOptionnels->removeElement($enfantsOptionnel);
     }
 
     /**
@@ -429,9 +422,9 @@ class Activite
      *
      * @return ArrayCollection
      */
-    public function getEnfantsOptionnel()
+    public function getEnfantsOptionnels()
     {
-        return $this->enfantsOptionnel;
+        return $this->enfantsOptionnels;
     }
 
     /**
@@ -568,5 +561,175 @@ class Activite
     public function getBesoinsTypeRessource()
     {
         return $this->besoinsTypeRessource;
+    }
+
+    /**
+     * Set typeActivite
+     *
+     * @param \ActiviteBundle\Entity\TypeActivite $typeActivite
+     *
+     * @return Activite
+     */
+    public function setTypeActivite(\ActiviteBundle\Entity\TypeActivite $typeActivite)
+    {
+        $this->typeActivite = $typeActivite;
+
+        return $this;
+    }
+
+    /**
+     * Get typeActivite
+     *
+     * @return \ActiviteBundle\Entity\TypeActivite
+     */
+    public function getTypeActivite()
+    {
+        return $this->typeActivite;
+    }
+
+    /**
+     * Add activitesRealisee
+     *
+     * @param \ActiviteBundle\Entity\ActiviteRealisee $activitesRealisee
+     *
+     * @return Activite
+     */
+    public function addActivitesRealisee(\ActiviteBundle\Entity\ActiviteRealisee $activitesRealisee)
+    {
+        $this->activitesRealisees[] = $activitesRealisee;
+
+        return $this;
+    }
+
+    /**
+     * Remove activitesRealisee
+     *
+     * @param \ActiviteBundle\Entity\ActiviteRealisee $activitesRealisee
+     */
+    public function removeActivitesRealisee(\ActiviteBundle\Entity\ActiviteRealisee $activitesRealisee)
+    {
+        $this->activitesRealisees->removeElement($activitesRealisee);
+    }
+
+    /**
+     * Get activitesRealisees
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getActivitesRealisees()
+    {
+        return $this->activitesRealisees;
+    }
+
+    /**
+     * Get preaffections
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getPreAffections()
+    {
+        return $this->preAffections;
+    }
+
+    /**
+     * Add enfantsObligatoire
+     *
+     * @param \ActiviteBundle\Entity\ActiviteObligatoire $enfantsObligatoire
+     *
+     * @return Activite
+     */
+    public function addEnfantsObligatoire(\ActiviteBundle\Entity\ActiviteObligatoire $enfantsObligatoire)
+    {
+        $this->enfantsObligatoires[] = $enfantsObligatoire;
+
+        return $this;
+    }
+
+    /**
+     * Remove enfantsObligatoire
+     *
+     * @param \ActiviteBundle\Entity\ActiviteObligatoire $enfantsObligatoire
+     */
+    public function removeEnfantsObligatoire(\ActiviteBundle\Entity\ActiviteObligatoire $enfantsObligatoire)
+    {
+        $this->enfantsObligatoires->removeElement($enfantsObligatoire);
+    }
+
+    /**
+     * Get enfantsObligatoires
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getEnfantsObligatoires()
+    {
+        return $this->enfantsObligatoires;
+    }
+
+    /**
+     * Add horairesfix
+     *
+     * @param \ActiviteBundle\Entity\ActiviteFixee $horairesfix
+     *
+     * @return Activite
+     */
+    public function addHorairesfix(\ActiviteBundle\Entity\ActiviteFixee $horairesfix)
+    {
+        $this->activitesFixees[] = $horairesfix;
+
+        return $this;
+    }
+
+    /**
+     * Remove horairesfix
+     *
+     * @param \ActiviteBundle\Entity\ActiviteFixee $horairesfix
+     */
+    public function removeHorairesfix(\ActiviteBundle\Entity\ActiviteFixee $horairesfix)
+    {
+        $this->activitesFixees->removeElement($horairesfix);
+    }
+
+    /**
+     * Get horairesfixes
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getActivitesFixees()
+    {
+        return $this->activitesFixees;
+    }
+
+    /**
+     * Get besoinsTypeRessources
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getBesoinsTypeRessources()
+    {
+        return $this->besoinsTypeRessources;
+    }
+
+    /**
+     * Add activitesFixee
+     *
+     * @param \ActiviteBundle\Entity\ActiviteFixee $activitesFixee
+     *
+     * @return Activite
+     */
+    public function addActivitesFixee(\ActiviteBundle\Entity\ActiviteFixee $activitesFixee)
+    {
+        $this->activitesFixees[] = $activitesFixee;
+    
+        return $this;
+    }
+
+    /**
+     * Remove activitesFixee
+     *
+     * @param \ActiviteBundle\Entity\ActiviteFixee $activitesFixee
+     */
+    public function removeActivitesFixee(\ActiviteBundle\Entity\ActiviteFixee $activitesFixee)
+    {
+        $this->activitesFixees->removeElement($activitesFixee);
     }
 }

@@ -38,14 +38,14 @@ class Jour
 
     
     /**
-     * @ORM\OneToMany(targetEntity="ActiviteRealisee", mappedBy="Jour")
+     * @ORM\OneToMany(targetEntity="ActiviteRealisee", mappedBy="jour")
      */
-    private $activitesrealisees;
+    private $activitesRealisees;
     
     /**
-     * @ORM\OneToMany(targetEntity="ActiviteFixee", mappedBy="Jour")
+     * @ORM\OneToMany(targetEntity="ActiviteFixee", mappedBy="jour")
      */
-    private $activitesfixees;
+    private $activitesFixees;
 
     /**
      * Get id

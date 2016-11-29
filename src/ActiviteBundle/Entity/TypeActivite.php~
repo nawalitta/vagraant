@@ -4,6 +4,8 @@ namespace ActiviteBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
+
+
 /**
  * TypeActivite
  *
@@ -22,15 +24,15 @@ class TypeActivite
     private $id;
 
     /**
-     * @var string
+     * @var string designation
      *
-     * @ORM\Column(name="designation", type="string", length=255)
+     * @ORM\Column(name="designation", type="string", length=255, unique=true)
      */
     private $designation;
     
     
     /**
-     * @ORM\ManyToOne(targetEntity="Activite",inversedBy="TypeActivite")
+     * @ORM\ManyToOne(targetEntity="Activite",inversedBy="typeActivite")
      * @ORM\JoinColumn(nullable=false)
      */  
     private $activites;
@@ -76,5 +78,29 @@ class TypeActivite
     }
     public function __toString() {
         return $this->designation;
+    }
+
+    /**
+     * Set activites
+     *
+     * @param Activite $activites
+     *
+     * @return TypeActivite
+     */
+    public function setActivites(Activite $activites)
+    {
+        $this->activites = $activites;
+
+        return $this;
+    }
+
+    /**
+     * Get activites
+     *
+     * @return Activite
+     */
+    public function getActivites()
+    {
+        return $this->activites;
     }
 }

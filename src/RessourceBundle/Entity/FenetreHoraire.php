@@ -2,8 +2,10 @@
 
 namespace RessourceBundle\Entity;
 
+use DateTime;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
+
 /**
  * FenetreHoraire
  *
@@ -91,25 +93,25 @@ class FenetreHoraire
      */
     private $vendrediFin;
 
-/**
-   * @ORM\OneToMany(targetEntity="Ressource", mappedBy="fenetreHoraire")
-   */
-    private $ressources;
-    
     /**
-     * @ORM\OneToMany(targetEntity="ActiviteBundle\Entity\Activite", mappedBy="FenetreHoraire")
+     * @ORM\OneToMany(targetEntity="Ressource", mappedBy="fenetreHoraire")
+     */
+    private $ressources;
+
+    /**
+     * @ORM\OneToMany(targetEntity="ActiviteBundle\Entity\Activite", mappedBy="fenetreHoraire")
      */
     private $activites;
 
     /**
-     * @ORM\OneToMany(targetEntity="Enfant", mappedBy="FenetreHoraire")
+     * @ORM\OneToMany(targetEntity="Enfant", mappedBy="fenetreHoraire")
      */
-
     private $enfants;
+
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -345,18 +347,19 @@ class FenetreHoraire
     {
         return $this->vendrediFin;
     }
-    
-      /**
+
+    /**
      * @Assert\IsTrue(message = "La date de début doit etre avant la date de fin")
      */
     public function isValidDate()
     {
-        return ($this->lundiDebut<$this->lundiFin 
-                && $this->mardiDebut<$this->mardiFin
-                && $this->mercrediDebut<$this->mercrediFin
-                && $this->jeudiDebut<$this->jeudiFin
-                && $this->vendrediDebut<$this->vendrediFin);
+        return ($this->lundiDebut < $this->lundiFin
+            && $this->mardiDebut < $this->mardiFin
+            && $this->mercrediDebut < $this->mercrediFin
+            && $this->jeudiDebut < $this->jeudiFin
+            && $this->vendrediDebut < $this->vendrediFin);
     }
+
     /**
      * Constructor
      */

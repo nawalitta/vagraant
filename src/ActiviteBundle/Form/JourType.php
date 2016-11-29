@@ -13,7 +13,7 @@ class JourType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('labelJ')->add('parite')        ;
+        $builder->add('designation')->add('parite')        ;
     }
     
     /**

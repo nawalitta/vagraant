@@ -6,14 +6,14 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class VehiculeType extends AbstractType
+class GroupeType extends AbstractType
 {
     /**
      * {@inheritdoc}
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('nbPlaceAssise')->add('designation')        ;
+        $builder->add('designation')        ;
     }
     
     /**
@@ -22,7 +22,7 @@ class VehiculeType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'RessourceBundle\Entity\Vehicule'
+            'data_class' => 'RessourceBundle\Entity\Groupe'
         ));
     }
 
@@ -31,7 +31,7 @@ class VehiculeType extends AbstractType
      */
     public function getBlockPrefix()
     {
-        return 'ressourcebundle_vehicule';
+        return 'ressourcebundle_groupe';
     }
 
 
