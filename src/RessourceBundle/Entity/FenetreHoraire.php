@@ -5,7 +5,7 @@ namespace RessourceBundle\Entity;
 use DateTime;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
-
+use ActiviteBundle\Entity\Activite;
 /**
  * FenetreHoraire
  *
@@ -468,5 +468,9 @@ class FenetreHoraire
     public function getEnfants()
     {
         return $this->enfants;
+    }
+    public function __toString()
+    {
+        return " ";
     }
 }

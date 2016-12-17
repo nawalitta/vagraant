@@ -4,10 +4,22 @@
 
 {% block body %}
 <h1>Welcome to the Activite:index page</h1>
+<div class="table-responsive">
+    <table class="table">
+         <caption>Liste des activités</caption>
+        <tr>
+            <th> Activite id </th>
+            <th> Designation </th>
+            <th> Duree Minimum </th>
+            <th> Duree Maximum </th>
+            <th> Nombre minimum d'enfants </th>
+            <th> Nombre maximum d'enfants </th>
+            <th> Durée transport </th>
+        </tr>
+    {% for activite in activites %}
+        {% include 'ActiviteBundle:Activite:preview.html.twig' %}  
+    {% endfor %}
 
-{% for activite in activites %}
-    Activite n° : {{activite.id}}
-    {% include 'ActiviteBundle:Activite:preview.html.twig' %}  
-{% endfor %}
-
+    </table>
+</div>
 {% endblock %}

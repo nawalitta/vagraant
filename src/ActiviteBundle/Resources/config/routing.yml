@@ -25,8 +25,8 @@ ActiviteBundle_Activite_edit:
     defaults: { _controller: ActiviteBundle:Activite:edit,id : null }
 
 ActiviteBundle_Activite_show:
-    path: activite/show
-    defaults: { _controller: ActiviteBundle:Activite:show}
+    path: activite/show/{id}
+    defaults: { _controller: ActiviteBundle:Activite:show,id : null}
     
 ActiviteBundle_Activite_delete:
     path: activite/delete/{id}

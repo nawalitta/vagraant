@@ -3,8 +3,96 @@
 {% block title %}ActiviteBundle:Activite:edit{% endblock %}
 
 {% block body %}
-<h1>Welcome to the Activite:show page</h1>
-
- {% include 'ActiviteBundle:Activite:preview.html.twig' %}  
-
+<nav class = "navbar navbar-default" >
+    <div>
+        <ul class = "nav navbar-nav">
+            <li><a href = "{{path('RessourceBunde_Ressource_edit')}}">Ajouter une ressource</a></li>
+        </ul>
+     </div>
+</nav>
+<div class="container">
+  <div class="row">
+    <div class="col-sm-4">
+      <!--Sidebar content-->
+      <div class="table-responsive">
+        <table class="table">
+            <tr>
+                <td> Designation : </td><td> {{activite.designation}}</td>
+            </tr>
+            <tr>
+                <td> durée minimum : </td><td>{{activite.dureeMin}}</td>
+            </tr>
+            <tr>
+                <td> durée maximum : </td><td>{{activite.dureeMax}}</td>
+            </tr>
+            <tr>
+                <td> Nombre d'enfants minimum : </td><td>{{activite.nbEnfantsMin}}</td>
+            </tr>
+            <tr>
+                <td> Nombre d'enfants maximum : </td><td>{{activite.nbEnfantsMax}}</td>
+            </tr>
+            <tr>
+                <td> durée transport : </td><td>{{activite.dureeTransport}}</td>
+            </tr>
+            <tr>
+                <td> type activité : </td><td>{{activite.typeActivite}}</td>
+            </tr>
+        </table>
+      </div>
+    </div>
+    <div class="col-sm-8">
+        
+        <div class="table-responsive">
+            {#
+            <table class ="table">
+                <caption> Liste des ressources</caption>
+                <tr>
+                    <th> # </th>
+                    <th> Nom ressource </th>
+                    <th> Quantité </th>
+                    <th> Ratio </th>
+                </tr>
+                {% for ressource in activite.besoinTypeRessource.getTypeRessource().getRessources() %}
+                    <tr>
+                        <td><a href='#'>{{ressource.getId()}}</a></td>
+                    </tr>
+                {% endfor %}
+            </table>
+            #}
+            <table class="table">
+                 <caption>Liste des enfants</caption>
+                <tr>
+                    <th> # </th>
+                    <th> Prénom </th>
+                    <th> nom </th>
+                    <th> régime </th>
+                    <th> est Archivé </th>
+                    <th> Date arrivé </th>
+                </tr>
+                <tr>
+                    <td> Optionnel</td><td></td><td></td><td></td><td></td><td></td>
+                </tr>
+            {% for enfant in activite.enfantsOptionnels %}
+                {% include 'RessourceBundle:Enfant:preview.html.twig' %}  
+            {% endfor %}
+            
+            <tr>
+                <td> Obligatoire </td><td></td><td></td><td></td><td></td><td></td>
+            </tr>
+            {% for enfantsObligatoire in activite.enfantsObligatoires %}
+                <tr>
+                    <td><a href='enfant/show/{{enfantsObligatoire.enfant.getId()}}'> {{enfantsObligatoire.enfant.getId()}}</a></td>
+                    <td><a href='enfant/show/{{enfantsObligatoire.enfant.getId()}}'> {{enfantsObligatoire.enfant.getPrenom()}}</a></td>
+                    <td><a href='enfant/show/{{enfantsObligatoire.enfant.getId()}}'> {{enfantsObligatoire.enfant.getNom()}}</a></td>
+                    <td>{{enfantsObligatoire.enfant.getRegime()}}</td>
+                    <td>{{enfantsObligatoire.enfant.getEstArchive()}}</td>
+                    <td>{{enfantsObligatoire.enfant.getDateArrive()|date("m/d/Y")}}</td>
+                </tr> 
+            {% endfor %}
+            
+            </table>
+        </div>   
+    </div>
+  </div>
+</div>
 {% endblock %}
