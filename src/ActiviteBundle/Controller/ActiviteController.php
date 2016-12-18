@@ -12,11 +12,23 @@ class ActiviteController extends Controller {
      * Affichage de toutes les Activite présentes dans la bdd
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function indexAction() {
+    public function indexAction(Request $request) {
         $entityManager = $this->getDoctrine()->getManager();
         $activiteRepository = $entityManager->getRepository("ActiviteBundle:Activite");
+        $listActivite=$request->get('idActivites');
+        if($listActivite !=null){
+            foreach ($listActivite as $id){
+
+                $activite = $activiteRepository->findOneById($id);
+                if ($activite != null) {
+                    $entityManager->remove($activite);
+                }
+                $entityManager->flush();
+            }           
+        }
         $activites = $activiteRepository->findAll();
 
+        
         return $this->render('ActiviteBundle:Activite:index.html.twig', array(
                     "activites" => $activites
         ));
@@ -95,4 +107,5 @@ class ActiviteController extends Controller {
 
         return $this->redirect($this->generateUrl('ActiviteBundle_Activite_index'));
     }
+    
 }

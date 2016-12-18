@@ -4,4 +4,52 @@
 
 {% block body %}
 <h1>Welcome to the Enfant:show page</h1>
+<div class="container">
+  <div class="row">
+    <div class="col-sm-4">
+      <!--Sidebar content-->
+      <div class="table-responsive">
+        <table class="table">
+            <tr>
+                <td> Prénom : </td><td> {{enfant.prenom}}</td>
+            </tr>
+            <tr>
+                <td> Nom : </td><td>{{enfant.nom}}</td>
+            </tr>
+            <tr>
+                <td> Identifiant : </td><td>{{enfant.identifiant}}</td>
+            </tr>
+            <tr>
+                <td> Régime : </td><td>{{enfant.regime}}</td>
+            </tr>
+            <tr>
+                <td> Est archivé : </td><td>{{enfant.estArchive}}</td>
+            </tr>
+            <tr>
+                <td> date d'arrivée : </td><td>{{enfant.dateArrive|date("m/d/Y")}}</td>
+            </tr>
+            <tr>
+                <td> Groupe : </td><td>{{enfant.groupe.getDesignation()}}</td>
+            </tr>
+        </table>
+      </div>
+    </div>
+    <div class="col-sm-8">
+        
+        <div class="table-responsive">
+            <table class ="table">
+                <caption> Liste des activités</caption>
+                <tr>
+                    <th> # </th>
+                    <th> Nom ressource </th>
+                </tr>
+                
+                <tr>
+                    
+                </tr>
+            </table>
+        </div>   
+    </div>
+  </div>
+</div>
 {% endblock %}

@@ -4,22 +4,33 @@
 
 {% block body %}
 <h1>Welcome to the Activite:index page</h1>
-<div class="table-responsive">
-    <table class="table">
-         <caption>Liste des activités</caption>
-        <tr>
-            <th> Activite id </th>
-            <th> Designation </th>
-            <th> Duree Minimum </th>
-            <th> Duree Maximum </th>
-            <th> Nombre minimum d'enfants </th>
-            <th> Nombre maximum d'enfants </th>
-            <th> Durée transport </th>
-        </tr>
-    {% for activite in activites %}
-        {% include 'ActiviteBundle:Activite:preview.html.twig' %}  
-    {% endfor %}
-
-    </table>
+<nav class = "navbar navbar-default" >
+    <div>
+        <ul class = "nav navbar-nav">
+            <li><a href = "{{path('ActiviteBundle_Activite_edit')}}">Ajouter une activité</a></li>
+        </ul>
+     </div>
+</nav>
+<form>
+    <div class="table-responsive">
+        <table class="table">
+             <caption>Liste des activités</caption>
+            <tr>
+                <th> Activite id </th>
+                <th> Designation </th>
+                <th> Type Activite </th>
+                <th> Duree Minimum </th>
+                <th> Duree Maximum </th>
+                <th> Nombre minimum d'enfants </th>
+                <th> Nombre maximum d'enfants </th>
+                <th> Durée transport </th>
+                <th> Case à cocher </th>
+            </tr>
+        {% for activite in activites %}
+            {% include 'ActiviteBundle:Activite:preview.html.twig' %}  
+        {% endfor %}
+        </table>
+        <button type="submit" class="btn btn-primary">Supprimer</button>
+</form>
 </div>
 {% endblock %}

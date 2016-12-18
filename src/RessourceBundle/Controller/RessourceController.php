@@ -18,17 +18,17 @@ class RessourceController extends Controller
         ));
     }
 
-    public function editAction($id=null,Request $request)
+    public function editAction($id=null,$idActivite=null,Request $request)
     {
-        $entityManager = $this->getDoctrine()->getManager();
+       $entityManager = $this->getDoctrine()->getManager();
   
        $ressourceRepository = $entityManager->getRepository("RessourceBundle:Ressource");
         
        $ressource = $ressourceRepository->findOneById($id);
        if($ressource==null)
-           { 
+       { 
            $ressource=new \RessourceBundle\Entity\Ressource();
-           }
+       }
        $form = $this->createForm(\RessourceBundle\Form\RessourceType::class,$ressource);
         
         
