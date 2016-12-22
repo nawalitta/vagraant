@@ -112,7 +112,7 @@ class Jour
         $this->activitesrealisees = new ArrayCollection();
         $this->activitesfixees = new ArrayCollection();
     }
-
+    
     /**
      * Add activitesrealisee
      *
@@ -179,5 +179,10 @@ class Jour
     public function getActivitesfixees()
     {
         return $this->activitesfixees;
+    }
+    
+    public function __toString()
+    {
+        return $this->designation." ".$this->parite;
     }
 }

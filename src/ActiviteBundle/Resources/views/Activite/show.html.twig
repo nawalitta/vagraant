@@ -9,6 +9,7 @@
             <li><a href = "{{path('RessourceBunde_Ressource_edit')}}">Affecter une ressource</a></li>
             <li><a href=""> Affecter un Enfant</a></li>
             <li><a href="{{path('ActiviteBundle_Activite_edit',{ 'id': activite.id })}}"> Modifier l'activité</a></li>
+            <li><a href="{{path('ActiviteBundle_Activite_delete',{ 'id': activite.id })}}">Supprimer</a></li>
         </ul>
      </div>
 </nav>
@@ -18,14 +19,15 @@
       <!--Sidebar content-->
       <div class="table-responsive">
         <table class="table">
+            <caption> Informations générals </caption>
             <tr>
                 <td> Designation : </td><td> {{activite.designation}}</td>
             </tr>
             <tr>
-                <td> durée minimum : </td><td>{{activite.dureeMin}}</td>
+                <td> Durée minimum : </td><td>{{activite.dureeMin}}</td>
             </tr>
             <tr>
-                <td> durée maximum : </td><td>{{activite.dureeMax}}</td>
+                <td> Durée maximum : </td><td>{{activite.dureeMax}}</td>
             </tr>
             <tr>
                 <td> Nombre d'enfants minimum : </td><td>{{activite.nbEnfantsMin}}</td>
@@ -34,10 +36,10 @@
                 <td> Nombre d'enfants maximum : </td><td>{{activite.nbEnfantsMax}}</td>
             </tr>
             <tr>
-                <td> durée transport : </td><td>{{activite.dureeTransport}}</td>
+                <td> Durée transport : </td><td>{{activite.dureeTransport}}</td>
             </tr>
             <tr>
-                <td> type activité : </td><td>{{activite.typeActivite}}</td>
+                <td> Type activité : </td><td>{{activite.typeActivite}}</td>
             </tr>
         </table>
         <table>
@@ -56,8 +58,23 @@
                             <td> {{ besoinTypeRessource.getRatio() }}</td>
                         </tr>
                 {% endfor %}
+        </table>
+        <table>
+            <caption> Disponibilité </caption>
             <tr>
-                
+                <td> Lundi : </td><td> {{activite.fenetreHoraire.getLundiDebut()|date("H:I")}} - {{activite.fenetreHoraire.getLundiFin()|date("H:I")}}</td>
+            </tr>
+            <tr>
+                <td> Mardi : </td><td> {{activite.fenetreHoraire.getMardiDebut()|date("H:I")}} - {{activite.fenetreHoraire.getMardiFin()|date("H:I")}}</td>
+            </tr>
+            <tr>
+                <td> Mercredi : </td><td> {{activite.fenetreHoraire.getMercrediDebut()|date("H:I")}} - {{activite.fenetreHoraire.getMercrediFin()|date("H:I")}}</td>
+            </tr>
+            <tr>
+                <td> Jeudi : </td><td> {{activite.fenetreHoraire.getJeudiDebut()|date("H:I")}} - {{activite.fenetreHoraire.getJeudiFin()|date("H:I")}}</td>
+            </tr>
+            <tr>
+                <td> Vendredi : </td><td> {{activite.fenetreHoraire.getVendrediDebut()|date("H:I")}} - {{activite.fenetreHoraire.getVendrediFin()|date("H:I")}}</td>
             </tr>
         </table>
       </div>
@@ -86,12 +103,13 @@
                     <th> Prénom </th>
                     <th> Nom </th>
                     <th> Identifiant </th>
+                    <th> groupe </th>
                     <th> Régime </th>
                     <th> Est Archivé </th>
                     <th> Date arrivé </th>
                 </tr>
                 <tr>
-                    <td> Optionnel</td><td></td><td></td><td></td><td></td><td></td>
+                    <td> Optionnel</td><td></td><td></td><td></td><td></td><td></td><td></td>
                 </tr>
             {% for enfant in activite.enfantsOptionnels %}
                 <tr>
@@ -100,7 +118,7 @@
             {% endfor %}
             
             <tr>
-                <td> Obligatoire </td><td></td><td></td><td></td><td></td><td></td>
+                <td> Obligatoire </td><td></td><td></td><td></td><td></td><td></td><td></td>
             </tr>
             {% for enfantsObligatoire in activite.enfantsObligatoires %}
                 <tr>

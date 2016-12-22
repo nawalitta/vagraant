@@ -4,9 +4,54 @@
 
 {% block body %}
 <h1>Welcome to the Ressource:show page</h1>
-
-Ressource n° : {{ressource.id}}
-     Designation : {{ressource.designation}}
-     
-     
+<nav class = "navbar navbar-default" >
+    <div>
+        <ul class = "nav navbar-nav">
+            <li><a href="{{path('RessourceBunde_Ressource_edit',{ 'id': ressource.id })}}"> Modifier</a></li>
+            <li><a href="{{path('RessourceBunde_Ressource_delete',{ 'id': ressource.id })}}"> Supprimer </a></li>
+        </ul>
+     </div>
+</nav>
+<div class="container">
+  <div class="row">
+    <div class="col-sm-4">
+      <!--Sidebar content-->
+      <div class="table-responsive">
+        <table class="table">
+            <caption> Information général </caption>
+            <tr>
+                <td> Numéro : </td><td> {{ressource.id}}</td>
+            </tr>
+            <tr>
+                <td> Nom : </td><td>{{ressource.designation}}</td>
+            </tr>
+            <tr>
+                <td> Type : </td><td> {{ ressource.typeRessource.getDesignation() }} </td>
+            </tr>
+        </table>
+      </div>
+    </div>
+    <div class="col-sm-8">
+        <div class="table-responsive">
+            <table class ="table">
+                <caption> Liste des activités affectés</caption>
+                <tr>
+                    <th> # </th>
+                    <th> Nom activite </th>
+                    <th> Heure </th>
+                    <th> Jour - parite </th>
+                </tr>
+                {% for activiteRealise in ressource.activiteesRealisees %}
+                    <tr>
+                        <td><a href="{{path('ActiviteBundle_Activite_show',{ 'id': activiteRealise.getActivite().getId() })}}" >{{ activiteRealise.getActivite().getId()}}</a></td>
+                        <td><a href="{{path('ActiviteBundle_Activite_show',{ 'id': activiteRealise.getActivite().getId() })}}" >{{ activiteRealise.getActivite().getDesignation()}}</a></td>
+                        <td> {{activiteRealise.heureDebut|date("H:I")}}-{{activiteRealise.heureFin|date("H:I")}}</td>
+                        <td> {{ activiteRealise.jour().getDesignation() }} - {{ activiteRealise.jour().getParite() }}  </td>
+                    </tr>                    
+                {% endfor %}
+            </table>
+        </div>   
+    </div>
+  </div>
+</div>
 {% endblock %}

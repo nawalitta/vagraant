@@ -15,6 +15,8 @@ class ActiviteController extends Controller {
     public function indexAction(Request $request) {
         $entityManager = $this->getDoctrine()->getManager();
         $activiteRepository = $entityManager->getRepository("ActiviteBundle:Activite");
+        
+    //Récupere la liste des activités coché afin de les supprimer
         $listActivite=$request->get('idActivites');
         if($listActivite !=null){
             foreach ($listActivite as $id){

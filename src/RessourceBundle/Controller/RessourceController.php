@@ -7,11 +7,25 @@ use Symfony\Component\HttpFoundation\Request;
 
 class RessourceController extends Controller
 {
-    public function indexAction()
+    public function indexAction(Request $request)
     {
        $entityManager = $this->getDoctrine()->getManager();
-           $ressourceRepository = $entityManager->getRepository("RessourceBundle:Ressource");
-      $ressources = $ressourceRepository->findAll();
+       $ressourceRepository = $entityManager->getRepository("RessourceBundle:Ressource");
+       
+       //Récupere la liste des ressources coché afin de les supprimer
+       $listRessources=$request->get('idRessources');
+        if($listRessources !=null){
+            foreach ($listRessources as $id){
+
+                $ressource = $ressourceRepository->findOneById($id);
+                if ($ressource != null) {
+                    $entityManager->remove($ressource);
+                }
+                $entityManager->flush();
+            }           
+        }
+       
+       $ressources = $ressourceRepository->findAll();
         
         return $this->render('RessourceBundle:Ressource:index.html.twig', array(
             "ressources"=>$ressources

@@ -17,7 +17,7 @@ class EnfantController extends Controller
         $entityManager = $this->getDoctrine()->getManager();
         $enfantRepository = $entityManager->getRepository("RessourceBundle:Enfant");
         
-        
+        //Récupere la liste des enfants coché afin de les supprimer
         $listEnfants=$request->get('idEnfants');
         if($listEnfants !=null){
             foreach ($listEnfants as $id){

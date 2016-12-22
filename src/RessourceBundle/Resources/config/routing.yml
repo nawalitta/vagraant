@@ -94,3 +94,7 @@ RessourceBundle_Enfant_delete:
 RessourceBundle_Enfant_index:
     path:     enfant
     defaults: { _controller: RessourceBundle:Enfant:index }
+
+RessourceBundle_AffectationRessource_index:
+    path:     affectationRessource/index
+    defaults: { _controller: RessourceBundle:AffectationRessource:index }

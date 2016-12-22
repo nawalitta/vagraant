@@ -3,12 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/wamp/www/gpac/src/ActiviteBundle/Entity/Activite.php</file>
-            <file>file:/C:/wamp/www/gpac/src/RessourceBundle/Entity/TypeRessource.php</file>
-            <file>file:/C:/wamp/www/gpac/src/RessourceBundle/Entity/FenetreHoraire.php</file>
-            <file>file:/C:/wamp/www/gpac/src/ActiviteBundle/Resources/views/Activite/show.html.twig</file>
-            <file>file:/C:/wamp/www/gpac/src/RessourceBundle/Entity/Ressource.php</file>
-            <file>file:/C:/wamp/www/gpac/src/RessourceBundle/Entity/BesoinTypeRessource.php</file>
+            <file>file:/C:/wamp/www/gpac/src/RessourceBundle/Resources/views/AffectationRessource/index.html.twig</file>
+            <file>file:/C:/wamp/www/gpac/src/ActiviteBundle/Controller/ActiviteController.php</file>
+            <file>file:/C:/wamp/www/gpac/</file>
+            <file>file:/C:/wamp/www/gpac/src/RessourceBundle/Controller/AffectationRessourceController.php</file>
         </group>
     </open-files>
 </project-private>

@@ -3,6 +3,7 @@
     <td><a href="{{path('RessourceBundle_Enfant_show',{ 'id': enfant.id })}}"> {{enfant.prenom}}</a></td>
     <td><a href="{{path('RessourceBundle_Enfant_show',{ 'id': enfant.id })}}"> {{enfant.nom}}</a></td>
     <td><a href="{{path('RessourceBundle_Enfant_show',{ 'id': enfant.id })}}"> {{enfant.identifiant}}</a></td>  
+    <td> {{enfant.getGroupe().getDesignation() }} </td>
     <td>{{enfant.regime}}</td>
     <td>{{enfant.estArchive}}</td>
     <td>{{enfant.dateArrive|date("m/d/Y")}}</td>
