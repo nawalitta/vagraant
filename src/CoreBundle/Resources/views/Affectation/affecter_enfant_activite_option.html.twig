@@ -3,5 +3,7 @@
 {% block title %}CoreBundle:Affectation:affecterEnfantActiviteOption{% endblock %}
 
 {% block body %}
-<h1>Welcome to the Affectation:affecterEnfantActiviteOption page</h1>
+    <form method="post">
+        {% include 'CoreBundle:Affectation:affecter_enfant_activite_preview.html.twig' %}
+    </form>
 {% endblock %}

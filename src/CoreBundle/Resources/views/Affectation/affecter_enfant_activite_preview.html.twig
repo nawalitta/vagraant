@@ -1,0 +1,61 @@
+<div class="row">
+    <div class="col-md-2">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="form-group">
+                    <label for="group">Groupe:</label>
+                    <select class="form-control" id="group">
+                        <option></option>
+                        {% for group in groups %}
+                            <option>{{ group.designation }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+            </div>
+
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="form-group">
+                    <label for="group">Enfant:</label>
+                    <select class="form-control" id="group">
+                        <option></option>
+                        {% for enfant in enfants %}
+                            <option>{{ enfant.prenom }} {{ enfant.nom }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-10">
+        <div class="row">
+            <div class="table-responsive">
+                <table class="table">
+                    <caption>Liste des activités</caption>
+                    <tr>
+                        <th> Activite id</th>
+                        <th> Designation</th>
+                        <th> Type Activite</th>
+                        <th> Duree Minimum</th>
+                        <th> Duree Maximum</th>
+                        <th> Nombre minimum d'enfants</th>
+                        <th> Nombre maximum d'enfants</th>
+                        <th> Durée transport</th>
+                        <th> Case à cocher</th>
+                    </tr>
+                    {% for activite in activites %}
+                        {% include 'ActiviteBundle:Activite:preview.html.twig' %}
+                    {% endfor %}
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-offset-10 col-md-2">
+        <button type="button" class="btn btn-primary">Ok</button>
+    </div>
+</div>
+
+

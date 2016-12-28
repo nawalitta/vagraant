@@ -7,6 +7,8 @@
         <title>{% block title %}Gestion des emplois du temps{% endblock %}</title>
         {% block stylesheets %}
             <link rel="stylesheet" type="text/css" media="screen" href="/gpac/vendor/twitter/bootstrap/dist/css/bootstrap.css"/>
+            <link rel="stylesheet" type="text/css" media="screen" href="/gpac/app/Resources/css/getiem.css"/>
+
         {% endblock %}
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
 
@@ -20,7 +22,7 @@
             <body>
                 <div class="container-fluid">
                     <div class="row">
-                        <div class="col-lg-12">
+                        <div class="col-md-12">
                             {% block body %}
                                 <p> A REDEFINIR SUR CHAQUE PAGE</p>
                             {% endblock %}
@@ -32,7 +34,7 @@
                     <script src="/gpac/vendor/twitter/bootstrap/dist/js/bootstrap.js"></script>
                 {% endblock %}
             </body>
-            {% include 'footer.html.twig' %} 
+           {#{% include 'footer.html.twig' %}#}
         </div>
     </div>
 </html>
