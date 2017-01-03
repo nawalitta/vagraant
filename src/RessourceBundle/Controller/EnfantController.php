@@ -2,6 +2,7 @@
 
 namespace RessourceBundle\Controller;
 
+use RessourceBundle\Entity\Enfant;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use RessourceBundle\Form\RessourceType;
@@ -55,7 +56,7 @@ class EnfantController extends Controller
      * @param null $id : si null alors ajout
      *                   sinon édition d'une Enfant
      * @param Request $request
-     * @return \Symfony\Component\HttpFoundation\Response
+     * @return Response
      */
     public function editAction($id = null, Request $request) {
         $entityManager = $this->getDoctrine()->getManager();
@@ -66,12 +67,11 @@ class EnfantController extends Controller
             return $this->redirect($this->generateUrl('RessourceBundle_TypeEnfant_edit'));
         }
 
-
         $enfantRepository = $entityManager->getRepository("RessourceBundle:Enfant");
         $enfant = $enfantRepository->findOneById($id);
 
         if ($enfant == null) {
-            $enfant = new \EnfantBundle\Entity\Enfant();
+            $enfant = new Enfant();
         }
 
         $form = $this->createForm(EnfantType::class, $enfant);

@@ -1,3 +1,10 @@
-core_homepage:
+CoreBundle_core_homepage:
     path:     /
     defaults: { _controller: CoreBundle:Default:index }
+CoreBundle_affecter_enfant_activite_optionnelle:
+    path:     affectation/enfantActiviteOptionnelle
+    defaults: { _controller: CoreBundle:Affectation:affecterEnfantActiviteOption }
+
+CoreBundle_affecter_enfant_activite_obligatoire:
+    path:     affectation/enfantActivteObligatoire
+    defaults: { _controller: CoreBundle:Affectation:affecterEnfantActiviteObligatoire }
