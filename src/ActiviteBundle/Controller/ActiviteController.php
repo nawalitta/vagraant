@@ -20,7 +20,6 @@ class ActiviteController extends Controller {
         $listActivite=$request->get('idActivites');
         if($listActivite !=null){
             foreach ($listActivite as $id){
-
                 $activite = $activiteRepository->findOneById($id);
                 if ($activite != null) {
                     $entityManager->remove($activite);
@@ -29,7 +28,6 @@ class ActiviteController extends Controller {
             }           
         }
         $activites = $activiteRepository->findAll();
-
         
         return $this->render('ActiviteBundle:Activite:index.html.twig', array(
                     "activites" => $activites

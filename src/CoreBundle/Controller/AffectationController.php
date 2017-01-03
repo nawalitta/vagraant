@@ -10,6 +10,14 @@ class AffectationController extends Controller
     public function affecterEnfantActiviteOptionAction(Request $request)
     {
         $array = $this->getDataAffecterEnfantActivite();
+        $listActiviteId = $request->get('idActivites');
+        if($listActiviteId != null){
+            $entityManager = $this->getDoctrine()->getManager();
+            foreach ($listActiviteId as $id){
+
+                $entityManager->flush();
+            }
+        }
         return $this->render('CoreBundle:Affectation:affecter_enfant_activite_option.html.twig', $array );
     }
 

@@ -4,7 +4,7 @@
             <div class="col-md-12">
                 <div class="form-group">
                     <label for="group">Groupe:</label>
-                    <select class="form-control" id="group">
+                    <select class="form-control" id="group" name="group" onchange="selectGroup(document.getElementsByName('group'))">
                         <option></option>
                         {% for group in groups %}
                             <option>{{ group.designation }}</option>
@@ -17,7 +17,7 @@
             <div class="col-md-12">
                 <div class="form-group">
                     <label for="group">Enfant:</label>
-                    <select class="form-control" id="group">
+                    <select class="form-control" id="enfant" name="enfant">
                         <option></option>
                         {% for enfant in enfants %}
                             <option>{{ enfant.prenom }} {{ enfant.nom }}</option>
@@ -53,7 +53,7 @@
 </div>
 <div class="row">
     <div class="col-md-offset-10 col-md-2">
-        <button type="button" class="btn btn-primary">Ok</button>
+        <button type="submit" class="btn btn-primary">Ok</button>
     </div>
 </div>
 
