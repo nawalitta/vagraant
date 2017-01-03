@@ -6,7 +6,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 class AffectationController extends Controller
 {
-    public function affecterEnfantActiviteOptionAction()
+    public function affecterEnfantActiviteOptionAction(Request $request)
     {
         $array = $this->getDataAffecterEnfantActivite();
         return $this->render('CoreBundle:Affectation:affecter_enfant_activite_option.html.twig', $array );
