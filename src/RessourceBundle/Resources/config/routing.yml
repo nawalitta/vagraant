@@ -31,18 +31,70 @@ RessourceBunde_Ressource_show:
     path:     Ressource/show/{id}
     defaults: { _controller: RessourceBundle:Ressource:show }
 
-edit:
-    path:     besoinTypeRessource
-    defaults: { _controller: RessourceBundle:BesoinTypeRessourceController:edit }
+RessourceBundle_BesoinTypeRessource_edit:
+    path:     besoinTypeRessource/edit/{id}
+    defaults: { _controller: RessourceBundle:BesoinTypeRessourceController:edit, id : null  }
 
-delete:
-    path:     besoinTypeRessource
+RessourceBundle_BesoinTypeRessource_delete:
+    path:     besoinTypeRessource/delete/{id}
     defaults: { _controller: RessourceBundle:BesoinTypeRessourceController:delete }
 
-index:
+RessourceBundle_BesoinTypeRessource_index:
     path:     besoinTypeRessource
     defaults: { _controller: RessourceBundle:BesoinTypeRessourceController:index }
 
-show:
-    path:     besoinTypeRessource
+RessourceBundle_BesoinTypeRessource_show:
+    path:     besoinTypeRessource/show/{id}
     defaults: { _controller: RessourceBundle:BesoinTypeRessourceController:show }
+
+RessourceBundle_BesoinTypeRessource_edit:
+    path:     besoinTypeRessource/edit/{id}
+    defaults: { _controller: RessourceBundle:BesoinTypeRessource:edit, id : null   }
+
+RessourceBundle_BesoinTypeRessource_delete:
+    path:     besoinTypeRessource/delete/{id}
+    defaults: { _controller: RessourceBundle:BesoinTypeRessource:delete }
+
+RessourceBundle_BesoinTypeRessource_index:
+    path:     besoinTypeRessource
+    defaults: { _controller: RessourceBundle:BesoinTypeRessource:index }
+
+RessourceBundle_BesoinTypeRessource_show:
+    path:     besoinTypeRessource/show/{id}
+    defaults: { _controller: RessourceBundle:BesoinTypeRessource:show }
+
+RessourceBundle_TypeRessource_edit:
+    path:     typeRessource/edit/{id}
+    defaults: { _controller: RessourceBundle:TypeRessource:edit, id : null   }
+
+RessourceBundle_TypeRessource_delete:
+    path:     typeRessource/delete/{id}
+    defaults: { _controller: RessourceBundle:TypeRessource:delete }
+
+RessourceBundle_TypeRessource_index:
+    path:     typeRessource
+    defaults: { _controller: RessourceBundle:TypeRessource:index }
+
+RessourceBundle_TypeRessource_show:
+    path:     typeRessource/show/{id}
+    defaults: { _controller: RessourceBundle:TypeRessource:show }
+
+RessourceBundle_Enfant_edit:
+    path:     enfant/edit/{id}
+    defaults: { _controller: RessourceBundle:Enfant:edit, id : null   }
+
+RessourceBundle_Enfant_show:
+    path:     enfant/show/{id}
+    defaults: { _controller: RessourceBundle:Enfant:show }
+
+RessourceBundle_Enfant_delete:
+    path:     enfant/delete/{id}
+    defaults: { _controller: RessourceBundle:Enfant:delete }
+
+RessourceBundle_Enfant_index:
+    path:     enfant
+    defaults: { _controller: RessourceBundle:Enfant:index }
+
+RessourceBundle_AffectationRessource_index:
+    path:     affectationRessource/index/{id}
+    defaults: { _controller: RessourceBundle:AffectationRessource:index, id : null }

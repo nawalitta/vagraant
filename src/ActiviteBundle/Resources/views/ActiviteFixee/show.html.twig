@@ -4,5 +4,126 @@
 
 {% block body %}
 <h1>Welcome to the ActiviteFixee:show page</h1>
-    {% include 'ActiviteBundle:ActiviteFixee:preview.html.twig' %}  
+ <nav class = "navbar navbar-default" >
+    <div>
+        <ul class = "nav navbar-nav">
+            <li><a href=""> Affecter une ressource </a></li>
+            <li><a href="{{path('ActiviteBundle_ActiviteFixee_edit',{ 'id': activite.id })}}"> Modifier l'activité</a></li>
+            <li><a href="{{path('ActiviteBundle_ActiviteFixee_delete',{ 'id': activite.id })}}">Supprimer</a></li>
+        </ul>
+     </div>
+</nav>
+<div class="container">
+  <div class="row">
+    <div class="col-sm-4">
+      <!--Sidebar content-->
+      <div class="table-responsive">
+        <table class="table">
+            <caption> Informations générals </caption>
+            <tr>
+                <td> Designation : </td><td> {{activiteFixee.activite.getDesignation()}}</td>
+            </tr>
+            {#
+            <tr>
+                <td> Durée minimum : </td><td>{{activite.dureeMin}}</td>
+            </tr>
+            <tr>
+                <td> Durée maximum : </td><td>{{activite.dureeMax}}</td>
+            </tr>
+            #}
+            <tr>
+                <td> Heure : </td><td> {{ activiteFixee.heureDebut ~ " - " ~ activiteFixee.heureFin }}
+            </tr>
+            <tr>
+                <td> Jour/parite : </td><td> {{activiteFixee.jour.getDesignation() ~ " / " ~ activiteFixee.jour.getParite() }} </td>
+            </tr>
+            <tr>
+                <td> Nombre d'enfants minimum : </td><td>{{activiteFixee.activite.getNbEnfantsMin()}}</td>
+            </tr>
+            <tr>
+                <td> Nombre d'enfants maximum : </td><td>{{activiteFixee.activite.getNbEnfantsMax()}}</td>
+            </tr>
+            <tr>
+                <td> Durée transport : </td><td>{{activiteFixee.activite.getDureeTransport()}}</td>
+            </tr>
+            <tr>
+                <td> Type activité : </td><td>{{activiteFixee.activite.getTypeActivite()}}</td>
+            </tr>
+        </table>
+        <table>
+            <caption> Besoin en ressources </caption>
+            <tr>
+                <th> # </th>
+                <th> Type ressource </th>
+                <th> Quantité </th>
+                <th> Ratio </th>
+            </tr>
+                {% for besoinTypeRessource in activiteFixee.activite.getBesoinsTypeRessources() %}
+                        <tr>
+                            <td>{{ besoinTypeRessource.getTypeRessource().getId() }}</td>
+                            <td>{{ besoinTypeRessource.getTypeRessource().getDesignation() }}</td>
+                            <td>{{ besoinTypeRessource.getQuantiteRessource() }}</td>
+                            <td> {{ besoinTypeRessource.getRatio() }}</td>
+                        </tr>
+                {% endfor %}
+        </table>
+      </div>
+    </div>
+    <div class="col-sm-8">
+        
+        <div class="table-responsive">
+            <table class ="table">
+                <caption> Liste des ressources</caption>
+                <tr>
+                    <th> # </th>
+                    <th> Nom ressource </th>
+                </tr>
+                
+                <tr>
+                    {% for affectation in activite.preAffections %}
+                        <td><a href="" >{{ affectation.ressource.getId() }}</a></td>
+                        <td><a href="" >{{ affectation.ressource.getDesignation() }}</a></td>
+                    {% endfor %}
+                </tr>
+            </table>
+            <table class="table">
+                 <caption>Liste des enfants</caption>
+                <tr>
+                    <th> # </th>
+                    <th> Prénom </th>
+                    <th> Nom </th>
+                    <th> Identifiant </th>
+                    <th> groupe </th>
+                    <th> Régime </th>
+                    <th> Est Archivé </th>
+                    <th> Date arrivé </th>
+                </tr>
+                <tr>
+                    <td> Optionnel</td><td></td><td></td><td></td><td></td><td></td><td></td>
+                </tr>
+            {% for enfant in activite.enfantsOptionnels %}
+                <tr>
+                    {% include 'RessourceBundle:Enfant:preview.html.twig' %}
+                </tr>
+            {% endfor %}
+            
+            <tr>
+                <td> Obligatoire </td><td></td><td></td><td></td><td></td><td></td><td></td>
+            </tr>
+            {% for enfantsObligatoire in activite.enfantsObligatoires %}
+                <tr>
+                    <td><a href="{{path('RessourceBundle_Enfant_show',{ 'id': enfantsObligatoire.enfant.getId() })}}"> {{enfantsObligatoire.enfant.getId()}}</a></td>
+                    <td><a href="{{path('RessourceBundle_Enfant_show',{ 'id': enfantsObligatoire.enfant.getId() })}}"> {{enfantsObligatoire.enfant.getPrenom()}}</a></td>
+                    <td><a href="{{path('RessourceBundle_Enfant_show',{ 'id': enfantsObligatoire.enfant.getId() })}}"> {{enfantsObligatoire.enfant.getNom()}}</a></td>
+                    <td>{{enfantsObligatoire.enfant.getRegime()}}</td>
+                    <td>{{enfantsObligatoire.enfant.getEstArchive()}}</td>
+                    <td>{{enfantsObligatoire.enfant.getDateArrive()|date("m/d/Y")}}</td>
+                </tr> 
+            {% endfor %}
+            
+            </table>
+        </div>   
+    </div>
+  </div>
+</div>
 {% endblock %}

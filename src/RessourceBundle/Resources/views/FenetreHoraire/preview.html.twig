@@ -1,24 +1,6 @@
-     <table>
-         <tr>
-             <td>Lundi</td>
-             <td>Mardi</td>
-             <td>Mercredi</td>
-             <td>Jeudi</td>
-             <td>Vendredi</td>
-         </tr>
-         <tr>
-             <td>{{ fenetreHoraire.lundiDebut|date('H:i')}}</td>
-             <td>{{ fenetreHoraire.mardiDebut|date('H:i')}}</td>
-             <td>{{ fenetreHoraire.mercrediDebut|date('H:i')}}</td>
-             <td>{{ fenetreHoraire.jeudiDebut|date('H:i')}}</td>
-             <td>{{ fenetreHoraire.vendrediDebut|date('H:i')}}</td> 
-         </tr>
-         <tr>
-             <td>{{ fenetreHoraire.lundiFin|date('H:i')}}</td>
-             <td>{{ fenetreHoraire.mardiFin|date('H:i')}}</td>
-             <td>{{ fenetreHoraire.mercrediFin|date('H:i')}}</td>
-             <td>{{ fenetreHoraire.jeudiFin|date('H:i')}}</td>
-             <td>{{ fenetreHoraire.vendrediFin|date('H:i')}}</td> 
-         </tr>
-         
-     </table>
+<td> {{ fh.id }} </td>
+<td> {{ fh.lundiDebut|date("H:I") ~" - " ~ fh.lundiFin|date("H:I") }} </td>
+<td> {{ fh.mardiDebut|date("H:I") ~" - " ~ fh.mardiFin|date("H:I") }} </td>
+<td> {{ fh.mercrediDebut|date("H:I") ~" - " ~ fh.mercrediFin|date("H:I") }} </td>
+<td> {{ fh.jeudiDebut|date("H:I") ~" - " ~ fh.jeudiFin|date("H:I") }} </td>
+<td> {{ fh.vendrediDebut|date("H:I") ~" - " ~ fh.vendrediFin|date("H:I") }} </td>

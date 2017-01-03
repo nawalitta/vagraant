@@ -132,7 +132,7 @@ class ActiviteRealisee
     public function __toString()
     {
 
-        return $this->activite->getDesignation();
+        return $this->activite->getDesignation()." ".$this->heureDebut."-".$this->heureFin;
     }
 
     /**

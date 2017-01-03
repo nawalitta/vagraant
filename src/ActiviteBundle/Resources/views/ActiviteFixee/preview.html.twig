@@ -1,23 +1,5 @@
-<table>
-    <tr>
-        <td>Enfant</td>
-        <td>{{ activiteFixee.enfant.prenom }} {{ activiteFixee.enfant.nom }}</td>
-        
-    </tr>
-    <tr>
-        <td>Activite</td>
-        <td>{{ activiteFixee.activite.designation }}</td>
-    </tr>
-    <tr>
-        <td>Jour</td>
-        <td> Semaine {{ activiteFixee.jour.parite }} {{ activiteFixee.jour.designation }}</td>
-    </tr>
-    <tr>
-        <td>Heure Début</td>
-        <td>{{ activiteFixee.heureDebut }}</td>
-    </tr>
-    <tr>
-        <td>Heure de Fin</td>
-        <td>{{ activiteFixee.heureFin }}</td>
-    </tr>
-</table>
+<td><a href="{{ path('ActiviteBundle_ActiviteFixee_show',{'id' : activiteF.id} )}}"> {{ activiteF.id }}</a> </td>
+<td><a href="{{ path('ActiviteBundle_ActiviteFixee_show',{'id' : activiteF.id} )}}"> {{ activiteF.activite.getDesignation() }}</a> </td>
+<td> {{ activiteF.activite.getTypeActivite().getDesignation() }} </td>
+<td> {{ activiteF.heureDebut|date('H:I') ~ "-"~ activiteF.heureFin|date('H:I') }} </td>
+<td> {{ activiteF.jour.getDesignation() ~'/'~ activiteF.jour.getParite() }} </td>

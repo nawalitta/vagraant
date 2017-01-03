@@ -13,7 +13,7 @@ class ActiviteType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('designation')->add('dureeMin')->add('dureeMax')->add('nbEnfantsMin')->add('nbEnfantsMax')->add('dureeTransport')->add('typeActivite')->add('fenetreHoraire')->add('enfantsOptionnel')        ;
+        $builder->add('designation')->add('dureeMin')->add('dureeMax')->add('nbEnfantsMin')->add('nbEnfantsMax')->add('dureeTransport')->add('typeActivite')->add('fenetreHoraire')       ;
     }
     
     /**

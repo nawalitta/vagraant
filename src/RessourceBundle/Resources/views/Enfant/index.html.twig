@@ -4,4 +4,42 @@
 
 {% block body %}
 <h1>Welcome to the Enfant:index page</h1>
+<nav class = "navbar navbar-default" >
+    <div>
+        <ul class = "nav navbar-nav">
+            <li><a href = "{{path('RessourceBundle_Enfant_edit')}}">Ajouter un enfant</a></li>
+        </ul>
+     </div>
+</nav>
+<form>
+    <div class="table-responsive">
+        <table class="table">
+             <caption>Liste des Enfants</caption>
+            <tr>
+                <th> # </th>
+                <th> Prénom </th>
+                <th> Nom </th>
+                <th> Identifiant </th>
+                <th> Groupe </th>
+                <th> Régime </th>
+                <th> Est Archivé </th>
+                <th> Date Arrivé</th>
+                <th> Case à cocher </th>
+            </tr>
+        {% for enfant in enfants %}
+            <tr>
+            {% include 'RessourceBundle:Enfant:preview.html.twig' %}
+                <td>
+                    <div class="form-check">
+                        <label class="form-check-label">
+                            <input type="checkbox" name="idEnfants[]" value="{{enfant.id}}" class="form-check-input">
+                        </label>
+                    </div>
+                </td>
+            </tr>
+        {% endfor %}
+        </table>
+        <button type="submit" class="btn btn-primary">Supprimer</button>
+</form>
+
 {% endblock %}
