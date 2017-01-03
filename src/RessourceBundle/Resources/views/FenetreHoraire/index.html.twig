@@ -4,13 +4,41 @@
 
 {% block body %}
 <h1>Welcome to the FenetreHoraire:index page</h1>
+<nav class = "navbar navbar-default" >
+    <div>
+        <ul class = "nav navbar-nav">
+            <li><a href = "{{path('RessourceBunde_FenetreHoraire_edit')}}">Ajouter une fenetre horaire</a></li>
+        </ul>
+     </div>
+</nav>
+<form>
+    <div class="table-responsive">
+        <table class="table">
+             <caption>Fenetres horaire</caption>
+            <tr>
+                <th> # </th>
+                <th> Lundi </th>
+                <th> Mardi </th>
+                <th> Mercredi </th>
+                <th> Jeudi </th>
+                <th> Vendredi </th>
+                <th> Case a cocher </th>
+            </tr>
+        {% for fh in fenetresHoraire %}
+            <tr>
+            {% include 'RessourceBundle:FenetreHoraire:preview.html.twig' %}
+                <td>
+                    <div class="form-check">
+                        <label class="form-check-label">
+                            <input type="checkbox" name="idfhs[]" value="{{fh.id}}" class="form-check-input">
+                        </label>
+                    </div>
+                </td>
+            </tr>
+        {% endfor %}
+        </table>
+        <button type="submit" class="btn btn-primary">Supprimer</button>
+</form>
 
-
-
- {% for fenetreHoraire in fenetresHoraire %}
-        Fenetre Horaire n° : {{fenetreHoraire.id}}
- {% include 'RessourceBundle:FenetreHoraire:preview.html.twig' %}  
-    {% endfor %}
-    
     
 {% endblock %}

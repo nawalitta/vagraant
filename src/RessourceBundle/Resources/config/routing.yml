@@ -96,5 +96,5 @@ RessourceBundle_Enfant_index:
     defaults: { _controller: RessourceBundle:Enfant:index }
 
 RessourceBundle_AffectationRessource_index:
-    path:     affectationRessource/index
-    defaults: { _controller: RessourceBundle:AffectationRessource:index }
+    path:     affectationRessource/index/{id}
+    defaults: { _controller: RessourceBundle:AffectationRessource:index, id : null }

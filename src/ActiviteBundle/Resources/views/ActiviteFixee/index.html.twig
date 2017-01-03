@@ -4,10 +4,40 @@
 
 {% block body %}
 <h1>Welcome to the ActiviteFixee:index page</h1>
-
-{% for activiteFixee in activitesFixees %}
-    Activite Fixee n° : {{activiteFixee.id}}
-    {% include 'ActiviteBundle:ActiviteFixee:preview.html.twig' %}  
-{% endfor %}
+<nav class = "navbar navbar-default" >
+    <div>
+        <ul class = "nav navbar-nav">
+            <li><a href = "{{path('ActiviteBundle_Activite_edit')}}">Ajouter une activité</a></li>
+        </ul>
+     </div>
+</nav>
+<form>
+    <div class="table-responsive">
+        <table class="table">
+             <caption>Liste des activités fixées</caption>
+            <tr>
+                <th> Activite id </th>
+                <th> Designation </th>
+                <th> Type Activite </th>
+                <th> Heure </th>
+                <th> Jour/parité </th>
+                <th> Case à cocher </th>
+            </tr>
+        {% for activiteF in activitesFixees %}
+            <tr>
+                {% include 'ActiviteBundle:ActiviteFixee:preview.html.twig' %}  
+                <td>
+                    <div class="form-check">
+                        <label class="form-check-label">
+                            <input type="checkbox" name="idActiviteFixee[]" value="{{activiteF.id}}" class="form-check-input">
+                        </label>
+                    </div>
+                </td>
+            </tr>
+        {% endfor %}
+        </table>
+        <button type="submit" class="btn btn-primary">Supprimer</button>
+</form>
+</div>
 
 {% endblock %}

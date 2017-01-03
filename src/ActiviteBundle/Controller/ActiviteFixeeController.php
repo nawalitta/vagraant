@@ -32,7 +32,7 @@ class ActiviteFixeeController extends Controller
         $entityManager = $this->getDoctrine()->getManager();
         $activiteFixeeRepository = $entityManager->getRepository("ActiviteBundle:ActiviteFixee");
         $activiteFixee = $activiteFixeeRepository->findOneById($id);
-        
+        $ressourceRepository = $entityManager->getRepository("RessourceBundle:Ressource");
         return $this->render('ActiviteBundle:ActiviteFixee:show.html.twig', array(
         "activiteFixee"=>$activiteFixee
         ));

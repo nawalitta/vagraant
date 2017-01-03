@@ -12,12 +12,24 @@ class FenetreHoraireController extends Controller
      * Affichage de toutes les FenetreHoraire présentes dans la bdd
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function indexAction()
+    public function indexAction(Request $request)
     {
         $entityManager = $this->getDoctrine()->getManager();
         $fenetreHoraireRepository = $entityManager->getRepository("RessourceBundle:FenetreHoraire");
         $fenetresHoraire = $fenetreHoraireRepository->findAll();
         
+        //Récupere la liste des enfants coché afin de les supprimer
+        $listFh=$request->get('idfhs');
+        if($listFh !=null){
+            foreach ($listFh as $id){
+
+                $fh = $fenetreHoraireRepository->findOneById($id);
+                if ($fh != null) {
+                    $entityManager->remove($fh);
+                }
+                $entityManager->flush();
+            }           
+        }
         return $this->render('RessourceBundle:FenetreHoraire:index.html.twig', array(
         "fenetresHoraire"=>$fenetresHoraire
         ));
