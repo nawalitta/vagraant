@@ -11,12 +11,18 @@ class AffectationController extends Controller
     {
         $array = $this->getDataAffecterEnfantActivite();
         $listActiviteId = $request->get('idActivites');
+        $enfant = $request->get('enfant');
+        $groupe = $request->get('groupe');
         if($listActiviteId != null){
-            $entityManager = $this->getDoctrine()->getManager();
-            foreach ($listActiviteId as $id){
+            if($enfant != null){
 
-                $entityManager->flush();
             }
+            $entityManager = $this->getDoctrine()->getManager();
+            /*foreach ($enfants as $enfant){
+                foreach ($listActiviteId as $id) {
+
+                }
+            }*/
         }
         return $this->render('CoreBundle:Affectation:affecter_enfant_activite_option.html.twig', $array );
     }
