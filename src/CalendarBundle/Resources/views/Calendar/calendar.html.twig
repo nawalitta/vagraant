@@ -2,21 +2,50 @@
 
  {% block stylesheets %}
      {{ parent() }}
-     <link rel="stylesheet" href="{{ asset('bundles/adesignscalendar/css/fullcalendar/fullcalendar.css') }}" />
+     <link rel="stylesheet" href="{{ asset('bundles/adesignscalendar/css/fullcalendar/fullcalendar.min.css') }}" />
+     <link rel="stylesheet" href="{{ asset('bundles/adesignscalendar/css/fullcalendar/scheduler.min.css') }}" />
+     <link rel="stylesheet" href="{{ asset('bundles/adesignscalendar/css/fullcalendar/jquery-ui.css') }}" />
+     <link rel="stylesheet" href="{{ asset('bundles/adesignscalendar/css/fullcalendar/jquery-ui.min.css') }}" />
+     <link rel="stylesheet" href="{{ asset('bundles/adesignscalendar/css/fullcalendar/calendar.css') }}" />
 {% endblock %}
 
 {% block body %}
-    {{ parent() }}
+    
+    <button style="margin-left: 25px" type="button" class="btn btn-success">Sauvegarder</button>
+    
+    <div id='external-events'>
+                <h4>Activité obligatoire</h4>
+                <div class='fc-event'>Judo</div>
+                <div class='fc-event'>Rugby</div>
+                <div class='fc-event'>Catch</div>
+                <div class='fc-event'>Football</div>
+                <div class='fc-event'>Kiné</div>
+                    
+    </div>
+    <div id='external-events' style="margin-left: 10px">
+            <h4>Activité optionnelle</h4>
+            <div class='fc-event'>Piscine</div>
+            <div class='fc-event'>Cuisine</div>
+            <div class='fc-event'>Ski</div>
+    </div>
+    
     <div id="calendar-holder"></div>
 {% endblock %}
 
 {% block javascripts %}
         {{ parent() }}
-        <script type="text/javascript" src="{{ asset('bundles/adesignscalendar/js/jquery/jquery-1.8.2.min.js') }}"></script>
-        <script type="text/javascript" src="{{ asset('bundles/adesignscalendar/js/fullcalendar/jquery.fullcalendar.min.js') }}"></script>
+        
+        <script type="text/javascript" src="{{ asset('bundles/adesignscalendar/js/fullcalendar/moment.min.js') }}"></script>
+        
+        <script type="text/javascript" src="{{ asset('bundles/adesignscalendar/js/jquery/jquery.min.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('bundles/adesignscalendar/js/jquery/jquery-ui.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('bundles/adesignscalendar/js/jquery/jquery-ui.min.js') }}"></script>
+        
+        <script type="text/javascript" src="{{ asset('bundles/adesignscalendar/js/fullcalendar/fullcalendar.min.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('bundles/adesignscalendar/js/fullcalendar/scheduler.min.js') }}"></script>
+        
         <script src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>
         <script src="{{ path('fos_js_routing_js', { callback: 'fos.Router.setData' }) }}"></script>
+        
         <script type="text/javascript" src="{{ asset('bundles/adesignscalendar/js/calendar-settings.js') }}"></script>
-{% endblock %} 
-    
-    
+{% endblock %}
