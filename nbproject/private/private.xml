@@ -3,10 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/wamp/www/gpac/src/ActiviteBundle/Resources/views/ActiviteFixee/show.html.twig</file>
-            <file>file:/C:/wamp/www/gpac/src/RessourceBundle/Entity/Ressource.php</file>
-            <file>file:/C:/wamp/www/gpac/src/ActiviteBundle/Resources/config/routing.yml</file>
-            <file>file:/C:/wamp/www/gpac/src/ActiviteBundle/Controller/ActiviteFixeeController.php</file>
+            <file>file:/C:/wamp64/www/gpac/src/CoreBundle/Resources/views/Default/index.html.twig</file>
+            <file>file:/C:/wamp64/www/gpac/app/Resources/views/menu.html.twig</file>
+            <file>file:/C:/wamp64/www/gpac/app/config/routing.yml</file>
+            <file>file:/C:/wamp64/www/gpac/app/AppKernel.php</file>
         </group>
     </open-files>
 </project-private>

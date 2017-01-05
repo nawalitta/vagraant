@@ -1,0 +1,10 @@
+#fullcalendar_loader:
+#    path: /fc-load-calendar-events
+#    defaults: { _controller: ADesignsCalendarBundle:Calendar:loadCalendar }
+#    options:
+#        expose: true
+        
+# app/config/routing.yml
+ADesignsCalendarBundle_Calendar_index :
+    path:     calendar/
+    defaults: { _controller: ADesignsCalendarBundle:Calendar:index }

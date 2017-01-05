@@ -17,4 +17,11 @@ activite:
 ressource:
     resource: "@RessourceBundle/Resources/config/routing.yml"
     prefix:   /
+    
+adesigns_calendar:
+    resource: "@ADesignsCalendarBundle/Resources/config/routing.yml"
+    prefix: /
+    
+fos_js_routing:
+    resource: "@FOSJsRoutingBundle/Resources/config/routing/routing.xml"
 
