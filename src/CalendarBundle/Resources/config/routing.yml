@@ -4,7 +4,44 @@ fullcalendar_loader:
     options:
         expose: true
         
+        
+events_loader:
+    path: /Calendar/Events
+    defaults: { _controller: ADesignsCalendarBundle:Calendar:loadCalendar }
+    options:
+        expose: true
+   
+ressources_loader:
+    path: /Calendar/Ressources
+    defaults: { _controller: ADesignsCalendarBundle:Calendar:loadAllRessource }
+    options:
+        expose: true 
+        
+ressources_loader_inverted:
+    path: /Calendar/RessourcesInverted
+    defaults: { _controller: ADesignsCalendarBundle:Calendar:loadAllRessourceInverted }
+    options:
+        expose: true 
+        
+activite_loader :
+    path: /Calendar/Activite/{id}
+    defaults: { _controller: ADesignsCalendarBundle:Calendar:loadAllRessource }
+    options:
+        expose: true 
+        
+events_enfant_loader :
+    path: /Calendar/Event/{id}
+    defaults: { _controller: ADesignsCalendarBundle:Calendar:loadAllRessource }
+    options:
+        expose: true    
+        
+ressources_enfant_loader :
+    path: /Calendar/Ressources/{id}
+    defaults: { _controller: ADesignsCalendarBundle:Calendar:loadRessource }
+    options:
+        expose: true   
+        
 # app/config/routing.yml
-Calendar :
+Calendar:
     path:     /Calendar
-    defaults: { _controller: ADesignsCalendarBundle:Calendar:index }
+    defaults: { _controller: ADesignsCalendarBundle:Calendar:index }   

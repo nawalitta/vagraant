@@ -61,19 +61,10 @@ $(function () {
         resourceLabelText: 'Enfants',
         resourceGroupField: 'enfant',
 
-        resources: [
-            {id: '1-lundi', enfant: 'Alexis Saludo', title: 'Lundi'},
-            {id: '1-mardi', enfant: 'Alexis Saludo', title: 'Mardi'},
-            {id: '1-mercredi', enfant: 'Alexis Saludo', title: 'Mercredi'},
-            {id: '1-jeudi', enfant: 'Alexis Saludo', title: 'Jeudi'},
-            {id: '1-vendredi', enfant: 'Alexis Saludo', title: 'Vendredi'},
-
-            {id: '2-lundi', enfant: 'Guillaume Pochet', title: 'Lundi'},
-            {id: '2-mardi', enfant: 'Guillaume Pochet', title: 'Mardi'},
-            {id: '2-mercredi', enfant: 'Guillaume Pochet', title: 'Mercredi'},
-            {id: '2-jeudi', enfant: 'Guillaume Pochet', title: 'Jeudi'},
-            {id: '2-vendredi', enfant: 'Guillaume Pochet', title: 'Vendredi'},
-        ],
+        resources: {
+        url: 'Calendar/RessourcesInverted',
+        type: 'GET'
+    },
         drop: function (date, jsEvent, ui, resourceId) {
             console.log('drop', date.format(), resourceId);
         },
