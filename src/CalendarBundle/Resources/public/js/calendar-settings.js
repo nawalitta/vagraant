@@ -23,6 +23,7 @@ $(function () {
      -----------------------------------------------------------------*/
 
     $('#calendar-holder').fullCalendar({
+        schedulerLicenseKey: 'GPL-My-Project-Is-Open-Source',
         timezone: 'France/Paris',
         editable: true,
         aspectRatio: 1.8,

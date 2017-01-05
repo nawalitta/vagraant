@@ -11,9 +11,9 @@
 
 namespace FOSJsRoutingBundle\Controller;
 
-use FOS\JsRoutingBundle\Extractor\ExposedRoutesExtractorInterface;
-use FOS\JsRoutingBundle\Response\RoutesResponse;
-use FOS\JsRoutingBundle\Util\CacheControlConfig;
+use FOSJsRoutingBundle\Extractor\ExposedRoutesExtractorInterface;
+use FOSJsRoutingBundle\Response\RoutesResponse;
+use FOSJsRoutingBundle\Util\CacheControlConfig;
 use Symfony\Component\Config\ConfigCache;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;

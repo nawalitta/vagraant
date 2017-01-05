@@ -11,7 +11,7 @@
 
 namespace FOSJsRoutingBundle\Command;
 
-use FOS\JsRoutingBundle\Response\RoutesResponse;
+use FOSJsRoutingBundle\Response\RoutesResponse;
 use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;

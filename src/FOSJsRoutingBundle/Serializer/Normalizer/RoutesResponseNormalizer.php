@@ -11,7 +11,7 @@
 
 namespace FOSJsRoutingBundle\Serializer\Normalizer;
 
-use FOS\JsRoutingBundle\Response\RoutesResponse;
+use FOSJsRoutingBundle\Response\RoutesResponse;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 
 /**

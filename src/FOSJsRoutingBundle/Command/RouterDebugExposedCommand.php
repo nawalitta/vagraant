@@ -11,7 +11,7 @@
 
 namespace FOSJsRoutingBundle\Command;
 
-use FOS\JsRoutingBundle\Extractor\ExposedRoutesExtractorInterface;
+use FOSJsRoutingBundle\Extractor\ExposedRoutesExtractorInterface;
 use Symfony\Bundle\FrameworkBundle\Command\RouterDebugCommand;
 use Symfony\Bundle\FrameworkBundle\Console\Helper\DescriptorHelper;
 use Symfony\Component\Console\Input\InputInterface;
