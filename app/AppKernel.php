@@ -19,7 +19,6 @@ class AppKernel extends Kernel
             new ActiviteBundle\ActiviteBundle(),
             new CoreBundle\CoreBundle(),
             new UtilisateurBundle\UtilisateurBundle(),
-            new CalendrierBundle\CalendrierBundle(),
             new CalendarBundle\ADesignsCalendarBundle(),
             new FOS\JsRoutingBundle\FOSJsRoutingBundle(),
         );
