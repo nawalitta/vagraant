@@ -57,10 +57,6 @@ class ComposerStaticInita48c2d036e6a9d9e9b8b76ba2a69fdc8
         array (
             'Incenteev\\ParameterHandler\\' => 27,
         ),
-        'F' => 
-        array (
-            'FOS\\JsRoutingBundle\\' => 20,
-        ),
         'D' => 
         array (
             'Doctrine\\Instantiator\\' => 22,
@@ -165,10 +161,6 @@ class ComposerStaticInita48c2d036e6a9d9e9b8b76ba2a69fdc8
         array (
             0 => __DIR__ . '/..' . '/incenteev/composer-parameter-handler',
         ),
-        'FOS\\JsRoutingBundle\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/friendsofsymfony/jsrouting-bundle',
-        ),
         'Doctrine\\Instantiator\\' => 
         array (
             0 => __DIR__ . '/..' . '/doctrine/instantiator/src/Doctrine/Instantiator',
@@ -212,13 +204,6 @@ class ComposerStaticInita48c2d036e6a9d9e9b8b76ba2a69fdc8
             'SensioLabs\\Security' => 
             array (
                 0 => __DIR__ . '/..' . '/sensiolabs/security-checker',
-            ),
-        ),
-        'J' => 
-        array (
-            'JsonpCallbackValidator' => 
-            array (
-                0 => __DIR__ . '/..' . '/willdurand/jsonp-callback-validator/src',
             ),
         ),
         'D' => 

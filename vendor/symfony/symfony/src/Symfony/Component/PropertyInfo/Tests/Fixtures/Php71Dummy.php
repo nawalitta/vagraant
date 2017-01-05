@@ -16,7 +16,7 @@ namespace Symfony\Component\PropertyInfo\Tests\Fixtures;
  */
 class Php71Dummy
 {
-    public function getFoo(): array
+    public function getFoo(): ?array
     {
     }
 
@@ -24,7 +24,7 @@ class Php71Dummy
     {
     }
 
-    public function setBar(int $bar)
+    public function setBar(?int $bar)
     {
     }
 
