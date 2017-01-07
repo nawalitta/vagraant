@@ -10,6 +10,12 @@ events_loader:
     defaults: { _controller: ADesignsCalendarBundle:Calendar:loadCalendar }
     options:
         expose: true
+        
+events_enfant_loader :
+    path: /Calendar/Event/{id}
+    defaults: { _controller: ADesignsCalendarBundle:Calendar:loadAllRessource }
+    options:
+        expose: true 
    
 ressources_loader:
     path: /Calendar/Ressources
@@ -29,11 +35,7 @@ activite_loader :
     options:
         expose: true 
         
-events_enfant_loader :
-    path: /Calendar/Event/{id}
-    defaults: { _controller: ADesignsCalendarBundle:Calendar:loadAllRessource }
-    options:
-        expose: true    
+   
         
 ressources_enfant_loader :
     path: /Calendar/Ressources/{id}

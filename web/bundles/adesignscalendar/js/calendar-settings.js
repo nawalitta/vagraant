@@ -25,13 +25,14 @@ $(function () {
     $('#calendar-holder').fullCalendar({
         schedulerLicenseKey: 'GPL-My-Project-Is-Open-Source',
         timezone: 'France/Paris',
-        editable: true,
+        editable: true, // don't allow event dragging
+        eventResourceEditable: false, // except for between resources
         aspectRatio: 1.8,
         scrollTime: '00:00',
         minTime: "08:00:00",
         maxTime: "22:00:00",
         eventOverlap: false,
-         droppable: true, // this allows things to be dropped onto the calendar
+        // this allows things to be dropped onto the calendar
         header: {
             left: '',
             center: '',
@@ -63,9 +64,14 @@ $(function () {
         resourceGroupField: 'enfant',
 
         resources: {
-        url: 'Calendar/RessourcesInverted',
-        type: 'GET'
-    },
+            url: 'Calendar/RessourcesInverted',
+            type: 'GET'
+        },
+        events: {
+            url: 'Calendar/Events',
+            type: 'GET',
+        },
+
         drop: function (date, jsEvent, ui, resourceId) {
             console.log('drop', date.format(), resourceId);
         },
