@@ -1,35 +1,48 @@
 {% extends '::base.html.twig' %}
 
- {% block stylesheets %}
-     {{ parent() }}
-     <link rel="stylesheet" href="{{ asset('bundles/adesignscalendar/css/fullcalendar/fullcalendar.min.css') }}" />
-     <link rel="stylesheet" href="{{ asset('bundles/adesignscalendar/css/fullcalendar/scheduler.min.css') }}" />
-     <link rel="stylesheet" href="{{ asset('bundles/adesignscalendar/css/fullcalendar/jquery-ui.css') }}" />
-     <link rel="stylesheet" href="{{ asset('bundles/adesignscalendar/css/fullcalendar/jquery-ui.min.css') }}" />
-     <link rel="stylesheet" href="{{ asset('bundles/adesignscalendar/css/fullcalendar/calendar.css') }}" />
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('bundles/adesignscalendar/css/fullcalendar/fullcalendar.min.css') }}" />
+    <link rel="stylesheet" href="{{ asset('bundles/adesignscalendar/css/fullcalendar/scheduler.min.css') }}" />
+    <link rel="stylesheet" href="{{ asset('bundles/adesignscalendar/css/fullcalendar/jquery-ui.css') }}" />
+    <link rel="stylesheet" href="{{ asset('bundles/adesignscalendar/css/fullcalendar/jquery-ui.min.css') }}" />
+    <link rel="stylesheet" href="{{ asset('bundles/adesignscalendar/css/fullcalendar/calendar.css') }}" />
 {% endblock %}
 
 {% block body %}
-    
-    <button style="margin-left: 25px" type="button" class="btn btn-success">Sauvegarder</button>
-    
-    <div id="calendar-holder"></div>
-{% endblock %}
+    <div class="row">
+        <button style="margin-left: 25px" type="button" class="btn btn-success">Sauvegarder</button>
+    </div>
+    <div style="margin-top: 20px" class="row">
+        <div class="col-md-6">
+            <div class="panel panel-info">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Infos sur la plannification</h3>
+                </div>
+                <div class="panel-body">
+                    <ul>
+                    </ul>
+                </div>
+            </div>
+        </div>
 
-{% block javascripts %}
+        <div id="calendar-holder"></div>
+    {% endblock %}
+
+    {% block javascripts %}
         {{ parent() }}
-        
 
-        
+
+
         <script type="text/javascript" src="{{ asset('bundles/adesignscalendar/js/jquery/jquery.min.js') }}"></script>
         <script type="text/javascript" src="{{ asset('bundles/adesignscalendar/js/jquery/jquery-ui.js') }}"></script>
         <script type="text/javascript" src="{{ asset('bundles/adesignscalendar/js/jquery/jquery-ui.min.js') }}"></script>
-                <script type="text/javascript" src="{{ asset('bundles/adesignscalendar/js/fullcalendar/moment.min.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('bundles/adesignscalendar/js/fullcalendar/moment.min.js') }}"></script>
         <script type="text/javascript" src="{{ asset('bundles/adesignscalendar/js/fullcalendar/fullcalendar.min.js') }}"></script>
         <script type="text/javascript" src="{{ asset('bundles/adesignscalendar/js/fullcalendar/scheduler.min.js') }}"></script>
-        
+
         <script src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>
-  
-        
+
+
         <script type="text/javascript" src="{{ asset('bundles/adesignscalendar/js/calendar-settings.js') }}"></script>
-{% endblock %}
+    {% endblock %}
