@@ -40,6 +40,10 @@ $(function () {
         },
         defaultView: 'timelineDay',
         slotDuration: '00:15:00',
+        eventConstraint: {
+            start: '08:00',
+            end: '18:00'
+        },
         views: {
 
             timelineDay: {
@@ -80,6 +84,10 @@ $(function () {
         },
         eventDrop: function (event) { // called when an event (already on the calendar) is moved
             console.log('eventDrop', event);
+        },
+        
+        resourceRender: function(resourceObj, labelTds, bodyTds) {
+            labelTds.on('click', function(){console.log(resourceObj);});
         }
     });
 });
