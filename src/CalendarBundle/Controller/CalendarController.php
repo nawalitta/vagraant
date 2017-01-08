@@ -21,6 +21,11 @@ class CalendarController extends Controller {
         ));
     }
 
+    public function showAction($id) {
+        return $this->render('ADesignsCalendarBundle:Calendar:calendar-enfant.html.twig', array(
+        ));
+    }
+
     public function loadAllRessourceInvertedAction(Request $request) {
         $response = new \Symfony\Component\HttpFoundation\Response();
         $response->headers->set('Content-Type', 'application/json');
@@ -51,6 +56,7 @@ class CalendarController extends Controller {
         foreach ($enfants as $enfant) {
 
             $child = array();
+            $child['idEnfant'] = $enfant->getId();
             $child['id'] = $enfant->getId() . 'Lundi';
             $child['enfant'] = 'Lundi';
 
@@ -62,6 +68,7 @@ class CalendarController extends Controller {
         foreach ($enfants as $enfant) {
 
             $child = array();
+            $child['idEnfant'] = $enfant->getId();
             $child['id'] = $enfant->getId() . 'Mardi';
             $child['enfant'] = 'Mardi';
 
@@ -72,6 +79,7 @@ class CalendarController extends Controller {
         foreach ($enfants as $enfant) {
 
             $child = array();
+            $child['idEnfant'] = $enfant->getId();
             $child['id'] = $enfant->getId() . 'Mercredi';
             $child['enfant'] = 'Mercredi';
 
@@ -81,6 +89,7 @@ class CalendarController extends Controller {
         foreach ($enfants as $enfant) {
 
             $child = array();
+            $child['idEnfant'] = $enfant->getId();
             $child['id'] = $enfant->getId() . 'Jeudi';
             $child['enfant'] = 'Jeudi';
 
@@ -90,6 +99,7 @@ class CalendarController extends Controller {
         foreach ($enfants as $enfant) {
 
             $child = array();
+            $child['idEnfant'] = $enfant->getId();
             $child['id'] = $enfant->getId() . 'Vendredi';
             $child['enfant'] = 'Vendredi';
 

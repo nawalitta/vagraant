@@ -13,6 +13,16 @@
     <div class="row">
         <button style="margin-left: 25px" type="button" class="btn btn-success">Sauvegarder</button>
     </div>
+    <div class="row">
+        <div style="margin-left:25px; margin-top: 20px" id='external-events'>
+            <h4>Activités obligatoire</h4>
+            <div class='fc-event'>Judo</div> 
+        </div>
+        <div style="margin-left:25px; margin-top: 20px" id='external-events'>
+            <h4>Activités optionnelles</h4>
+            <div class='fc-event'>Catch</div>
+        </div>
+    </div>
     <div style="margin-top: 20px" class="row">
         <div class="col-md-6">
             <div class="panel panel-info">
@@ -44,8 +54,5 @@
         <script src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>
 
 
-        <script type="text/javascript" src="{{ asset('bundles/adesignscalendar/js/calendar-settings.js') }}"></script>
-        <script>
-            var routeEnfant = "{{ path('Calendar_enfant',{ 'id':1}) }}";
-        </script>
+        <script type="text/javascript" src="{{ asset('bundles/adesignscalendar/js/calendar-setting-enfant.js') }}"></script>
     {% endblock %}

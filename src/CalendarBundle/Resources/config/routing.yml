@@ -34,9 +34,7 @@ activite_loader :
     defaults: { _controller: ADesignsCalendarBundle:Calendar:loadAllRessource }
     options:
         expose: true 
-        
-   
-        
+      
 ressources_enfant_loader :
     path: /Calendar/Ressources/{id}
     defaults: { _controller: ADesignsCalendarBundle:Calendar:loadRessource }
@@ -46,4 +44,8 @@ ressources_enfant_loader :
 # app/config/routing.yml
 Calendar:
     path:     /Calendar
-    defaults: { _controller: ADesignsCalendarBundle:Calendar:index }   
+    defaults: { _controller: ADesignsCalendarBundle:Calendar:index }
+
+Calendar_enfant:
+    path: /Calendar/{id}
+    defaults: {_controller:  ADesignsCalendarBundle:Calendar:show }

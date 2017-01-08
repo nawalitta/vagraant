@@ -1,4 +1,24 @@
 $(function () {
+
+    /* initialize the external events
+     -----------------------------------------------------------------*/
+    $('#external-events .fc-event').each(function () {
+
+        // store data so the calendar knows to render an event upon drop
+        $(this).data('event', {
+            title: $.trim($(this).text()),
+            stick: true
+        });
+
+        // make the event draggable using jQuery UI
+        $(this).draggable({
+            zIndex: 999,
+            revert: true, // will cause the event to go back to its
+            revertDuration: 0  //  original position after the drag
+        });
+
+    });
+
     /* initialize the calendar
      -----------------------------------------------------------------*/
 
@@ -48,12 +68,10 @@ $(function () {
         resourceGroupField: 'enfant',
 
         resources: {
-            url: 'Calendar/RessourcesInverted',
-            type: 'GET'
+            
         },
         events: {
-            url: 'Calendar/Events',
-            type: 'GET',
+            
         },
 
         drop: function (date, jsEvent, ui, resourceId) {
@@ -66,11 +84,8 @@ $(function () {
             console.log('eventDrop', event);
         },
         
-        resourceRender: function(resourceObj, labelTds) {
-            labelTds.on('click', function(){
-                var route = routeEnfant.replace("/1", "/"+resourceObj.idEnfant);
-                document.location.href=route;
-            });
+        resourceRender: function(resourceObj, labelTds, bodyTds) {
+            labelTds.on('click', function(){console.log(resourceObj);});
         }
     });
 });
