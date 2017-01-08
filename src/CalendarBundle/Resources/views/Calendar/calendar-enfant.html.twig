@@ -41,9 +41,6 @@
 
     {% block javascripts %}
         {{ parent() }}
-
-
-
         <script type="text/javascript" src="{{ asset('bundles/adesignscalendar/js/jquery/jquery.min.js') }}"></script>
         <script type="text/javascript" src="{{ asset('bundles/adesignscalendar/js/jquery/jquery-ui.js') }}"></script>
         <script type="text/javascript" src="{{ asset('bundles/adesignscalendar/js/jquery/jquery-ui.min.js') }}"></script>
@@ -53,6 +50,9 @@
 
         <script src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>
 
-
         <script type="text/javascript" src="{{ asset('bundles/adesignscalendar/js/calendar-setting-enfant.js') }}"></script>
+
+        <script>
+            var id="{{ app.request.attributes.get('id') }}";
+        </script>
     {% endblock %}

@@ -26,7 +26,6 @@ $(function () {
         schedulerLicenseKey: 'GPL-My-Project-Is-Open-Source',
         timezone: 'France/Paris',
         editable: true, // don't allow event dragging
-        eventResourceEditable: false, // except for between resources
         aspectRatio: 1.8,
         scrollTime: '00:00',
         minTime: "08:00:00",
@@ -66,12 +65,15 @@ $(function () {
 
         resourceLabelText: 'Enfants',
         resourceGroupField: 'enfant',
+        droppable: true, // this allows things to be dropped onto the calendar
 
         resources: {
-            
+            url: 'RessourcesInverted/'+id,
+            type: 'GET'
         },
         events: {
-            
+            url: 'Events/'+id,
+            type: 'GET',
         },
 
         drop: function (date, jsEvent, ui, resourceId) {
@@ -82,10 +84,6 @@ $(function () {
         },
         eventDrop: function (event) { // called when an event (already on the calendar) is moved
             console.log('eventDrop', event);
-        },
-        
-        resourceRender: function(resourceObj, labelTds, bodyTds) {
-            labelTds.on('click', function(){console.log(resourceObj);});
         }
     });
 });

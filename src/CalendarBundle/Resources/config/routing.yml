@@ -10,12 +10,6 @@ events_loader:
     defaults: { _controller: ADesignsCalendarBundle:Calendar:loadCalendar }
     options:
         expose: true
-        
-events_enfant_loader :
-    path: /Calendar/Event/{id}
-    defaults: { _controller: ADesignsCalendarBundle:Calendar:loadAllRessource }
-    options:
-        expose: true 
    
 ressources_loader:
     path: /Calendar/Ressources
@@ -49,3 +43,15 @@ Calendar:
 Calendar_enfant:
     path: /Calendar/{id}
     defaults: {_controller:  ADesignsCalendarBundle:Calendar:show }
+    
+ressources_loader_inverted_id:
+    path: /Calendar/RessourcesInverted/{id}
+    defaults: { _controller: ADesignsCalendarBundle:Calendar:loadRessourceById }
+    options:
+        expose: true
+        
+events_enfant_loader :
+    path: /Calendar/Events/{id}
+    defaults: { _controller: ADesignsCalendarBundle:Calendar:loadCalendarById }
+    options:
+        expose: true 

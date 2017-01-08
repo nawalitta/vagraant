@@ -39,9 +39,9 @@ class EventEntity {
      /**
      * @var string URL Relative to current path.
      *
-     * @ORM\Column(name="ressourceId", type="string", length=255)
+     * @ORM\Column(name="enfantId", type="integer", length=255)
      */   
-    protected $ressourceId;
+    protected $enfantId;
 
     /**
      * @var string URL Relative to current path.
@@ -49,6 +49,13 @@ class EventEntity {
      * @ORM\Column(name="url", type="string", length=255)
      */
     protected $url;
+    
+    /**
+     * @var string HTML color code for the bg color of the event label.
+     *
+     * @ORM\Column(name="jour", type="string", length=255)
+     */
+    protected $jour;
 
     /**
      * @var string HTML color code for the bg color of the event label.
@@ -124,9 +131,7 @@ class EventEntity {
         if ($this->endDatetime !== null) {
             $event['end'] = $this->endDatetime->format("H:i:s");
         }
-                if($this->ressourceId !== null){
-            $event['resourceId'] = $this->ressourceId;
-        }
+            $event['resourceId'] = $this->enfantId.$this->jour;
                 if ($this->bgColor !== null) {
             $event['color'] = $this->bgColor;
 
@@ -251,28 +256,51 @@ class EventEntity {
         unset($this->otherFields[$name]);
     }
 
-
     /**
-     * Set ressourceId
+     * Set enfantId
      *
-     * @param string $ressourceId
+     * @param string $enfantId
      *
      * @return EventEntity
      */
-    public function setRessourceId($ressourceId)
+    public function setEnfantId($enfantId)
     {
-        $this->ressourceId = $ressourceId;
+        $this->enfantId = $enfantId;
 
         return $this;
     }
 
     /**
-     * Get ressourceId
+     * Get enfantId
      *
      * @return string
      */
-    public function getRessourceId()
+    public function getEnfantId()
     {
-        return $this->ressourceId;
+        return $this->enfantId;
+    }
+
+    /**
+     * Set jour
+     *
+     * @param string $jour
+     *
+     * @return EventEntity
+     */
+    public function setJour($jour)
+    {
+        $this->jour = $jour;
+
+        return $this;
+    }
+
+    /**
+     * Get jour
+     *
+     * @return string
+     */
+    public function getJour()
+    {
+        return $this->jour;
     }
 }

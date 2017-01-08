@@ -68,7 +68,6 @@ $(function () {
         
         resourceRender: function(resourceObj, labelTds) {
             labelTds.on('click', function(){
-                console.log(resourceObj.idEnfant);
                 var route = routeEnfant.replace("/1", "/"+resourceObj.idEnfant);
                 document.location.href=route;
             });
