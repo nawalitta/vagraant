@@ -53,29 +53,26 @@ class CalendarController extends Controller {
         $enfant = $enfantRepository->findOneById($id);
 
         $return_ressources = array();
-        $enfantArray = array();
-        $enfantArray['id'] = $enfant->getId();
-        $enfantArray['title'] = $enfant->getPrenom() . " " . $enfant->getNom();
-        $children = array();
-        $lundi = array();
-        $lundi['id'] = $enfant->getId() . 'lundi';
-        $lundi['title'] = "Lundi";
-        $mardi['id'] = $enfant->getId() . 'mardi';
-        $mardi['title'] = "Mardi";
-        $mercredi['id'] = $enfant->getId() . 'mercredi';
-        $mercredi['title'] = "Mercredi";
-        $jeudi['id'] = $enfant->getId() . 'jeudi';
-        $jeudi['title'] = "Jeudi";
-        $vendredi['id'] = $enfant->getId() . 'vendredi';
-        $vendredi['title'] = "Vendredi";
-        $children[] = $lundi;
-        $children[] = $mardi;
-        $children[] = $mercredi;
-        $children[] = $jeudi;
-        $children[] = $vendredi;
 
-        $enfantArray['children'] = $children;
-        $return_ressources[] = $enfantArray;
+        $jours = array();
+        $jours[] = "Lundi";
+        $jours[] = "Mardi";
+        $jours[] = "Mercredi";
+        $jours[] = "Jeudi";
+        $jours[] = "Vendredi";
+
+        foreach ($jours as $jour) {
+            $child = array();
+            $child['idEnfant'] = $enfant->getId();
+            $child['id'] = $enfant->getId() . $jour;
+            $child['enfant'] = $enfant->getPrenom() . " " . $enfant->getNom();
+            $child['title'] = $jour ;
+            $return_ressources[] = $child;
+        }
+
+
+
+
 
         $response->setContent(json_encode($return_ressources));
 
@@ -89,81 +86,31 @@ class CalendarController extends Controller {
         $entityManager = $this->getDoctrine()->getManager();
         $enfantRepository = $entityManager->getRepository("RessourceBundle:Enfant");
         $enfants = $enfantRepository->findAll();
-        $return_ressources = array();
 
-        $lundiArray = array();
-
-        $lundiArray['enfant'] = "Lundi";
-        $mardiArray = array();
-        $mardiArray['id'] = "mardi";
-        $mardiArray['title'] = "Mardi";
-        $mercrediArray = array();
-        $mercrediArray['id'] = "mercredi";
-        $mercrediArray['title'] = "Mercredi";
-        $jeudiArray = array();
-        $jeudiArray['id'] = "jeudi";
-        $jeudiArray['title'] = "Jeudi";
-        $vendrediArray = array();
-        $vendrediArray['id'] = "vendredi";
-        $vendrediArray['title'] = "Vendredi";
 
         $children = array();
 
-        foreach ($enfants as $enfant) {
 
-            $child = array();
-            $child['idEnfant'] = $enfant->getId();
-            $child['id'] = $enfant->getId() . 'Lundi';
-            $child['enfant'] = 'Lundi';
+        $jours = array();
+        $jours[] = "Lundi";
+        $jours[] = "Mardi";
+        $jours[] = "Mercredi";
+        $jours[] = "Jeudi";
+        $jours[] = "Vendredi";
 
-            $child['title'] = $enfant->getPrenom() . " " . $enfant->getNom();
-            $children[] = $child;
-        }
 
 
         foreach ($enfants as $enfant) {
 
-            $child = array();
-            $child['idEnfant'] = $enfant->getId();
-            $child['id'] = $enfant->getId() . 'Mardi';
-            $child['enfant'] = 'Mardi';
-
-            $child['title'] = $enfant->getPrenom() . " " . $enfant->getNom();
-            $children[] = $child;
+            foreach ($jours as $jour) {
+                $child = array();
+                $child['idEnfant'] = $enfant->getId();
+                $child['id'] = $enfant->getId() . $jour;
+                $child['enfant'] = $jour;
+                $child['title'] = $enfant->getPrenom() . " " . $enfant->getNom();
+                $return_ressources[] = $child;
+            }
         }
-
-        foreach ($enfants as $enfant) {
-
-            $child = array();
-            $child['idEnfant'] = $enfant->getId();
-            $child['id'] = $enfant->getId() . 'Mercredi';
-            $child['enfant'] = 'Mercredi';
-
-            $child['title'] = $enfant->getPrenom() . " " . $enfant->getNom();
-            $children[] = $child;
-        }
-        foreach ($enfants as $enfant) {
-
-            $child = array();
-            $child['idEnfant'] = $enfant->getId();
-            $child['id'] = $enfant->getId() . 'Jeudi';
-            $child['enfant'] = 'Jeudi';
-
-            $child['title'] = $enfant->getPrenom() . " " . $enfant->getNom();
-            $children[] = $child;
-        }
-        foreach ($enfants as $enfant) {
-
-            $child = array();
-            $child['idEnfant'] = $enfant->getId();
-            $child['id'] = $enfant->getId() . 'Vendredi';
-            $child['enfant'] = 'Vendredi';
-
-            $child['title'] = $enfant->getPrenom() . " " . $enfant->getNom();
-            $children[] = $child;
-        }
-        $return_ressources = $children;
-
 
 
         $response->setContent(json_encode($return_ressources));
