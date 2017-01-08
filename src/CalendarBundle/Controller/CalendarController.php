@@ -16,8 +16,36 @@ class CalendarController extends Controller {
         ));
     }
 
+    public function editEventAction(Request $request) {
+
+
+        $request = $this->get('request');
+        $data = $request->request->all();
+
+        //Setup new EventEntity with data from request
+
+
+
+        // Setup Response with the new id and some new property
+        $response = new \Symfony\Component\HttpFoundation\Response();
+        $response->headers->set('Content-Type', 'application/json');
+
+        $response->setContent(json_encode(array('status' => 'success', 'eventid' => '1')));
+        return $response;
+    }
+
     public function showAction($id) {
-        return $this->render('ADesignsCalendarBundle:Calendar:calendar-enfant.html.twig', array(
+        $entityManager = $this->getDoctrine()->getManager();
+        $enfantRepository = $entityManager->getRepository("RessourceBundle:Enfant");
+
+        $enfant = $enfantRepository->findOneById($id);
+
+        $activitesObligatoire = $enfant->getActivitesObligatoires();
+        $activiteOptionnelle = $enfant->getActivitesOptionelles();
+
+
+        return $this->render('ADesignsCalendarBundle:Calendar:calendar-enfant.html.twig', array("activitesObligatoire" => $activitesObligatoire,
+                    "activitesOptionnel" => $activiteOptionnelle
         ));
     }
 
@@ -66,7 +94,7 @@ class CalendarController extends Controller {
             $child['idEnfant'] = $enfant->getId();
             $child['id'] = $enfant->getId() . $jour;
             $child['enfant'] = $enfant->getPrenom() . " " . $enfant->getNom();
-            $child['title'] = $jour ;
+            $child['title'] = $jour;
             $return_ressources[] = $child;
         }
 

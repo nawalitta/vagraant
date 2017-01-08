@@ -26,6 +26,7 @@ $(function () {
         schedulerLicenseKey: 'GPL-My-Project-Is-Open-Source',
         timezone: 'France/Paris',
         editable: true, // don't allow event dragging
+        forceEventDuration : true,
         aspectRatio: 1.8,
         scrollTime: '00:00',
         minTime: "08:00:00",
@@ -77,11 +78,36 @@ $(function () {
         },
 
         drop: function (date, jsEvent, ui, resourceId) {
+            
             console.log('drop', date.format(), resourceId);
         },
-        eventReceive: function (event) { // called when a proper external event is dropped
-            console.log('eventReceive', event);
-        },
+        
+        eventReceive: function(event){
+            
+   var title = event.title;
+   var start = event.start.format("HH:MM:SS");
+   var resource = event.resourceId;
+   $.ajax({
+     url: 'AddEvent/',
+     data: 'title='+title+'&startdate='+start+'&resourceId='+resource,
+     type: 'POST',
+     dataType: 'json',
+     success: function(response){
+          console.log('eventReceive', event);
+       event.id = response.eventid;
+
+       $('#calendar').fullCalendar('updateEvent',event);
+     },
+     error: function(e){
+       console.log(e.responseText);
+     }
+   });
+   $('#calendar').fullCalendar('updateEvent',event);
+},
+        
+        
+        
+        
         eventDrop: function (event) { // called when an event (already on the calendar) is moved
             console.log('eventDrop', event);
         }

@@ -44,6 +44,10 @@ Calendar_enfant:
     path: /Calendar/{id}
     defaults: {_controller:  ADesignsCalendarBundle:Calendar:show }
     
+Calendar_event_add:
+    path: /Calendar/AddEvent/
+    defaults: {_controller:  ADesignsCalendarBundle:Calendar:editEvent }
+    
 ressources_loader_inverted_id:
     path: /Calendar/RessourcesInverted/{id}
     defaults: { _controller: ADesignsCalendarBundle:Calendar:loadRessourceById }
