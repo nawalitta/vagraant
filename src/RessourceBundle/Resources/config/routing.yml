@@ -84,7 +84,7 @@ RessourceBundle_Enfant_edit:
     defaults: { _controller: RessourceBundle:Enfant:edit, id : null   }
 
 RessourceBundle_Enfant_show:
-    path:     enfant/show/{id}
+    path:     /enfant/show/{id}
     defaults: { _controller: RessourceBundle:Enfant:show }
 
 RessourceBundle_Enfant_delete:
