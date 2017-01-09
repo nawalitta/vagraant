@@ -1,4 +1,6 @@
 $(function () {
+    
+    
 
     /* initialize the external events
      -----------------------------------------------------------------*/
@@ -7,6 +9,7 @@ $(function () {
         // store data so the calendar knows to render an event upon drop
         $(this).data('event', {
             title: $.trim($(this).text()),
+            activiteId: parseInt($(this).attr('activiteId')),
             stick: true
         });
 

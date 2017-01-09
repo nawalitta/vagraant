@@ -17,17 +17,17 @@
         <div style="margin-left:25px; margin-top: 20px" id='external-events'>
             <h4>Activités obligatoire</h4>
             {% for activite in activitesObligatoire %}
-                <div class='fc-event'>{{ activite.activite.designation }}</div> 
+                <div class='fc-event' activiteId="{{ activite.activite.id }}">{{ activite.activite.designation }}</div> 
             {% endfor %}
-
-
+            
+            
         </div>
         <div style="margin-left:25px; margin-top: 20px" id='external-events'>
             <h4>Activités optionnelles</h4>
             {% for activite in activitesOptionnel %}
-                <div class='fc-event'>{{ activite.designation }}</div> 
+                <div class='fc-event' activiteId="{{ activite.id }}>{{ activite.designation }}</div> 
             {% endfor %}
-
+           
         </div>
     </div>
     <div style="margin-top: 20px" class="row">
@@ -42,25 +42,24 @@
                 </div>
             </div>
         </div>
-    </div>
 
-    <div id="calendar-holder"></div>
-{% endblock %}
+        <div id="calendar-holder"></div>
+    {% endblock %}
 
-{% block javascripts %}
-    {{ parent() }}
-    <script type="text/javascript" src="{{ asset('bundles/adesignscalendar/js/jquery/jquery.min.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('bundles/adesignscalendar/js/jquery/jquery-ui.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('bundles/adesignscalendar/js/jquery/jquery-ui.min.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('bundles/adesignscalendar/js/fullcalendar/moment.min.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('bundles/adesignscalendar/js/fullcalendar/fullcalendar.min.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('bundles/adesignscalendar/js/fullcalendar/scheduler.min.js') }}"></script>
+    {% block javascripts %}
+        {{ parent() }}
+        <script type="text/javascript" src="{{ asset('bundles/adesignscalendar/js/jquery/jquery.min.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('bundles/adesignscalendar/js/jquery/jquery-ui.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('bundles/adesignscalendar/js/jquery/jquery-ui.min.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('bundles/adesignscalendar/js/fullcalendar/moment.min.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('bundles/adesignscalendar/js/fullcalendar/fullcalendar.min.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('bundles/adesignscalendar/js/fullcalendar/scheduler.min.js') }}"></script>
 
-    <script src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>
+        <script src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>
 
-    <script type="text/javascript" src="{{ asset('bundles/adesignscalendar/js/calendar-setting-enfant.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('bundles/adesignscalendar/js/calendar-setting-enfant.js') }}"></script>
 
-    <script>
-            var id = "{{ app.request.attributes.get('id') }}";
-    </script>
-{% endblock %}
+        <script>
+            var id="{{ app.request.attributes.get('id') }}";
+        </script>
+    {% endblock %}
