@@ -23,8 +23,35 @@ class CalendarController extends Controller {
         $data = $request->request->all();
 
         //Setup new EventEntity with data from request
-
-
+        $title = $data['title'];
+        $startdate = $data['startdate'];
+        $enddate = $data['enddate'];
+        $ressouceId = $data['resourceId'];
+        $jour ="";
+        $enfantId = "";
+        $activiteId = $data['activiteId'];
+        
+        // Split RessourceId in 2 string
+                $jours = array();
+        $jours[] = "Lundi";
+        $jours[] = "Mardi";
+        $jours[] = "Mercredi";
+        $jours[] = "Jeudi";
+        $jours[] = "Vendredi";
+        $trouve = false;
+        $i=0;
+        while(!trouve & $i<$jours.length){
+            if (strpos($ressouceId, $jour[$i])){
+                $trouve = true;
+                $jour = $jours[$i];
+                
+            }
+                    
+                    
+            $i++;
+        }
+        
+        
 
         // Setup Response with the new id and some new property
         $response = new \Symfony\Component\HttpFoundation\Response();
