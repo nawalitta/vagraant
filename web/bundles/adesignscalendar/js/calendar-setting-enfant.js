@@ -89,10 +89,12 @@ $(function () {
             
    var title = event.title;
    var start = event.start.format("HH:MM:SS");
+   var end = event.end.format("HH:MM:SS");
    var resource = event.resourceId;
+   var activiteId = event.activiteId;
    $.ajax({
      url: 'AddEvent/',
-     data: 'title='+title+'&startdate='+start+'&resourceId='+resource,
+     data: 'title='+title+'&startdate='+start+'&enddate='+end+'&resourceId='+resource+'&activiteId='+activiteId,
      type: 'POST',
      dataType: 'json',
      success: function(response){

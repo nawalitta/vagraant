@@ -4,6 +4,7 @@ namespace CalendarBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
+use DateTime;
 
 class CalendarController extends Controller {
 
@@ -24,8 +25,8 @@ class CalendarController extends Controller {
 
         //Setup new EventEntity with data from request
         $title = $data['title'];
-        $startdate = $data['startdate'];
-        $enddate = $data['enddate'];
+        $startdate = new DateTime($data['startdate']);
+        $enddate = new DateTime($data['enddate']);
         $ressouceId = $data['resourceId'];
         $jour ="";
         $enfantId = "";
@@ -40,19 +41,38 @@ class CalendarController extends Controller {
         $jours[] = "Vendredi";
         $trouve = false;
         $i=0;
-        while(!trouve & $i<$jours.length){
-            if (strpos($ressouceId, $jour[$i])){
+        while(!$trouve & $i<sizeof($jours)){
+            if (strpos($ressouceId, $jours[$i])){
                 $trouve = true;
                 $jour = $jours[$i];
-                $enfantId = explode($ressouceId, $jours[$i])[0];
+                $enfantId = substr($ressouceId, 0,strlen($ressouceId)-strlen($jour));
+                echo ($enfantId);
             }
                  
             $i++;
         }
         
+                $entityManager = $this->getDoctrine()->getManager();
+        $eventRepository = $entityManager->getRepository("ADesignsCalendarBundle:EventEntity");
+
+        $enfantRepository = $entityManager->getRepository("RessourceBundle:Enfant");
+        $enfant = $enfantRepository->findOneById($enfantId);
+        
+        $activiteRepository = $entityManager->getRepository("ActiviteBundle:Activite");
+        $activite = $activiteRepository->findOneById($activiteId);
+        
+        $evenement = new \CalendarBundle\Entity\EventEntity($title, $startdate,$enddate);
+        $evenement->setJour($jour);
+        $evenement->setEnfant($enfant);
+        $evenement->setActivite($activite);
+        
+         $entityManager->persist($evenement);
+            $entityManager->flush();
+        
+        
         $return = array();
         $return['status'] = "success";
-        $return['eventId'] = '1';
+        $return['eventId'] = $evenement->getId();
 
         // Setup Response with the new id and some new property
         $response = new \Symfony\Component\HttpFoundation\Response();

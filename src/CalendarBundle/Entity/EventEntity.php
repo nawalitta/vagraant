@@ -52,7 +52,7 @@ class EventEntity {
     /**
      * @var string URL Relative to current path.
      *
-     * @ORM\Column(name="url", type="string", length=255)
+     * @ORM\Column(name="url", type="string", length=255,nullable=true)
      */
     protected $url;
     
@@ -66,7 +66,7 @@ class EventEntity {
     /**
      * @var string HTML color code for the bg color of the event label.
      *
-     * @ORM\Column(name="couleur", type="string", length=255)
+     * @ORM\Column(name="couleur", type="string", length=255,nullable=true)
      */
     protected $bgColor;
 
@@ -78,7 +78,7 @@ class EventEntity {
     /**
      * @var string css class for the event label
      *
-     * @ORM\Column(name="cssClass", type="string", length=255)
+     * @ORM\Column(name="cssClass", type="string", length=255,nullable=true)
      */
     protected $cssClass;
 
@@ -99,7 +99,7 @@ class EventEntity {
     /**
      * @var boolean Is this an all day event?
      *
-     * @ORM\Column(name="jourEntier", type="boolean")
+     * @ORM\Column(name="jourEntier", type="boolean",nullable=true)
      */
     protected $allDay = false;
 
