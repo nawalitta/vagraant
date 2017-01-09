@@ -46,6 +46,11 @@ class Jour
      * @ORM\OneToMany(targetEntity="ActiviteFixee", mappedBy="jour")
      */
     private $activitesFixees;
+    
+    /**
+     * @ORM\OneToMany(targetEntity="CalendarBundle\Entity\EventEntity", mappedBy="jour")
+     */
+    private $evenements;
 
     /**
      * Get id
@@ -184,5 +189,39 @@ class Jour
     public function __toString()
     {
         return $this->designation." ".$this->parite;
+    }
+
+    /**
+     * Add evenement
+     *
+     * @param \CalendarBundle\Entity\EventEntity $evenement
+     *
+     * @return Jour
+     */
+    public function addEvenement(\CalendarBundle\Entity\EventEntity $evenement)
+    {
+        $this->evenements[] = $evenement;
+
+        return $this;
+    }
+
+    /**
+     * Remove evenement
+     *
+     * @param \CalendarBundle\Entity\EventEntity $evenement
+     */
+    public function removeEvenement(\CalendarBundle\Entity\EventEntity $evenement)
+    {
+        $this->evenements->removeElement($evenement);
+    }
+
+    /**
+     * Get evenements
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getEvenements()
+    {
+        return $this->evenements;
     }
 }

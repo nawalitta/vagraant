@@ -17,8 +17,6 @@ class CalendarController extends Controller {
     }
 
     public function editEventAction(Request $request) {
-
-
         $request = $this->get('request');
         $data = $request->request->all();
 
@@ -27,29 +25,29 @@ class CalendarController extends Controller {
         $startdate = $data['startdate'];
         $enddate = $data['enddate'];
         $ressouceId = $data['resourceId'];
-        $jour ="";
+        $jour = "";
         $enfantId = "";
         $activiteId = $data['activiteId'];
-        
+
         // Split RessourceId in 2 string
-                $jours = array();
+        $jours = array();
         $jours[] = "Lundi";
         $jours[] = "Mardi";
         $jours[] = "Mercredi";
         $jours[] = "Jeudi";
         $jours[] = "Vendredi";
         $trouve = false;
-        $i=0;
-        while(!trouve & $i<$jours.length){
-            if (strpos($ressouceId, $jour[$i])){
+        $i = 0;
+        while (!trouve & $i < $jours . length) {
+            if (strpos($ressouceId, $jour[$i])) {
                 $trouve = true;
                 $jour = $jours[$i];
                 $enfantId = explode($ressouceId, $jours[$i])[0];
             }
-                 
+
             $i++;
         }
-        
+
         $return = array();
         $return['status'] = "success";
         $return['eventId'] = '1';
@@ -60,6 +58,37 @@ class CalendarController extends Controller {
 
         $response->setContent(json_encode(array('status' => 'success', 'eventid' => '1')));
         return $response;
+    }
+
+    public function saveActivityAction() {
+
+        $entityManager = $this->getDoctrine()->getManager();
+        $eventRepository = $entityManager->getRepository("ADesignsCalendarBundle:EventEntity");
+        $activiteRepository = $entityManager->getRepository("ActiviteBundle:ActiviteRealisee");
+
+        //Récupération des evenements
+        $events = $eventRepository->findAll();
+        $activities = $activiteRepository->findAll();
+
+        //Suppression des activités réalisé
+        foreach ($activities as $activity) {
+            $entityManager->remove($activity);
+            $entityManager->flush();
+        }
+
+        foreach ($events as $event) {
+            //Ajout des evenements dans la table activité réalisé
+            $activiteRealisee = new \ActiviteBundle\Entity\ActiviteRealisee();
+            $activiteRealisee->setActivite($event->getActivite());
+            $activiteRealisee->setEnfant($event->getEnfant());
+            $activiteRealisee->setHeureDebut($event->getStartDatetime());
+            $activiteRealisee->setHeureFin($event->getEndDatetime());
+            $activiteRealisee->setJour($event->getJour());
+            $entityManager->persist($activiteRealisee);
+            $entityManager->flush();
+        }
+
+        return $this->redirect($this->generateUrl('Calendar'));
     }
 
     public function showAction($id) {
@@ -125,10 +154,6 @@ class CalendarController extends Controller {
             $child['title'] = $jour;
             $return_ressources[] = $child;
         }
-
-
-
-
 
         $response->setContent(json_encode($return_ressources));
 

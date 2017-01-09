@@ -58,8 +58,9 @@ class EventEntity {
     
     /**
      * @var string HTML color code for the bg color of the event label.
-     *
-     * @ORM\Column(name="jour", type="string", length=255)
+     * 
+     * @ORM\ManyToOne(targetEntity="ActiviteBundle\Entity\Jour", inversedBy="evenements")
+     * @ORM\JoinColumn(nullable=false)
      */
     protected $jour;
 
@@ -137,7 +138,7 @@ class EventEntity {
         if ($this->endDatetime !== null) {
             $event['end'] = $this->endDatetime->format("H:i:s");
         }
-            $event['resourceId'] = $this->enfant->getId().$this->jour;
+            $event['resourceId'] = $this->enfant->getId().$this->jour->getDesignation();
                 if ($this->bgColor !== null) {
             $event['color'] = $this->bgColor;
 
@@ -261,31 +262,7 @@ class EventEntity {
 
         unset($this->otherFields[$name]);
     }
-
-    /**
-     * Set enfantId
-     *
-     * @param string $enfantId
-     *
-     * @return EventEntity
-     */
-    public function setEnfantId($enfantId)
-    {
-        $this->enfantId = $enfantId;
-
-        return $this;
-    }
-
-    /**
-     * Get enfantId
-     *
-     * @return string
-     */
-    public function getEnfantId()
-    {
-        return $this->enfantId;
-    }
-
+    
     /**
      * Set jour
      *

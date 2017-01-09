@@ -7,7 +7,6 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use RessourceBundle\Entity\Enfant;
 use RessourceBundle\Entity\Ressource;
-use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * ActiviteRealisee
