@@ -44,14 +44,15 @@ class CalendarController extends Controller {
             if (strpos($ressouceId, $jour[$i])){
                 $trouve = true;
                 $jour = $jours[$i];
-                
+                $enfantId = explode($ressouceId, $jours[$i])[0];
             }
-                    
-                    
+                 
             $i++;
         }
         
-        
+        $return = array();
+        $return['status'] = "success";
+        $return['eventId'] = '1';
 
         // Setup Response with the new id and some new property
         $response = new \Symfony\Component\HttpFoundation\Response();
@@ -81,12 +82,12 @@ class CalendarController extends Controller {
         $entityManager = $this->getDoctrine()->getManager();
         $eventRepository = $entityManager->getRepository("ADesignsCalendarBundle:EventEntity");
 
-        $databaseEvents = $eventRepository->findByEnfantId($id);
+        $enfantRepository = $entityManager->getRepository("RessourceBundle:Enfant");
+        $enfant = $enfantRepository->findById($id);
+        $databaseEvents = $eventRepository->findByEnfant($enfant);
 
         $return_events = array();
         foreach ($databaseEvents as $event) {
-
-
             $return_events[] = $event->toArray();
         }
 

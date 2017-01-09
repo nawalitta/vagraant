@@ -137,7 +137,7 @@ class EventEntity {
         if ($this->endDatetime !== null) {
             $event['end'] = $this->endDatetime->format("H:i:s");
         }
-            $event['resourceId'] = $this->enfantId.$this->jour;
+            $event['resourceId'] = $this->enfant->getId().$this->jour;
                 if ($this->bgColor !== null) {
             $event['color'] = $this->bgColor;
 
