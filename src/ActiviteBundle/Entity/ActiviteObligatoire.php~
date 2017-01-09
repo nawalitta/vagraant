@@ -43,13 +43,11 @@ class ActiviteObligatoire
      */
     private $ecart;
 
-
-   /**
-     * @ORM\ManyToOne(targetEntity="Activite",inversedBy="enfantObligatoire")
+    /**
+     * @ORM\ManyToOne(targetEntity="Activite",inversedBy="enfantsObligatoires")
      * @ORM\JoinColumn(nullable=false)
      */
     private $activite;
-
 
     /**
      * @ORM\ManyToOne(targetEntity="RessourceBundle\Entity\Enfant",inversedBy="activitesObligatoires")
@@ -77,7 +75,7 @@ class ActiviteObligatoire
     public function setQuotas($quotas)
     {
         $this->quotas = $quotas;
-   
+
         return $this;
     }
 
@@ -101,7 +99,7 @@ class ActiviteObligatoire
     public function setEcart($ecart)
     {
         $this->ecart = $ecart;
-    
+
         return $this;
     }
 
@@ -114,24 +112,25 @@ class ActiviteObligatoire
     {
         return $this->ecart;
     }
-    
+
     public function getActivite()
     {
         return $this->activite;
     }
-    
+
     public function setActivite($activite)
     {
         $this->activite = $activite;
         return $this;
     }
-    
+
     public function __construct()
     {
-      
+
     }
-    
-    public function __toString() {
+
+    public function __toString()
+    {
         return $this->activite->getDesignation();
     }
 

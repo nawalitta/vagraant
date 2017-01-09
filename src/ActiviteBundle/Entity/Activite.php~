@@ -10,15 +10,14 @@ use RessourceBundle\Entity\FenetreHoraire;
 use RessourceBundle\Entity\Preaffection;
 use Symfony\Component\Validator\Constraints as Assert;
 
-
 /**
  * activite
  *
  * @ORM\Table(name="Activite")
  * @ORM\Entity(repositoryClass="ActiviteBundle\Repository\ActiviteRepository")
  */
-class Activite
-{
+class Activite {
+
     /**
      * @var int
      *
@@ -44,7 +43,7 @@ class Activite
      * )
      */
     private $dureeMin;
-    
+
     /**
      * @var int
      *
@@ -75,7 +74,6 @@ class Activite
      */
     private $nbEnfantsMax;
 
-
     /**
      * @var int
      *
@@ -87,9 +85,9 @@ class Activite
     private $dureeTransport;
 
     /**
-   * @ORM\ManyToOne(targetEntity="ActiviteBundle\Entity\TypeActivite",inversedBy="activites")
-   * @ORM\JoinColumn(nullable=false)
-   */
+     * @ORM\ManyToOne(targetEntity="ActiviteBundle\Entity\TypeActivite", inversedBy="activites")
+     * @ORM\JoinColumn(nullable=false)
+     */
     private $typeActivite;
 
     /**
@@ -99,32 +97,29 @@ class Activite
     private $fenetreHoraire;
 
     /**
-     * @ORM\ManyToMany(targetEntity="RessourceBundle\Entity\Enfant")
+     * @ORM\ManyToMany(targetEntity="RessourceBundle\Entity\Enfant", mappedBy="activitesOptionelles")
      */
-    private $enfantsOptionnel;
+    private $enfantsOptionnels;
 
     /**
      * @ORM\OneToMany(targetEntity="ActiviteBundle\Entity\ActiviteRealisee", mappedBy="activite")
      */
     private $activitesRealisees;
 
-
     /**
      * @ORM\OneToMany(targetEntity="RessourceBundle\Entity\Preaffection", mappedBy="activite")
      */
-    private $preaffections;
-
+    private $preAffections;
 
     /**
      * @ORM\OneToMany(targetEntity="ActiviteObligatoire", mappedBy="activite")
      */
     private $enfantsObligatoires;
 
-
     /**
      * @ORM\OneToMany(targetEntity="ActiviteFixee", mappedBy="activite")
      */
-    private $horairesfixes;
+    private $activitesFixees;
 
     /**
      * @ORM\OneToMany(targetEntity="RessourceBundle\Entity\BesoinTypeRessource", mappedBy="activite")
@@ -132,16 +127,19 @@ class Activite
     private $besoinsTypeRessources;
 
     /**
+     * @ORM\OneToMany(targetEntity="CalendarBundle\Entity\EventEntity", mappedBy="evenement")
+     */
+    private $evenements;
+
+    /**
      * Get id
      *
      * @return integer
      */
-    public function getId()
-    {
+    public function getId() {
         return $this->id;
     }
 
- 
     /**
      * Set dureeMax
      *
@@ -149,10 +147,9 @@ class Activite
      *
      * @return Activite
      */
-    public function setDureeMax($dureeMax)
-    {
+    public function setDureeMax($dureeMax) {
         $this->dureeMax = $dureeMax;
-    
+
         return $this;
     }
 
@@ -161,8 +158,7 @@ class Activite
      *
      * @return integer
      */
-    public function getDureeMax()
-    {
+    public function getDureeMax() {
         return $this->dureeMax;
     }
 
@@ -173,10 +169,9 @@ class Activite
      *
      * @return Activite
      */
-    public function setDureeMin($dureeMin)
-    {
+    public function setDureeMin($dureeMin) {
         $this->dureeMin = $dureeMin;
-    
+
         return $this;
     }
 
@@ -185,8 +180,7 @@ class Activite
      *
      * @return string
      */
-    public function getDureeMin()
-    {
+    public function getDureeMin() {
         return $this->dureeMin;
     }
 
@@ -197,10 +191,9 @@ class Activite
      *
      * @return Activite
      */
-    public function setNbEnfantsMax($nbEnfantsMax)
-    {
+    public function setNbEnfantsMax($nbEnfantsMax) {
         $this->nbEnfantsMax = $nbEnfantsMax;
-    
+
         return $this;
     }
 
@@ -209,8 +202,7 @@ class Activite
      *
      * @return integer
      */
-    public function getNbEnfantsMax()
-    {
+    public function getNbEnfantsMax() {
         return $this->nbEnfantsMax;
     }
 
@@ -221,10 +213,9 @@ class Activite
      *
      * @return Activite
      */
-    public function setNbEnfantsMin($nbEnfantsMin)
-    {
+    public function setNbEnfantsMin($nbEnfantsMin) {
         $this->nbEnfantsMin = $nbEnfantsMin;
-    
+
         return $this;
     }
 
@@ -233,8 +224,7 @@ class Activite
      *
      * @return integer
      */
-    public function getNbEnfantsMin()
-    {
+    public function getNbEnfantsMin() {
         return $this->nbEnfantsMin;
     }
 
@@ -245,10 +235,9 @@ class Activite
      *
      * @return Activite
      */
-    public function setDureeTransport($dureeTransport)
-    {
+    public function setDureeTransport($dureeTransport) {
         $this->dureeTransport = $dureeTransport;
-    
+
         return $this;
     }
 
@@ -257,12 +246,9 @@ class Activite
      *
      * @return integer
      */
-    public function getDureeTransport()
-    {
+    public function getDureeTransport() {
         return $this->dureeTransport;
     }
-    
-
 
     /**
      * Set designation
@@ -270,8 +256,7 @@ class Activite
      * @param string $designation
      * @return Activite
      */
-    public function setDesignation($designation)
-    {
+    public function setDesignation($designation) {
         $this->designation = $designation;
 
         return $this;
@@ -280,15 +265,11 @@ class Activite
     /**
      * Get designation
      *
-     * @return string 
+     * @return string
      */
-    public function getDesignation()
-    {
+    public function getDesignation() {
         return $this->designation;
     }
-
- 
-
 
     /**
      * Set typesActivite
@@ -296,8 +277,7 @@ class Activite
      * @param TypeActivite $typesActivite
      * @return Activite
      */
-    public function setTypesActivite(TypeActivite $typesActivite)
-    {
+    public function setTypesActivite(TypeActivite $typesActivite) {
         $this->typesActivite = $typesActivite;
 
         return $this;
@@ -308,8 +288,7 @@ class Activite
      *
      * @return TypeActivite
      */
-    public function getTypesActivite()
-    {
+    public function getTypesActivite() {
         return $this->typesActivite;
     }
 
@@ -317,28 +296,23 @@ class Activite
      *
      * @Assert\isTrue(message =" La durée maximum doit être superieur à la durée minimum")
      */
-    public function isDureeValid(){
+    public function isDureeValid() {
 
         return $this->dureeMax >= $this->dureeMin;
     }
 
-        /**
+    /**
      *
      * @Assert\isTrue(message =" Le nombre d'enfants maximum doit être superieur au nombre d'enfants minimum")
      */
-    public function isNbEnfantValid(){
+    public function isNbEnfantValid() {
 
         return $this->nbEnfantsMax >= $this->nbEnfantsMin;
     }
 
-
-
-    public function __toString()
-    {
+    public function __toString() {
         return $this->designation;
     }
-
-
 
     /**
      * Set activiteRealisee
@@ -347,8 +321,7 @@ class Activite
      *
      * @return Activite
      */
-    public function setActiviteRealisee(ActiviteRealisee $activiteRealisee)
-    {
+    public function setActiviteRealisee(ActiviteRealisee $activiteRealisee) {
         $this->ActiviteRealisee = $activiteRealisee;
 
         return $this;
@@ -359,16 +332,15 @@ class Activite
      *
      * @return \ActiviteBundle\Entity\ActiviteRealisee
      */
-    public function getActiviteRealisee()
-    {
+    public function getActiviteRealisee() {
         return $this->ActiviteRealisee;
     }
+
     /**
      * Constructor
      */
-    public function __construct()
-    {
-        $this->enfantsOptionnel = new ArrayCollection();
+    public function __construct() {
+        $this->enfantsOptionnels = new ArrayCollection();
         $this->preaffection = new ArrayCollection();
         $this->enfantObligatoires = new ArrayCollection();
         $this->horairefixe = new ArrayCollection();
@@ -382,8 +354,7 @@ class Activite
      *
      * @return Activite
      */
-    public function setFenetreHoraire(FenetreHoraire $fenetreHoraire)
-    {
+    public function setFenetreHoraire(FenetreHoraire $fenetreHoraire) {
         $this->fenetreHoraire = $fenetreHoraire;
 
         return $this;
@@ -394,8 +365,7 @@ class Activite
      *
      * @return FenetreHoraire
      */
-    public function getFenetreHoraire()
-    {
+    public function getFenetreHoraire() {
         return $this->fenetreHoraire;
     }
 
@@ -406,9 +376,8 @@ class Activite
      *
      * @return Activite
      */
-    public function addEnfantsOptionnel(Enfant $enfantsOptionnel)
-    {
-        $this->enfantsOptionnel[] = $enfantsOptionnel;
+    public function addEnfantsOptionnel(Enfant $enfantsOptionnel) {
+        $this->enfantsOptionnels[] = $enfantsOptionnel;
 
         return $this;
     }
@@ -418,9 +387,8 @@ class Activite
      *
      * @param Enfant $enfantsOptionnel
      */
-    public function removeEnfantsOptionnel(Enfant $enfantsOptionnel)
-    {
-        $this->enfantsOptionnel->removeElement($enfantsOptionnel);
+    public function removeEnfantsOptionnel(Enfant $enfantsOptionnel) {
+        $this->enfantsOptionnels->removeElement($enfantsOptionnel);
     }
 
     /**
@@ -428,9 +396,8 @@ class Activite
      *
      * @return ArrayCollection
      */
-    public function getEnfantsOptionnel()
-    {
-        return $this->enfantsOptionnel;
+    public function getEnfantsOptionnels() {
+        return $this->enfantsOptionnels;
     }
 
     /**
@@ -440,8 +407,7 @@ class Activite
      *
      * @return Activite
      */
-    public function addPreaffection(Preaffection $preaffection)
-    {
+    public function addPreaffection(Preaffection $preaffection) {
         $this->preaffection[] = $preaffection;
 
         return $this;
@@ -452,8 +418,7 @@ class Activite
      *
      * @param Preaffection $preaffection
      */
-    public function removePreaffection(Preaffection $preaffection)
-    {
+    public function removePreaffection(Preaffection $preaffection) {
         $this->preaffection->removeElement($preaffection);
     }
 
@@ -462,8 +427,7 @@ class Activite
      *
      * @return ArrayCollection
      */
-    public function getPreaffection()
-    {
+    public function getPreaffection() {
         return $this->preaffection;
     }
 
@@ -474,8 +438,7 @@ class Activite
      *
      * @return Activite
      */
-    public function addEnfantObligatoire(ActiviteObligatoire $enfantObligatoire)
-    {
+    public function addEnfantObligatoire(ActiviteObligatoire $enfantObligatoire) {
         $this->enfantObligatoires[] = $enfantObligatoire;
 
         return $this;
@@ -486,8 +449,7 @@ class Activite
      *
      * @param ActiviteObligatoire $enfantObligatoire
      */
-    public function removeEnfantObligatoire(ActiviteObligatoire $enfantObligatoire)
-    {
+    public function removeEnfantObligatoire(ActiviteObligatoire $enfantObligatoire) {
         $this->enfantObligatoires->removeElement($enfantObligatoire);
     }
 
@@ -496,8 +458,7 @@ class Activite
      *
      * @return ArrayCollection
      */
-    public function getEnfantObligatoires()
-    {
+    public function getEnfantObligatoires() {
         return $this->enfantObligatoires;
     }
 
@@ -508,8 +469,7 @@ class Activite
      *
      * @return Activite
      */
-    public function addHorairefixe(ActiviteFixee $horairefixe)
-    {
+    public function addHorairefixe(ActiviteFixee $horairefixe) {
         $this->horairefixe[] = $horairefixe;
 
         return $this;
@@ -520,8 +480,7 @@ class Activite
      *
      * @param ActiviteFixee $horairefixe
      */
-    public function removeHorairefixe(ActiviteFixee $horairefixe)
-    {
+    public function removeHorairefixe(ActiviteFixee $horairefixe) {
         $this->horairefixe->removeElement($horairefixe);
     }
 
@@ -530,8 +489,7 @@ class Activite
      *
      * @return ArrayCollection
      */
-    public function getHorairefixe()
-    {
+    public function getHorairefixe() {
         return $this->horairefixe;
     }
 
@@ -542,8 +500,7 @@ class Activite
      *
      * @return Activite
      */
-    public function addBesoinsTypeRessource(BesoinTypeRessource $besoinsTypeRessource)
-    {
+    public function addBesoinsTypeRessource(BesoinTypeRessource $besoinsTypeRessource) {
         $this->besoinsTypeRessource[] = $besoinsTypeRessource;
 
         return $this;
@@ -554,8 +511,7 @@ class Activite
      *
      * @param BesoinTypeRessource $besoinsTypeRessource
      */
-    public function removeBesoinsTypeRessource(BesoinTypeRessource $besoinsTypeRessource)
-    {
+    public function removeBesoinsTypeRessource(BesoinTypeRessource $besoinsTypeRessource) {
         $this->besoinsTypeRessource->removeElement($besoinsTypeRessource);
     }
 
@@ -564,8 +520,163 @@ class Activite
      *
      * @return ArrayCollection
      */
-    public function getBesoinsTypeRessource()
-    {
+    public function getBesoinsTypeRessource() {
         return $this->besoinsTypeRessource;
     }
+
+    /**
+     * Set typeActivite
+     *
+     * @param \ActiviteBundle\Entity\TypeActivite $typeActivite
+     *
+     * @return Activite
+     */
+    public function setTypeActivite(\ActiviteBundle\Entity\TypeActivite $typeActivite) {
+        $this->typeActivite = $typeActivite;
+
+        return $this;
+    }
+
+    /**
+     * Get typeActivite
+     *
+     * @return \ActiviteBundle\Entity\TypeActivite
+     */
+    public function getTypeActivite() {
+        return $this->typeActivite;
+    }
+
+    /**
+     * Add activitesRealisee
+     *
+     * @param \ActiviteBundle\Entity\ActiviteRealisee $activitesRealisee
+     *
+     * @return Activite
+     */
+    public function addActivitesRealisee(\ActiviteBundle\Entity\ActiviteRealisee $activitesRealisee) {
+        $this->activitesRealisees[] = $activitesRealisee;
+
+        return $this;
+    }
+
+    /**
+     * Remove activitesRealisee
+     *
+     * @param \ActiviteBundle\Entity\ActiviteRealisee $activitesRealisee
+     */
+    public function removeActivitesRealisee(\ActiviteBundle\Entity\ActiviteRealisee $activitesRealisee) {
+        $this->activitesRealisees->removeElement($activitesRealisee);
+    }
+
+    /**
+     * Get activitesRealisees
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getActivitesRealisees() {
+        return $this->activitesRealisees;
+    }
+
+    /**
+     * Get preaffections
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getPreAffections() {
+        return $this->preAffections;
+    }
+
+    /**
+     * Add enfantsObligatoire
+     *
+     * @param \ActiviteBundle\Entity\ActiviteObligatoire $enfantsObligatoire
+     *
+     * @return Activite
+     */
+    public function addEnfantsObligatoire(\ActiviteBundle\Entity\ActiviteObligatoire $enfantsObligatoire) {
+        $this->enfantsObligatoires[] = $enfantsObligatoire;
+
+        return $this;
+    }
+
+    /**
+     * Remove enfantsObligatoire
+     *
+     * @param \ActiviteBundle\Entity\ActiviteObligatoire $enfantsObligatoire
+     */
+    public function removeEnfantsObligatoire(\ActiviteBundle\Entity\ActiviteObligatoire $enfantsObligatoire) {
+        $this->enfantsObligatoires->removeElement($enfantsObligatoire);
+    }
+
+    /**
+     * Get enfantsObligatoires
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getEnfantsObligatoires() {
+        return $this->enfantsObligatoires;
+    }
+
+    /**
+     * Add horairesfix
+     *
+     * @param \ActiviteBundle\Entity\ActiviteFixee $horairesfix
+     *
+     * @return Activite
+     */
+    public function addHorairesfix(\ActiviteBundle\Entity\ActiviteFixee $horairesfix) {
+        $this->activitesFixees[] = $horairesfix;
+
+        return $this;
+    }
+
+    /**
+     * Remove horairesfix
+     *
+     * @param \ActiviteBundle\Entity\ActiviteFixee $horairesfix
+     */
+    public function removeHorairesfix(\ActiviteBundle\Entity\ActiviteFixee $horairesfix) {
+        $this->activitesFixees->removeElement($horairesfix);
+    }
+
+    /**
+     * Get horairesfixes
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getActivitesFixees() {
+        return $this->activitesFixees;
+    }
+
+    /**
+     * Get besoinsTypeRessources
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getBesoinsTypeRessources() {
+        return $this->besoinsTypeRessources;
+    }
+
+    /**
+     * Add activitesFixee
+     *
+     * @param \ActiviteBundle\Entity\ActiviteFixee $activitesFixee
+     *
+     * @return Activite
+     */
+    public function addActivitesFixee(\ActiviteBundle\Entity\ActiviteFixee $activitesFixee) {
+        $this->activitesFixees[] = $activitesFixee;
+
+        return $this;
+    }
+
+    /**
+     * Remove activitesFixee
+     *
+     * @param \ActiviteBundle\Entity\ActiviteFixee $activitesFixee
+     */
+    public function removeActivitesFixee(\ActiviteBundle\Entity\ActiviteFixee $activitesFixee) {
+        $this->activitesFixees->removeElement($activitesFixee);
+    }
+
 }

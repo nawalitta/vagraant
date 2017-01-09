@@ -110,6 +110,12 @@ class Enfant
      * @ORM\OneToMany(targetEntity="Preaffection", mappedBy="enfant")
      */
     private $preAffections;
+    
+        /**
+     * @ORM\OneToMany(targetEntity="CalendarBundle\Entity\EventEntity", mappedBy="enfant")
+     */
+    private $evenements;
+    
 
     /**
      * Get id
@@ -507,5 +513,39 @@ class Enfant
     public function getPreAffections()
     {
         return $this->preAffections;
+    }
+
+    /**
+     * Add evenement
+     *
+     * @param \CalendarBundle\Entity\EventEntity $evenement
+     *
+     * @return Enfant
+     */
+    public function addEvenement(\CalendarBundle\Entity\EventEntity $evenement)
+    {
+        $this->evenements[] = $evenement;
+
+        return $this;
+    }
+
+    /**
+     * Remove evenement
+     *
+     * @param \CalendarBundle\Entity\EventEntity $evenement
+     */
+    public function removeEvenement(\CalendarBundle\Entity\EventEntity $evenement)
+    {
+        $this->evenements->removeElement($evenement);
+    }
+
+    /**
+     * Get evenements
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getEvenements()
+    {
+        return $this->evenements;
     }
 }

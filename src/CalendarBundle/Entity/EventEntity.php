@@ -36,12 +36,18 @@ class EventEntity {
     protected $title;
     
     
-     /**
-     * @var string URL Relative to current path.
-     *
-     * @ORM\Column(name="enfantId", type="integer", length=255)
-     */   
-    protected $enfantId;
+    /**
+     * @ORM\ManyToOne(targetEntity="RessourceBundle\Entity\Enfant", inversedBy="evenements")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    protected $enfant;
+    
+      /**
+     * @ORM\ManyToOne(targetEntity="ActiviteBundle\Entity\Activite", inversedBy="evenements")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    protected $activite;
+    
 
     /**
      * @var string URL Relative to current path.
@@ -302,5 +308,53 @@ class EventEntity {
     public function getJour()
     {
         return $this->jour;
+    }
+
+    /**
+     * Set enfant
+     *
+     * @param \RessourceBundle\Entity\Enfant $enfant
+     *
+     * @return EventEntity
+     */
+    public function setEnfant(\RessourceBundle\Entity\Enfant $enfant)
+    {
+        $this->enfant = $enfant;
+
+        return $this;
+    }
+
+    /**
+     * Get enfant
+     *
+     * @return \RessourceBundle\Entity\Enfant
+     */
+    public function getEnfant()
+    {
+        return $this->enfant;
+    }
+
+    /**
+     * Set activite
+     *
+     * @param \ActiviteBundle\Entity\Activite $activite
+     *
+     * @return EventEntity
+     */
+    public function setActivite(\ActiviteBundle\Entity\Activite $activite)
+    {
+        $this->activite = $activite;
+
+        return $this;
+    }
+
+    /**
+     * Get activite
+     *
+     * @return \ActiviteBundle\Entity\Activite
+     */
+    public function getActivite()
+    {
+        return $this->activite;
     }
 }

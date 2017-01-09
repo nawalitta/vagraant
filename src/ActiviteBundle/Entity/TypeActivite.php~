@@ -30,9 +30,8 @@ class TypeActivite
      */
     private $designation;
     
-    
     /**
-     * @ORM\ManyToOne(targetEntity="Activite",inversedBy="typeActivite")
+     * @ORM\OneToMany(targetEntity="ActiviteBundle\Entity\Activite", mappedBy="typeActivite")
      * @ORM\JoinColumn(nullable=false)
      */  
     private $activites;

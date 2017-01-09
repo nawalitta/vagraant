@@ -43,29 +43,26 @@ class ActiviteRealisee
     /**
      * @ORM\ManyToOne(targetEntity="Activite",inversedBy="ActiviteRealisee")
      * @ORM\JoinColumn(nullable=false)
-     */  
-   public $activite;
-
-
-    /**
-     * @ORM\ManyToMany(targetEntity="RessourceBundle\Entity\Ressource")
      */
-  private $ressources; 
-   
-    /**
-     * @ORM\ManyToOne(targetEntity="RessourceBundle\Entity\Enfant",inversedBy="$activitesRealisees")
-     * @ORM\JoinColumn(nullable=false)
-     */  
-  private $enfant;
-  
-    /**
-     * @ORM\ManyToOne(targetEntity="Jour",inversedBy="$activitesRealisees")
-     * @ORM\JoinColumn(nullable=false)
-     */  
-  private $jour;
+    public $activite;
 
-  
-  
+    /**
+     * @ORM\ManyToMany(targetEntity="RessourceBundle\Entity\Ressource", mappedBy="activiteesRealisees")
+     */
+    private $ressources;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="RessourceBundle\Entity\Enfant",inversedBy="activitesRealisees")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $enfant;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="Jour",inversedBy="activitesRealisees")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $jour;
+
     /**
      * Get id
      *
@@ -123,6 +120,7 @@ class ActiviteRealisee
     {
         return $this->heureFin;
     }
+
     /**
      * Constructor
      */
@@ -131,10 +129,12 @@ class ActiviteRealisee
         $this->ressources = new ArrayCollection();
     }
 
-    public function __toString() {
-        
-        return $this->activite->getDesignation();
+    public function __toString()
+    {
+
+        return $this->activite->getDesignation()." ".$this->heureDebut."-".$this->heureFin;
     }
+
     /**
      * Set activite
      *
@@ -192,16 +192,16 @@ class ActiviteRealisee
     {
         return $this->ressources;
     }
-    
-    
+
+
     /**
      * @Assert\IsTrue(message = "L'heure de début doit etre avant l'heure de fin")
      */
     public function isValidHeure()
     {
-        return ($this->heureDebut<=$this->heureFin);
+        return ($this->heureDebut <= $this->heureFin);
     }
-    
+
 
     /**
      * Set enfant
