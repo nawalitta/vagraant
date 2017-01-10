@@ -4,13 +4,14 @@ $(function () {
 
     $('#calendar-holder').fullCalendar({
         schedulerLicenseKey: 'GPL-My-Project-Is-Open-Source',
+        height:258,
         timezone: 'France/Paris',
         editable: false, // don't allow event dragging
         forceEventDuration: true,
         aspectRatio: 1.8,
         scrollTime: '00:00',
         minTime: "08:00:00",
-        maxTime: "22:00:00",
+        maxTime: "19:00:00",
         eventOverlap: false,
         // this allows things to be dropped onto the calendar
         header: {

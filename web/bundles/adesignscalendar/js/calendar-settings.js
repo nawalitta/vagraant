@@ -10,7 +10,7 @@ $(function () {
         aspectRatio: 1.8,
         scrollTime: '00:00',
         minTime: "08:00:00",
-        maxTime: "22:00:00",
+        maxTime: "19:00:00",
         eventOverlap: false,
         // this allows things to be dropped onto the calendar
         header: {

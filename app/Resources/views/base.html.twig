@@ -16,6 +16,10 @@
         <div class="row">
             <header>
                 {% block header %} {% endblock %}
+                {% block javascripts %}
+                    <script type="text/javascript" src="{{ asset('bundles/adesignscalendar/js/jquery/jquery.min.js') }}"></script>
+                    <script src="{{ asset('js/bootstrap.js') }}"></script>
+                {% endblock %}
             </header>
             {% include 'menu.html.twig' %}
             <body>
@@ -28,11 +32,8 @@
                         </div>
                     </div>
                 </div>
-                {% block javascripts %}
-                    <script src="{{ asset('js/bootstrap.js') }}"></script>
-                {% endblock %}
             </body>
-           {#{% include 'footer.html.twig' %}#}
+            {#{% include 'footer.html.twig' %}#}
         </div>
     </div>
 </html>
