@@ -26,8 +26,6 @@ class CalendarController extends Controller {
         $startdate = new DateTime($data['startdate']);
         $enddate = new DateTime($data['enddate']);
         
-        $logger = $this->get('logger');
-        $logger->error("startDate=".$data['startdate']);
   
         $ressouceId = $data['resourceId'];
         $jour = "";
@@ -83,7 +81,7 @@ class CalendarController extends Controller {
         $response = new \Symfony\Component\HttpFoundation\Response();
         $response->headers->set('Content-Type', 'application/json');
 
-        $response->setContent(json_encode(array('status' => 'success', 'eventid' => '1')));
+        $response->setContent(json_encode($return));
         return $response;
     }
 
