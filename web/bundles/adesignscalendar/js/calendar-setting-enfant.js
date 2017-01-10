@@ -86,10 +86,10 @@ $(function () {
         },
         
         eventReceive: function(event){
-            
+            console.log('eventReceive', event);
    var title = event.title;
-   var start = event.start.format("HH:MM:SS");
-   var end = event.end.format("HH:MM:SS");
+   var start = event.start.toString();
+   var end = event.end.toString();
    var resource = event.resourceId;
    var activiteId = event.activiteId;
    $.ajax({
@@ -98,13 +98,15 @@ $(function () {
      type: 'POST',
      dataType: 'json',
      success: function(response){
-          console.log('eventReceive', event);
+         
+          console.log('Event added with succes', response);
        event.id = response.eventid;
 
        $('#calendar').fullCalendar('updateEvent',event);
      },
      error: function(e){
-       console.log(e.responseText);
+
+       console.log('error',e.responseText);
      }
    });
    $('#calendar').fullCalendar('updateEvent',event);

@@ -25,6 +25,10 @@ class CalendarController extends Controller {
         $title = $data['title'];
         $startdate = new DateTime($data['startdate']);
         $enddate = new DateTime($data['enddate']);
+        
+        $logger = $this->get('logger');
+        $logger->error("startDate=".$data['startdate']);
+  
         $ressouceId = $data['resourceId'];
         $jour = "";
         $enfantId = "";
@@ -39,19 +43,22 @@ class CalendarController extends Controller {
         $jours[] = "Vendredi";
         $trouve = false;
         $i=0;
+          $entityManager = $this->getDoctrine()->getManager();
+       $jourRepository = $entityManager->getRepository("ActiviteBundle:Jour");    
+        
+        
         while(!$trouve & $i<sizeof($jours)){
             if (strpos($ressouceId, $jours[$i])){
                 $trouve = true;
-                $jour = $jours[$i];
-                $enfantId = substr($ressouceId, 0,strlen($ressouceId)-strlen($jour));
+                $jour = $jourRepository->findOneByDesignation($jours[$i]);
+                $enfantId = substr($ressouceId, 0,strlen($ressouceId)-strlen($jours[$i]));
                 echo ($enfantId);
             }
 
             $i++;
         }
         
-                $entityManager = $this->getDoctrine()->getManager();
-        $eventRepository = $entityManager->getRepository("ADesignsCalendarBundle:EventEntity");
+          $eventRepository = $entityManager->getRepository("ADesignsCalendarBundle:EventEntity");     
 
         $enfantRepository = $entityManager->getRepository("RessourceBundle:Enfant");
         $enfant = $enfantRepository->findOneById($enfantId);
