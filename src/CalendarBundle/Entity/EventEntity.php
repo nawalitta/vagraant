@@ -52,7 +52,7 @@ class EventEntity {
     /**
      * @var string URL Relative to current path.
      *
-     * @ORM\Column(name="url", type="string", length=255)
+     * @ORM\Column(name="url", type="string", length=255, nullable=true)
      */
     protected $url;
     
@@ -67,7 +67,7 @@ class EventEntity {
     /**
      * @var string HTML color code for the bg color of the event label.
      *
-     * @ORM\Column(name="couleur", type="string", length=255)
+     * @ORM\Column(name="couleur", type="string", length=255, nullable=true)
      */
     protected $bgColor;
 
@@ -79,7 +79,7 @@ class EventEntity {
     /**
      * @var string css class for the event label
      *
-     * @ORM\Column(name="cssClass", type="string", length=255)
+     * @ORM\Column(name="cssClass", type="string", length=255, nullable=true)
      */
     protected $cssClass;
 
@@ -98,23 +98,15 @@ class EventEntity {
     protected $endDatetime;
 
     /**
-     * @var boolean Is this an all day event?
-     *
-     * @ORM\Column(name="jourEntier", type="boolean")
-     */
-    protected $allDay = false;
-
-    /**
      * @var array Non-standard fields
      */
     protected $otherFields = array();
 
-    public function __construct($title, \DateTime $startDatetime, \DateTime $endDatetime = null, $allDay = false) {
+    public function __construct($title, \DateTime $startDatetime, \DateTime $endDatetime = null) {
         $this->title = $title;
         $this->startDatetime = $startDatetime;
-        $this->setAllDay($allDay);
 
-        if ($endDatetime === null && $this->allDay === false) {
+        if ($endDatetime === null) {
             throw new \InvalidArgumentException("Must specify an event End DateTime if not an all day event.");
         }
 
@@ -235,15 +227,7 @@ class EventEntity {
     public function getEndDatetime() {
         return $this->endDatetime;
     }
-
-    public function setAllDay($allDay = false) {
-        $this->allDay = (boolean) $allDay;
-    }
-
-    public function getAllDay() {
-        return $this->allDay;
-    }
-
+    
     /**
      * @param string $name
      * @param string $value

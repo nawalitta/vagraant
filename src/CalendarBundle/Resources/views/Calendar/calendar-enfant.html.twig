@@ -11,7 +11,8 @@
 
 {% block body %}
     <div class="row">
-        <a href="{{ path('Calendar_event_save')}}"><button style="margin-left: 25px" type="submit" class="btn btn-success">Sauvegarder</button></a>
+        <a href="{{ path('Calendar_event_save',{ 'id': app.request.attributes.get('id') }) }}"><button style="margin-left: 25px" type="submit" class="btn btn-success">Sauvegarder</button></a>
+        <a href="{{ path('Calendar_event_save',{ 'id': app.request.attributes.get('id') }) }}"><button style="margin-left: 25px" type="submit" class="btn btn-primary">Restaurer</button></a>
     </div>
     <div class="row">
         <div style="margin-left:25px; margin-top: 20px" id='external-events'>
@@ -25,7 +26,7 @@
         <div style="margin-left:25px; margin-top: 20px" id='external-events'>
             <h4>Activités optionnelles</h4>
             {% for activite in activitesOptionnel %}
-                <div class='fc-event' activiteId="{{ activite.id }}>{{ activite.designation }}</div> 
+                <div class='fc-event' activiteId="{{ activite.id }}">{{ activite.designation }}</div> 
             {% endfor %}
            
         </div>
@@ -42,6 +43,7 @@
                 </div>
             </div>
         </div>
+    </div>
 
         <div id="calendar-holder"></div>
     {% endblock %}

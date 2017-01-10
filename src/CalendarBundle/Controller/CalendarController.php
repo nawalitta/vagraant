@@ -60,14 +60,20 @@ class CalendarController extends Controller {
         return $response;
     }
 
-    public function saveActivityAction() {
+    public function saveActivityAction($id = null) {
 
         $entityManager = $this->getDoctrine()->getManager();
         $eventRepository = $entityManager->getRepository("ADesignsCalendarBundle:EventEntity");
         $activiteRepository = $entityManager->getRepository("ActiviteBundle:ActiviteRealisee");
 
         //Récupération des evenements
-        $events = $eventRepository->findAll();
+        if ($id == null) {
+            $events = $eventRepository->findAll();
+        } else {
+            $events = $eventRepository->findOneByEnfant($id);
+        }
+
+        //Recupération des activités
         $activities = $activiteRepository->findAll();
 
         //Suppression des activités réalisé
@@ -85,6 +91,43 @@ class CalendarController extends Controller {
             $activiteRealisee->setHeureFin($event->getEndDatetime());
             $activiteRealisee->setJour($event->getJour());
             $entityManager->persist($activiteRealisee);
+            $entityManager->flush();
+        }
+
+        return $this->redirect($this->generateUrl('Calendar'));
+    }
+
+    public function restoreActivityAction($id = null) {
+
+        $entityManager = $this->getDoctrine()->getManager();
+        $eventRepository = $entityManager->getRepository("ADesignsCalendarBundle:EventEntity");
+        $activiteRepository = $entityManager->getRepository("ActiviteBundle:ActiviteRealisee");
+
+        //Recupération des evenements
+        $events = $eventRepository->findAll();
+
+        //Recupération des acitivités
+        if ($id == null) {
+            $activities = $activiteRepository->findAll();
+        } else {
+            $activities = $activiteRepository->findOneByEnfant($id);
+        }
+
+        //Suppression des evenements
+        foreach ($events as $event) {
+            $entityManager->remove($event);
+            $entityManager->flush();
+        }
+
+        foreach ($activities as $activity) {
+            //Ajout des activités dans la table event
+            $event = new \CalendarBundle\Entity\EventEntity($activity->getActivite()->getDesignation(), $activity->getHeureDebut(), $activity->getHeureFin());
+
+            //Creation de l'event
+            $event->setActivite($activity->getActivite());
+            $event->setEnfant($activity->getEnfant());
+            $event->setJour($activity->getJour());
+            $entityManager->persist($event);
             $entityManager->flush();
         }
 
