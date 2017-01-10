@@ -102,4 +102,28 @@ class TypeActivite
     {
         return $this->activites;
     }
+
+    /**
+     * Add activite
+     *
+     * @param \ActiviteBundle\Entity\Activite $activite
+     *
+     * @return TypeActivite
+     */
+    public function addActivite(\ActiviteBundle\Entity\Activite $activite)
+    {
+        $this->activites[] = $activite;
+
+        return $this;
+    }
+
+    /**
+     * Remove activite
+     *
+     * @param \ActiviteBundle\Entity\Activite $activite
+     */
+    public function removeActivite(\ActiviteBundle\Entity\Activite $activite)
+    {
+        $this->activites->removeElement($activite);
+    }
 }

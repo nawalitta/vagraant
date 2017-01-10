@@ -58,8 +58,9 @@ class EventEntity {
     
     /**
      * @var string HTML color code for the bg color of the event label.
-     *
-     * @ORM\Column(name="jour", type="string", length=255)
+     * 
+     * @ORM\ManyToOne(targetEntity="ActiviteBundle\Entity\Jour", inversedBy="evenements")
+     * @ORM\JoinColumn(nullable=false)
      */
     protected $jour;
 
@@ -97,23 +98,15 @@ class EventEntity {
     protected $endDatetime;
 
     /**
-     * @var boolean Is this an all day event?
-     *
-     * @ORM\Column(name="jourEntier", type="boolean",nullable=true)
-     */
-    protected $allDay = false;
-
-    /**
      * @var array Non-standard fields
      */
     protected $otherFields = array();
 
-    public function __construct($title, \DateTime $startDatetime, \DateTime $endDatetime = null, $allDay = false) {
+    public function __construct($title, \DateTime $startDatetime, \DateTime $endDatetime = null) {
         $this->title = $title;
         $this->startDatetime = $startDatetime;
-        $this->setAllDay($allDay);
 
-        if ($endDatetime === null && $this->allDay === false) {
+        if ($endDatetime === null) {
             throw new \InvalidArgumentException("Must specify an event End DateTime if not an all day event.");
         }
 
@@ -137,7 +130,7 @@ class EventEntity {
         if ($this->endDatetime !== null) {
             $event['end'] = $this->endDatetime->format("H:i:s");
         }
-            $event['resourceId'] = $this->enfant->getId().$this->jour;
+            $event['resourceId'] = $this->enfant->getId().$this->jour->getDesignation();
                 if ($this->bgColor !== null) {
             $event['color'] = $this->bgColor;
 
@@ -234,15 +227,7 @@ class EventEntity {
     public function getEndDatetime() {
         return $this->endDatetime;
     }
-
-    public function setAllDay($allDay = false) {
-        $this->allDay = (boolean) $allDay;
-    }
-
-    public function getAllDay() {
-        return $this->allDay;
-    }
-
+    
     /**
      * @param string $name
      * @param string $value
@@ -261,31 +246,7 @@ class EventEntity {
 
         unset($this->otherFields[$name]);
     }
-
-    /**
-     * Set enfantId
-     *
-     * @param string $enfantId
-     *
-     * @return EventEntity
-     */
-    public function setEnfantId($enfantId)
-    {
-        $this->enfantId = $enfantId;
-
-        return $this;
-    }
-
-    /**
-     * Get enfantId
-     *
-     * @return string
-     */
-    public function getEnfantId()
-    {
-        return $this->enfantId;
-    }
-
+    
     /**
      * Set jour
      *

@@ -46,6 +46,11 @@ class Jour
      * @ORM\OneToMany(targetEntity="ActiviteFixee", mappedBy="jour")
      */
     private $activitesFixees;
+    
+    /**
+     * @ORM\OneToMany(targetEntity="CalendarBundle\Entity\EventEntity", mappedBy="jour")
+     */
+    private $evenements;
 
     /**
      * Get id

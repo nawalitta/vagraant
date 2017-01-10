@@ -679,4 +679,38 @@ class Activite {
         $this->activitesFixees->removeElement($activitesFixee);
     }
 
+
+    /**
+     * Add evenement
+     *
+     * @param \CalendarBundle\Entity\EventEntity $evenement
+     *
+     * @return Activite
+     */
+    public function addEvenement(\CalendarBundle\Entity\EventEntity $evenement)
+    {
+        $this->evenements[] = $evenement;
+
+        return $this;
+    }
+
+    /**
+     * Remove evenement
+     *
+     * @param \CalendarBundle\Entity\EventEntity $evenement
+     */
+    public function removeEvenement(\CalendarBundle\Entity\EventEntity $evenement)
+    {
+        $this->evenements->removeElement($evenement);
+    }
+
+    /**
+     * Get evenements
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getEvenements()
+    {
+        return $this->evenements;
+    }
 }

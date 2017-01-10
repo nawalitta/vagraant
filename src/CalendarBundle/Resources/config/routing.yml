@@ -58,4 +58,12 @@ events_enfant_loader :
     path: /Calendar/Events/{id}
     defaults: { _controller: ADesignsCalendarBundle:Calendar:loadCalendarById }
     options:
-        expose: true 
+        expose: true
+
+Calendar_event_save:
+    path: /Calendar/Save/
+    defaults: { _controller : ADesignsCalendarBundle:Calendar:saveActivity }
+    
+Calendar_event_restore:
+    path: /Calendar/Restore/
+    defaults: { _controller : ADesignsCalendarBundle:Calendar:restoreActivity }
