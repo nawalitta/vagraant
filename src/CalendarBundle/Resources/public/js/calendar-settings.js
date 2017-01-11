@@ -5,9 +5,10 @@ $(function () {
     $('#calendar-holder').fullCalendar({
         schedulerLicenseKey: 'GPL-My-Project-Is-Open-Source',
         timezone: 'France/Paris',
+        height: "auto",
+        contentHeight: "auto",
         editable: true, // don't allow event dragging
         eventResourceEditable: false, // except for between resources
-        aspectRatio: 1.8,
         scrollTime: '00:00',
         minTime: "08:00:00",
         maxTime: "19:00:00",
@@ -65,11 +66,11 @@ $(function () {
         eventDrop: function (event) { // called when an event (already on the calendar) is moved
             console.log('eventDrop', event);
         },
-        
-        resourceRender: function(resourceObj, labelTds) {
-            labelTds.on('click', function(){
-                var route = routeEnfant.replace("/1", "/"+resourceObj.idEnfant);
-                document.location.href=route;
+
+        resourceRender: function (resourceObj, labelTds) {
+            labelTds.on('click', function () {
+                var route = routeEnfant.replace("/1", "/" + resourceObj.idEnfant);
+                document.location.href = route;
             });
         }
     });
