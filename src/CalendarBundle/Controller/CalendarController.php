@@ -25,8 +25,8 @@ class CalendarController extends Controller {
         $title = $data['title'];
         $startdate = new DateTime($data['startdate']);
         $enddate = new DateTime($data['enddate']);
-        
-  
+
+
         $ressouceId = $data['resourceId'];
         $jour = "";
         $enfantId = "";
@@ -40,39 +40,39 @@ class CalendarController extends Controller {
         $jours[] = "Jeudi";
         $jours[] = "Vendredi";
         $trouve = false;
-        $i=0;
-          $entityManager = $this->getDoctrine()->getManager();
-       $jourRepository = $entityManager->getRepository("ActiviteBundle:Jour");    
-        
-        
-        while(!$trouve & $i<sizeof($jours)){
-            if (strpos($ressouceId, $jours[$i])){
+        $i = 0;
+        $entityManager = $this->getDoctrine()->getManager();
+        $jourRepository = $entityManager->getRepository("ActiviteBundle:Jour");
+
+
+        while (!$trouve & $i < sizeof($jours)) {
+            if (strpos($ressouceId, $jours[$i])) {
                 $trouve = true;
                 $jour = $jourRepository->findOneByDesignation($jours[$i]);
-                $enfantId = substr($ressouceId, 0,strlen($ressouceId)-strlen($jours[$i]));
+                $enfantId = substr($ressouceId, 0, strlen($ressouceId) - strlen($jours[$i]));
                 echo ($enfantId);
             }
 
             $i++;
         }
-        
-          $eventRepository = $entityManager->getRepository("ADesignsCalendarBundle:EventEntity");     
+
+        $eventRepository = $entityManager->getRepository("ADesignsCalendarBundle:EventEntity");
 
         $enfantRepository = $entityManager->getRepository("RessourceBundle:Enfant");
         $enfant = $enfantRepository->findOneById($enfantId);
-        
+
         $activiteRepository = $entityManager->getRepository("ActiviteBundle:Activite");
         $activite = $activiteRepository->findOneById($activiteId);
-        
-        $evenement = new \CalendarBundle\Entity\EventEntity($title, $startdate,$enddate);
+
+        $evenement = new \CalendarBundle\Entity\EventEntity($title, $startdate, $enddate);
         $evenement->setJour($jour);
         $evenement->setEnfant($enfant);
         $evenement->setActivite($activite);
-        
-         $entityManager->persist($evenement);
-            $entityManager->flush();
-        
-        
+
+        $entityManager->persist($evenement);
+        $entityManager->flush();
+
+
         $return = array();
         $return['status'] = "success";
         $return['eventId'] = $evenement->getId();
@@ -178,6 +178,28 @@ class CalendarController extends Controller {
 
         $entityManager = $this->getDoctrine()->getManager();
         $eventRepository = $entityManager->getRepository("ADesignsCalendarBundle:EventEntity");
+
+        $enfantRepository = $entityManager->getRepository("RessourceBundle:Enfant");
+        $enfant = $enfantRepository->findById($id);
+        $databaseEvents = $eventRepository->findByEnfant($enfant);
+
+        $return_events = array();
+        foreach ($databaseEvents as $event) {
+            $return_events[] = $event->toArray();
+        }
+
+        $response = new \Symfony\Component\HttpFoundation\Response();
+        $response->headers->set('Content-Type', 'application/json');
+
+        $response->setContent(json_encode($return_events));
+
+        return $response;
+    }
+
+    public function loadCalendarStaticByIdAction(Request $request, $id) {
+        
+        $entityManager = $this->getDoctrine()->getManager();
+        $eventRepository = $entityManager->getRepository("ActiviteBundle:ActiviteRealisee");
 
         $enfantRepository = $entityManager->getRepository("RessourceBundle:Enfant");
         $enfant = $enfantRepository->findById($id);

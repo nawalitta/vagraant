@@ -54,7 +54,7 @@ $(function () {
             type: 'GET'
         },
         events: {
-            url: '../../Calendar/Events/' + id,
+            url: '../../Calendar/EventsStatic/' + id,
             type: 'GET',
         },
 

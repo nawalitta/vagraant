@@ -67,3 +67,9 @@ Calendar_event_save:
 Calendar_event_restore:
     path: /Calendar/Restore/
     defaults: { _controller : ADesignsCalendarBundle:Calendar:restoreActivity }
+
+events_enfant_loader_static :
+    path: /Calendar/EventsStatic/{id}
+    defaults: { _controller: ADesignsCalendarBundle:Calendar:loadCalendarStaticById }
+    options:
+        expose: true
