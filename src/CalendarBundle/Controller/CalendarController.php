@@ -75,9 +75,30 @@ class CalendarController extends Controller {
 
         $return = array();
         $return['status'] = "success";
-        $return['eventId'] = $evenement->getId();
+        //$return['eventId'] = $evenement->getId();
 
-        // Setup Response with the new id and some new property
+        $response = new \Symfony\Component\HttpFoundation\Response();
+        $response->headers->set('Content-Type', 'application/json');
+
+        $response->setContent(json_encode($return));
+        return $response;
+    }
+
+    public function deleteEventAction(Request $request) {
+        $request = $this->get('request');
+        $data = $request->request->all();
+
+        $id = $data['eventID'];
+        $entityManager = $this->getDoctrine()->getManager();
+        $eventRepository = $entityManager->getRepository("ADesignsCalendarBundle:EventEntity");
+        $event = $eventRepository->findOneById($id);
+
+        $entityManager->remove($event);
+        $entityManager->flush();
+
+        $return = array();
+        $return['status'] = "success";
+
         $response = new \Symfony\Component\HttpFoundation\Response();
         $response->headers->set('Content-Type', 'application/json');
 
@@ -197,7 +218,7 @@ class CalendarController extends Controller {
     }
 
     public function loadCalendarStaticByIdAction(Request $request, $id) {
-        
+
         $entityManager = $this->getDoctrine()->getManager();
         $eventRepository = $entityManager->getRepository("ActiviteBundle:ActiviteRealisee");
 
@@ -360,4 +381,36 @@ class CalendarController extends Controller {
         return $response;
     }
 
+    /* public function constraints() {
+
+      $entityManager = $this->getDoctrine()->getManager();
+      // table evenement
+      $eventRepository = $entityManager->getRepository("ADesignsCalendarBundle:EventEntity");
+
+      // table enfant
+      // table activité
+      // table fenetre horaire
+      // tout les evenements
+      $databaseEvents = $eventRepository->findAll();
+
+      $return_constaints = array();
+
+      // pour chaque evenement dans la table event
+      foreach ($databaseEvents as $event) {
+      // verifier que chaque evenement dans la base
+      // respecte quelques contraintes
+      // du type nombre enfant min et max pour l'activite
+      // bonne fenntre horraire
+      // sinon ajouter des phrases dans le tableau return_constraints
+
+      $return_constaints[] = "Ayoub est le meilleure footablleur";
+      }
+
+      $response = new \Symfony\Component\HttpFoundation\Response();
+      $response->headers->set('Content-Type', 'application/json');
+
+      $response->setContent(json_encode($return_constaints));
+
+      return $response;
+      } */
 }
