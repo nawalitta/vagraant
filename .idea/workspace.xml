@@ -3,13 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="6dc076d3-332f-4bc4-8121-fb82bb8217e0" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ActiviteBundle/Entity/ActiviteObligatoire.php" afterPath="$PROJECT_DIR$/src/ActiviteBundle/Entity/ActiviteObligatoire.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ActiviteBundle/Resources/views/Activite/preview.html.twig" afterPath="$PROJECT_DIR$/src/ActiviteBundle/Resources/views/Activite/preview.html.twig" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ActiviteBundle/Resources/views/ActiviteObligatoire/preview.html.twig" afterPath="$PROJECT_DIR$/src/ActiviteBundle/Resources/views/ActiviteObligatoire/preview.html.twig" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/CoreBundle/Controller/AffectationController.php" afterPath="$PROJECT_DIR$/src/CoreBundle/Controller/AffectationController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/CoreBundle/Resources/views/Affectation/affecter_enfant_activite_obligatoire.html.twig" afterPath="$PROJECT_DIR$/src/CoreBundle/Resources/views/Affectation/affecter_enfant_activite_obligatoire.html.twig" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/CoreBundle/Resources/views/Affectation/affecter_enfant_activite_preview.html.twig" afterPath="$PROJECT_DIR$/src/CoreBundle/Resources/views/Affectation/affecter_enfant_activite_preview.html.twig" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/RessourceBundle/Resources/views/Enfant/show.html.twig" afterPath="$PROJECT_DIR$/src/RessourceBundle/Resources/views/Enfant/show.html.twig" />
     </list>
     <ignored path="gpac.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -921,7 +914,7 @@
       <workItem from="1484134943395" duration="7917000" />
       <workItem from="1484143057386" duration="2196000" />
       <workItem from="1484145677647" duration="4840000" />
-      <workItem from="1484217770165" duration="1705000" />
+      <workItem from="1484217770165" duration="1753000" />
     </task>
     <task id="LOCAL-00001" summary="add missing files">
       <created>1479728865350</created>
@@ -958,11 +951,18 @@
       <option name="project" value="LOCAL" />
       <updated>1483688186622</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="add checkbox on enfantShow (désaffectation d'activité Option/obligatoire)">
+      <created>1484219619143</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1484219619143</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="55113000" />
+    <option name="totallyTimeSpent" value="55161000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-9" y="-9" width="1938" height="1050" extended-state="6" />
@@ -1045,7 +1045,8 @@
     <MESSAGE value="filter group for children" />
     <MESSAGE value="filter group done" />
     <MESSAGE value="first push for navigation" />
-    <option name="LAST_COMMIT_MESSAGE" value="first push for navigation" />
+    <MESSAGE value="add checkbox on enfantShow (désaffectation d'activité Option/obligatoire)" />
+    <option name="LAST_COMMIT_MESSAGE" value="add checkbox on enfantShow (désaffectation d'activité Option/obligatoire)" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
