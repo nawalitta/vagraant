@@ -78,94 +78,109 @@
             </div>
         </div>
         <div class="col-sm-8">
-
-            <div class="table-responsive">
-                <caption> Liste des activités</caption>
-                <table class="table">
-                    <tr>
-                        <th> #</th>
-                        <th> Nom activite</th>
-                        <th> Type d'activité</th>
-                        <th> Duree min</th>
-                        <th> Duree max</th>
-                        <th> Nombre d'enfants minimum</th>
-                        <th> Nombre d'enfants maximum</th>
-                        <th> Duree transport</th>
-                    </tr>
-
-                    <tr>
-                        <td> Activites Optionnelles</td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                    {% for activite in enfant.activitesOptionelles() %}
+            <form method="post">
+                <div class="table-responsive">
+                    <caption> Liste des activités</caption>
+                    <table class="table">
                         <tr>
-                            <td>
-                                <a href="{{ path('ActiviteBundle_Activite_show',{ 'id': activite.id }) }}">{{ activite.getId() }}</a>
-                            </td>
-                            <td>
-                                <a href="{{ path('ActiviteBundle_Activite_show',{ 'id': activite.id }) }}">{{ activite.getDesignation() }}</a>
-                            </td>
-                            <td> {{ activite.getTypeActivite().getDesignation() }}</td>
-                            <td> {{ activite.getDureeMin() }}</td>
-                            <td> {{ activite.getDureeMax() }}</td>
-                            <td> {{ activite.getNbEnfantsMin() }}</td>
-                            <td> {{ activite.getNbEnfantsMax() }}</td>
-                            <td> {{ activite.getDureeTransport() }}</td>
+                            <th> #</th>
+                            <th> Nom activite</th>
+                            <th> Type d'activité</th>
+                            <th> Duree min</th>
+                            <th> Duree max</th>
+                            <th> Nombre d'enfants minimum</th>
+                            <th> Nombre d'enfants maximum</th>
+                            <th> Duree transport</th>
+                            <th> Supprimer</th>
                         </tr>
-                    {% endfor %}
-                </table>
 
-                <table class="table">
-                    <tr>
-                        <th> #</th>
-                        <th> Nom activite</th>
-                        <th> Type d'activité</th>
-                        <th> Duree min</th>
-                        <th> Duree max</th>
-                        <th> Nombre d'enfants minimum</th>
-                        <th> Nombre d'enfants maximum</th>
-                        <th> Duree transport</th>
-                        <th> Ecart</th>
-                        <th> Quotas</th>
-
-                    </tr>
-                    <tr>
-                        <td> Activites Obligatoires</td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                    {% for activiteObligatoire in enfant.activitesObligatoires %}
                         <tr>
-                            <td>
-                                <a href="{{ path('ActiviteBundle_Activite_show',{ 'id': activiteObligatoire.activite.getId() }) }}">{{ activiteObligatoire.activite.getId() }}</a>
-                            </td>
-                            <td>
-                                <a href="{{ path('ActiviteBundle_Activite_show',{ 'id': activiteObligatoire.activite.getId() }) }}">{{ activiteObligatoire.activite.getDesignation() }}</a>
-                            </td>
-                            <td> {{ activiteObligatoire.activite.getTypeActivite().getDesignation() }}</td>
-                            <td> {{ activiteObligatoire.activite.getDureeMin() }}</td>
-                            <td> {{ activiteObligatoire.activite.getDureeMax() }}</td>
-                            <td> {{ activiteObligatoire.activite.getNbEnfantsMin() }}</td>
-                            <td> {{ activiteObligatoire.activite.getNbEnfantsMax() }}</td>
-                            <td> {{ activiteObligatoire.activite.getDureeTransport() }}</td>
-                            <td> {{ activiteObligatoire.getEcart() }}</td>
-                            <td> {{ activiteObligatoire.getQuotas() }}</td>
+                            <td> Activites Optionnelles</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
                         </tr>
-                    {% endfor %}
+                        {% for activite in enfant.activitesOptionelles() %}
+                            <tr>
+                                {% include 'ActiviteBundle:Activite:preview.html.twig' %}
+                                <td>
+                                    <div class="form-check">
+                                        <label class="form-check-label">
+                                            <input type="checkbox" name="idActivites[]" value="{{ activite.id }}"
+                                                   class="form-check-input">
+                                        </label>
+                                    </div>
+                                </td>
+                            </tr>
 
-                </table>
-            </div>
+                        {% endfor %}
+                    </table>
+
+                    <table class="table">
+                        <tr>
+                            <th> #</th>
+                            <th> Nom activite</th>
+                            <th> Type d'activité</th>
+                            <th> Duree min</th>
+                            <th> Duree max</th>
+                            <th> Nombre d'enfants minimum</th>
+                            <th> Nombre d'enfants maximum</th>
+                            <th> Duree transport</th>
+                            <th> Ecart</th>
+                            <th> Quotas</th>
+                            <th> Supprimer</th>
+                        </tr>
+                        <tr>
+                            <td> Activites Obligatoires</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+
+                        {% for activiteObligatoire in enfant.activitesObligatoires %}
+                            <tr>
+                                {% include 'ActiviteBundle:ActiviteObligatoire:preview.html.twig' %}
+                                <td>
+                                    <div class="form-check">
+                                        <label class="form-check-label">
+                                            <input type="checkbox" name="idActivites[]" value="{{ activite.id }}"
+                                                   class="form-check-input">
+                                        </label>
+                                    </div>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td>
+                                <button type="submit" class="btn btn-primary">Ok</button>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+
+            </form>
         </div>
     </div>
 

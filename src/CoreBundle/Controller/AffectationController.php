@@ -2,6 +2,8 @@
 
 namespace CoreBundle\Controller;
 
+use ActiviteBundle\Entity\Activite;
+use ActiviteBundle\Entity\ActiviteObligatoire;
 use RessourceBundle\Entity\Enfant;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
@@ -56,9 +58,12 @@ class AffectationController extends Controller
     {
         $entityManager = $this->getDoctrine()->getManager();
         $array = $this->getDataAffecterEnfantActivite($entityManager);
+        $array['obligatoire'] = true;
         $listActiviteId = $request->get('idActivites');
         $enfantId = $request->get('enfant');
         $groupeId = $request->get('groupe');
+        $quotas = $request->get('quotas');
+        $ecart = $request->get('ecarts');
         if ($listActiviteId != null) {
             // Si un enfant particulier a été sélectionné
             if ($enfantId != "aucun") {
@@ -68,8 +73,36 @@ class AffectationController extends Controller
                 $activiteRepository = $entityManager->getRepository('ActiviteBundle:Activite');
                 // On ajoute à cet enfant les activitées cochées
                 foreach ($listActiviteId as $activiteId) {
+                    // Rechercher l'activité courante à partir de son ID
                     $activite = $activiteRepository->findOneById($activiteId);
-                    $enfant->addActivitesObligatoire($activite);
+
+                    // Créer une nouvelle activité obligatoire
+                    $activiteObligatoire = new ActiviteObligatoire($activite);
+
+                    // Vérifier si le champ 'ecart' à été renseigné
+                    $ecartForCurrentActivite = $ecart[$activiteId];
+                    if ($ecartForCurrentActivite == "") {
+                        // Sinon erreur  : 'ecart' non renseigné
+                        $array['erreur'] = true;
+                        $array['erreurMessage'] = "Ecart pour " . $activite->getDesignation() . " non renseigné";
+                        return $this->render('CoreBundle:Affectation:affecter_enfant_activite_obligatoire.html.twig', $array);
+                    }
+                    // Vérifier si le champ 'quotas' à été renseigné
+                    $activiteObligatoire->setEcart($ecartForCurrentActivite);
+                    $quotasForCurrentActivite = $quotas[$activiteId];
+                    if ($quotasForCurrentActivite == "") {
+                        // Sinon erreur  : 'quotas' non renseigné
+                        $array['erreur'] = true;
+                        $array['erreurMessage'] = "Quotas pour " . $activite->getDesignation() . "non renseigné";
+                        return $this->render('CoreBundle:Affectation:affecter_enfant_activite_obligatoire.html.twig', $array);
+                    }
+                    $activiteObligatoire->setQuotas($quotas[$activiteId]);
+
+                    // Lier un enfant et cette activité obligatoire
+                    $activiteObligatoire->setEnfant($enfant);
+
+                    // Enregistrer cette nouvelle activté obligatoire dans la BDD
+                    $entityManager->persist($activiteObligatoire);
                 }
             } else {
                 // Si un groupe particulier a été sélectionné
@@ -79,18 +112,45 @@ class AffectationController extends Controller
                     $enfants = $array['enfants'];
                     $activiteRepository = $entityManager->getRepository('ActiviteBundle:Activite');
                     foreach ($listActiviteId as $activiteId) {
+                        // Rechercher l'activité courante à partir de son ID
                         $activite = $activiteRepository->findOneById($activiteId);
                         foreach ($enfants as $enfant) {
+                            // Vérifier si l'enfant courant est dans le groupe sélectionné
                             if ($enfant->getGroupe()->getId() == $groupeId) {
-                                $enfant->addActivitesObligatoire($activite);
+                                // Créer une nouvelle activité obligatoire dans la BDD
+                                $activiteObligatoire = new ActiviteObligatoire($activite);
+                                // Vérifier si le champ 'ecart' à été renseigné
+                                $ecartForCurrentActivite = $ecart[$activiteId];
+                                if ($ecartForCurrentActivite == "") {
+                                    // Sinon erreur  : 'ecart' non renseigné
+                                    $array['erreur'] = true;
+                                    $array['erreurMessage'] = "Ecart pour " . $activite->getDesignation() . " non renseigné";
+                                    return $this->render('CoreBundle:Affectation:affecter_enfant_activite_obligatoire.html.twig', $array);
+                                }
+                                // Vérifier si le champ 'quotas' à été renseigné
+                                $activiteObligatoire->setEcart($ecartForCurrentActivite);
+                                $quotasForCurrentActivite = $quotas[$activiteId];
+                                if ($quotasForCurrentActivite == "") {
+                                    // Sinon erreur  : 'quotas' non renseigné
+                                    $array['erreur'] = true;
+                                    $array['erreurMessage'] = "Quotas pour " . $activite->getDesignation() . "non renseigné";
+                                    return $this->render('CoreBundle:Affectation:affecter_enfant_activite_obligatoire.html.twig', $array);
+                                }
+                                $activiteObligatoire->setQuotas($quotas[$activiteId]);
+                                // Lier un enfant et cette activité obligatoire
+                                $activiteObligatoire->setEnfant($enfant);
+                                // Enregistrer cette nouvelle activté obligatoire dans la BDD
+                                $entityManager->persist($activiteObligatoire);
                             }
                         }
+
                     }
                 }
             }
             $entityManager->flush();
 
-        }        return $this->render('CoreBundle:Affectation:affecter_enfant_activite_obligatoire.html.twig', $array);
+        }
+        return $this->render('CoreBundle:Affectation:affecter_enfant_activite_obligatoire.html.twig', $array);
     }
 
     private function getDataAffecterEnfantActivite($entityManager)
@@ -105,8 +165,7 @@ class AffectationController extends Controller
         $enfantRepository = $entityManager->getRepository('RessourceBundle:Enfant');
         $enfants = $enfantRepository->findAll();
         return array(
-            "activites" => $activites, "groups" => $groups, "enfants" => $enfants,
+            "activites" => $activites, "groups" => $groups, "enfants" => $enfants, "erreur" => false, "obligatoire" => false,
         );
     }
-
 }

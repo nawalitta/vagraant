@@ -4,7 +4,8 @@
             <div class="col-md-12">
                 <div class="form-group">
                     <label for="group">Groupe:</label>
-                    <select class="form-control" id="groupe" name="groupe" onchange="selectGroup(document.getElementsByName('group')[0].value)">
+                    <select class="form-control" id="groupe" name="groupe"
+                            onchange="selectGroup(document.getElementsByName('groupe')[0].value)">
                         <option>aucun</option>
                         {% for group in groups %}
                             <option value="{{ group.id }}">{{ group.designation }}</option>
@@ -20,7 +21,8 @@
                     <select class="form-control" id="enfant" name="enfant">
                         <option>aucun</option>
                         {% for enfant in enfants %}
-                            <option id="{{ enfant.groupe.id}}" value="{{ enfant.id }}">{{ enfant.prenom }} {{ enfant.nom }}</option>
+                            <option id="{{ enfant.groupe.id }}"
+                                    value="{{ enfant.id }}">{{ enfant.prenom }} {{ enfant.nom }}</option>
                         {% endfor %}
                     </select>
                 </div>
@@ -41,10 +43,31 @@
                         <th> Nombre minimum d'enfants</th>
                         <th> Nombre maximum d'enfants</th>
                         <th> Durée transport</th>
+                        {% if obligatoire %}
+                            <th> Ecart</th>
+                            <th> Quotas</th>
+                        {% endif %}
                         <th> Case à cocher</th>
                     </tr>
                     {% for activite in activites %}
-                        {% include 'ActiviteBundle:Activite:preview.html.twig' %}
+                        <tr>
+                            {% include 'ActiviteBundle:Activite:preview.html.twig' %}
+                            {% if obligatoire %}
+                                <td>
+                                    <input input type="number" name="ecarts[{{ activite.id }}]">
+                                </td>
+                                <td>
+                                    <input input type="number" name="quotas[{{ activite.id }}]">
+                                </td>
+                            {% endif %}
+                            <td>
+                                <div class="form-check">
+                                    <label class="form-check-label">
+                                        <input type="checkbox" name="idActivites[]" value="{{ activite.id }}" class="form-check-input">
+                                    </label>
+                                </div>
+                            </td>
+                        </tr>
                     {% endfor %}
                 </table>
             </div>
