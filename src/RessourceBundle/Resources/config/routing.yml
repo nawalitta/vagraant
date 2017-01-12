@@ -1,4 +1,3 @@
-
 RessourceBunde_FenetreHoraire_index:
     path:     FenetreHoraire/index
     defaults: { _controller: RessourceBundle:FenetreHoraire:index }
@@ -35,10 +34,6 @@ RessourceBundle_BesoinTypeRessource_edit:
     path:     besoinTypeRessource/edit/{id}
     defaults: { _controller: RessourceBundle:BesoinTypeRessourceController:edit, id : null  }
 
-RessourceBundle_BesoinTypeRessource_delete:
-    path:     besoinTypeRessource/delete/{id}
-    defaults: { _controller: RessourceBundle:BesoinTypeRessourceController:delete }
-
 RessourceBundle_BesoinTypeRessource_index:
     path:     besoinTypeRessource
     defaults: { _controller: RessourceBundle:BesoinTypeRessourceController:index }
@@ -47,21 +42,9 @@ RessourceBundle_BesoinTypeRessource_show:
     path:     besoinTypeRessource/show/{id}
     defaults: { _controller: RessourceBundle:BesoinTypeRessourceController:show }
 
-RessourceBundle_BesoinTypeRessource_edit:
-    path:     besoinTypeRessource/edit/{id}
-    defaults: { _controller: RessourceBundle:BesoinTypeRessource:edit, id : null   }
-
 RessourceBundle_BesoinTypeRessource_delete:
     path:     besoinTypeRessource/delete/{id}
     defaults: { _controller: RessourceBundle:BesoinTypeRessource:delete }
-
-RessourceBundle_BesoinTypeRessource_index:
-    path:     besoinTypeRessource
-    defaults: { _controller: RessourceBundle:BesoinTypeRessource:index }
-
-RessourceBundle_BesoinTypeRessource_show:
-    path:     besoinTypeRessource/show/{id}
-    defaults: { _controller: RessourceBundle:BesoinTypeRessource:show }
 
 RessourceBundle_TypeRessource_edit:
     path:     typeRessource/edit/{id}

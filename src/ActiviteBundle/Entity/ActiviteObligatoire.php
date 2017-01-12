@@ -124,9 +124,9 @@ class ActiviteObligatoire
         return $this;
     }
 
-    public function __construct()
+    public function __construct($activite)
     {
-
+        $this->activite = $activite;
     }
 
     public function __toString()
