@@ -10,7 +10,7 @@ use RessourceBundle\Entity\FenetreHoraire;
 use RessourceBundle\Entity\Preaffection;
 use Symfony\Component\Validator\Constraints as Assert;
 
-
+// SALUT LES COPAINS
 /**
  * activite
  *
