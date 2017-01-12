@@ -1,6 +1,6 @@
 $(function () {
-    
-    
+
+
 
     /* initialize the external events
      -----------------------------------------------------------------*/
@@ -29,7 +29,7 @@ $(function () {
         schedulerLicenseKey: 'GPL-My-Project-Is-Open-Source',
         timezone: 'France/Paris',
         editable: true, // don't allow event dragging
-        forceEventDuration : true,
+        forceEventDuration: true,
         aspectRatio: 1.8,
         scrollTime: '00:00',
         minTime: "08:00:00",
@@ -72,51 +72,104 @@ $(function () {
         droppable: true, // this allows things to be dropped onto the calendar
 
         resources: {
-            url: 'RessourcesInverted/'+id,
+            url: 'RessourcesInverted/' + id,
             type: 'GET'
         },
         events: {
-            url: 'Events/'+id,
+            url: 'Events/' + id,
             type: 'GET',
         },
 
         drop: function (date, jsEvent, ui, resourceId) {
-            
+
             console.log('drop', date.format(), resourceId);
+
+
+
         },
-        
-        eventReceive: function(event){
+
+        eventReceive: function (event) {
             console.log('eventReceive', event);
-   var title = event.title;
-   var start = event.start.toString();
-   var end = event.end.toString();
-   var resource = event.resourceId;
-   var activiteId = event.activiteId;
-   $.ajax({
-     url: 'AddEvent/',
-     data: 'title='+title+'&startdate='+start+'&enddate='+end+'&resourceId='+resource+'&activiteId='+activiteId,
-     type: 'POST',
-     dataType: 'json',
-     success: function(response){
-         
-          console.log('Event added with succes', response);
-       event.id = response.eventid;
+            var title = event.title;
+            var start = event.start.toString();
+            var end = event.end.toString();
+            var resource = event.resourceId;
+            var activiteId = event.activiteId;
+            $.ajax({
+                url: 'AddEvent/',
+                data: 'title=' + title + '&startdate=' + start + '&enddate=' + end + '&resourceId=' + resource + '&activiteId=' + activiteId,
+                type: 'POST',
+                dataType: 'json',
+                success: function (response) {
 
-       $('#calendar').fullCalendar('updateEvent',event);
-     },
-     error: function(e){
+                    console.log('Event added with succes', response);
+                    event.id = response.eventid;
 
-       console.log('error',e.responseText);
-     }
-   });
-   $('#calendar').fullCalendar('updateEvent',event);
-},
-        
-        
-        
-        
+                    $('#calendar-holder').fullCalendar('updateEvent', event);
+                 
+                },
+                error: function (e) {
+
+                    console.log('error', e.responseText);
+                    $('#calendar-holder').fullCalendar('removeEvents', event._id);
+                                        $('#calendar-holder').fullCalendar('refresh');
+                    
+                }
+            });
+    
+        },
+
+        eventResize: function (event) {
+            console.log("eventResize", event);
+            var id = event.id;
+            var start = event.start.toString();
+            var end = event.end.toString();
+
+            $.ajax({
+                url: 'AddEvent/',
+                data: 'startdate=' + start + '&enddate=' + end + '&id=' + id,
+                type: 'POST',
+                dataType: 'json',
+                success: function (response) {
+
+                    console.log('Event added with succes', response);
+
+                },
+                error: function (e) {
+
+                    console.log('error', e.responseText);
+                }
+            });
+
+
+
+        },
+
         eventDrop: function (event) { // called when an event (already on the calendar) is moved
             console.log('eventDrop', event);
+
+            var id = event.id;
+            var start = event.start.toString();
+            var end = event.end.toString();
+            var resource = event.resourceId;
+
+            $.ajax({
+                url: 'AddEvent/',
+                data: 'startdate=' + start + '&enddate=' + end + '&resourceId=' + resource + '&id=' + id,
+                type: 'POST',
+                dataType: 'json',
+                success: function (response) {
+
+                    console.log('Event added with succes', response);
+
+                },
+                error: function (e) {
+
+                    console.log('error', e.responseText);
+                }
+            });
+
+
         }
     });
 });

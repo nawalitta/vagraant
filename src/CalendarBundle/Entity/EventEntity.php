@@ -212,7 +212,7 @@ class EventEntity {
         return $this->cssClass;
     }
 
-    public function setStartDatetime(\Time $start) {
+    public function setStartDatetime(\DateTime $start) {
         $this->startDatetime = $start;
     }
 
@@ -220,7 +220,7 @@ class EventEntity {
         return $this->startDatetime;
     }
 
-    public function setEndDatetime(\Time $end) {
+    public function setEndDatetime(\DateTime $end) {
         $this->endDatetime = $end;
     }
 

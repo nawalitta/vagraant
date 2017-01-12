@@ -4,6 +4,7 @@ namespace CalendarBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 use DateTime;
 
 class CalendarController extends Controller {
@@ -18,68 +19,94 @@ class CalendarController extends Controller {
     }
 
     public function editEventAction(Request $request) {
-        $request = $this->get('request');
+
+
+
+
         $data = $request->request->all();
 
+        $entityManager = $this->getDoctrine()->getManager();
+        $eventRepository = $entityManager->getRepository("ADesignsCalendarBundle:EventEntity");
+
+
+
+
+
         //Setup new EventEntity with data from request
-        $title = $data['title'];
+
+
         $startdate = new DateTime($data['startdate']);
         $enddate = new DateTime($data['enddate']);
-        
-  
-        $ressouceId = $data['resourceId'];
-        $jour = "";
-        $enfantId = "";
-        $activiteId = $data['activiteId'];
 
-        // Split RessourceId in 2 string
-        $jours = array();
-        $jours[] = "Lundi";
-        $jours[] = "Mardi";
-        $jours[] = "Mercredi";
-        $jours[] = "Jeudi";
-        $jours[] = "Vendredi";
-        $trouve = false;
-        $i=0;
-          $entityManager = $this->getDoctrine()->getManager();
-       $jourRepository = $entityManager->getRepository("ActiviteBundle:Jour");    
-        
-        
-        while(!$trouve & $i<sizeof($jours)){
-            if (strpos($ressouceId, $jours[$i])){
-                $trouve = true;
-                $jour = $jourRepository->findOneByDesignation($jours[$i]);
-                $enfantId = substr($ressouceId, 0,strlen($ressouceId)-strlen($jours[$i]));
-                echo ($enfantId);
-            }
-
-            $i++;
+        if (isset($data['id'])) {
+            $id = $data['id'];
+            $evenement = $eventRepository->findOneById($id);
+            $evenement->setStartDatetime($startdate);
+            $evenement->setEndDatetime($enddate);
+        } else {
+            $title = $data['title'];
+            $evenement = new \CalendarBundle\Entity\EventEntity($title, $startdate, $enddate);
         }
-        
-          $eventRepository = $entityManager->getRepository("ADesignsCalendarBundle:EventEntity");     
 
-        $enfantRepository = $entityManager->getRepository("RessourceBundle:Enfant");
-        $enfant = $enfantRepository->findOneById($enfantId);
-        
-        $activiteRepository = $entityManager->getRepository("ActiviteBundle:Activite");
-        $activite = $activiteRepository->findOneById($activiteId);
-        
-        $evenement = new \CalendarBundle\Entity\EventEntity($title, $startdate,$enddate);
-        $evenement->setJour($jour);
-        $evenement->setEnfant($enfant);
-        $evenement->setActivite($activite);
-        
-         $entityManager->persist($evenement);
-            $entityManager->flush();
-        
-        
+
+
+        if (isset($data['resourceId'])) {
+            $ressouceId = $data['resourceId'];
+            $jour = "";
+            $enfantId = "";
+
+
+            // Split RessourceId in 2 string
+            $jours = array();
+            $jours[] = "Lundi";
+            $jours[] = "Mardi";
+            $jours[] = "Mercredi";
+            $jours[] = "Jeudi";
+            $jours[] = "Vendredi";
+            $trouve = false;
+            $i = 0;
+
+            $jourRepository = $entityManager->getRepository("ActiviteBundle:Jour");
+
+
+            while (!$trouve & $i < sizeof($jours)) {
+                if (strpos($ressouceId, $jours[$i])) {
+                    $trouve = true;
+                    $jour = $jourRepository->findOneByDesignation($jours[$i]);
+                    $enfantId = substr($ressouceId, 0, strlen($ressouceId) - strlen($jours[$i]));
+                }
+
+                $i++;
+            }
+            $evenement->setJour($jour);
+
+            $enfantRepository = $entityManager->getRepository("RessourceBundle:Enfant");
+            $enfant = $enfantRepository->findOneById($enfantId);
+
+            $evenement->setEnfant($enfant);
+        }
+
+        if (isset($data['activiteId'])) {
+            $activiteId = intval($data['activiteId']);
+            $data['activiteId'] = intval($data['activiteId']);
+            $activiteRepository = $entityManager->getRepository("ActiviteBundle:Activite");
+            $activite = $activiteRepository->findOneById($activiteId);
+            $evenement->setActivite($activite);
+        }
+
+
+        $entityManager->persist($evenement);
+        $entityManager->flush();
+
+
         $return = array();
         $return['status'] = "success";
-        $return['eventId'] = $evenement->getId();
+        $return['eventid'] = $evenement->getId();
 
         // Setup Response with the new id and some new property
         $response = new \Symfony\Component\HttpFoundation\Response();
         $response->headers->set('Content-Type', 'application/json');
+
 
         $response->setContent(json_encode($return));
         return $response;
