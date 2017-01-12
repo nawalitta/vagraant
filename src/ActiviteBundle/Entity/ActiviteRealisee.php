@@ -42,7 +42,7 @@ class ActiviteRealisee
 
     /**
      * @ORM\ManyToOne(targetEntity="Activite",inversedBy="ActiviteRealisee")
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\JoinColumn(nullable=true)
      */
     public $activite;
 
@@ -53,13 +53,13 @@ class ActiviteRealisee
 
     /**
      * @ORM\ManyToOne(targetEntity="RessourceBundle\Entity\Enfant",inversedBy="activitesRealisees")
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\JoinColumn(nullable=true)
      */
     private $enfant;
 
     /**
      * @ORM\ManyToOne(targetEntity="Jour",inversedBy="activitesRealisees")
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\JoinColumn(nullable=true)
      */
     private $jour;
 

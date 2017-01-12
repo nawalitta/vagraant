@@ -7,7 +7,6 @@
         <div>
             <ul class="nav navbar-nav">
                 <li><a href="">Fixer cette activite</a></li>
-                <li><a href=""> Realisé cette activité</a></li>
                 <li><a href="{{ path('ActiviteBundle_Activite_edit',{ 'id': activite.id }) }}"> Modifier l'activité</a>
                 </li>
                 <li><a href="{{ path('ActiviteBundle_Activite_delete',{ 'id': activite.id }) }}">Supprimer</a></li>
@@ -50,11 +49,11 @@
                         <td>{{ activite.typeActivite }}</td>
                     </tr>
                 </table>
-                <table>
+                <table class="table">
                     <caption> Besoin en ressources</caption>
                     <tr>
                         <th> #</th>
-                        <th> Type ressource</th>
+                        <th> Type</th>
                         <th> Quantité</th>
                         <th> Ratio</th>
                     </tr>
@@ -71,28 +70,28 @@
                     <caption> Disponibilité</caption>
                     <tr>
                         <td> Lundi :</td>
-                        <td> {{ activite.fenetreHoraire.getLundiDebut()|date("H:I") }}
-                            - {{ activite.fenetreHoraire.getLundiFin()|date("H:I") }}</td>
+                        <td> {{ activite.fenetreHoraire.getLundiDebut()|date("H:i") }}
+                            - {{ activite.fenetreHoraire.getLundiFin()|date("H:i") }}</td>
                     </tr>
                     <tr>
                         <td> Mardi :</td>
-                        <td> {{ activite.fenetreHoraire.getMardiDebut()|date("H:I") }}
-                            - {{ activite.fenetreHoraire.getMardiFin()|date("H:I") }}</td>
+                        <td> {{ activite.fenetreHoraire.getMardiDebut()|date("H:i") }}
+                            - {{ activite.fenetreHoraire.getMardiFin()|date("H:i") }}</td>
                     </tr>
                     <tr>
                         <td> Mercredi :</td>
-                        <td> {{ activite.fenetreHoraire.getMercrediDebut()|date("H:I") }}
-                            - {{ activite.fenetreHoraire.getMercrediFin()|date("H:I") }}</td>
+                        <td> {{ activite.fenetreHoraire.getMercrediDebut()|date("H:i") }}
+                            - {{ activite.fenetreHoraire.getMercrediFin()|date("H:i") }}</td>
                     </tr>
                     <tr>
                         <td> Jeudi :</td>
-                        <td> {{ activite.fenetreHoraire.getJeudiDebut()|date("H:I") }}
-                            - {{ activite.fenetreHoraire.getJeudiFin()|date("H:I") }}</td>
+                        <td> {{ activite.fenetreHoraire.getJeudiDebut()|date("H:i") }}
+                            - {{ activite.fenetreHoraire.getJeudiFin()|date("H:i") }}</td>
                     </tr>
                     <tr>
                         <td> Vendredi :</td>
-                        <td> {{ activite.fenetreHoraire.getVendrediDebut()|date("H:I") }}
-                            - {{ activite.fenetreHoraire.getVendrediFin()|date("H:I") }}</td>
+                        <td> {{ activite.fenetreHoraire.getVendrediDebut()|date("H:i") }}
+                            - {{ activite.fenetreHoraire.getVendrediFin()|date("H:i") }}</td>
                     </tr>
                 </table>
             </div>

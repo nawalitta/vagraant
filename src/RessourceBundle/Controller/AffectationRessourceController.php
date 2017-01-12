@@ -14,6 +14,7 @@ class AffectationRessourceController extends Controller
         //On récupere les infos des entités qui nous interesse
         $activiteRealiseeRepository = $entityManager->getRepository("ActiviteBundle:ActiviteRealisee");
         $ressourceRepository = $entityManager->getRepository("RessourceBundle:Ressource");
+        $enfantRepository = $entityManager->getRepository("RessourceBundle:Enfant");
         //Si id est non null alors on récupère l'activite que l'on veux
         if($id!=null){
             $activiteRealise = $activiteRealiseeRepository->findOneById($id);
@@ -22,7 +23,7 @@ class AffectationRessourceController extends Controller
         }
    
         $ressources = $ressourceRepository->findAll();
-        
+        $enfants = $enfantRepository->findAll();
         
 
         
@@ -47,7 +48,7 @@ class AffectationRessourceController extends Controller
         }
         
         return $this->render('RessourceBundle:AffectationRessource:index.html.twig', array(
-                    "activitesRealise" => $activitesRealise,"ressources" => $ressources
+                    "activitesRealise" => $activitesRealise,"ressources" => $ressources,"enfants"=>$enfants
         ));
     }
 

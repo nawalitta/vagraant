@@ -38,19 +38,19 @@ class ActiviteFixee
     private $heureFin;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Jour",inversedBy="activitesFixees")
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\ManyToOne(targetEntity="Jour",inversedBy="activitesFixees" )
+     * @ORM\JoinColumn(nullable=true)
      */
     private $jour;
 
     /**
-     * @ORM\ManyToOne(targetEntity="RessourceBundle\Entity\Enfant",inversedBy="activitesFixees")
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\ManyToOne(targetEntity="RessourceBundle\Entity\Enfant",inversedBy="activitesFixees" )
+     * @ORM\JoinColumn(nullable=true)
      */
     private $enfant;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Activite",inversedBy="activitesFixees")
+     * @ORM\ManyToOne(targetEntity="Activite",inversedBy="activitesFixees" )
      * @ORM\JoinColumn(nullable=false)
      */
     private $activite;

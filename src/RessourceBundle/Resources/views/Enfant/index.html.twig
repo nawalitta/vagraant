@@ -24,7 +24,7 @@
                 <th> Régime </th>
                 <th> Est Archivé </th>
                 <th> Date Arrivé</th>
-                <th> Case à cocher </th>
+                <th>Selection</th>
             </tr>
         {% for enfant in enfants %}
             <tr>
@@ -38,8 +38,12 @@
                 </td>
             </tr>
         {% endfor %}
+        <tr>
+            <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+            <td><button type="submit" class="btn btn-primary">Supprimer</button></td>
+        </tr>
         </table>
-        <button type="submit" class="btn btn-primary">Supprimer</button>
+        
 </form>
 
 {% endblock %}

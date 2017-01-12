@@ -99,7 +99,7 @@ class FenetreHoraire
     private $ressources;
 
     /**
-     * @ORM\OneToMany(targetEntity="ActiviteBundle\Entity\Activite", mappedBy="fenetreHoraire")
+     * @ORM\OneToMany(targetEntity="ActiviteBundle\Entity\Activite", mappedBy="fenetreHoraire" )
      */
     private $activites;
 

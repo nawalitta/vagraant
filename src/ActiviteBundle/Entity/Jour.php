@@ -38,12 +38,12 @@ class Jour
 
     
     /**
-     * @ORM\OneToMany(targetEntity="ActiviteRealisee", mappedBy="jour")
+     * @ORM\OneToMany(targetEntity="ActiviteRealisee", mappedBy="jour", cascade={"persist", "remove"})
      */
     private $activitesRealisees;
     
     /**
-     * @ORM\OneToMany(targetEntity="ActiviteFixee", mappedBy="jour")
+     * @ORM\OneToMany(targetEntity="ActiviteFixee", mappedBy="jour", cascade={"persist", "remove"})
      */
     private $activitesFixees;
 

@@ -25,9 +25,12 @@ class ActiviteController extends Controller {
                 if ($activite != null) {
                     $entityManager->remove($activite);
                 }
+                
                 $entityManager->flush();
             }           
         }
+        
+        //Fin suppression des éléments
         $activites = $activiteRepository->findAll();
 
         

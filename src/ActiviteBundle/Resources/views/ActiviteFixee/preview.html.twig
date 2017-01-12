@@ -1,5 +1,6 @@
-<td><a href="{{ path('ActiviteBundle_ActiviteFixee_show',{'id' : activiteF.id} )}}"> {{ activiteF.id }}</a> </td>
-<td><a href="{{ path('ActiviteBundle_ActiviteFixee_show',{'id' : activiteF.id} )}}"> {{ activiteF.activite.getDesignation() }}</a> </td>
+<td> {{ activiteF.id }} </td>
+<td> {{ activiteF.activite.getDesignation() }}</td>
 <td> {{ activiteF.activite.getTypeActivite().getDesignation() }} </td>
-<td> {{ activiteF.heureDebut|date('H:I') ~ "-"~ activiteF.heureFin|date('H:I') }} </td>
+<td> {{ activiteF.heureDebut|date('H:i') ~ "-"~ activiteF.heureFin|date('H:i') }} </td>
 <td> {{ activiteF.jour.getDesignation() ~'/'~ activiteF.jour.getParite() }} </td>
+<td> {{ activiteF.enfant.getPrenom() ~" "~ activiteF.enfant.getNom() }} </td>

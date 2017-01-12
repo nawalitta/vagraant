@@ -30,12 +30,12 @@ class TypeRessource
     private $designation;
 
     /**
-     * @ORM\OneToMany(targetEntity="BesoinTypeRessource", mappedBy="typeRessource")
+     * @ORM\OneToMany(targetEntity="BesoinTypeRessource", mappedBy="typeRessource", cascade={"persist", "remove"})
      */
     private $besoinsTypeRessources;
 
     /**
-     * @ORM\OneToMany(targetEntity="Ressource", mappedBy="typeRessource")
+     * @ORM\OneToMany(targetEntity="Ressource", mappedBy="typeRessource", cascade={"persist", "remove"})
      */
     private $ressources;
 
