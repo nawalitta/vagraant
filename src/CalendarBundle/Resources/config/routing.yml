@@ -48,6 +48,10 @@ Calendar_event_add:
     path: /Calendar/AddEvent/
     defaults: {_controller:  ADesignsCalendarBundle:Calendar:editEvent }
     
+Calendar_event_delete:
+    path: /Calendar/DeleteEvent/
+    defaults: {_controller:  ADesignsCalendarBundle:Calendar:deleteEvent }
+    
 ressources_loader_inverted_id:
     path: /Calendar/RessourcesInverted/{id}
     defaults: { _controller: ADesignsCalendarBundle:Calendar:loadRessourceById }
@@ -67,3 +71,9 @@ Calendar_event_save:
 Calendar_event_restore:
     path: /Calendar/Restore/
     defaults: { _controller : ADesignsCalendarBundle:Calendar:restoreActivity }
+
+events_enfant_loader_static :
+    path: /Calendar/EventsStatic/{id}
+    defaults: { _controller: ADesignsCalendarBundle:Calendar:loadCalendarStaticById }
+    options:
+        expose: true

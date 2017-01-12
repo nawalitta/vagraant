@@ -1,39 +1,60 @@
 $(function () {
 
+    /* Suppression */
+    var currentMousePos = {
+        x: -1,
+        y: -1
+    };
+    jQuery(document).on("mousemove", function (event) {
+        currentMousePos.x = event.pageX;
+        currentMousePos.y = event.pageY;
+    });
+    function isElemOverDiv() {
+        var trashEl = jQuery('#trash');
+        var ofs = trashEl.offset();
+        var x1 = ofs.left;
+        var x2 = ofs.left + trashEl.outerWidth(true);
+        var y1 = ofs.top;
+        var y2 = ofs.top + trashEl.outerHeight(true);
+        if (currentMousePos.x >= x1 && currentMousePos.x <= x2 &&
+                currentMousePos.y >= y1 && currentMousePos.y <= y2) {
+            return true;
+        }
+        return false;
+    }
+
 
 
     /* initialize the external events
      -----------------------------------------------------------------*/
     $('#external-events .fc-event').each(function () {
 
-        // store data so the calendar knows to render an event upon drop
+// store data so the calendar knows to render an event upon drop
         $(this).data('event', {
             title: $.trim($(this).text()),
             activiteId: parseInt($(this).attr('activiteId')),
             stick: true
         });
-
         // make the event draggable using jQuery UI
         $(this).draggable({
             zIndex: 999,
             revert: true, // will cause the event to go back to its
             revertDuration: 0  //  original position after the drag
         });
-
     });
-
     /* initialize the calendar
      -----------------------------------------------------------------*/
 
     $('#calendar-holder').fullCalendar({
         schedulerLicenseKey: 'GPL-My-Project-Is-Open-Source',
+        height: "auto",
+        contentHeight: "auto",
         timezone: 'France/Paris',
         editable: true, // don't allow event dragging
         forceEventDuration: true,
-        aspectRatio: 1.8,
         scrollTime: '00:00',
         minTime: "08:00:00",
-        maxTime: "22:00:00",
+        maxTime: "19:00:00",
         eventOverlap: false,
         // this allows things to be dropped onto the calendar
         header: {
@@ -66,7 +87,6 @@ $(function () {
                     }
         },
         resourceAreaWidth: '25%',
-
         resourceLabelText: 'Enfants',
         resourceGroupField: 'enfant',
         droppable: true, // this allows things to be dropped onto the calendar
@@ -79,15 +99,6 @@ $(function () {
             url: 'Events/' + id,
             type: 'GET',
         },
-
-        drop: function (date, jsEvent, ui, resourceId) {
-
-            console.log('drop', date.format(), resourceId);
-
-
-
-        },
-
         eventReceive: function (event) {
             console.log('eventReceive', event);
             var title = event.title;
@@ -106,17 +117,30 @@ $(function () {
                     event.id = response.eventid;
 
                     $('#calendar-holder').fullCalendar('updateEvent', event);
-                 
                 },
                 error: function (e) {
 
                     console.log('error', e.responseText);
-                    $('#calendar-holder').fullCalendar('removeEvents', event._id);
-                                        $('#calendar-holder').fullCalendar('refresh');
-                    
                 }
             });
-    
+        },
+        eventDragStop: function (event) {
+            if (isElemOverDiv()) {
+                console.log('eventDragStop', event);
+                $.ajax({
+                    url: 'DeleteEvent/',
+                    data: 'eventID=' + event.id,
+                    type: 'POST',
+                    dataType: 'json',
+                    success: function (response) {
+                        console.log("Element supprimé");
+                        if (response.status === 'success') {
+                            $('#calendar-holder').fullCalendar('removeEvents', event.id);
+                        }
+
+                    }
+                });
+            }
         },
 
         eventResize: function (event) {
