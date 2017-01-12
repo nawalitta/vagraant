@@ -18,7 +18,7 @@ class FenetreHoraireController extends Controller
         $fenetreHoraireRepository = $entityManager->getRepository("RessourceBundle:FenetreHoraire");
         $fenetresHoraire = $fenetreHoraireRepository->findAll();
         
-        //Récupere la liste des enfants coché afin de les supprimer
+        //Récupere la liste des fenetres horaires coché afin de les supprimer
         $listFh=$request->get('idfhs');
         if($listFh !=null){
             foreach ($listFh as $id){

@@ -72,13 +72,13 @@ class Enfant
 
     /**
      * @ORM\ManyToOne(targetEntity="FenetreHoraire",inversedBy="enfants")
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\JoinColumn(nullable=true)
      */
     private $fenetreHoraire;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Groupe",inversedBy="enfants")
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\ManyToOne(targetEntity="Groupe",inversedBy="enfants" )
+     * @ORM\JoinColumn(nullable=true)
      */
     private $groupe;
 
@@ -92,22 +92,22 @@ class Enfant
     private $activitesOptionelles;
 
     /**
-     * @ORM\OneToMany(targetEntity="ActiviteBundle\Entity\ActiviteFixee", mappedBy="enfant")
+     * @ORM\OneToMany(targetEntity="ActiviteBundle\Entity\ActiviteFixee", mappedBy="enfant" ,cascade={"persist", "remove"})
      */
     private $activitesFixees;
 
     /**
-     * @ORM\OneToMany(targetEntity="ActiviteBundle\Entity\ActiviteRealisee", mappedBy="enfant")
+     * @ORM\OneToMany(targetEntity="ActiviteBundle\Entity\ActiviteRealisee", mappedBy="enfant" ,cascade={"persist", "remove"})
      */
     private $activitesRealisees;
 
     /**
-     * @ORM\OneToMany(targetEntity="ActiviteBundle\Entity\ActiviteObligatoire", mappedBy="enfant")
+     * @ORM\OneToMany(targetEntity="ActiviteBundle\Entity\ActiviteObligatoire", mappedBy="enfant", cascade={"persist", "remove"})
      */
     private $activitesObligatoires;
 
     /**
-     * @ORM\OneToMany(targetEntity="Preaffection", mappedBy="enfant")
+     * @ORM\OneToMany(targetEntity="Preaffection", mappedBy="enfant", cascade={"persist", "remove"})
      */
     private $preAffections;
 

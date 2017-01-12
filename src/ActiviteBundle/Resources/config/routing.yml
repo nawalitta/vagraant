@@ -74,6 +74,25 @@ ActiviteBundle_ActiviteFixee_edit:
     path:     ActiviteFixee/edit/{id}
     defaults: { _controller: ActiviteBundle:ActiviteFixee:edit , id : null }
 
+ #---------------ACTIVITE REALISEE-----------------------------
+
+ActiviteBundle_ActiviteRealisee_index:
+    path:     ActiviteRealisee/
+    defaults: { _controller: ActiviteBundle:ActiviteRealisee:index }
+
+
+ActiviteBundle_ActiviteRealisee_show:
+    path:     ActiviteRealisee/show/{id}
+    defaults: { _controller: ActiviteBundle:ActiviteRealisee:show }
+
+ActiviteBundle_ActiviteRealisee_delete:
+    path:     ActiviteRealisee/delete/{id}
+    defaults: { _controller: ActiviteBundle:ActiviteRealisee:delete }
+
+ActiviteBundle_ActiviteRealisee_edit:
+    path:     ActiviteRealisee/edit/{id}
+    defaults: { _controller: ActiviteBundle:ActiviteRealisee:edit , id : null }
+
  #---------------Jour-----------------------------
 
 ActiviteBundle_Jour_index:

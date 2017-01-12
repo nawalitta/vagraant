@@ -87,19 +87,19 @@ class Activite
     private $dureeTransport;
 
     /**
-     * @ORM\ManyToOne(targetEntity="ActiviteBundle\Entity\TypeActivite", inversedBy="activites")
+     * @ORM\ManyToOne(targetEntity="ActiviteBundle\Entity\TypeActivite", inversedBy="activites" )
      * @ORM\JoinColumn(nullable=false)
      */
     private $typeActivite;
 
     /**
-     * @ORM\ManyToOne(targetEntity="RessourceBundle\Entity\FenetreHoraire",inversedBy="activites")
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\ManyToOne(targetEntity="RessourceBundle\Entity\FenetreHoraire",inversedBy="activites" )
+     * @ORM\JoinColumn(nullable=true)
      */
     private $fenetreHoraire;
 
     /**
-     * @ORM\ManyToMany(targetEntity="RessourceBundle\Entity\Enfant", mappedBy="activitesOptionelles")
+     * @ORM\ManyToMany(targetEntity="RessourceBundle\Entity\Enfant", mappedBy="activitesOptionelles" )
      */
     private $enfantsOptionnels;
 
@@ -119,12 +119,12 @@ class Activite
     private $enfantsObligatoires;
 
     /**
-     * @ORM\OneToMany(targetEntity="ActiviteFixee", mappedBy="activite")
+     * @ORM\OneToMany(targetEntity="ActiviteFixee", mappedBy="activite", cascade={"persist", "remove"})
      */
     private $activitesFixees;
 
     /**
-     * @ORM\OneToMany(targetEntity="RessourceBundle\Entity\BesoinTypeRessource", mappedBy="activite")
+     * @ORM\OneToMany(targetEntity="RessourceBundle\Entity\BesoinTypeRessource", mappedBy="activite", cascade={"persist", "remove"})
      */
     private $besoinsTypeRessources;
 

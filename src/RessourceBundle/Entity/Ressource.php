@@ -41,13 +41,13 @@ class Ressource
 
     /**
      * @ORM\ManyToOne(targetEntity="FenetreHoraire", inversedBy="ressources")
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\JoinColumn(nullable=true)
      */
     private $fenetreHoraire;
 
     /**
      * @ORM\ManyToOne(targetEntity="TypeRessource", inversedBy="ressources")
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\JoinColumn(nullable=true)
      */
     private $typeRessource;
 

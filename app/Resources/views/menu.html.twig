@@ -20,13 +20,14 @@
                     <ul class="dropdown-menu">
                         <li><a href="{{path('ActiviteBundle_Activite_index')}}"> Activités</a></li>
                         <li><a href="{{path('ActiviteBundle_ActiviteFixee_index')}}"> Activités fixées</a></li>
-                        <li><a href=""> Activités Realisées</a></li>
+                        <li><a href="{{path('ActiviteBundle_ActiviteRealisee_index')}}"> Activités Realisées</a></li>
                     </ul>
                 </li>
                 <li><a href="#"> Planning</a></li>
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Affectation<span class="caret"></span></a>
                     <ul class="dropdown-menu">
+                        <li><a href="{{path('RessourceBundle_AffectationRessource_index')}}">Ressource</a></li>
                         <li><a href="{{path('CoreBundle_affecter_enfant_activite_obligatoire')}}">Enfant / Activité Obligatoire</a></li>
                         <li><a href="{{path('CoreBundle_affecter_enfant_activite_optionnelle')}}">Enfant / Activité Optionnelle</a></li>
                     </ul>

@@ -14,7 +14,7 @@
 <form>
     <div class="table-responsive">
         <table class="table">
-             <caption>Liste des activités</caption>
+            <caption>Liste des activités</caption>
             <tr>
                 <th> Activite id </th>
                 <th> Designation </th>
@@ -24,13 +24,17 @@
                 <th> Nombre minimum d'enfants </th>
                 <th> Nombre maximum d'enfants </th>
                 <th> Durée transport </th>
-                <th> Case à cocher </th>
+                <th> Selection </th>
             </tr>
-        {% for activite in activites %}
+            {% for activite in activites %}
                 {% include 'ActiviteBundle:Activite:preview.html.twig' %}
             {% endfor %}
+            <tr>
+                <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+                <td><button type="submit" class="btn btn-primary">Supprimer</button></td>
+            </tr>
         </table>
-        <button type="submit" class="btn btn-primary">Supprimer</button>
+        
 </form>
 </div>
 {% endblock %}

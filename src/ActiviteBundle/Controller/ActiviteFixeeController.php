@@ -12,14 +12,40 @@ class ActiviteFixeeController extends Controller
      * Affichage de toutes les ActiviteFixee présentes dans la bdd
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function indexAction()
+    public function indexAction(Request $request)
     {
         $entityManager = $this->getDoctrine()->getManager();
         $activiteFixeeRepository = $entityManager->getRepository("ActiviteBundle:ActiviteFixee");
         $activitesFixees = $activiteFixeeRepository->findAll();
+        $enfantRepository = $entityManager->getRepository("RessourceBundle:Enfant");
+        $enfants = $enfantRepository->findAll();
+        
+        /**
+        //Recupere le nom de l'enfant pour changer la liste
+        $enfantSelectionner = $enfantRepository->findOneById( $request->get('enfantId'));
+        if($enfantSelectionner !=null)
+        {
+            
+            $activitesFixees = $activiteFixeeRepository->findByEnfant($enfantSelectionner);
+        }
+        */
+        //Récupere la liste des activités coché afin de les supprimer
+        $listActiviteF=$request->get('idActivitesFixee');
+        if($listActiviteF !=null){
+            foreach ($listActiviteF as $id){
+
+                $activiteF = $activiteFixeeRepository->findOneById($id);
+                if ($activiteF != null) {
+                    $entityManager->remove($activiteF);
+                }
+                $entityManager->flush();
+            }           
+        }
+        
+        //Fin suppression des éléments
         
         return $this->render('ActiviteBundle:ActiviteFixee:index.html.twig', array(
-        "activitesFixees"=>$activitesFixees
+        "activitesFixees"=>$activitesFixees, "enfants" => $enfants
         ));
     }
     
@@ -44,11 +70,11 @@ class ActiviteFixeeController extends Controller
      * @param Request $request
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function editAction($id=null,Request $request)
+    public function editAction($idFixee=null,$idActivite,Request $request)
     {
         $entityManager = $this->getDoctrine()->getManager();
         $activiteFixeeRepository = $entityManager->getRepository("ActiviteBundle:ActiviteFixee");
-        $activiteFixee = $activiteFixeeRepository->findOneById($id);
+        $activiteFixee = $activiteFixeeRepository->findOneById($idFixee);
         
         if($activiteFixee==null){
             $activiteFixee=new \ActiviteBundle\Entity\ActiviteFixee();
@@ -58,6 +84,11 @@ class ActiviteFixeeController extends Controller
         $form->handleRequest($request);
         
         if($form->isValid()){
+            //On ajoute les informations qu'on a présent sur la page
+            $activiteFixee.setHeureDebut($form->get('heureDebut')->getData());
+            $activiteFixee.setHeureFin($form->get('heureDebut')->getData());
+            $activiteFixee.setActivite($idActivite);
+            $activiteFixee.setJour($form->get('jour')->getData());
             
             $entityManager->persist($activiteFixee);
             $entityManager->flush();

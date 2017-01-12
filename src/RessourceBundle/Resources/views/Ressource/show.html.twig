@@ -12,7 +12,6 @@
         </ul>
      </div>
 </nav>
-<div class="container">
   <div class="row">
     <div class="col-sm-4">
       <!--Sidebar content-->
@@ -45,7 +44,7 @@
                     <tr>
                         <td><a href="{{path('ActiviteBundle_Activite_show',{ 'id': activiteRealise.getActivite().getId() })}}" >{{ activiteRealise.getActivite().getId()}}</a></td>
                         <td><a href="{{path('ActiviteBundle_Activite_show',{ 'id': activiteRealise.getActivite().getId() })}}" >{{ activiteRealise.getActivite().getDesignation()}}</a></td>
-                        <td> {{activiteRealise.heureDebut|date("H:I")}}-{{activiteRealise.heureFin|date("H:I")}}</td>
+                        <td> {{activiteRealise.heureDebut|date("H:i")}}-{{activiteRealise.heureFin|date("H:i")}}</td>
                         <td> {{ activiteRealise.jour().getDesignation() }} - {{ activiteRealise.jour().getParite() }}  </td>
                     </tr>                    
                 {% endfor %}
@@ -53,5 +52,4 @@
         </div>   
     </div>
   </div>
-</div>
 {% endblock %}
