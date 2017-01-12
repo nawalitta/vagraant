@@ -9,17 +9,13 @@ $(function () {
         currentMousePos.x = event.pageX;
         currentMousePos.y = event.pageY;
     });
-
     function isElemOverDiv() {
         var trashEl = jQuery('#trash');
-
         var ofs = trashEl.offset();
-
         var x1 = ofs.left;
         var x2 = ofs.left + trashEl.outerWidth(true);
         var y1 = ofs.top;
         var y2 = ofs.top + trashEl.outerHeight(true);
-
         if (currentMousePos.x >= x1 && currentMousePos.x <= x2 &&
                 currentMousePos.y >= y1 && currentMousePos.y <= y2) {
             return true;
@@ -33,22 +29,19 @@ $(function () {
      -----------------------------------------------------------------*/
     $('#external-events .fc-event').each(function () {
 
-        // store data so the calendar knows to render an event upon drop
+// store data so the calendar knows to render an event upon drop
         $(this).data('event', {
             title: $.trim($(this).text()),
             activiteId: parseInt($(this).attr('activiteId')),
             stick: true
         });
-
         // make the event draggable using jQuery UI
         $(this).draggable({
             zIndex: 999,
             revert: true, // will cause the event to go back to its
             revertDuration: 0  //  original position after the drag
         });
-
     });
-
     /* initialize the calendar
      -----------------------------------------------------------------*/
 
@@ -94,7 +87,6 @@ $(function () {
                     }
         },
         resourceAreaWidth: '25%',
-
         resourceLabelText: 'Enfants',
         resourceGroupField: 'enfant',
         droppable: true, // this allows things to be dropped onto the calendar
@@ -107,7 +99,7 @@ $(function () {
             url: 'Events/' + id,
             type: 'GET',
         },
-        eventReceive: function (event, jsEvent, ui, view) {
+        eventReceive: function (event) {
             console.log('eventReceive', event);
             var title = event.title;
             var start = event.start.toString();
@@ -120,16 +112,19 @@ $(function () {
                 type: 'POST',
                 dataType: 'json',
                 success: function (response) {
-                    console.log(response);
-                    //event.id = response.eventId;
-                    if (response.status == 'success') {
-                        $('#calendar-holder').fullCalendar('updateEvent', event.id);
-                    }
+
+                    console.log('Event added with succes', response);
+                    event.id = response.eventid;
+
+                    $('#calendar-holder').fullCalendar('updateEvent', event);
+                },
+                error: function (e) {
+
+                    console.log('error', e.responseText);
                 }
             });
         },
-
-        eventDragStop: function (event, jsEvent, ui, view) {
+        eventDragStop: function (event) {
             if (isElemOverDiv()) {
                 console.log('eventDragStop', event);
                 $.ajax({
@@ -139,16 +134,14 @@ $(function () {
                     dataType: 'json',
                     success: function (response) {
                         console.log("Element supprimé");
-                        if (response.status == 'success') {
+                        if (response.status === 'success') {
                             $('#calendar-holder').fullCalendar('removeEvents', event.id);
-                            //window.location.reload(true);
                         }
 
                     }
                 });
             }
         },
-
         eventDrop: function (event) { // called when an event (already on the calendar) is moved
             console.log('eventDrop', event);
         }

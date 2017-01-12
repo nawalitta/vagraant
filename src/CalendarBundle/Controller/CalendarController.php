@@ -75,7 +75,7 @@ class CalendarController extends Controller {
 
         $return = array();
         $return['status'] = "success";
-        //$return['eventId'] = $evenement->getId();
+        $return['eventId'] = $evenement->getId();
 
         $response = new \Symfony\Component\HttpFoundation\Response();
         $response->headers->set('Content-Type', 'application/json');
