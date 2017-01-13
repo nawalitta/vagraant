@@ -66,10 +66,10 @@ class EnfantController extends Controller
     public function editAction($id = null, Request $request) {
         $entityManager = $this->getDoctrine()->getManager();
 
-        $typeActivitRepository = $entityManager->getRepository('RessourceBundle:TypeEnfant');
+        $typeActivitRepository = $entityManager->getRepository('RessourceBundle:Enfant');
         if ($typeActivitRepository->findOneBy(array()) == null) {
             $this->get('session')->getFlashBag()->add('alert', 'Type Enfant requis.');
-            return $this->redirect($this->generateUrl('RessourceBundle_TypeEnfant_edit'));
+            return $this->redirect($this->generateUrl('RessourceBundle_Enfant_edit'));
         }
 
         $enfantRepository = $entityManager->getRepository("RessourceBundle:Enfant");
@@ -79,7 +79,7 @@ class EnfantController extends Controller
             $enfant = new Enfant();
         }
 
-        $form = $this->createForm(EnfantType::class, $enfant);
+        $form = $this->createForm(Enfant::class, $enfant);
         $form->handleRequest($request);
 
         if ($form->isValid()) {

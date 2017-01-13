@@ -2,6 +2,7 @@
 
 namespace RessourceBundle\Controller;
 
+use RessourceBundle\Entity\FenetreHoraire;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use RessourceBundle\Form\FenetreHoraireType;
@@ -31,7 +32,7 @@ class FenetreHoraireController extends Controller
                     $entityManager->flush();
                 }catch (\Exception $e) {
                     //Problème de suppression
-                    $erreurMsg = "les activités selectionnées sont encore affectées !";
+                    $erreurMsg = "Les fenêtres horaires sélectionnées sont encore affectées !";
                 }
 
             }           
