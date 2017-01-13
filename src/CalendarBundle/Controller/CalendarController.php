@@ -20,19 +20,10 @@ class CalendarController extends Controller {
 
     public function editEventAction(Request $request) {
 
-
-
-
         $data = $request->request->all();
 
         $entityManager = $this->getDoctrine()->getManager();
         $eventRepository = $entityManager->getRepository("ADesignsCalendarBundle:EventEntity");
-
-
-
-
-
-        //Setup new EventEntity with data from request
 
 
         $startdate = new DateTime($data['startdate']);
@@ -48,40 +39,18 @@ class CalendarController extends Controller {
             $evenement = new \CalendarBundle\Entity\EventEntity($title, $startdate, $enddate);
         }
 
-
-
         if (isset($data['resourceId'])) {
             $ressouceId = $data['resourceId'];
-            $jour = "";
-            $enfantId = "";
-
-
-            // Split RessourceId in 2 string
-            $jours = array();
-            $jours[] = "Lundi";
-            $jours[] = "Mardi";
-            $jours[] = "Mercredi";
-            $jours[] = "Jeudi";
-            $jours[] = "Vendredi";
-            $trouve = false;
-            $i = 0;
 
             $jourRepository = $entityManager->getRepository("ActiviteBundle:Jour");
 
+            $ressourceIdData = explode("-", $ressouceId);
+            $jour = $jourRepository->findOneByDesignation($ressourceIdData[1]);
 
-            while (!$trouve & $i < sizeof($jours)) {
-                if (strpos($ressouceId, $jours[$i])) {
-                    $trouve = true;
-                    $jour = $jourRepository->findOneByDesignation($jours[$i]);
-                    $enfantId = substr($ressouceId, 0, strlen($ressouceId) - strlen($jours[$i]));
-                }
-
-                $i++;
-            }
             $evenement->setJour($jour);
 
             $enfantRepository = $entityManager->getRepository("RessourceBundle:Enfant");
-            $enfant = $enfantRepository->findOneById($enfantId);
+            $enfant = $enfantRepository->findOneById($ressourceIdData[0]);
 
             $evenement->setEnfant($enfant);
         }
@@ -94,10 +63,8 @@ class CalendarController extends Controller {
             $evenement->setActivite($activite);
         }
 
-
         $entityManager->persist($evenement);
         $entityManager->flush();
-
 
         $return = array();
         $return['status'] = "success";
@@ -275,21 +242,24 @@ class CalendarController extends Controller {
 
         $enfant = $enfantRepository->findOneById($id);
 
+        $parite = 0;
+        $data = $request->request->all();
+        if (isset($data['parite']))
+            $parite = $data['parite'];
+
+        $jourRepository = $entityManager->getRepository("ActiviteBundle:Jour");
+        $jours = $jourRepository->findByParite($parite);
+
         $return_ressources = array();
 
-        $jours = array();
-        $jours[] = "Lundi";
-        $jours[] = "Mardi";
-        $jours[] = "Mercredi";
-        $jours[] = "Jeudi";
-        $jours[] = "Vendredi";
+
 
         foreach ($jours as $jour) {
             $child = array();
             $child['idEnfant'] = $enfant->getId();
-            $child['id'] = $enfant->getId() . $jour;
+            $child['id'] = $enfant->getId() . "-" . $jour->getDesignation();
             $child['enfant'] = $enfant->getPrenom() . " " . $enfant->getNom();
-            $child['title'] = $jour;
+            $child['title'] = $jour->getDesignation();
             $return_ressources[] = $child;
         }
 
@@ -305,18 +275,13 @@ class CalendarController extends Controller {
         $entityManager = $this->getDoctrine()->getManager();
         $enfantRepository = $entityManager->getRepository("RessourceBundle:Enfant");
         $enfants = $enfantRepository->findAll();
+        $parite = 0;
+        $data = $request->request->all();
+        if (isset($data['parite']))
+            $parite = $data['parite'];
 
-
-        $children = array();
-
-
-        $jours = array();
-        $jours[] = "Lundi";
-        $jours[] = "Mardi";
-        $jours[] = "Mercredi";
-        $jours[] = "Jeudi";
-        $jours[] = "Vendredi";
-
+        $jourRepository = $entityManager->getRepository("ActiviteBundle:Jour");
+        $jours = $jourRepository->findByParite($parite);
 
 
         foreach ($enfants as $enfant) {
@@ -324,51 +289,11 @@ class CalendarController extends Controller {
             foreach ($jours as $jour) {
                 $child = array();
                 $child['idEnfant'] = $enfant->getId();
-                $child['id'] = $enfant->getId() . $jour;
-                $child['enfant'] = $jour;
+                $child['id'] = $enfant->getId() . "-" . $jour->getDesignation();
+                $child['enfant'] = $jour->getDesignation();
                 $child['title'] = $enfant->getPrenom() . " " . $enfant->getNom();
                 $return_ressources[] = $child;
             }
-        }
-
-
-        $response->setContent(json_encode($return_ressources));
-
-        return $response;
-    }
-
-    public function loadAllRessourceAction(Request $request) {
-        $response = new \Symfony\Component\HttpFoundation\Response();
-        $response->headers->set('Content-Type', 'application/json');
-
-        $entityManager = $this->getDoctrine()->getManager();
-        $enfantRepository = $entityManager->getRepository("RessourceBundle:Enfant");
-        $enfants = $enfantRepository->findAll();
-        $return_ressources = array();
-        foreach ($enfants as $enfant) {
-            $enfantArray = array();
-            $enfantArray['id'] = $enfant->getId();
-            $enfantArray['title'] = $enfant->getPrenom() . " " . $enfant->getNom();
-            $children = array();
-            $lundi = array();
-            $lundi['id'] = $enfant->getId() . 'lundi';
-            $lundi['title'] = "Lundi";
-            $mardi['id'] = $enfant->getId() . 'mardi';
-            $mardi['title'] = "Mardi";
-            $mercredi['id'] = $enfant->getId() . 'mercredi';
-            $mercredi['title'] = "Mercredi";
-            $jeudi['id'] = $enfant->getId() . 'jeudi';
-            $jeudi['title'] = "Jeudi";
-            $vendredi['id'] = $enfant->getId() . 'vendredi';
-            $vendredi['title'] = "Vendredi";
-            $children[] = $lundi;
-            $children[] = $mardi;
-            $children[] = $mercredi;
-            $children[] = $jeudi;
-            $children[] = $vendredi;
-
-            $enfantArray['children'] = $children;
-            $return_ressources[] = $enfantArray;
         }
 
 
