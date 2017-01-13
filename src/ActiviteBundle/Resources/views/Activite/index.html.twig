@@ -1,17 +1,22 @@
 {% extends "::base.html.twig" %}
 
-{% block title %}ActiviteBundle:ActiviteFixee:index{% endblock %}
-
 {% block body %}
-<h1>Welcome to the Activite:index page</h1>
+
 <nav class = "navbar navbar-default" >
     <div>
         <ul class = "nav navbar-nav">
-            <li><a href = "{{path('ActiviteBundle_Activite_edit')}}">Ajouter une activité</a></li>
+            <li><a href = "{{path('ActiviteBundle_Activite_edit')}}"><input type="button" class="btn btn-primary" name="btnAjout" value="Ajouter une activite"/></a></li>
         </ul>
      </div>
 </nav>
-<form>
+{% if erreur!="" %}
+    <div class="alert alert-danger" role="alert">
+        <label>
+            {{ erreur }}
+        </label>
+    </div>
+{% endif %}
+    <form>
     <div class="table-responsive">
         <table class="table">
             <caption>Liste des activités</caption>

@@ -31,7 +31,7 @@ class TypeActivite
     private $designation;
     
     /**
-     * @ORM\OneToMany(targetEntity="ActiviteBundle\Entity\Activite", mappedBy="typeActivite", cascade={"persist", "remove"})
+     * @ORM\OneToMany(targetEntity="ActiviteBundle\Entity\Activite", mappedBy="typeActivite")
      * @ORM\JoinColumn(nullable=true)
      */  
     private $activites;

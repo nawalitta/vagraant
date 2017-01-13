@@ -17,24 +17,29 @@ class EnfantController extends Controller
     public function indexAction(Request $request) {
         $entityManager = $this->getDoctrine()->getManager();
         $enfantRepository = $entityManager->getRepository("RessourceBundle:Enfant");
-        
+        $erreurMsg="";
         //Récupere la liste des enfants coché afin de les supprimer
         $listEnfants=$request->get('idEnfants');
         if($listEnfants !=null){
             foreach ($listEnfants as $id){
 
                 $enfant = $enfantRepository->findOneById($id);
-                if ($enfant != null) {
-                    $entityManager->remove($enfant);
+                try{
+                    if ($enfant != null) {
+                        $entityManager->remove($enfant);
+                    }
+                    $entityManager->flush();                   
+                } catch (\Exception $ex) {
+                    //Pb de suppression
+                    $erreurMsg = "les enfants selectionnées ont encore des activités !";
                 }
-                $entityManager->flush();
             }           
         }
         
         $enfants = $enfantRepository->findAll();
 
         return $this->render('RessourceBundle:Enfant:index.html.twig', array(
-                    "enfants" => $enfants
+                    "enfants" => $enfants,"erreur"=>$erreurMsg
         ));
     }
 

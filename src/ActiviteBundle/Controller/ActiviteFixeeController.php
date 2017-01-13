@@ -19,7 +19,7 @@ class ActiviteFixeeController extends Controller
         $activitesFixees = $activiteFixeeRepository->findAll();
         $enfantRepository = $entityManager->getRepository("RessourceBundle:Enfant");
         $enfants = $enfantRepository->findAll();
-        
+        $erreurMsg = "";
         /**
         //Recupere le nom de l'enfant pour changer la liste
         $enfantSelectionner = $enfantRepository->findOneById( $request->get('enfantId'));
@@ -38,14 +38,19 @@ class ActiviteFixeeController extends Controller
                 if ($activiteF != null) {
                     $entityManager->remove($activiteF);
                 }
-                $entityManager->flush();
+                try{
+                    $entityManager->flush();                   
+                } catch (Exception $ex) {
+                    $erreurMsg = "Un enfant possede encore cette activite";
+                }
+
             }           
         }
         
         //Fin suppression des éléments
         
         return $this->render('ActiviteBundle:ActiviteFixee:index.html.twig', array(
-        "activitesFixees"=>$activitesFixees, "enfants" => $enfants
+        "activitesFixees"=>$activitesFixees, "enfants" => $enfants,"erreur"=>$erreurMsg
         ));
     }
     

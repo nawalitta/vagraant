@@ -92,7 +92,7 @@ class Enfant
     private $activitesOptionelles;
 
     /**
-     * @ORM\OneToMany(targetEntity="ActiviteBundle\Entity\ActiviteFixee", mappedBy="enfant" ,cascade={"persist", "remove"})
+     * @ORM\OneToMany(targetEntity="ActiviteBundle\Entity\ActiviteFixee", mappedBy="enfant", cascade={"persist", "remove"} )
      */
     private $activitesFixees;
 
@@ -102,12 +102,12 @@ class Enfant
     private $activitesRealisees;
 
     /**
-     * @ORM\OneToMany(targetEntity="ActiviteBundle\Entity\ActiviteObligatoire", mappedBy="enfant", cascade={"persist", "remove"})
+     * @ORM\OneToMany(targetEntity="ActiviteBundle\Entity\ActiviteObligatoire", mappedBy="enfant")
      */
     private $activitesObligatoires;
 
     /**
-     * @ORM\OneToMany(targetEntity="Preaffection", mappedBy="enfant", cascade={"persist", "remove"})
+     * @ORM\OneToMany(targetEntity="Preaffection", mappedBy="enfant")
      */
     private $preAffections;
 

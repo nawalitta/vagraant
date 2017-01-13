@@ -3,15 +3,20 @@
 {% block title %}RessourceBundle:Ressource:index{% endblock %}
 
 {% block body %}
-<h1>Welcome to the Ressource:index page</h1>
 <nav class = "navbar navbar-default" >
     <div>
         <ul class = "nav navbar-nav">
-            <li><a href = "{{path('RessourceBunde_Ressource_edit')}}">Creer une ressource</a></li>
+            <li><a href = "{{path('RessourceBunde_Ressource_edit')}}"><input type="button" class="btn btn-primary" name="btnAjout" value="Ajouter une ressource"/></a></li>
         </ul>
      </div>
 </nav>
-        
+{% if erreur!="" %}
+    <div class="alert alert-danger" role="alert">
+        <label>
+            {{ erreur }}
+        </label>
+    </div>
+{% endif %}     
 <form>
     <div class="table-responsive">
         <table class="table">
@@ -39,7 +44,6 @@
             <td><button type="submit" class="btn btn-primary">Supprimer</button></td>
         </tr>
         </table>
-        
 </form>
 
 {% endblock %}

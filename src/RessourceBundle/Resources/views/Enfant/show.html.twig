@@ -3,12 +3,11 @@
 {% block title %}RessourceBundle:Enfant:show{% endblock %}
 
 {% block body %}
-    <h1>Welcome to the Enfant:show page</h1>
     <nav class="navbar navbar-default">
         <div>
             <ul class="nav navbar-nav">
-                <li><a href="{{ path('RessourceBundle_Enfant_edit',{ 'id': enfant.id }) }}"> Modifier</a></li>
-                <li><a href="{{ path('RessourceBundle_Enfant_delete',{ 'id': enfant.id }) }}"> Supprimer </a></li>
+                <li><a href="{{ path('RessourceBundle_Enfant_edit',{ 'id': enfant.id }) }}"> <input type="button" class="btn btn-primary" name="btnAjout" value="Modifier"/></a></li>
+                <li><a href="{{ path('RessourceBundle_Enfant_delete',{ 'id': enfant.id }) }}"><input type="button" class="btn btn-primary" name="btnAjout" value="Supprimer"/></a></li>
             </ul>
         </div>
     </nav>

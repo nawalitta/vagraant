@@ -23,7 +23,6 @@
                     <div class="row">
                         <div class="col-md-12">
                             {% block body %}
-                                <p> A REDEFINIR SUR CHAQUE PAGE</p>
                             {% endblock %}
                         </div>
                     </div>
@@ -34,7 +33,7 @@
                     <script src="{{ asset('js/groupFilter.js') }}"></script>
                 {% endblock %}
             </body>
-           {#{% include 'footer.html.twig' %}#}
+           {% include 'footer.html.twig' %}
         </div>
     </div>
 </html>

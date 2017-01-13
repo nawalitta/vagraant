@@ -19,6 +19,7 @@ class ActiviteRealiseeController extends Controller
         $activitesRealisees = $activiteRealiseeRepository->findAll();
         $enfantRepository = $entityManager->getRepository("RessourceBundle:Enfant");
         $enfants = $enfantRepository->findAll();
+        $erreurMsg = "";
         
         //Récupere la liste des activités coché afin de les supprimer
         $listActiviteR=$request->get('idActivitesRealisee');
@@ -29,14 +30,19 @@ class ActiviteRealiseeController extends Controller
                 if ($activiteR != null) {
                     $entityManager->remove($activiteR);
                 }
-                $entityManager->flush();
+                try{
+                    $entityManager->flush();                   
+                } catch (Exception $ex) {
+                    $erreurMsg = " un enfant possede encore cette activite";
+                }
+
             }           
         }
         
         //Fin suppression des éléments
         
         return $this->render('ActiviteBundle:ActiviteRealisee:index.html.twig', array(
-        "activitesRealisees"=>$activitesRealisees,"enfants"=>$enfants
+        "activitesRealisees"=>$activitesRealisees,"enfants"=>$enfants,"erreur"=>$erreurMsg
         ));
     }
     

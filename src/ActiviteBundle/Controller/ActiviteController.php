@@ -19,7 +19,7 @@ class ActiviteController extends Controller
     {
         $entityManager = $this->getDoctrine()->getManager();
         $activiteRepository = $entityManager->getRepository("ActiviteBundle:Activite");
-
+        $erreurMsg = "";
         //Récupere la liste des activités coché afin de les supprimer
         $listActivite = $request->get('idActivites');
         if ($listActivite != null) {
@@ -28,8 +28,12 @@ class ActiviteController extends Controller
                 if ($activite != null) {
                     $entityManager->remove($activite);
                 }
-                
-                $entityManager->flush();
+                try{
+                    $entityManager->flush();
+                } catch (\Exception $ex) {
+                    //Problème de clé étrangère encore présente
+                    $erreurMsg = " Ces activités sont encore affectées quelque part";
+                }
             }
         }
         
@@ -37,7 +41,7 @@ class ActiviteController extends Controller
         $activites = $activiteRepository->findAll();
 
         return $this->render('ActiviteBundle:Activite:index.html.twig', array(
-            "activites" => $activites
+            "activites" => $activites,"erreur"=>$erreurMsg
         ));
     }
 

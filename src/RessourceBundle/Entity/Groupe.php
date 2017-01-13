@@ -28,7 +28,7 @@ class Groupe
     private $designation;
 
         /**
-     * @ORM\OneToMany(targetEntity="Enfant", mappedBy="groupe", cascade={"persist", "remove"})
+     * @ORM\OneToMany(targetEntity="Enfant", mappedBy="groupe")
      */
     private $enfants;
     

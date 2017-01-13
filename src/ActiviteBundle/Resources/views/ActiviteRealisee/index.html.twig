@@ -1,12 +1,17 @@
 {% extends "::base.html.twig" %}
 
-{% block title %}ActiviteBundle:ActiviteRealisee:index{% endblock %}
-
 {% block body %}
 <nav class = "navbar navbar-default" >
     <div>
         <ul class = "nav navbar-nav">
-            <li><a href = "{{path('ActiviteBundle_Activite_edit')}}">Ajouter une activité</a></li>
+            <li><a href = "{{path('ActiviteBundle_Activite_edit')}}"><input type="button" class="btn btn-primary" name="btnAjout" value="Ajouter une activite"/></a></li>
+        </ul>
+     </div>
+</nav>
+<nav class = "navbar navbar-default" >
+    <div>
+        <ul class = "nav navbar-nav">
+            <li><a href = "{{path('ActiviteBundle_Activite_edit')}}"><input type="button" class="btn btn-primary" name="btnAjout" value="Ajouter une activite"/></a></li>
         </ul>
      </div>
 </nav>
@@ -36,7 +41,7 @@
             </tr>
         {% for activiteR in activitesRealisees %}
             <tr>
-                {% include 'ActiviteBundle:ActiviteFixee:preview.html.twig' %}  
+                {% include 'ActiviteBundle:ActiviteRealisee:preview.html.twig' %}  
                 <td>
                     <div class="form-check">
                         <label class="form-check-label">

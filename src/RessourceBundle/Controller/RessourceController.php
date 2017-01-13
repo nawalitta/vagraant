@@ -11,24 +11,30 @@ class RessourceController extends Controller
     {
        $entityManager = $this->getDoctrine()->getManager();
        $ressourceRepository = $entityManager->getRepository("RessourceBundle:Ressource");
-       
+       $erreurMsg = "";
        //Récupere la liste des ressources coché afin de les supprimer
        $listRessources=$request->get('idRessources');
         if($listRessources !=null){
             foreach ($listRessources as $id){
 
                 $ressource = $ressourceRepository->findOneById($id);
-                if ($ressource != null) {
-                    $entityManager->remove($ressource);
+                try{
+                    if ($ressource != null) {
+                        $entityManager->remove($ressource);
+                    }
+                $entityManager->flush();                   
+                } catch (\Exception $ex) {
+                    //Pb suppression
+                    $erreurMsg = " Les ressources sont encore affectées à une activité";
                 }
-                $entityManager->flush();
+
             }           
         }
        
        $ressources = $ressourceRepository->findAll();
         
         return $this->render('RessourceBundle:Ressource:index.html.twig', array(
-            "ressources"=>$ressources
+            "ressources"=>$ressources,"erreur"=>$erreurMsg
         ));
     }
 

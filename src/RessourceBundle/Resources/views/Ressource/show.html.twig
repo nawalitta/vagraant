@@ -3,12 +3,11 @@
 {% block title %}RessourceBundle:Ressource:show{% endblock %}
 
 {% block body %}
-<h1>Welcome to the Ressource:show page</h1>
 <nav class = "navbar navbar-default" >
     <div>
         <ul class = "nav navbar-nav">
-            <li><a href="{{path('RessourceBunde_Ressource_edit',{ 'id': ressource.id })}}"> Modifier</a></li>
-            <li><a href="{{path('RessourceBunde_Ressource_delete',{ 'id': ressource.id })}}"> Supprimer </a></li>
+            <li><a href="{{path('RessourceBunde_Ressource_edit',{ 'id': ressource.id })}}"> <input type="button" class="btn btn-primary" name="btnAjout" value="Modifier"/></a></li>
+            <li><a href="{{path('RessourceBunde_Ressource_delete',{ 'id': ressource.id })}}"><input type="button" class="btn btn-primary" name="btnAjout" value="Supprimer"/></a></li>
         </ul>
      </div>
 </nav>

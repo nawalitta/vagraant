@@ -5,6 +5,7 @@ namespace RessourceBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use RessourceBundle\Form\FenetreHoraireType;
+use Symfony\Component\HttpKernel\Exception;
 
 class FenetreHoraireController extends Controller
 {
@@ -17,21 +18,27 @@ class FenetreHoraireController extends Controller
         $entityManager = $this->getDoctrine()->getManager();
         $fenetreHoraireRepository = $entityManager->getRepository("RessourceBundle:FenetreHoraire");
         $fenetresHoraire = $fenetreHoraireRepository->findAll();
-        
+        $erreurMsg = "";
         //Récupere la liste des fenetres horaires coché afin de les supprimer
         $listFh=$request->get('idfhs');
         if($listFh !=null){
             foreach ($listFh as $id){
-
+                
                 $fh = $fenetreHoraireRepository->findOneById($id);
-                if ($fh != null) {
-                    $entityManager->remove($fh);
+                try{
+                    if ($fh != null) {
+                        $entityManager->remove($fh);
+                    }
+                    $entityManager->flush();                  
+                }catch (\Exception $e) {
+                    //Problème de suppression
+                    $erreurMsg = "les activités selectionnées sont encore affectées !";
                 }
-                $entityManager->flush();
+
             }           
         }
         return $this->render('RessourceBundle:FenetreHoraire:index.html.twig', array(
-        "fenetresHoraire"=>$fenetresHoraire
+        "fenetresHoraire"=>$fenetresHoraire,"erreur"=>$erreurMsg
         ));
     }
     

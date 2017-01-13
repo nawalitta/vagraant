@@ -104,7 +104,7 @@ class Activite
     private $enfantsOptionnels;
 
     /**
-     * @ORM\OneToMany(targetEntity="ActiviteBundle\Entity\ActiviteRealisee", mappedBy="activite")
+     * @ORM\OneToMany(targetEntity="ActiviteBundle\Entity\ActiviteRealisee", mappedBy="activite",cascade={"persist", "remove"} )
      */
     private $activitesRealisees;
 

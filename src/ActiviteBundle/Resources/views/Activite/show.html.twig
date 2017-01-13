@@ -6,10 +6,9 @@
     <nav class="navbar navbar-default">
         <div>
             <ul class="nav navbar-nav">
-                <li><a href="">Fixer cette activite</a></li>
-                <li><a href="{{ path('ActiviteBundle_Activite_edit',{ 'id': activite.id }) }}"> Modifier l'activité</a>
-                </li>
-                <li><a href="{{ path('ActiviteBundle_Activite_delete',{ 'id': activite.id }) }}">Supprimer</a></li>
+                
+                <li><a href="{{ path('ActiviteBundle_Activite_edit',{ 'id': activite.id }) }}"><input type="button" class="btn btn-primary" name="btnAjout" value="Modifier"/></a></li>
+                <li><a href="{{ path('ActiviteBundle_Activite_delete',{ 'id': activite.id }) }}"><input type="button" class="btn btn-primary" name="btnAjout" value="Supprimer"/></a></li>
             </ul>
         </div>
     </nav>
@@ -108,8 +107,8 @@
 
                     <tr>
                         {% for affectation in activite.preAffections %}
-                            <td><a href="">{{ affectation.ressource.getId() }}</a></td>
-                            <td><a href="">{{ affectation.ressource.getDesignation() }}</a></td>
+                            <td><a href="{{path('RessourceBunde_Ressource_edit',{ 'id': affectation.ressource.getId() })}}">{{ affectation.ressource.getId() }}</a></td>
+                            <td><a href="{{path('RessourceBunde_Ressource_edit',{ 'id': affectation.ressource.getId() })}}">{{ affectation.ressource.getDesignation() }}</a></td>
                         {% endfor %}
                     </tr>
                 </table>
