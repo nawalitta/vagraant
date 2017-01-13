@@ -1,0 +1,70 @@
+{% extends "::base.html.twig" %}
+
+{% block title %}Voir groupe{% endblock %}
+
+{% block body %}
+    <nav class="navbar navbar-default">
+        <div>
+            <ul class="nav navbar-nav">
+                <li><a href="{{ path('RessourceBundle_Groupe_edit',{ 'id': groupe.id }) }}"> <input type="button"
+                                                                                                    class="btn btn-primary"
+                                                                                                    name="btnAjout"
+                                                                                                    value="Modifier"/></a>
+                </li>
+                <li><a href="{{ path('RessourceBundle_Groupe_delete',{ 'id': groupe.id }) }}"><input type="button"
+                                                                                                     class="btn btn-primary"
+                                                                                                     name="btnAjout"
+                                                                                                     value="Supprimer"/></a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <div class="row">
+        <div class="col-sm-4">
+            <!--Sidebar content-->
+            <div class="table-responsive">
+                <table class="table">
+                    <caption> Information sur le groupe</caption>
+                    <tr>
+                        <td> Nom du groupe :</td>
+                        <td> {{ groupe.designation }}</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <div class="col-sm-8">
+            <div class="table-responsive">
+                <table class="table">
+                    <caption>Liste des enfants</caption>
+                    <tr>
+                        <th> #</th>
+                        <th> Prénom</th>
+                        <th> Nom</th>
+                        <th> Identifiant</th>
+                        <th> groupe</th>
+                        <th> Régime</th>
+                        <th> Est Archivé</th>
+                        <th> Date arrivé</th>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    {% for enfant in enfants %}
+                        {% if enfant.groupe.id == groupe.id %}
+                            <tr>
+                                {% include 'RessourceBundle:Enfant:preview.html.twig' %}
+                            </tr>
+                        {% endif %}
+                    {% endfor %}
+                </table>
+            </div>
+        </div>
+    </div>
+{% endblock %}

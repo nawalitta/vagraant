@@ -2,9 +2,11 @@
 
 namespace RessourceBundle\Controller;
 
+use RessourceBundle\Entity\TypeRessource;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use RessourceBundle\Form\TypeRessourceType;
+use Symfony\Component\HttpFoundation\Response;
 
 class TypeRessourceController extends Controller
 {    /**
@@ -41,21 +43,27 @@ class TypeRessourceController extends Controller
      * @param Request $request
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function editAction($id = null, Request $request) {
+    public function editAction($id = null, $nomTypeRessource = null, Request $request) {
         $entityManager = $this->getDoctrine()->getManager();
-
-        $typeActivitRepository = $entityManager->getRepository('RessourceBundle:TypeTypeRessource');
+        $typeActivitRepository = $entityManager->getRepository('RessourceBundle:TypeRessource');
         if ($typeActivitRepository->findOneBy(array()) == null) {
             $this->get('session')->getFlashBag()->add('alert', 'Type TypeRessource requis.');
-            return $this->redirect($this->generateUrl('RessourceBundle_TypeTypeRessource_edit'));
+            return $this->redirect($this->generateUrl('RessourceBundle_TypeRessource_edit'));
         }
-
 
         $typeRessourceRepository = $entityManager->getRepository("RessourceBundle:TypeRessource");
         $typeRessource = $typeRessourceRepository->findOneById($id);
 
         if ($typeRessource == null) {
-            $typeRessource = new \RessourceBundle\Entity\TypeRessource();
+            $typeRessource = new TypeRessource();
+        }
+
+        // Si on est dans ressource et qu'on utilise la modal
+        if ($nomTypeRessource != null) {
+            $typeRessource->setDesignation($nomTypeRessource);
+            $entityManager->persist($typeRessource);
+            $entityManager->flush();
+            return new Response($typeRessource->getId());
         }
 
         $form = $this->createForm(TypeRessourceType::class, $typeRessource);

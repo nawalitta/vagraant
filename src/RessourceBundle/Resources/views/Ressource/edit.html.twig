@@ -1,10 +1,59 @@
 {% extends "base.html.twig" %}
 
+{% block title %}Edition ressource{% endblock %}
+
 {% block body %}
-    
-    
+    <h1>Edition d'une ressource</h1>
+    <form method="post">
+        <div class="form-group row">
+            <label for="example-text-input" class="col-md-offset-3 col-md-1 col-form-label">Designation</label>
+            <div class="col-md-5">
+                {{ form_errors(form.designation) }}
+                {{ form_widget(form.designation) }}
+            </div>
+        </div>
+        <div class="row">
+            <label for="example-text-input" class="col-md-offset-3 col-md-1 col-form-label">Type ressource</label>
+            <div class="col-md-5">
+                <div class="input-group">
+                    <span class="input-group-btn">
+                        <button class="btn btn-default" type="button" data-toggle="modal"
+                                data-target="#myModal">+</button>
+                    </span>
+                    {{ form_errors(form.typeRessource) }}
+                    {{ form_widget(form.typeRessource) }}
+                </div>
+            </div>
+        </div>
+        <div class="row" style="margin-top: 10px">
+            <label class="col-md-offset-8 col-md-4">
+                <button type="submit" class="btn btn-primary">Ok</button>
+            </label>
+        </div>
+        {{ form_row(form._token) }}
+    </form>
 
-{{ form(form) }}
-
-    
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                                aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">Ajouter un type de ressource</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="nom-groupe">Nom du type de ressource :</label>
+                        <input id="nom-groupe" name="input-ressource-nom" class="form-control" autofocus>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Annuler</button>
+                    <button type="button" class="btn btn-primary"
+                            onclick="ajouterTypeRessource(document.getElementsByName('input-ressource-nom')[0].value)">Ajouter
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
 {% endblock %}

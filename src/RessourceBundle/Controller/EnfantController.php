@@ -3,7 +3,9 @@
 namespace RessourceBundle\Controller;
 
 use RessourceBundle\Entity\Enfant;
+use RessourceBundle\Entity\Groupe;
 use RessourceBundle\Form\EnfantType;
+use RessourceBundle\Form\GroupeType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use RessourceBundle\Form\RessourceType;
@@ -11,8 +13,8 @@ use RessourceBundle\Form\RessourceType;
 
 class EnfantController extends Controller
 {
-      /**
-     * Affichage de toutes les Enfant présentes dans la bdd
+    /**
+     * Affichage de tous les enfant présentes dans la bdd
      * @return \Symfony\Component\HttpFoundation\Response
      */
     public function indexAction(Request $request) {
@@ -45,7 +47,7 @@ class EnfantController extends Controller
     }
 
     /**
-     * Affichage d'une Enfant présent dans la bdd
+     * Affichage d'un enfant présent dans la bdd
      * @return \Symfony\Component\HttpFoundation\Response
      */
     public function showAction($id) {
@@ -60,7 +62,7 @@ class EnfantController extends Controller
 
     /**
      * @param null $id : si null alors ajout
-     *                   sinon édition d'une Enfant
+     *                   sinon édition d'un enfant
      * @param Request $request
      * @return Response
      */
@@ -69,6 +71,10 @@ class EnfantController extends Controller
         $enfantRepository = $entityManager->getRepository("RessourceBundle:Enfant");
         $enfant = $enfantRepository->findOneById($id);
 
+        // Si l'utilisateur veut ajouter un groupe à travers la modal
+        $groupe = new Groupe();
+        $formGroupe = $this->createForm(GroupeType::class, $groupe);
+
         if ($enfant == null) {
             $enfant = new Enfant();
         }
@@ -76,24 +82,39 @@ class EnfantController extends Controller
         $form = $this->createForm(EnfantType::class, $enfant);
         $form->handleRequest($request);
 
+        $estArchive = $request->get('estArchive');
+        if($estArchive == null){
+            $enfant->setEstArchive("0");
+        }else{
+            $enfant->setEstArchive("1");
+        }
+
         if ($form->isValid()) {
+
+            // A ENLEVER UNIQUEMENT QUAND FENTRE HORAIRE SERA OK
+            $entityManager = $this->getDoctrine()->getManager();
+            $fenetreHoraireRepository = $entityManager->getRepository("RessourceBundle:FenetreHoraire");
+            $fenetreHoraire = $fenetreHoraireRepository->findOneById('1');
+            $enfant->setFenetreHoraire($fenetreHoraire);
 
             $entityManager->persist($enfant);
             $entityManager->flush();
 
             $this->get('session')->getFlashBag()->add('notice', 'Enfant bien enregistrée.');
 
-            return $this->redirect($this->generateUrl('RessourceBundle_Enfant_edit'));
+            return $this->redirect($this->generateUrl('RessourceBundle_Enfant_index'));
         }
 
         return $this->render('RessourceBundle:Enfant:edit.html.twig', array(
             'enfant' => $enfant,
-            'form' => $form->createView()
+            'form' => $form->createView(),
+            'formGroupe' => $formGroupe->createView(),
+            'groupe' => $groupe
         ));
     }
 
     /**
-     * Suppression d'une Enfant
+     * Suppression d'un enfant
      * @param null $id
      * @return \Symfony\Component\HttpFoundation\Response
      */

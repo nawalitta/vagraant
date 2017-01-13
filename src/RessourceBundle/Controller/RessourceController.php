@@ -7,6 +7,10 @@ use Symfony\Component\HttpFoundation\Request;
 
 class RessourceController extends Controller
 {
+    /**
+     * Affichage de toutes les ressources présentes dans la bdd
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
     public function indexAction(Request $request)
     {
        $entityManager = $this->getDoctrine()->getManager();
@@ -38,6 +42,12 @@ class RessourceController extends Controller
         ));
     }
 
+    /**
+     * @param null $id : si null alors ajout
+     *                   sinon édition d'une Enfant
+     * @param Request $request
+     * @return Response
+     */
     public function editAction($id=null,$idActivite=null,Request $request)
     {
        $entityManager = $this->getDoctrine()->getManager();
@@ -69,6 +79,11 @@ class RessourceController extends Controller
         ));
     }
 
+    /**
+     * Suppression d'une ressource
+     * @param null $id
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
     public function deleteAction($id)
     {
         $entityManager = $this->getDoctrine()->getManager();
@@ -82,6 +97,10 @@ class RessourceController extends Controller
         return $this->redirect($this->generateUrl('RessourceBunde_Ressource_index'));
     }
 
+    /**
+     * Affichage d'une ressource présent dans la bdd
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
     public function showAction($id)
     {
          $entityManager = $this->getDoctrine()->getManager();

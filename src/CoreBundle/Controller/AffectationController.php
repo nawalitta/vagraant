@@ -10,6 +10,11 @@ use Symfony\Component\HttpFoundation\Request;
 
 class AffectationController extends Controller
 {
+    /**
+     * Affectation d'une activité optionnelle à un enfant ou à un groupe d'enfant
+     * @param Request $request
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
     public function affecterEnfantActiviteOptionAction(Request $request)
     {
         (new Enfant());
@@ -49,11 +54,15 @@ class AffectationController extends Controller
                 }
             }
             $entityManager->flush();
-
         }
         return $this->render('CoreBundle:Affectation:affecter_enfant_activite_option.html.twig', $array);
     }
 
+    /**
+     * Affectation d'une activité obligatoire à un enfant ou à un groupe d'enfant
+     * @param Request $request
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
     public function affecterEnfantActiviteObligatoireAction(Request $request)
     {
         $entityManager = $this->getDoctrine()->getManager();

@@ -7,6 +7,12 @@ use Symfony\Component\HttpFoundation\Request;
 
 class AffectationRessourceController extends Controller
 {
+    /**
+     * Affectation d'une ressource à une activité
+     * @param $id
+     * @param Request $request
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
     public function indexAction($id, Request $request)
     {
         $entityManager = $this->getDoctrine()->getManager();

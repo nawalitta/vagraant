@@ -1,3 +1,4 @@
+ #---------------FENETRE HORAIRE-----------------------------
 RessourceBunde_FenetreHoraire_index:
     path:     FenetreHoraire/index
     defaults: { _controller: RessourceBundle:FenetreHoraire:index }
@@ -14,6 +15,7 @@ RessourceBunde_FenetreHoraire_show:
     path:     FenetreHoraire/show/{id}
     defaults: { _controller: RessourceBundle:FenetreHoraire:show }
 
+#---------------RESSOURCE-----------------------------
 RessourceBunde_Ressource_index:
     path:     Ressource/index
     defaults: { _controller: RessourceBundle:Ressource:index }
@@ -30,6 +32,7 @@ RessourceBunde_Ressource_show:
     path:     Ressource/show/{id}
     defaults: { _controller: RessourceBundle:Ressource:show }
 
+#---------------BESOIN TYPE RESSOURCE-----------------------------
 RessourceBundle_BesoinTypeRessource_edit:
     path:     besoinTypeRessource/edit/{id}
     defaults: { _controller: RessourceBundle:BesoinTypeRessourceController:edit, id : null  }
@@ -46,9 +49,10 @@ RessourceBundle_BesoinTypeRessource_delete:
     path:     besoinTypeRessource/delete/{id}
     defaults: { _controller: RessourceBundle:BesoinTypeRessource:delete }
 
+#---------------TYPE RESSOURCE-----------------------------
 RessourceBundle_TypeRessource_edit:
-    path:     typeRessource/edit/{id}
-    defaults: { _controller: RessourceBundle:TypeRessource:edit, id : null   }
+    path:     typeRessource/edit/{id}/{nomTypeRessource}
+    defaults: { _controller: RessourceBundle:TypeRessource:edit, id : null, nomTypeRessource : null }
 
 RessourceBundle_TypeRessource_delete:
     path:     typeRessource/delete/{id}
@@ -60,8 +64,9 @@ RessourceBundle_TypeRessource_index:
 
 RessourceBundle_TypeRessource_show:
     path:     typeRessource/show/{id}
-    defaults: { _controller: RessourceBundle:TypeRessource:show }
+    defaults: { _controller: RessourceBundle:TypeRessource:show, id : null }
 
+#---------------ENFANT----------------------------
 RessourceBundle_Enfant_edit:
     path:     enfant/edit/{id}
     defaults: { _controller: RessourceBundle:Enfant:edit, id : null   }
@@ -78,6 +83,24 @@ RessourceBundle_Enfant_index:
     path:     enfant
     defaults: { _controller: RessourceBundle:Enfant:index }
 
+#---------------AFFECTATION RESSOURCE-----------------------------
 RessourceBundle_AffectationRessource_index:
     path:     affectationRessource/index/{id}
     defaults: { _controller: RessourceBundle:AffectationRessource:index, id : null }
+
+#---------------GROUPE-----------------------------
+RessourceBundle_Groupe_index:
+    path:     groupe
+    defaults: { _controller: RessourceBundle:Groupe:index }
+
+RessourceBundle_Groupe_edit:
+    path:     groupe/edit/{id}/{nomGroupe}
+    defaults: { _controller: RessourceBundle:Groupe:edit, id : null, nomGroupe : null }
+
+RessourceBundle_Groupe_show:
+    path:     groupe/show/{id}
+    defaults: { _controller: RessourceBundle:Groupe:show, id : null }
+
+RessourceBundle_Groupe_delete:
+    path:     groupe/delete/{id}
+    defaults: { _controller: RessourceBundle:Groupe:delete }
