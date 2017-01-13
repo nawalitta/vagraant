@@ -470,6 +470,10 @@ class FenetreHoraire
     {
         return $this->enfants;
     }
+
+    /**
+     * @return string
+     */
     public function __toString()
     {
         return " ";

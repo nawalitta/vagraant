@@ -6,6 +6,7 @@ use RessourceBundle\Entity\FenetreHoraire;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use RessourceBundle\Form\FenetreHoraireType;
+use Symfony\Component\HttpFoundation\Response;
 
 class FenetreHoraireController extends Controller
 {
@@ -61,7 +62,7 @@ class FenetreHoraireController extends Controller
      * @param null $id : si null alors ajout
      *                   sinon édition d'une FenetreHoraire
      * @param Request $request
-     * @return \Symfony\Component\HttpFoundation\Response
+     * @return Response response
      */
     public function editAction($id = null, Request $request)
     {
@@ -81,7 +82,7 @@ class FenetreHoraireController extends Controller
             $entityManager->persist($fenetreHoraire);
             $entityManager->flush();
 
-            $this->get('session')->getFlashBag()->add('notice', 'FenetreHoraire bien enregistrée.');
+            $this->get('session')->getFlashBag()->add('notice', 'Fenetre Horaire bien enregistrée.');
 
             return $this->redirect($this->generateUrl('RessourceBunde_FenetreHoraire_index'));
         }

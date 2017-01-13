@@ -31,10 +31,6 @@ ActiviteBundle_Activite_show:
 ActiviteBundle_Activite_delete:
     path: activite/delete/{id}
     defaults: { _controller: ActiviteBundle:Activite:delete, id : null }
-
-ActiviteBundle_Activite_deletes:
-    path: activite/deletes/{listActivite}
-    defaults: { _controller: ActiviteBundle:Activite:deletes }
     
 
 #---------------ACTIVITE OBLIGATOIRE ---------------------------------------------

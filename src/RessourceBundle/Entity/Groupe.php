@@ -130,4 +130,9 @@ class Groupe
     {
         return $this->enfants;
     }
+
+    public function __toString()
+    {
+        return $this->designation;
+    }
 }

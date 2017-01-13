@@ -3,6 +3,7 @@
 namespace RessourceBundle\Controller;
 
 use RessourceBundle\Entity\Enfant;
+use RessourceBundle\Form\EnfantType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use RessourceBundle\Form\RessourceType;
@@ -65,13 +66,6 @@ class EnfantController extends Controller
      */
     public function editAction($id = null, Request $request) {
         $entityManager = $this->getDoctrine()->getManager();
-
-        $typeActivitRepository = $entityManager->getRepository('RessourceBundle:Enfant');
-        if ($typeActivitRepository->findOneBy(array()) == null) {
-            $this->get('session')->getFlashBag()->add('alert', 'Type Enfant requis.');
-            return $this->redirect($this->generateUrl('RessourceBundle_Enfant_edit'));
-        }
-
         $enfantRepository = $entityManager->getRepository("RessourceBundle:Enfant");
         $enfant = $enfantRepository->findOneById($id);
 
@@ -79,7 +73,7 @@ class EnfantController extends Controller
             $enfant = new Enfant();
         }
 
-        $form = $this->createForm(Enfant::class, $enfant);
+        $form = $this->createForm(EnfantType::class, $enfant);
         $form->handleRequest($request);
 
         if ($form->isValid()) {
@@ -89,12 +83,12 @@ class EnfantController extends Controller
 
             $this->get('session')->getFlashBag()->add('notice', 'Enfant bien enregistrée.');
 
-            return $this->redirect($this->generateUrl('RessourceBundle_Enfant_index'));
+            return $this->redirect($this->generateUrl('RessourceBundle_Enfant_edit'));
         }
 
         return $this->render('RessourceBundle:Enfant:edit.html.twig', array(
-                    'enfant' => $enfant,
-                    'form' => $form->createView()
+            'enfant' => $enfant,
+            'form' => $form->createView()
         ));
     }
 
