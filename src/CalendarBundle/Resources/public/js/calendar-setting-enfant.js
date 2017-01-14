@@ -23,7 +23,7 @@ $(function () {
         return false;
     }
 
-  $('#selector button').click(function () {
+    $('#selector button').click(function () {
         $(this).addClass('active').siblings().removeClass('active');
 
 
@@ -149,10 +149,9 @@ $(function () {
                     dataType: 'json',
                     success: function (response) {
                         console.log("Element supprimé");
-                        if (response.status === 'success') {
-                            $('#calendar-holder').fullCalendar('removeEvents', event.id);
-                        }
-
+                        productList = ['Electronics Watch', 'House wear Items', 'Kids wear', 'Women Fashion'];
+                        displayConstraint(productList);
+                        $('#calendar-holder').fullCalendar('removeEvents', event.id);
                     }
                 });
             }
@@ -170,8 +169,9 @@ $(function () {
                 type: 'POST',
                 dataType: 'json',
                 success: function (response) {
-
                     console.log('Event added with succes', response);
+                    productList = ['Electronics Watch', 'House wear Items', 'Kids wear', 'Women Fashion'];
+                    displayConstraint(productList);
 
                 },
                 error: function (e) {
@@ -198,8 +198,9 @@ $(function () {
                 type: 'POST',
                 dataType: 'json',
                 success: function (response) {
-
                     console.log('Event added with succes', response);
+                    productList = ['Electronics Watch', 'House wear Items', 'Kids wear', 'Women Fashion'];
+                    displayConstraint(productList);
 
                 },
                 error: function (e) {
@@ -212,3 +213,17 @@ $(function () {
         }
     });
 });
+
+function displayConstraint(liste) {
+    var ul = document.getElementById("ul_constraints");
+    $('#ul_constraints').empty();
+    var t;
+    document.getElementById('constraints').appendChild(ul);
+    liste.forEach(ConstraintList);
+    function ConstraintList(element) {
+        var li = document.createElement('li');
+        ul.appendChild(li);
+        t = document.createTextNode(element);
+        li.innerHTML = li.innerHTML + element;
+    }
+}

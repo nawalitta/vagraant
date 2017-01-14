@@ -13,12 +13,12 @@
     <div class="row">
         <a href="{{ path('Calendar_event_save',{ 'id': app.request.attributes.get('id') }) }}"><button style="margin-left: 25px" type="submit" class="btn btn-success">Sauvegarder</button></a>
         <a href="{{ path('Calendar_event_save',{ 'id': app.request.attributes.get('id') }) }}"><button style="margin-left: 25px" type="submit" class="btn btn-primary">Restaurer</button></a>
-    <div id="selector" class="btn-group">
+        <div style="margin-left: 20px" id="selector" class="btn-group">
             <button type="radio" checked onclick="setParite(0)" class="btn btn-primary active">Semaine 1</button>
             <button type="radio" onclick="setParite(1)" class="btn btn-primary">Semaine 2</button>
 
         </div>
-    
+
     </div>
     <div class="row">
         <div style="margin-left:25px; margin-top: 20px" id='external-events'>
@@ -53,8 +53,9 @@
                     <h3 class="panel-title">Infos sur la plannification</h3>
                 </div>
                 <div class="panel-body">
-                    <ul>
-                    </ul>
+                    <div id="constraint">
+
+                    </div>
                 </div>
             </div>
         </div>
@@ -76,14 +77,14 @@
     <script type="text/javascript" src="{{ asset('bundles/adesignscalendar/js/calendar-setting-enfant.js') }}"></script>
 
     <script>
-        var id = "{{ app.request.attributes.get('id') }}";
-         var parite = 0;
-        function setParite(semaine) {
-            if (semaine != parite) {
-                parite = semaine;
-                $('#calendar-holder').fullCalendar('refetchResources');
-            }
+                var id = "{{ app.request.attributes.get('id') }}";
+                var parite = 0;
+                function setParite(semaine) {
+                    if (semaine != parite) {
+                        parite = semaine;
+                        $('#calendar-holder').fullCalendar('refetchResources');
+                    }
 
-        }
+                }
     </script>
 {% endblock %}

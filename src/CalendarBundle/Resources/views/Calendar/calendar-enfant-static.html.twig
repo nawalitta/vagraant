@@ -18,8 +18,8 @@
     <script type="text/javascript" src="{{ asset('bundles/adesignscalendar/js/calendar-setting-enfant-static.js') }}"></script>
 
     <script>
-            var id = "{{ app.request.attributes.get('id') }}";
-             var parite = 0;
+        var id = "{{ app.request.attributes.get('id') }}";
+        var parite = 0;
         function setParite(semaine) {
             if (semaine != parite) {
                 parite = semaine;
@@ -31,13 +31,9 @@
 {% endblock %}
 
 {% block calendar %}
-        <div class="row">
-   <div id="selector" class="btn-group">
-            <button type="radio" checked onclick="setParite(0)" class="btn btn-primary active">Semaine 1</button>
-            <button type="radio" onclick="setParite(1)" class="btn btn-primary">Semaine 2</button>
-
-        </div>
-    
+    <div style="margin-top: 20px" id="selector" class="btn-group">
+        <button type="radio" checked onclick="setParite(0)" class="btn btn-primary active">Semaine 1</button>
+        <button type="radio" onclick="setParite(1)" class="btn btn-primary">Semaine 2</button>
     </div>
     <div id="calendar-holder"></div>
 {% endblock %}
