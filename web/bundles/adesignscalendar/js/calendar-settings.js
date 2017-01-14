@@ -104,10 +104,8 @@ $(function () {
                     dataType: 'json',
                     success: function (response) {
                         console.log("Element supprimé");
-                        if (response.status === 'success') {
-                            $('#calendar-holder').fullCalendar('removeEvents', event.id);
-                        }
-
+                        displayConstraint(response.constraints);
+                        $('#calendar-holder').fullCalendar('removeEvents', event.id);
                     }
                 });
             }
@@ -126,10 +124,8 @@ $(function () {
                 type: 'POST',
                 dataType: 'json',
                 success: function (response) {
-
                     console.log('Event added with succes', response);
-                    productList = ['Electronics Watch', 'House wear Items', 'Kids wear', 'Women Fashion'];
-                    displayConstraint(productList);
+                    displayConstraint(response.constraints);
                 },
                 error: function (e) {
 
@@ -149,8 +145,8 @@ $(function () {
                 type: 'POST',
                 dataType: 'json',
                 success: function (response) {
-
                     console.log('Event added with succes', response);
+                    displayConstraint(response.constraints);
                 },
                 error: function (e) {
 
@@ -168,7 +164,7 @@ $(function () {
 });
 
 function displayConstraint(liste) {
-    var ul =  document.getElementById("ul_constraints");
+    var ul = document.getElementById("ul_constraints");
     $('#ul_constraints').empty();
     var t;
     document.getElementById('constraints').appendChild(ul);

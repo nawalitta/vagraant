@@ -53,8 +53,12 @@
                     <h3 class="panel-title">Infos sur la plannification</h3>
                 </div>
                 <div class="panel-body">
-                    <div id="constraint">
-
+                    <div id="constraints">
+                        <ul id="ul_constraints">
+                            {% for constraint in constraints %}
+                                <li> {{constraint }}</li>
+                                {% endfor %}
+                        </ul>
                     </div>
                 </div>
             </div>

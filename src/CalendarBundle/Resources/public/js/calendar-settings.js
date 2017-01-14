@@ -104,8 +104,7 @@ $(function () {
                     dataType: 'json',
                     success: function (response) {
                         console.log("Element supprimé");
-                        productList = ['Electronics Watch', 'House wear Items', 'Kids wear', 'Women Fashion'];
-                        displayConstraint(productList);
+                        displayConstraint(response.constraints);
                         $('#calendar-holder').fullCalendar('removeEvents', event.id);
                     }
                 });
@@ -125,10 +124,8 @@ $(function () {
                 type: 'POST',
                 dataType: 'json',
                 success: function (response) {
-
                     console.log('Event added with succes', response);
-                    productList = ['Electronics Watch', 'House wear Items', 'Kids wear', 'Women Fashion'];
-                    displayConstraint(productList);
+                    displayConstraint(response.constraints);
                 },
                 error: function (e) {
 
@@ -149,8 +146,7 @@ $(function () {
                 dataType: 'json',
                 success: function (response) {
                     console.log('Event added with succes', response);
-                    productList = ['Electronics Watch', 'House wear Items', 'Kids wear', 'Women Fashion'];
-                    displayConstraint(productList);
+                    displayConstraint(response.constraints);
                 },
                 error: function (e) {
 

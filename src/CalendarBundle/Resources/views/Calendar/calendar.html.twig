@@ -38,7 +38,9 @@
                 <div class="panel-body">
                     <div id="constraints">
                         <ul id="ul_constraints">
-
+                            {% for constraint in constraints %}
+                                <li> {{constraint }}</li>
+                            {% endfor %}
                         </ul>
                     </div>
                 </div>

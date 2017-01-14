@@ -130,8 +130,8 @@ $(function () {
 
                     console.log('Event added with succes', response);
                     event.id = response.eventid;
-
                     $('#calendar-holder').fullCalendar('updateEvent', event);
+                    displayConstraint(response.constraints);
                 },
                 error: function (e) {
 
@@ -149,9 +149,8 @@ $(function () {
                     dataType: 'json',
                     success: function (response) {
                         console.log("Element supprimé");
-                        productList = ['Electronics Watch', 'House wear Items', 'Kids wear', 'Women Fashion'];
-                        displayConstraint(productList);
                         $('#calendar-holder').fullCalendar('removeEvents', event.id);
+                        displayConstraint(response.constraints);
                     }
                 });
             }
@@ -170,9 +169,7 @@ $(function () {
                 dataType: 'json',
                 success: function (response) {
                     console.log('Event added with succes', response);
-                    productList = ['Electronics Watch', 'House wear Items', 'Kids wear', 'Women Fashion'];
-                    displayConstraint(productList);
-
+                    displayConstraint(response.constraints);
                 },
                 error: function (e) {
 
@@ -199,9 +196,7 @@ $(function () {
                 dataType: 'json',
                 success: function (response) {
                     console.log('Event added with succes', response);
-                    productList = ['Electronics Watch', 'House wear Items', 'Kids wear', 'Women Fashion'];
-                    displayConstraint(productList);
-
+                    displayConstraint(response.constraints);
                 },
                 error: function (e) {
 

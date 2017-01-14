@@ -14,7 +14,8 @@ class CalendarController extends Controller {
      * @return type
      */
     public function indexAction() {
-        return $this->render('ADesignsCalendarBundle:Calendar:calendar.html.twig', array(
+        $constraints = $this->constraint();
+        return $this->render('ADesignsCalendarBundle:Calendar:calendar.html.twig', array("constraints" => $constraints
         ));
     }
 
@@ -31,10 +32,12 @@ class CalendarController extends Controller {
 
         $activitesObligatoire = $enfant->getActivitesObligatoires();
         $activiteOptionnelle = $enfant->getActivitesOptionelles();
+        $constraints = $this->constraint();
 
 
         return $this->render('ADesignsCalendarBundle:Calendar:calendar-enfant.html.twig', array("activitesObligatoire" => $activitesObligatoire,
-                    "activitesOptionnel" => $activiteOptionnelle
+                    "activitesOptionnel" => $activiteOptionnelle,
+                    "constraints" => $constraints
         ));
     }
 
@@ -94,6 +97,7 @@ class CalendarController extends Controller {
         $return = array();
         $return['status'] = "success";
         $return['eventid'] = $evenement->getId();
+        $return['constraints'] = $this->constraint();
 
         $response = new \Symfony\Component\HttpFoundation\Response();
         $response->headers->set('Content-Type', 'application/json');
@@ -120,6 +124,7 @@ class CalendarController extends Controller {
 
         $return = array();
         $return['status'] = "success";
+        $return['constraints'] = $this->constraint();
 
         $response = new \Symfony\Component\HttpFoundation\Response();
         $response->headers->set('Content-Type', 'application/json');
@@ -365,11 +370,7 @@ class CalendarController extends Controller {
      * Verification des contraintes
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function constraintAction() {
-
-        $response = new \Symfony\Component\HttpFoundation\Response();
-        $response->headers->set('Content-Type', 'application/json');
-
+    public function constraint() {
 
         // Get Repository 
         $entityManager = $this->getDoctrine()->getManager();
@@ -421,14 +422,14 @@ class CalendarController extends Controller {
             $enfantsDispo = $this->enfantDisponible($event);
 
             if ($enfantsDispo == false) {
-                $return_constraint_text[] = "- " . $enfant->getPrenom() . " " . $enfant->getNom() . " n'est pas disponible !\n";
+                $return_constraint_text[] = "" . $enfant->getPrenom() . " " . $enfant->getNom() . " n'est pas disponible !\n";
                 $erreur = true;
             }
 
             //Contrainte déroulement activité
             $activiteplanifie = $this->activitePlanifie($event);
             if ($activiteplanifie == false) {
-                $return_constraint_text[] = " L'activité " . $activite->getDesignation() . " ne peut pas se dérouler durant ce créneau horaire !\n";
+                $return_constraint_text[] = "L'activité " . $activite->getDesignation() . " ne peut pas se dérouler durant ce créneau horaire !\n";
                 $erreur = true;
             }
 
@@ -447,7 +448,7 @@ class CalendarController extends Controller {
             $activite_min_enfant = $activite->getNbEnfantsMin();
 
             if ($nombreEnfant_event < $activite_min_enfant) {
-                $return_constraint_text[] = "L'activité" . $activite->getDesignation() . " ne respecte pas le nombre d'enfants minimum !\n";
+                $return_constraint_text[] = "L'activité " . $activite->getDesignation() . " ne respecte pas le nombre d'enfants minimum !\n";
                 $erreur = true;
             }
 
@@ -457,7 +458,7 @@ class CalendarController extends Controller {
             $dureeMax = $activite->getDureeMax();
 
             if ($dureeActivite_event > $dureeMax) {
-                $return_constraint_text[] = "La durée de l'activité" . $activite->getDesignation() . " est trop longue !\n";
+                $return_constraint_text[] = "La durée de l'activité " . $activite->getDesignation() . " est trop longue !\n";
                 $erreur = true;
             }
 
@@ -465,7 +466,7 @@ class CalendarController extends Controller {
             $dureeMin = $activite->getDureeMin();
 
             if ($dureeActivite_event < $dureeMin) {
-                $return_constraint_text[] = "La durée de l'activité" . $activite->getDesignation() . "est trop courte !\n";
+                $return_constraint_text[] = "La durée de l'activité " . $activite->getDesignation() . "est trop courte !\n";
                 $erreur = true;
             }
         }
@@ -475,9 +476,7 @@ class CalendarController extends Controller {
             $return_constraint_text[] = "Aucune erreur detectee";
         }
 
-        $response->setContent(json_encode($return_constraint_text));
-
-        return $response;
+        return $return_constraint_text;
     }
 
     /**
@@ -692,4 +691,5 @@ class CalendarController extends Controller {
         }
         return $result;
     }
+
 }

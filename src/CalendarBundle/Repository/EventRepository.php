@@ -25,10 +25,9 @@ class EventRepository extends EntityRepository {
                 . "                         GROUP BY event.activite, event.jour, event.startDatetime");
         $query->setParameter('activite', $activite);
 
-        $result = $query->getSingleResult();
+        $result = $query->getResult();
 
-
-        return $result ['1'];
+        return $result ['0'];
     }
 
     /**
@@ -43,9 +42,9 @@ class EventRepository extends EntityRepository {
                 . "                         WHERE event.activite = :activite ");
         $query->setParameter('activite', $activite);
 
-        $result = $query->getSingleResult();
-        $endDatetime = $result['endDatetime'];
-        $startDatetime = $result['startDatetime'];
+        $result = $query->getResult();
+        $endDatetime = $result[0]['endDatetime'];
+        $startDatetime = $result[0]['startDatetime'];
         $diff = abs($endDatetime->getTimestamp() - $startDatetime->getTimestamp()) / 60; //durée en minutes          
         return $diff;
     }
