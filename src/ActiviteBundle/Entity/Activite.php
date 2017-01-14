@@ -10,6 +10,7 @@ use RessourceBundle\Entity\FenetreHoraire;
 use RessourceBundle\Entity\Preaffection;
 use Symfony\Component\Validator\Constraints as Assert;
 
+
 /**
  * activite
  *
@@ -85,19 +86,19 @@ class Activite {
     private $dureeTransport;
 
     /**
-     * @ORM\ManyToOne(targetEntity="ActiviteBundle\Entity\TypeActivite", inversedBy="activites")
+     * @ORM\ManyToOne(targetEntity="ActiviteBundle\Entity\TypeActivite", inversedBy="activites" )
      * @ORM\JoinColumn(nullable=false)
      */
     private $typeActivite;
 
     /**
-     * @ORM\ManyToOne(targetEntity="RessourceBundle\Entity\FenetreHoraire",inversedBy="activites")
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\ManyToOne(targetEntity="RessourceBundle\Entity\FenetreHoraire",inversedBy="activites" )
+     * @ORM\JoinColumn(nullable=true)
      */
     private $fenetreHoraire;
 
     /**
-     * @ORM\ManyToMany(targetEntity="RessourceBundle\Entity\Enfant", mappedBy="activitesOptionelles")
+     * @ORM\ManyToMany(targetEntity="RessourceBundle\Entity\Enfant", mappedBy="activitesOptionelles" )
      */
     private $enfantsOptionnels;
 

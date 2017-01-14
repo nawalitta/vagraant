@@ -2,37 +2,46 @@
 
 namespace ActiviteBundle\Controller;
 
+use ActiviteBundle\Entity\Activite;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use ActiviteBundle\Form\ActiviteType;
+use Symfony\Component\HttpFoundation\Response;
 
-class ActiviteController extends Controller {
+class ActiviteController extends Controller
+{
 
     /**
      * Affichage de toutes les Activite présentes dans la bdd
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function indexAction(Request $request) {
+    public function indexAction(Request $request)
+    {
         $entityManager = $this->getDoctrine()->getManager();
         $activiteRepository = $entityManager->getRepository("ActiviteBundle:Activite");
-        
-    //Récupere la liste des activités coché afin de les supprimer
-        $listActivite=$request->get('idActivites');
-        if($listActivite !=null){
-            foreach ($listActivite as $id){
-
+        $erreurMsg = "";
+        //Récupere la liste des activités coché afin de les supprimer
+        $listActivite = $request->get('idActivites');
+        if ($listActivite != null) {
+            foreach ($listActivite as $id) {
                 $activite = $activiteRepository->findOneById($id);
                 if ($activite != null) {
                     $entityManager->remove($activite);
                 }
-                $entityManager->flush();
-            }           
+                try{
+                    $entityManager->flush();
+                } catch (\Exception $ex) {
+                    //Problème de clé étrangère encore présente
+                    $erreurMsg = " Ces activités sont encore affectées quelque part";
+                }
+            }
         }
+        
+        //Fin suppression des éléments
         $activites = $activiteRepository->findAll();
 
-        
         return $this->render('ActiviteBundle:Activite:index.html.twig', array(
-                    "activites" => $activites
+            "activites" => $activites,"erreur"=>$erreurMsg
         ));
     }
 
@@ -40,13 +49,14 @@ class ActiviteController extends Controller {
      * Affichage d'une Activite présent dans la bdd
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function showAction($id) {
+    public function showAction($id)
+    {
         $entityManager = $this->getDoctrine()->getManager();
         $activiteRepository = $entityManager->getRepository("ActiviteBundle:Activite");
         $activite = $activiteRepository->findOneById($id);
 
         return $this->render('ActiviteBundle:Activite:show.html.twig', array(
-                    "activite" => $activite
+            "activite" => $activite
         ));
     }
 
@@ -54,9 +64,10 @@ class ActiviteController extends Controller {
      * @param null $id : si null alors ajout
      *                   sinon édition d'une Activite
      * @param Request $request
-     * @return \Symfony\Component\HttpFoundation\Response
+     * @return Response
      */
-    public function editAction($id = null, Request $request) {
+    public function editAction($id = null, Request $request)
+    {
         $entityManager = $this->getDoctrine()->getManager();
         /*
         $typeActivitRepository = $entityManager->getRepository('ActiviteBundle:TypeActivite');
@@ -64,13 +75,13 @@ class ActiviteController extends Controller {
             $this->get('session')->getFlashBag()->add('alert', 'Type Activite requis.');
             return $this->redirect($this->generateUrl('ActiviteBundle_TypeActivite_edit'));
         }
-
         */
+
         $activiteRepository = $entityManager->getRepository("ActiviteBundle:Activite");
         $activite = $activiteRepository->findOneById($id);
 
         if ($activite == null) {
-            $activite = new \ActiviteBundle\Entity\Activite();
+            $activite = new Activite();
         }
 
         $form = $this->createForm(ActiviteType::class, $activite);
@@ -83,12 +94,12 @@ class ActiviteController extends Controller {
 
             $this->get('session')->getFlashBag()->add('notice', 'Activite bien enregistrée.');
 
-            return $this->redirect($this->generateUrl('ActiviteBundle_Activite_index'));
+            return $this->redirectToRoute('RessourceBundle_BesoinTypeRessource_edit', array('id'=> 'null','idActivite' => $activite->getId()));
         }
 
         return $this->render('ActiviteBundle:Activite:edit.html.twig', array(
-                    'activite' => $activite,
-                    'form' => $form->createView()
+            'activite' => $activite,
+            'form' => $form->createView()
         ));
     }
 
@@ -97,7 +108,8 @@ class ActiviteController extends Controller {
      * @param null $id
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function deleteAction($id) {
+    public function deleteAction($id)
+    {
         $entityManager = $this->getDoctrine()->getManager();
 
         $activiteRepository = $entityManager->getRepository("ActiviteBundle:Activite");
@@ -109,5 +121,5 @@ class ActiviteController extends Controller {
 
         return $this->redirect($this->generateUrl('ActiviteBundle_Activite_index'));
     }
-    
+
 }

@@ -1,12 +1,13 @@
 {% extends "::base.html.twig" %}
 
-{% block title %}Edition type ressource{% endblock %}
+{% block title %}Edition Groupe{% endblock %}
+
 
 {% block body %}
-    <h1>Edition d'un type de ressource</h1>
+    <h1>Edition d'un groupe</h1>
     <form method="post">
         <div class="form-group row">
-            <label for="example-text-input" class="col-md-offset-3 col-md-1 col-form-label">Nom du type de ressource</label>
+            <label for="example-text-input" class="col-md-offset-3 col-md-1 col-form-label">Nom du groupe</label>
             <div class="col-md-2">
                 {{ form_errors(form.designation) }}
                 {{ form_widget(form.designation) }}

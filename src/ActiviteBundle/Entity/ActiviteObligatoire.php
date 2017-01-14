@@ -45,13 +45,13 @@ class ActiviteObligatoire
 
     /**
      * @ORM\ManyToOne(targetEntity="Activite",inversedBy="enfantsObligatoires")
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\JoinColumn(nullable=true)
      */
     private $activite;
 
     /**
      * @ORM\ManyToOne(targetEntity="RessourceBundle\Entity\Enfant",inversedBy="activitesObligatoires")
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\JoinColumn(nullable=true)
      */
     private $enfant;
 
@@ -124,9 +124,9 @@ class ActiviteObligatoire
         return $this;
     }
 
-    public function __construct()
+    public function __construct($activite)
     {
-
+        $this->activite = $activite;
     }
 
     public function __toString()

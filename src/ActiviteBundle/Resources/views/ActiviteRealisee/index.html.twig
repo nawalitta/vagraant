@@ -1,12 +1,62 @@
 {% extends "::base.html.twig" %}
 
-{% block title %}ActiviteBundle:ActiviteRealisee:index{% endblock %}
-
 {% block body %}
-<h1>Welcome to the ActiviteRealisee:index page</h1>
-
-{% for activiteRealisee in activitesRealisees %}
-    Activite Realisee n° : {{activiteRealisee.id}}
-    {% include 'ActiviteBundle:ActiviteRealisee:preview.html.twig' %}  
-{% endfor %}
+<nav class = "navbar navbar-default" >
+    <div>
+        <ul class = "nav navbar-nav">
+            <li><a href = "{{path('ActiviteBundle_Activite_edit')}}"><input type="button" class="btn btn-primary" name="btnAjout" value="Ajouter une activite"/></a></li>
+        </ul>
+     </div>
+</nav>
+<nav class = "navbar navbar-default" >
+    <div>
+        <ul class = "nav navbar-nav">
+            <li><a href = "{{path('ActiviteBundle_Activite_edit')}}"><input type="button" class="btn btn-primary" name="btnAjout" value="Ajouter une activite"/></a></li>
+        </ul>
+     </div>
+</nav>
+<form>
+    <div class="form-group">
+        <label for="sel1">Liste des enfants :</label>
+        <select class="form-control" id="enfantId">
+            {% for enfant in enfants %}
+                <option value="{{enfant.id}}">{{ enfant.prenom ~" "~ enfant.nom}}</option>
+            {% endfor %}
+        </select>
+<button type="submit" class="btn btn-default">Selectionner</button>
+</div>   
+</form>
+<form>
+    <div class="table-responsive">
+        <table class="table">
+             <caption>Liste des activités fixées</caption>
+            <tr>
+                <th> # </th>
+                <th> Designation </th>
+                <th> Type Activite </th>
+                <th> Heure </th>
+                <th> Jour/parité </th>
+                <th> Enfant </th>
+                <th> Selection </th>
+            </tr>
+        {% for activiteR in activitesRealisees %}
+            <tr>
+                {% include 'ActiviteBundle:ActiviteRealisee:preview.html.twig' %}  
+                <td>
+                    <div class="form-check">
+                        <label class="form-check-label">
+                            <input type="checkbox" name="idActiviteRealisee[]" value="{{activiteR.id}}" class="form-check-input">
+                        </label>
+                    </div>
+                </td>
+            </tr>
+        {% endfor %}
+        <tr>
+            <td></td><td></td><td></td><td></td><td></td><td></td>
+            <td><button type="submit" class="btn btn-primary">Supprimer</button></td>
+        </tr>
+        </table>
+        
+</form>
+</div>
 {% endblock %}

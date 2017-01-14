@@ -24,19 +24,19 @@ class Preaffection
 
     /**
      * @ORM\ManyToOne(targetEntity="Enfant",inversedBy="preAffections")
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\JoinColumn(nullable=true)
      */ 
     private $enfant;
     
     /**
      * @ORM\ManyToOne(targetEntity="ActiviteBundle\Entity\Activite",inversedBy="preAffections")
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\JoinColumn(nullable=true)
      */ 
     private $activite;
     
     /**
      * @ORM\ManyToOne(targetEntity="Ressource",inversedBy="preAffections")
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\JoinColumn(nullable=true)
      */ 
     private $ressource;
 

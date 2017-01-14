@@ -9,22 +9,41 @@ use ActiviteBundle\Form\TypeActiviteType;
 class TypeActiviteController extends Controller
 {
     /**
-     * Affichage de toutes les TypeActivite présentes dans la bdd
+     * Affichage de tous les type d'activités présents dans la bdd
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function indexAction()
+    public function indexAction(Request $request)
     {
         $entityManager = $this->getDoctrine()->getManager();
         $typeActiviteRepository = $entityManager->getRepository("ActiviteBundle:TypeActivite");
-        $typeActivites = $typeActiviteRepository->findAll();
+        $erreurMsg = "";
+        //Récupere la liste des types d'activités coché afin de les supprimer
+        $listeTypeActivite = $request->get('idTypeActivites');
+        if ($listeTypeActivite != null) {
+            foreach ($listeTypeActivite as $id) {
+                $typeActivite = $typeActiviteRepository->findOneById($id);
+                if ($typeActivite != null) {
+                    $entityManager->remove($typeActivite);
+                }
+                try{
+                    $entityManager->flush();
+                } catch (\Exception $ex) {
+                    //Problème de clé étrangère encore présente
+                    $erreurMsg = "Ces types d'activités sont encore affectées";
+                }
+            }
+        }
+
+        //Fin suppression des éléments
+        $typeActivites= $typeActiviteRepository->findAll();
 
         return $this->render('ActiviteBundle:TypeActivite:index.html.twig', array(
-        "typeActivites"=>$typeActivites
+            "typeActivites" => $typeActivites,"erreur"=>$erreurMsg
         ));
     }
     
     /**
-     * Affichage d'un TypeActivite présent dans la bdd
+     * Affichage d'un type d'activite présent dans la bdd
      * @return \Symfony\Component\HttpFoundation\Response
      */
     public function showAction($id)
@@ -64,7 +83,8 @@ class TypeActiviteController extends Controller
 
             $this->get('session')->getFlashBag()->add('notice', 'TypeActivite bien enregistrée.');
 
-            return $this->redirect($this->generateUrl('ActiviteBundle_TypeActivite_index'));
+            return $this->redirect($this->generateUrl('ActiviteBundle_Activite_edit'));               
+
         }
 
         return $this->render('ActiviteBundle:TypeActivite:edit.html.twig', array(

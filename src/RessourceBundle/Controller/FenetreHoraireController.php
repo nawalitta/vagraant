@@ -2,9 +2,11 @@
 
 namespace RessourceBundle\Controller;
 
+use RessourceBundle\Entity\FenetreHoraire;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use RessourceBundle\Form\FenetreHoraireType;
+use Symfony\Component\HttpFoundation\Response;
 
 class FenetreHoraireController extends Controller
 {
@@ -17,24 +19,30 @@ class FenetreHoraireController extends Controller
         $entityManager = $this->getDoctrine()->getManager();
         $fenetreHoraireRepository = $entityManager->getRepository("RessourceBundle:FenetreHoraire");
         $fenetresHoraire = $fenetreHoraireRepository->findAll();
-        
-        //Récupere la liste des enfants coché afin de les supprimer
+        $erreurMsg = "";
+        //Récupere la liste des fenetres horaires coché afin de les supprimer
         $listFh=$request->get('idfhs');
         if($listFh !=null){
             foreach ($listFh as $id){
 
                 $fh = $fenetreHoraireRepository->findOneById($id);
-                if ($fh != null) {
-                    $entityManager->remove($fh);
+                try{
+                    if ($fh != null) {
+                        $entityManager->remove($fh);
+                    }
+                    $entityManager->flush();
+                }catch (\Exception $e) {
+                    //Problème de suppression
+                    $erreurMsg = "Les fenêtres horaires sélectionnées sont encore affectées !";
                 }
-                $entityManager->flush();
+
             }           
         }
         return $this->render('RessourceBundle:FenetreHoraire:index.html.twig', array(
-        "fenetresHoraire"=>$fenetresHoraire
+        "fenetresHoraire"=>$fenetresHoraire,"erreur"=>$erreurMsg
         ));
     }
-    
+
     /**
      * Affichage d'une FenetreHoraire présent dans la bdd
      * @return \Symfony\Component\HttpFoundation\Response
@@ -44,9 +52,9 @@ class FenetreHoraireController extends Controller
         $entityManager = $this->getDoctrine()->getManager();
         $fenetreHoraireRepository = $entityManager->getRepository("RessourceBundle:FenetreHoraire");
         $fenetreHoraire = $fenetreHoraireRepository->findOneById($id);
-        
+
         return $this->render('RessourceBundle:FenetreHoraire:show.html.twig', array(
-        "fenetreHoraire"=>$fenetreHoraire
+            "fenetreHoraire" => $fenetreHoraire
         ));
     }
 
@@ -54,34 +62,42 @@ class FenetreHoraireController extends Controller
      * @param null $id : si null alors ajout
      *                   sinon édition d'une FenetreHoraire
      * @param Request $request
-     * @return \Symfony\Component\HttpFoundation\Response
+     * @return Response response
      */
-    public function editAction($id=null,Request $request)
+    public function editAction($id = null,$pageRequete, Request $request)
     {
         $entityManager = $this->getDoctrine()->getManager();
         $fenetreHoraireRepository = $entityManager->getRepository("RessourceBundle:FenetreHoraire");
         $fenetreHoraire = $fenetreHoraireRepository->findOneById($id);
-        
-        if($fenetreHoraire==null){
-            $fenetreHoraire=new \RessourceBundle\Entity\FenetreHoraire();
+
+        if ($fenetreHoraire == null) {
+            $fenetreHoraire = new FenetreHoraire();
         }
-        
-        $form = $this->createForm(FenetreHoraireType::class,$fenetreHoraire);
+
+        $form = $this->createForm(FenetreHoraireType::class, $fenetreHoraire);
         $form->handleRequest($request);
-        
-        if($form->isValid()){
-            
+
+        if ($form->isValid()) {
+
             $entityManager->persist($fenetreHoraire);
             $entityManager->flush();
-            
-            $this->get('session')->getFlashBag()->add('notice', 'FenetreHoraire bien enregistrée.');
 
-            return $this->redirect($this->generateUrl('RessourceBunde_FenetreHoraire_index'));
+            $this->get('session')->getFlashBag()->add('notice', 'FenetreHoraire bien enregistrée.');
+            if($pageRequete=="Activite"){
+                return $this->redirect($this->generateUrl('ActiviteBundle_Activite_edit'));
+            }else{
+                if($pageRequete=="Enfant"){
+                    return $this->redirect($this->generateUrl('RessourceBundle_Enfant_edit'));
+                }else{
+                    return $this->redirect($this->generateUrl('RessourceBunde_FenetreHoraire_index'));
+                }
+            }
+
         }
-        
+
         return $this->render('RessourceBundle:FenetreHoraire:edit.html.twig', array(
-        'fenetreHoraire'=>$fenetreHoraire,
-        'form' => $form->createView()
+            'fenetreHoraire' => $fenetreHoraire,
+            'form' => $form->createView()
         ));
     }
 
@@ -89,18 +105,18 @@ class FenetreHoraireController extends Controller
      * Suppression d'une FenetreHoraire
      * @param null $id
      * @return \Symfony\Component\HttpFoundation\Response
-     */    
+     */
     public function deleteAction($id)
     {
         $entityManager = $this->getDoctrine()->getManager();
-  
+
         $fenetreHoraireRepository = $entityManager->getRepository("RessourceBundle:FenetreHoraire");
         $fenetreHoraire = $fenetreHoraireRepository->findOneById($id);
-        if($fenetreHoraire!=null){
-            $entityManager->remove ($fenetreHoraire);
+        if ($fenetreHoraire != null) {
+            $entityManager->remove($fenetreHoraire);
         }
         $entityManager->flush();
-       
+
         return $this->redirect($this->generateUrl('RessourceBundle_FenetreHoraire_index'));
     }
 

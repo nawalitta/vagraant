@@ -1,6 +1,2 @@
-<table>
-    <tr>
-        <td>Designation</td>
-        <td>{{ typeActivite.designation }}</td>
-    </tr>
-</table>
+<td><a href="{{ path('ActiviteBundle_TypeActivite_show',{ 'id': typeActivite.id }) }}">{{ typeActivite.id }}</td>
+<td><a href="{{ path('ActiviteBundle_TypeActivite_show',{ 'id': typeActivite.id }) }}">{{ typeActivite.designation }}</td>

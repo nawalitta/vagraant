@@ -41,18 +41,18 @@ class Ressource
 
     /**
      * @ORM\ManyToOne(targetEntity="FenetreHoraire", inversedBy="ressources")
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\JoinColumn(nullable=true)
      */
     private $fenetreHoraire;
 
     /**
      * @ORM\ManyToOne(targetEntity="TypeRessource", inversedBy="ressources")
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\JoinColumn(nullable=true)
      */
     private $typeRessource;
 
     /**
-     * @ORM\OneToMany(targetEntity="Preaffection", mappedBy="ressource")
+     * @ORM\OneToMany(targetEntity="Preaffection", mappedBy="ressource", cascade={"persist", "remove"})
      */
     private $preAffections;
 

@@ -52,13 +52,13 @@ class BesoinTypeRessource
 
      /**
      * @ORM\ManyToOne(targetEntity="ActiviteBundle\Entity\Activite",inversedBy="besoinsTypeRessources")
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\JoinColumn(nullable=true)
      */
     private $activite;
 
      /**
      * @ORM\ManyToOne(targetEntity="TypeRessource",inversedBy="besoinsTypeRessources")
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\JoinColumn(nullable=true)
      */
     private $typeRessource;
 

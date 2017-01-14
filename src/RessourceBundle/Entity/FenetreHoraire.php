@@ -3,6 +3,7 @@
 namespace RessourceBundle\Entity;
 
 use DateTime;
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 use ActiviteBundle\Entity\Activite;
@@ -99,7 +100,7 @@ class FenetreHoraire
     private $ressources;
 
     /**
-     * @ORM\OneToMany(targetEntity="ActiviteBundle\Entity\Activite", mappedBy="fenetreHoraire")
+     * @ORM\OneToMany(targetEntity="ActiviteBundle\Entity\Activite", mappedBy="fenetreHoraire" )
      */
     private $activites;
 
@@ -469,8 +470,12 @@ class FenetreHoraire
     {
         return $this->enfants;
     }
+
+    /**
+     * @return string
+     */
     public function __toString()
     {
-        return " ";
+        return "Lundi( ". $this->lundiDebut->format('H:i')." - ".$this->lundiFin->format('H:i')." ) - Mardi( ".$this->mardiDebut->format('H:i')." - ".$this->mardiFin->format('H:i')." ) - Mercredi( ".$this->mercrediDebut->format('H:i')." - ".$this->mercrediFin->format('H:i')." ) - Jeudi( ".$this->jeudiDebut->format('H:i')." - ".$this->jeudiFin->format('H:i').") - Vendredi( ".$this->vendrediDebut->format('H:i')." - ".$this->vendrediFin->format('H:i')." )";
     }
 }

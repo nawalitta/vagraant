@@ -1,23 +1,6 @@
-<table>
-    <tr>
-        <td>Enfant</td>
-        <td>{{ activiteRealisee.enfant.prenom }} {{ activiteRealisee.enfant.nom }}</td>
-        
-    </tr>
-    <tr>
-        <td>Activite</td>
-        <td>{{ activiteRealisee.activite.designation }}</td>
-    </tr>
-    <tr>
-        <td>Jour</td>
-        <td> Semaine {{ activiteRealisee.jour.parite }} {{ activiteRealisee.jour.designation }}</td>
-    </tr>
-    <tr>
-        <td>Heure Début</td>
-        <td>{{ activiteRealisee.heureDebut }}</td>
-    </tr>
-    <tr>
-        <td>Heure de Fin</td>
-        <td>{{ activiteRealisee.heureFin }}</td>
-    </tr>
-</table>
+<td> {{ activiteR.id }} </td>
+<td> {{ activiteR.activite.getDesignation() }}</td>
+<td> {{ activiteR.activite.getTypeActivite().getDesignation() }} </td>
+<td> {{ activiteR.heureDebut|date('H:i') ~ "-"~ activiteR.heureFin|date('H:i') }} </td>
+<td> {{ activiteR.jour.getDesignation() ~'/'~ activiteR.jour.getParite() }} </td>
+<td> {{ activiteR.enfant.getPrenom() ~" "~ activiteR.enfant.getNom() }} </td>

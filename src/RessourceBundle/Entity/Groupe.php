@@ -2,6 +2,8 @@
 
 namespace RessourceBundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -94,17 +96,17 @@ class Groupe
      */
     public function __construct()
     {
-        $this->enfants = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->enfants = new ArrayCollection();
     }
 
     /**
      * Add enfant
      *
-     * @param \RessourceBundle\Entity\Enfant $enfant
+     * @param Enfant $enfant
      *
      * @return Groupe
      */
-    public function addEnfant(\RessourceBundle\Entity\Enfant $enfant)
+    public function addEnfant(Enfant $enfant)
     {
         $this->enfants[] = $enfant;
 
@@ -114,9 +116,9 @@ class Groupe
     /**
      * Remove enfant
      *
-     * @param \RessourceBundle\Entity\Enfant $enfant
+     * @param Enfant $enfant
      */
-    public function removeEnfant(\RessourceBundle\Entity\Enfant $enfant)
+    public function removeEnfant(Enfant $enfant)
     {
         $this->enfants->removeElement($enfant);
     }
@@ -124,10 +126,15 @@ class Groupe
     /**
      * Get enfants
      *
-     * @return \Doctrine\Common\Collections\Collection
+     * @return Collection
      */
     public function getEnfants()
     {
         return $this->enfants;
+    }
+
+    public function __toString()
+    {
+        return $this->designation;
     }
 }

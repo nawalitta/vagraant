@@ -1,7 +1,56 @@
 {% extends "::base.html.twig" %}
 
-{% block title %}RessourceBundle:TypeRessource:index{% endblock %}
+{% block title %}Liste type de ressources{% endblock %}
 
 {% block body %}
-<h1>Welcome to the TypeRessource:index page</h1>
+    <nav class="navbar navbar-default">
+        <div>
+            <ul class="nav navbar-nav">
+                <li><a href="{{ path('RessourceBundle_TypeRessource_edit') }}"><input type="button"
+                                                                                    class="btn btn-primary"
+                                                                                    name="btnAjout"
+                                                                                    value="Ajouter un type de ressource"/></a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    {% if erreur!="" %}
+        <div class="alert alert-danger" role="alert">
+            <label>
+                {{ erreurMsg }}
+            </label>
+        </div>
+    {% endif %}
+    <form method="post">
+        <div class="table-responsive">
+            <table class="table">
+                <caption>Liste des types d'activités</caption>
+                <tr>
+                    <th> Type ressource id</th>
+                    <th> Nom type ressource</th>
+                    <th> Selection</th>
+                </tr>
+                {% for typeRessource in typeRessources %}
+                    <tr>
+                        {% include 'RessourceBundle:TypeRessource:preview.html.twig' %}
+                        <td>
+                            <div class="form-check">
+                                <label class="form-check-label">
+                                    <input type="checkbox" name="idTypeRessources[]" value="{{ typeRessource.id }}"
+                                           class="form-check-input">
+                                </label>
+                            </div>
+                        </td>
+                    </tr>
+                {% endfor %}
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td>
+                        <button type="submit" class="btn btn-primary">Supprimer</button>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </form>
 {% endblock %}

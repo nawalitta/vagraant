@@ -12,14 +12,37 @@ class ActiviteRealiseeController extends Controller
      * Affichage de toutes les ActiviteRealisee présentes dans la bdd
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function indexAction()
+    public function indexAction(Request $request)
     {
         $entityManager = $this->getDoctrine()->getManager();
         $activiteRealiseeRepository = $entityManager->getRepository("ActiviteBundle:ActiviteRealisee");
         $activitesRealisees = $activiteRealiseeRepository->findAll();
+        $enfantRepository = $entityManager->getRepository("RessourceBundle:Enfant");
+        $enfants = $enfantRepository->findAll();
+        $erreurMsg = "";
+        
+        //Récupere la liste des activités coché afin de les supprimer
+        $listActiviteR=$request->get('idActivitesRealisee');
+        if($listActiviteR !=null){
+            foreach ($listActiviteR as $id){
+
+                $activiteR = $activiteRealiseeRepository->findOneById($id);
+                if ($activiteR != null) {
+                    $entityManager->remove($activiteR);
+                }
+                try{
+                    $entityManager->flush();                   
+                } catch (Exception $ex) {
+                    $erreurMsg = " un enfant possede encore cette activite";
+                }
+
+            }           
+        }
+        
+        //Fin suppression des éléments
         
         return $this->render('ActiviteBundle:ActiviteRealisee:index.html.twig', array(
-        "activitesRealisees"=>$activitesRealisees
+        "activitesRealisees"=>$activitesRealisees,"enfants"=>$enfants,"erreur"=>$erreurMsg
         ));
     }
     

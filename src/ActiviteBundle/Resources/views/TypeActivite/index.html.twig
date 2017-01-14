@@ -1,13 +1,56 @@
 {% extends "::base.html.twig" %}
 
-{% block title %}ActiviteBundle:TypeActivite:edit{% endblock %}
+{% block title %}Liste type activités{% endblock %}
 
 {% block body %}
-<h1>Welcome to the TypeActivite:index page</h1>
-
-{% for typeActivite in TypesActivites %}
-    Activite Fixee n° : {{typeActivite.id}}
-    {% include 'ActiviteBundle:TypeActivite:preview.html.twig' %}  
-{% endfor %}
-
+    <nav class="navbar navbar-default">
+        <div>
+            <ul class="nav navbar-nav">
+                <li><a href="{{ path('ActiviteBundle_TypeActivite_edit') }}"><input type="button"
+                                                                                    class="btn btn-primary"
+                                                                                    name="btnAjout"
+                                                                                    value="Ajouter un type d'activite"/></a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    {% if erreur!="" %}
+        <div class="alert alert-danger" role="alert">
+            <label>
+                {{ erreurMsg }}
+            </label>
+        </div>
+    {% endif %}
+    <form method="post">
+        <div class="table-responsive">
+            <table class="table">
+                <caption>Liste des types d'activités</caption>
+                <tr>
+                    <th> Type activité id</th>
+                    <th> Nom type activité</th>
+                    <th> Selection</th>
+                </tr>
+                {% for typeActivite in typeActivites %}
+                    <tr>
+                        {% include 'ActiviteBundle:TypeActivite:preview.html.twig' %}
+                        <td>
+                            <div class="form-check">
+                                <label class="form-check-label">
+                                    <input type="checkbox" name="idTypeActivites[]" value="{{ typeActivite.id }}"
+                                           class="form-check-input">
+                                </label>
+                            </div>
+                        </td>
+                    </tr>
+                {% endfor %}
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td>
+                        <button type="submit" class="btn btn-primary">Supprimer</button>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </form>
 {% endblock %}

@@ -1,18 +1,14 @@
-<table>
-    <tr>
-        <td>Enfant</td>
-        <td>{{ activiteObligatoire.enfant.prenom }} {{ activiteObligatoire.enfant.nom }}</td>
-    </tr>
-    <tr>
-        <td>Activite</td>
-        <td>{{ activiteObligatoire.activite.designation }}</td>
-    </tr>
-    <tr>
-        <td>Quotas</td>
-        <td>{{ activiteObligatoire.quotas }}</td>
-    </tr>
-    <tr>
-        <td>Ecart</td>
-        <td>{{ activiteObligatoire.ecart }}</td>
-    </tr>
-</table>
+<td>
+    <a href="{{ path('ActiviteBundle_Activite_show',{ 'id': activiteObligatoire.activite.getId() }) }}">{{ activiteObligatoire.activite.getId() }}</a>
+</td>
+<td>
+    <a href="{{ path('ActiviteBundle_Activite_show',{ 'id': activiteObligatoire.activite.getId() }) }}">{{ activiteObligatoire.activite.getDesignation() }}</a>
+</td>
+<td> {{ activiteObligatoire.activite.getTypeActivite().getDesignation() }}</td>
+<td> {{ activiteObligatoire.activite.getDureeMin() }}</td>
+<td> {{ activiteObligatoire.activite.getDureeMax() }}</td>
+<td> {{ activiteObligatoire.activite.getNbEnfantsMin() }}</td>
+<td> {{ activiteObligatoire.activite.getNbEnfantsMax() }}</td>
+<td> {{ activiteObligatoire.activite.getDureeTransport() }}</td>
+<td> {{ activiteObligatoire.getEcart() }}</td>
+<td> {{ activiteObligatoire.getQuotas() }}</td>

@@ -1,5 +1,5 @@
  #---------------TYPE ACTIVITE-----------------------------
-ActiviteBundle_TypeActivite_index :
+ActiviteBundle_TypeActivite_index:
     path:     typeActivite/
     defaults: { _controller: ActiviteBundle:TypeActivite:index }
 
@@ -16,7 +16,7 @@ ActiviteBundle_TypeActivite_show:
     defaults: { _controller: ActiviteBundle:TypeActivite:show }
     
 # ---------------ACTIVITE--------------------------------------------------------
-ActiviteBundle_Activite_index :
+ActiviteBundle_Activite_index:
     path:     activite/
     defaults: { _controller: ActiviteBundle:Activite:index }
 
@@ -31,10 +31,6 @@ ActiviteBundle_Activite_show:
 ActiviteBundle_Activite_delete:
     path: activite/delete/{id}
     defaults: { _controller: ActiviteBundle:Activite:delete, id : null }
-
-ActiviteBundle_Activite_deletes:
-    path: activite/deletes/{listActivite}
-    defaults: { _controller: ActiviteBundle:Activite:deletes }
     
 
 #---------------ACTIVITE OBLIGATOIRE ---------------------------------------------
@@ -73,6 +69,25 @@ ActiviteBundle_ActiviteFixee_delete:
 ActiviteBundle_ActiviteFixee_edit:
     path:     ActiviteFixee/edit/{id}
     defaults: { _controller: ActiviteBundle:ActiviteFixee:edit , id : null }
+
+ #---------------ACTIVITE REALISEE-----------------------------
+
+ActiviteBundle_ActiviteRealisee_index:
+    path:     ActiviteRealisee/
+    defaults: { _controller: ActiviteBundle:ActiviteRealisee:index }
+
+
+ActiviteBundle_ActiviteRealisee_show:
+    path:     ActiviteRealisee/show/{id}
+    defaults: { _controller: ActiviteBundle:ActiviteRealisee:show }
+
+ActiviteBundle_ActiviteRealisee_delete:
+    path:     ActiviteRealisee/delete/{id}
+    defaults: { _controller: ActiviteBundle:ActiviteRealisee:delete }
+
+ActiviteBundle_ActiviteRealisee_edit:
+    path:     ActiviteRealisee/edit/{id}
+    defaults: { _controller: ActiviteBundle:ActiviteRealisee:edit , id : null }
 
  #---------------Jour-----------------------------
 

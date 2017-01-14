@@ -3,6 +3,13 @@
 {% block title %}CoreBundle:Affectation:affecterEnfantActiviteObligatoire{% endblock %}
 
 {% block body %}
+    {% if erreur %}
+        <div class="alert alert-danger" role="alert">
+            <label>
+                {{ erreurMessage }}
+            </label>
+        </div>
+    {% endif %}
     <form method="post">
         {% include 'CoreBundle:Affectation:affecter_enfant_activite_preview.html.twig' %}
     </form>
