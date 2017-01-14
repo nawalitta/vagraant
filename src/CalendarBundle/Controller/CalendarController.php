@@ -148,7 +148,7 @@ class CalendarController extends Controller {
             $activities = $activiteRepository->findByEnfant($id);
             $events = $eventRepository->findOneByEnfant($id);
         }
-        
+
         //Suppression des activités réalisé
         foreach ($activities as $activity) {
             $entityManager->remove($activity);
@@ -182,8 +182,6 @@ class CalendarController extends Controller {
         $activiteRepository = $entityManager->getRepository("ActiviteBundle:ActiviteRealisee");
 
         //Recupération des evenements
-        
-
         //Recupération des acitivités
         if ($id == null) {
             $activities = $activiteRepository->findAll();
@@ -264,7 +262,7 @@ class CalendarController extends Controller {
 
         return $response;
     }
-    
+
     /**
      * Récupère en JSON les evenements d'un enfant de la table activiterealisee
      * @param type $id
@@ -363,36 +361,335 @@ class CalendarController extends Controller {
         return $response;
     }
 
-    /* public function constraints() {
+    /**
+     * Verification des contraintes
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function constraintAction() {
 
-      $entityManager = $this->getDoctrine()->getManager();
-      // table evenement
-      $eventRepository = $entityManager->getRepository("ADesignsCalendarBundle:EventEntity");
+        $response = new \Symfony\Component\HttpFoundation\Response();
+        $response->headers->set('Content-Type', 'application/json');
 
-      // table enfant
-      // table activité
-      // table fenetre horaire
-      // tout les evenements
-      $databaseEvents = $eventRepository->findAll();
 
-      $return_constaints = array();
+        // Get Repository 
+        $entityManager = $this->getDoctrine()->getManager();
 
-      // pour chaque evenement dans la table event
-      foreach ($databaseEvents as $event) {
-      // verifier que chaque evenement dans la base
-      // respecte quelques contraintes
-      // du type nombre enfant min et max pour l'activite
-      // bonne fenntre horraire
-      // sinon ajouter des phrases dans le tableau return_constraints
+        // $fenetreHoraireRepository = $entityManager->getRepository("RessourceBundle:FenetreHoraire");
+        $activiteRepository = $entityManager->getRepository("ActiviteBundle:Activite");
+        $eventRepository = $entityManager->getRepository("ADesignsCalendarBundle:EventEntity");
+        $enfantRepository = $entityManager->getRepository("RessourceBundle:Enfant");
+        //$jourRepository = $entityManager->getRepository("ActiviteBundle:Jour");
+        $ressourceRepository = $entityManager->getRepository("RessourceBundle:Ressource");
 
-      $return_constaints[] = "Ayoub est le meilleure footablleur";
-      }
+        // Get enitités
+        //$enfants = $enfantRepository->findAll();        
+        $databaseEvents = $eventRepository->findAll();
+        // $fenetresHoraires = $fenetreHoraireRepository->findAll();
 
-      $response = new \Symfony\Component\HttpFoundation\Response();
-      $response->headers->set('Content-Type', 'application/json');
+        function () {
+            
+        };
+        // remplir array
+        $erreur = false;
+        $return_constraint_text = array();
 
-      $response->setContent(json_encode($return_constaints));
+        foreach ($databaseEvents as $event) {
 
-      return $response;
-      } */
+            $activite = $activiteRepository->findOneById($event->getActivite()->getId());
+            $enfant = $enfantRepository->findOneById($event->getEnfant()->getId());
+
+            /*  $ressource = $ressourceRepository->findOneByID($activite->getActiviteRealisee()->getId());
+
+              $ressourceAffecte = $eventRepository->contrainteRessource($ressource);
+
+              $ressourceArray = array();
+              $ressourceArray['id'] = $ressourceAffecte->getId();
+
+              for($i=0; $i< count($ressourceArray); $i++) {
+
+              $ressourceDispo = $this->ressourceDisponible($ressourceArray[$i], $event);
+
+              if($ressourceDispo = false )
+              {
+              $return_constraint_text[]= "- ".$ressourceArray[]->getId()." n'est pas disponible !\n";
+
+              }
+              } */
+
+            //contrainte disponibilité enfant
+
+            $enfantsDispo = $this->enfantDisponible($event);
+
+            if ($enfantsDispo == false) {
+                $return_constraint_text[] = "- " . $enfant->getPrenom() . " " . $enfant->getNom() . " n'est pas disponible !\n";
+                $erreur = true;
+            }
+
+            //Contrainte déroulement activité
+            $activiteplanifie = $this->activitePlanifie($event);
+            if ($activiteplanifie == false) {
+                $return_constraint_text[] = " L'activité " . $activite->getDesignation() . " ne peut pas se dérouler durant ce créneau horaire !\n";
+                $erreur = true;
+            }
+
+            // Nombre enfants
+            $nombreEnfant_event = $eventRepository->contrainteNbrEnfants($event->getActivite());
+
+            // Contrainte du nombre d'enfants maximum pour une activité
+            $activite_max_enfant = $activite->getNbEnfantsMax();
+
+            if ($nombreEnfant_event > $activite_max_enfant) {
+                $return_constraint_text[] = "L'activité " . $activite->getDesignation() . " ne respecte pas le nombre d'enfants maximum !\n";
+                $erreur = true;
+            }
+
+            // Contrainte du nombre d'enfants minimum pour une activité
+            $activite_min_enfant = $activite->getNbEnfantsMin();
+
+            if ($nombreEnfant_event < $activite_min_enfant) {
+                $return_constraint_text[] = "L'activité" . $activite->getDesignation() . " ne respecte pas le nombre d'enfants minimum !\n";
+                $erreur = true;
+            }
+
+            //Durée 
+            $dureeActivite_event = $eventRepository->contrainteDuree($event->getActivite());
+            //Contrainte de la durée maximale de l'activité
+            $dureeMax = $activite->getDureeMax();
+
+            if ($dureeActivite_event > $dureeMax) {
+                $return_constraint_text[] = "La durée de l'activité" . $activite->getDesignation() . " est trop longue !\n";
+                $erreur = true;
+            }
+
+            //Contrainte de la durée minimale de l'activité 
+            $dureeMin = $activite->getDureeMin();
+
+            if ($dureeActivite_event < $dureeMin) {
+                $return_constraint_text[] = "La durée de l'activité" . $activite->getDesignation() . "est trop courte !\n";
+                $erreur = true;
+            }
+        }
+
+        //Aucune erreur de contraintes
+        if ($erreur == false) {
+            $return_constraint_text[] = "Aucune erreur detectee";
+        }
+
+        $response->setContent(json_encode($return_constraint_text));
+
+        return $response;
+    }
+
+    /**
+     * Vérifier si l'activité est bien planifiées dans la fenêtre de présence de l'enfant
+     * @param type $event
+     * @return boolean
+     */
+    function enfantDisponible($event) {
+
+        //Repositories
+        $entityManager = $this->getDoctrine()->getManager();
+
+        $fenetreHoraireRepository = $entityManager->getRepository("RessourceBundle:FenetreHoraire");
+        $enfantRepository = $entityManager->getRepository("RessourceBundle:Enfant");
+        $jourRepository = $entityManager->getRepository("ActiviteBundle:Jour");
+
+        //
+        $enfant = $enfantRepository->findOneById($event->getEnfant()->getId());
+        $fenetreHoraireEnfant = $fenetreHoraireRepository->findOneById($enfant->getFenetreHoraire()->getId());
+        $jour = $jourRepository->findOneById($event->getJour()->getId());
+        // Le nom du jour
+        $jourDesignation = $jour->getDesignation();
+
+        // debut de l'evenement
+        $pDebutHeure = $event->getStartDatetime();
+        // fin de l'évenement
+        $pFinHeure = $event->getEndDatetime();
+
+        $resultEnfantPlanifie = true;
+
+        //Selon le jour
+        switch ($jourDesignation) {
+            case "Lundi":
+                if ($pDebutHeure < $fenetreHoraireEnfant->getLundiDebut() || $pDebutHeure > $fenetreHoraireEnfant->getLundiFin()) {
+                    $resultEnfantPlanifie;
+                } elseif ($pFinHeure < $fenetreHoraireEnfant->getLundiDebut() || $pFinHeure > $fenetreHoraireEnfant->getLundiFin()) {
+                    $resultEnfantPlanifie;
+                }
+                break;
+
+            case "Mardi":
+                if ($pDebutHeure < $fenetreHoraireEnfant->getMardiDebut() || $pDebutHeure > $fenetreHoraireEnfant->getMardiFin()) {
+                    $resultEnfantPlanifie;
+                } elseif ($pFinHeure < $fenetreHoraireEnfant->getMardiDebut() || $pFinHeure > $fenetreHoraireEnfant->getMardiFin()) {
+                    $resultEnfantPlanifie;
+                }
+                break;
+
+            case "Mercredi":
+                if ($pDebutHeure < $fenetreHoraireEnfant->getMercrediDebut() || $pDebutHeure > $fenetreHoraireEnfant->getMercrediFin()) {
+                    $resultEnfantPlanifie;
+                } elseif ($pFinHeure < $fenetreHoraireEnfant->getMercrediDebut() || $pFinHeure > $fenetreHoraireEnfant->getMercrediFin()) {
+                    $resultEnfantPlanifie;
+                }
+                break;
+
+            case "Jeudi":
+                if ($pDebutHeure < $fenetreHoraireEnfant->getJeudiDebut() || $pDebutHeure > $fenetreHoraireEnfant->getJeudiFin()) {
+                    $resultEnfantPlanifie;
+                } elseif ($pFinHeure < $fenetreHoraireEnfant->getJeudiDebut() || $pFinHeure > $fenetreHoraireEnfant->getJeudiFin()) {
+                    $resultEnfantPlanifie;
+                }
+                break;
+
+            case "Vendredi":
+                if ($pDebutHeure < $fenetreHoraireEnfant->getVendrediDebut() || $pDebutHeure > $fenetreHoraireEnfant->getVendrediFin()) {
+                    $resultEnfantPlanifie;
+                } elseif ($pFinHeure < $fenetreHoraireEnfant->getVendrediDebut() || $pFinHeure > $fenetreHoraireEnfant->getVendrediFin()) {
+                    $resultEnfantPlanifie;
+                }
+                break;
+        }
+        return $resultEnfantPlanifie;
+    }
+
+    /**
+     * Vérifier si l'activité se déroule durant sa fenêtre horaire
+     * @param type $event
+     * @return boolean
+     */
+    function activitePlanifie($event) {
+
+        //Repositories
+        $entityManager = $this->getDoctrine()->getManager();
+        $fenetreHoraireRepository = $entityManager->getRepository("RessourceBundle:FenetreHoraire");
+        $activiteRepository = $entityManager->getRepository("ActiviteBundle:Activite");
+        $jourRepository = $entityManager->getRepository("ActiviteBundle:Jour");
+
+        //
+        $activite = $activiteRepository->findOneById($event->getActivite()->getId());
+        $fenetreHoraireActivite = $fenetreHoraireRepository->findOneById($activite->getFenetreHoraire()->getId());
+        $jour = $jourRepository->findOneById($event->getJour()->getId());
+
+        $jourDesignation = $jour->getDesignation();
+        $pDebutHeure = $event->getStartDatetime();
+        $pFinHeure = $event->getEndDatetime();
+        $result = true;
+
+        switch ($jourDesignation) {
+            case "Lundi":
+                if ($pDebutHeure < $fenetreHoraireActivite->getLundiDebut() || $pDebutHeure > $fenetreHoraireActivite->getLundiFin()) {
+                    $result = false;
+                } elseif ($pFinHeure < $fenetreHoraireActivite->getLundiDebut() || $pFinHeure > $fenetreHoraireActivite->getLundiFin()) {
+                    $result = false;
+                }
+                break;
+
+            case "Mardi":
+                if ($pDebutHeure < $fenetreHoraireActivite->getMardiDebut() || $pDebutHeure > $fenetreHoraireActivite->getMardiFin()) {
+                    $result = false;
+                } elseif ($pFinHeure < $fenetreHoraireActivite->getMardiDebut() || $pFinHeure > $fenetreHoraireActivite->getMardiFin()) {
+                    $result = false;
+                }
+                break;
+
+            case "Mercredi":
+                if ($pDebutHeure < $fenetreHoraireActivite->getMercrediDebut() || $pDebutHeure > $fenetreHoraireActivite->getMercrediFin()) {
+                    $result = false;
+                } elseif ($pFinHeure < $fenetreHoraireActivite->getMercrediDebut() || $pFinHeure > $fenetreHoraireActivite->getMercrediFin()) {
+                    $result = false;
+                }
+                break;
+
+            case "Jeudi":
+                if ($pDebutHeure < $fenetreHoraireActivite->getJeudiDebut() || $pDebutHeure > $fenetreHoraireActivite->getJeudiFin()) {
+                    $result = false;
+                } elseif ($pFinHeure < $fenetreHoraireActivite->getJeudiDebut() || $pFinHeure > $fenetreHoraireActivite->getJeudiFin()) {
+                    $result = false;
+                }
+                break;
+
+            case "Vendredi":
+                if ($pDebutHeure < $fenetreHoraireActivite->getVendrediDebut() || $pDebutHeure > $fenetreHoraireActivite->getVendrediFin()) {
+                    $result = false;
+                } elseif ($pFinHeure < $fenetreHoraireActivite->getVendrediDebut() || $pFinHeure > $fenetreHoraireActivite->getVendrediFin()) {
+                    $result = false;
+                }
+                break;
+        }
+
+        return $result;
+    }
+
+    /**
+     * Verifie disponibilité des ressources
+     * @param type $IndiceRess
+     * @param type $event
+     * @return boolean
+     */
+    function ressourceDisponible($IndiceRess, $event) {
+
+        //Repositories
+        $entityManager = $this->getDoctrine()->getManager();
+
+        $fenetreHoraireRepository = $entityManager->getRepository("RessourceBundle:FenetreHoraire");
+        $jourRepository = $entityManager->getRepository("ActiviteBundle:Jour");
+        $ressourceRepository = $entityManager->getRepository("RessourceBundle:Ressource");
+
+
+        //
+        // $activite = $activiteRepository->findOneById($event->getActivite()->getId());
+        $ressource = $ressourceRepository->findOneBy($IndiceRess);
+        $fenetreHoraireRessource = $fenetreHoraireRepository->findOneById($ressource->getFenetreHoraire()->getId());
+        $jour = $jourRepository->findOneById($event->getJour()->getId());
+
+        $testRessource = $ressource->getDesignation();
+        $jourDesignation = $jour->getDesignation();
+        $pDebutHeure = $event->getStartDatetime();
+        $pFinHeure = $event->getEndDatetime();
+        $result = true;
+
+        switch ($jourDesignation) {
+            case "Lundi":
+                if ($pDebutHeure < $fenetreHoraireRessource->getLundiDebut() || $pDebutHeure > $fenetreHoraireRessource->getLundiFin()) {
+                    $result = false;
+                } elseif ($pFinHeure < $fenetreHoraireRessource->getLundiDebut() || $pFinHeure > $fenetreHoraireRessource->getLundiFin()) {
+                    $result = false;
+                }
+                break;
+
+            case "Mardi":
+                if ($pDebutHeure < $fenetreHoraireRessource->getMardiDebut() || $pDebutHeure > $fenetreHoraireRessource->getMardiFin()) {
+                    $result = false;
+                } elseif ($pFinHeure < $fenetreHoraireRessource->getMardiDebut() || $pFinHeure > $fenetreHoraireRessource->getMardiFin()) {
+                    $result = false;
+                }
+                break;
+
+            case "Mercredi":
+                if ($pDebutHeure < $fenetreHoraireRessource->getMercrediDebut() || $pDebutHeure > $fenetreHoraireRessource->getMercrediFin()) {
+                    $result = false;
+                } elseif ($pFinHeure < $fenetreHoraireRessource->getMercrediDebut() || $pFinHeure > $fenetreHoraireRessource->getMercrediFin()) {
+                    $result = false;
+                }
+                break;
+
+            case "Jeudi":
+                if ($pDebutHeure < $fenetreHoraireRessource->getJeudiDebut() || $pDebutHeure > $fenetreHoraireRessource->getJeudiFin()) {
+                    $result = false;
+                } elseif ($pFinHeure < $fenetreHoraireRessource->getJeudiDebut() || $pFinHeure > $fenetreHoraireRessource->getJeudiFin()) {
+                    $result = false;
+                }
+                break;
+
+            case "Vendredi":
+                if ($pDebutHeure < $fenetreHoraireRessource->getVendrediDebut() || $pDebutHeure > $fenetreHoraireRessource->getVendrediFin()) {
+                    $result = false;
+                } elseif ($pFinHeure < $fenetreHoraireRessource->getVendrediDebut() || $pFinHeure > $fenetreHoraireRessource->getVendrediFin()) {
+                    $result = false;
+                }
+                break;
+        }
+        return $result;
+    }
 }
