@@ -34,16 +34,16 @@ RessourceBundle_Ressource_show:
 
 #---------------BESOIN TYPE RESSOURCE-----------------------------
 RessourceBundle_BesoinTypeRessource_edit:
-    path:     besoinTypeRessource/edit/{id}
-    defaults: { _controller: RessourceBundle:BesoinTypeRessourceController:edit, id : null  }
+    path:     besoinTypeRessource/edit/{id}.{idActivite}
+    defaults: { _controller: RessourceBundle:BesoinTypeRessource:edit, id : null  }
 
 RessourceBundle_BesoinTypeRessource_index:
     path:     besoinTypeRessource
-    defaults: { _controller: RessourceBundle:BesoinTypeRessourceController:index }
+    defaults: { _controller: RessourceBundle:BesoinTypeRessource:index }
 
 RessourceBundle_BesoinTypeRessource_show:
     path:     besoinTypeRessource/show/{id}
-    defaults: { _controller: RessourceBundle:BesoinTypeRessourceController:show }
+    defaults: { _controller: RessourceBundle:BesoinTypeRessource:show }
 
 RessourceBundle_BesoinTypeRessource_delete:
     path:     besoinTypeRessource/delete/{id}

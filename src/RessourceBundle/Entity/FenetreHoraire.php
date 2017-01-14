@@ -476,6 +476,6 @@ class FenetreHoraire
      */
     public function __toString()
     {
-        return " ";
+        return "Lundi( ". $this->lundiDebut->format('H:i')." - ".$this->lundiFin->format('H:i')." ) - Mardi( ".$this->mardiDebut->format('H:i')." - ".$this->mardiFin->format('H:i')." ) - Mercredi( ".$this->mercrediDebut->format('H:i')." - ".$this->mercrediFin->format('H:i')." ) - Jeudi( ".$this->jeudiDebut->format('H:i')." - ".$this->jeudiFin->format('H:i').") - Vendredi( ".$this->vendrediDebut->format('H:i')." - ".$this->vendrediFin->format('H:i')." )";
     }
 }

@@ -109,12 +109,12 @@ class Activite
     private $activitesRealisees;
 
     /**
-     * @ORM\OneToMany(targetEntity="RessourceBundle\Entity\Preaffection", mappedBy="activite")
+     * @ORM\OneToMany(targetEntity="RessourceBundle\Entity\Preaffection", mappedBy="activite", cascade={"persist", "remove"})
      */
     private $preAffections;
 
     /**
-     * @ORM\OneToMany(targetEntity="ActiviteObligatoire", mappedBy="activite")
+     * @ORM\OneToMany(targetEntity="ActiviteObligatoire", mappedBy="activite", cascade={"persist", "remove"})
      */
     private $enfantsObligatoires;
 

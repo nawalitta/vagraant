@@ -1,7 +1,58 @@
 {% extends "::base.html.twig" %}
 
-{% block title %}RessourceBundle:BesoinTypeRessource:edit{% endblock %}
-
 {% block body %}
-<h1>Welcome to the BesoinTypeRessource:edit page</h1>
+
+    <h3 class="h3">Besoin en ressource :</h3>
+{% if erreur != "" %}
+    <div class="alert alert-danger" role="alert">
+        <label>
+            {{ erreur }}
+        </label>
+    </div>
+{% endif %}
+    <form>
+        <div class="col-sm-8">
+            <div class="table-responsive">
+                <table class ="table">
+                    <caption> Liste des ressources</caption>
+                    <tr>
+                        <th> # </th>
+                        <th> Nom ressource </th>
+                        <th> Quantité </th>
+                        <th> Ratio </th>
+                        <th> preference </th>
+                        <th> choisir </th>
+                    </tr>
+                    {% for ressource in typesRessource %}
+                    <tr>
+                            <td>{{ ressource.id }} </td>
+                            <td> {{ ressource.designation }} </td>
+                            <td> 
+                                <input input type="number" name="quantite[{{ ressource.id }}]">
+                            </td>
+                            <td>
+                                <input input type="number" name="ratio[{{ ressource.id }}]">
+                            </td>
+                            <td>
+                                <input input type="number" name="preference[{{ ressource.id }}]">                             
+                            </td>
+                            <td>
+                                <div class="form-check">
+                                    <label class="form-check-label">
+                                        <input type="checkbox" name="idTypeRessource[]" value="{{ressource.id}}" class="form-check-input">
+                                    </label>
+                                </div>
+                            </td>
+                    </tr>
+                    {% endfor %}
+                    <tr>
+                        <td></td><td></td>
+                        <td>
+                            <button type="submit" class="btn btn-primary">Enregistrer</button>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </form>
 {% endblock %}

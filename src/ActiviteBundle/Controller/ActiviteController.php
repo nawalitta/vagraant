@@ -94,7 +94,7 @@ class ActiviteController extends Controller
 
             $this->get('session')->getFlashBag()->add('notice', 'Activite bien enregistrée.');
 
-            return $this->redirect($this->generateUrl('ActiviteBundle_Activite_index'));
+            return $this->redirectToRoute('RessourceBundle_BesoinTypeRessource_edit', array('id'=> 'null','idActivite' => $activite->getId()));
         }
 
         return $this->render('ActiviteBundle:Activite:edit.html.twig', array(
