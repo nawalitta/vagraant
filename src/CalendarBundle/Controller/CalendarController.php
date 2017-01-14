@@ -10,14 +10,39 @@ use DateTime;
 class CalendarController extends Controller {
 
     /**
-     * Affichage de toutes les Activite pr�sentes dans la bdd
-     * @return \Symfony\Component\HttpFoundation\Response
+     * Affichage du planning de tout les enfants
+     * @return type
      */
     public function indexAction() {
         return $this->render('ADesignsCalendarBundle:Calendar:calendar.html.twig', array(
         ));
     }
 
+    /**
+     * Affichage du planning de l'enfant dont l'id est passé en parametre
+     * @param type $id Id de l'enfant
+     * @return type
+     */
+    public function showAction($id) {
+        $entityManager = $this->getDoctrine()->getManager();
+        $enfantRepository = $entityManager->getRepository("RessourceBundle:Enfant");
+
+        $enfant = $enfantRepository->findOneById($id);
+
+        $activitesObligatoire = $enfant->getActivitesObligatoires();
+        $activiteOptionnelle = $enfant->getActivitesOptionelles();
+
+
+        return $this->render('ADesignsCalendarBundle:Calendar:calendar-enfant.html.twig', array("activitesObligatoire" => $activitesObligatoire,
+                    "activitesOptionnel" => $activiteOptionnelle
+        ));
+    }
+
+    /**
+     * Fonction d'ajout ou de modification d'un evenement appellé par le calendrier en Ajax
+     * @param Request $request Contient les informations de l'evenements à ajouter/modifier
+     * @return Response
+     */
     public function editEventAction(Request $request) {
 
         $data = $request->request->all();
@@ -45,7 +70,7 @@ class CalendarController extends Controller {
             $jourRepository = $entityManager->getRepository("ActiviteBundle:Jour");
 
             $ressourceIdData = explode("-", $ressouceId);
-            $jour = $jourRepository->findOneByDesignation($ressourceIdData[1]);
+            $jour = $jourRepository->findOneById($ressourceIdData[1]);
 
             $evenement->setJour($jour);
 
@@ -77,8 +102,12 @@ class CalendarController extends Controller {
         return $response;
     }
 
+    /**
+     * Supprime un evenement 
+     * @param Request $request Contient les informations de l'evenements à supprimer
+     * @return Response
+     */
     public function deleteEventAction(Request $request) {
-        $request = $this->get('request');
         $data = $request->request->all();
 
         $id = $data['eventID'];
@@ -100,22 +129,26 @@ class CalendarController extends Controller {
         return $response;
     }
 
+    /**
+     * Sauvegarde les evenements de la tables evenement dans la table activiterealisee. Si un id est passé on sauvegarde seulements les evenements d'un enfant
+     * @param type $id Id d'un enfant
+     * @return type
+     */
     public function saveActivityAction($id = null) {
 
         $entityManager = $this->getDoctrine()->getManager();
         $eventRepository = $entityManager->getRepository("ADesignsCalendarBundle:EventEntity");
         $activiteRepository = $entityManager->getRepository("ActiviteBundle:ActiviteRealisee");
 
-        //Récupération des evenements
+        //Récupération des evenements et des activités
         if ($id == null) {
+            $activities = $activiteRepository->findAll();
             $events = $eventRepository->findAll();
         } else {
+            $activities = $activiteRepository->findByEnfant($id);
             $events = $eventRepository->findOneByEnfant($id);
         }
-
-        //Recupération des activités
-        $activities = $activiteRepository->findAll();
-
+        
         //Suppression des activités réalisé
         foreach ($activities as $activity) {
             $entityManager->remove($activity);
@@ -137,6 +170,11 @@ class CalendarController extends Controller {
         return $this->redirect($this->generateUrl('Calendar'));
     }
 
+    /**
+     * Restaure la table activiterealisee dans la table evenements. Si un id est passé on restaure seulement les evenements d'un enfant
+     * @param type $id
+     * @return type
+     */
     public function restoreActivityAction($id = null) {
 
         $entityManager = $this->getDoctrine()->getManager();
@@ -144,13 +182,15 @@ class CalendarController extends Controller {
         $activiteRepository = $entityManager->getRepository("ActiviteBundle:ActiviteRealisee");
 
         //Recupération des evenements
-        $events = $eventRepository->findAll();
+        
 
         //Recupération des acitivités
         if ($id == null) {
             $activities = $activiteRepository->findAll();
+            $events = $eventRepository->findAll();
         } else {
             $activities = $activiteRepository->findOneByEnfant($id);
+            $events = $eventRepository->findByEnfant($id);
         }
 
         //Suppression des evenements
@@ -162,7 +202,6 @@ class CalendarController extends Controller {
         foreach ($activities as $activity) {
             //Ajout des activités dans la table event
             $event = new \CalendarBundle\Entity\EventEntity($activity->getActivite()->getDesignation(), $activity->getHeureDebut(), $activity->getHeureFin());
-
             //Creation de l'event
             $event->setActivite($activity->getActivite());
             $event->setEnfant($activity->getEnfant());
@@ -174,22 +213,37 @@ class CalendarController extends Controller {
         return $this->redirect($this->generateUrl('Calendar'));
     }
 
-    public function showAction($id) {
+    /**
+     * Récupère en JSON les evenements de la table evenement
+     * @return Response
+     */
+    public function loadCalendarAction() {
+
+
         $entityManager = $this->getDoctrine()->getManager();
-        $enfantRepository = $entityManager->getRepository("RessourceBundle:Enfant");
+        $eventRepository = $entityManager->getRepository("ADesignsCalendarBundle:EventEntity");
 
-        $enfant = $enfantRepository->findOneById($id);
+        $databaseEvents = $eventRepository->findAll();
 
-        $activitesObligatoire = $enfant->getActivitesObligatoires();
-        $activiteOptionnelle = $enfant->getActivitesOptionelles();
+        $return_events = array();
+        foreach ($databaseEvents as $event) {
+            $return_events[] = $event->toArray();
+        }
 
+        $response = new \Symfony\Component\HttpFoundation\Response();
+        $response->headers->set('Content-Type', 'application/json');
 
-        return $this->render('ADesignsCalendarBundle:Calendar:calendar-enfant.html.twig', array("activitesObligatoire" => $activitesObligatoire,
-                    "activitesOptionnel" => $activiteOptionnelle
-        ));
+        $response->setContent(json_encode($return_events));
+
+        return $response;
     }
 
-    public function loadCalendarByIdAction(Request $request, $id) {
+    /**
+     * Récupère en JSON les evenements d'un enfant de la table evenement
+     * @param type $id
+     * @return Response
+     */
+    public function loadCalendarByIdAction($id) {
 
         $entityManager = $this->getDoctrine()->getManager();
         $eventRepository = $entityManager->getRepository("ADesignsCalendarBundle:EventEntity");
@@ -210,8 +264,13 @@ class CalendarController extends Controller {
 
         return $response;
     }
-
-    public function loadCalendarStaticByIdAction(Request $request, $id) {
+    
+    /**
+     * Récupère en JSON les evenements d'un enfant de la table activiterealisee
+     * @param type $id
+     * @return Response
+     */
+    public function loadCalendarStaticByIdAction($id) {
 
         $entityManager = $this->getDoctrine()->getManager();
         $eventRepository = $entityManager->getRepository("ActiviteBundle:ActiviteRealisee");
@@ -233,103 +292,74 @@ class CalendarController extends Controller {
         return $response;
     }
 
-    public function loadRessourceByIdAction(Request $request, $id) {
-        $response = new \Symfony\Component\HttpFoundation\Response();
-        $response->headers->set('Content-Type', 'application/json');
-
-        $entityManager = $this->getDoctrine()->getManager();
-        $enfantRepository = $entityManager->getRepository("RessourceBundle:Enfant");
-
-        $enfant = $enfantRepository->findOneById($id);
-
-        $parite = 0;
-        $data = $request->request->all();
-        if (isset($data['parite']))
-            $parite = $data['parite'];
-
-        $jourRepository = $entityManager->getRepository("ActiviteBundle:Jour");
-        $jours = $jourRepository->findByParite($parite);
-
-        $return_ressources = array();
-
-
-
-        foreach ($jours as $jour) {
-            $child = array();
-            $child['idEnfant'] = $enfant->getId();
-            $child['id'] = $enfant->getId() . "-" . $jour->getDesignation();
-            $child['enfant'] = $enfant->getPrenom() . " " . $enfant->getNom();
-            $child['title'] = $jour->getDesignation();
-            $return_ressources[] = $child;
-        }
-
-        $response->setContent(json_encode($return_ressources));
-
-        return $response;
-    }
-
-    public function loadAllRessourceInvertedAction(Request $request) {
-        $response = new \Symfony\Component\HttpFoundation\Response();
-        $response->headers->set('Content-Type', 'application/json');
-
+    /**
+     * Récupère en JSON les ressources nécessaire à Fullcalendar
+     * @param Request $request
+     * @return Response
+     */
+    public function loadAllRessourceAction(Request $request) {
         $entityManager = $this->getDoctrine()->getManager();
         $enfantRepository = $entityManager->getRepository("RessourceBundle:Enfant");
         $enfants = $enfantRepository->findAll();
         $parite = 0;
         $data = $request->request->all();
-        if (isset($data['parite']))
+        if (isset($data['parite'])) {
             $parite = $data['parite'];
+        }
 
         $jourRepository = $entityManager->getRepository("ActiviteBundle:Jour");
         $jours = $jourRepository->findByParite($parite);
 
-
         foreach ($enfants as $enfant) {
-
             foreach ($jours as $jour) {
                 $child = array();
                 $child['idEnfant'] = $enfant->getId();
-                $child['id'] = $enfant->getId() . "-" . $jour->getDesignation();
+                $child['id'] = $enfant->getId() . "-" . $jour->getId();
                 $child['enfant'] = $jour->getDesignation();
                 $child['title'] = $enfant->getPrenom() . " " . $enfant->getNom();
                 $return_ressources[] = $child;
             }
         }
 
-
+        $response = new \Symfony\Component\HttpFoundation\Response();
+        $response->headers->set('Content-Type', 'application/json');
         $response->setContent(json_encode($return_ressources));
-
         return $response;
     }
 
     /**
-     * Dispatch a CalendarEvent and return a JSON Response of any events returned.
-     * 
+     * Récupère en JSON les ressources pour un enfant nécessaire à Fullcalendar
      * @param Request $request
+     * @param type $id l'id d'un enfant
      * @return Response
      */
-    public function loadCalendarAction(Request $request) {
-
-
+    public function loadRessourceByIdAction(Request $request, $id) {
         $entityManager = $this->getDoctrine()->getManager();
-        $eventRepository = $entityManager->getRepository("ADesignsCalendarBundle:EventEntity");
+        $enfantRepository = $entityManager->getRepository("RessourceBundle:Enfant");
+        $enfant = $enfantRepository->findOneById($id);
 
-        $databaseEvents = $eventRepository->findAll();
+        $parite = 0;
+        $data = $request->request->all();
+        if (isset($data['parite'])) {
+            $parite = $data['parite'];
+        }
 
+        $jourRepository = $entityManager->getRepository("ActiviteBundle:Jour");
+        $jours = $jourRepository->findByParite($parite);
 
-
-        $return_events = array();
-        foreach ($databaseEvents as $event) {
-
-
-            $return_events[] = $event->toArray();
+        $return_ressources = array();
+        foreach ($jours as $jour) {
+            $child = array();
+            $child['idEnfant'] = $enfant->getId();
+            $child['id'] = $enfant->getId() . "-" . $jour->getId();
+            $child['enfant'] = $enfant->getPrenom() . " " . $enfant->getNom();
+            $child['title'] = $jour->getDesignation();
+            $return_ressources[] = $child;
         }
 
         $response = new \Symfony\Component\HttpFoundation\Response();
         $response->headers->set('Content-Type', 'application/json');
-
-        $response->setContent(json_encode($return_events));
-
+        $response->setContent(json_encode($return_ressources));
         return $response;
     }
 

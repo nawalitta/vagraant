@@ -22,6 +22,17 @@ $(function () {
         }
         return false;
     }
+
+
+
+
+    $('#selector button').click(function () {
+        $(this).addClass('active').siblings().removeClass('active');
+
+
+        // TODO: insert whatever you want to do with $(this) here
+    });
+
     /* initialize the calendar
      -----------------------------------------------------------------*/
 
@@ -71,12 +82,22 @@ $(function () {
         resourceLabelText: 'Enfants',
         resourceGroupField: 'enfant',
 
-        resources: {
-            url: 'Calendar/RessourcesInverted',
-            type: 'GET'
+        resources: function (callback) {
+            $.ajax({
+                url: 'Calendar/Ressources/',
+                data: 'parite=' + parite,
+                type: 'POST',
+                dataType: 'json',
+                success: function (response) {
+                    callback(response);
+                }
+
+
+            });
         },
+
         events: {
-            url: 'Calendar/Events',
+            url: 'Calendar/Events/',
             type: 'GET',
         },
         eventDragStop: function (event) {
@@ -99,6 +120,58 @@ $(function () {
         },
         eventDrop: function (event) { // called when an event (already on the calendar) is moved
             console.log('eventDrop', event);
+        },
+        eventResize: function (event) {
+            console.log("eventResize", event);
+            var id = event.id;
+            var start = event.start.toString();
+            var end = event.end.toString();
+
+            $.ajax({
+                url: 'AddEvent/',
+                data: 'startdate=' + start + '&enddate=' + end + '&id=' + id,
+                type: 'POST',
+                dataType: 'json',
+                success: function (response) {
+
+                    console.log('Event added with succes', response);
+
+                },
+                error: function (e) {
+
+                    console.log('error', e.responseText);
+                }
+            });
+
+
+
+        },
+
+        eventDrop: function (event) { // called when an event (already on the calendar) is moved
+            console.log('eventDrop', event);
+
+            var id = event.id;
+            var start = event.start.toString();
+            var end = event.end.toString();
+            var resource = event.resourceId;
+
+            $.ajax({
+                url: 'Calendar/AddEvent/',
+                data: 'startdate=' + start + '&enddate=' + end + '&resourceId=' + resource + '&id=' + id,
+                type: 'POST',
+                dataType: 'json',
+                success: function (response) {
+
+                    console.log('Event added with succes', response);
+
+                },
+                error: function (e) {
+
+                    console.log('error', e.responseText);
+                }
+            });
+
+
         },
 
         resourceRender: function (resourceObj, labelTds) {

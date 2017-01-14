@@ -23,7 +23,12 @@ $(function () {
         return false;
     }
 
+  $('#selector button').click(function () {
+        $(this).addClass('active').siblings().removeClass('active');
 
+
+        // TODO: insert whatever you want to do with $(this) here
+    });
 
     /* initialize the external events
      -----------------------------------------------------------------*/
@@ -91,10 +96,20 @@ $(function () {
         resourceGroupField: 'enfant',
         droppable: true, // this allows things to be dropped onto the calendar
 
-        resources: {
-            url: 'RessourcesInverted/' + id,
-            type: 'GET'
+        resources: function (callback) {
+            $.ajax({
+                url: 'Ressources/' + id,
+                data: 'parite=' + parite,
+                type: 'POST',
+                dataType: 'json',
+                success: function (response) {
+                    callback(response);
+                }
+
+
+            });
         },
+
         events: {
             url: 'Events/' + id,
             type: 'GET',
