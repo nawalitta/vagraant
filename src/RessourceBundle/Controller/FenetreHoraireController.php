@@ -64,7 +64,7 @@ class FenetreHoraireController extends Controller
      * @param Request $request
      * @return Response response
      */
-    public function editAction($id = null,$pageRequete, Request $request)
+    public function editAction($id = null,$pageRequete = null, Request $request)
     {
         $entityManager = $this->getDoctrine()->getManager();
         $fenetreHoraireRepository = $entityManager->getRepository("RessourceBundle:FenetreHoraire");
@@ -89,7 +89,7 @@ class FenetreHoraireController extends Controller
                 if($pageRequete=="Enfant"){
                     return $this->redirect($this->generateUrl('RessourceBundle_Enfant_edit'));
                 }else{
-                    return $this->redirect($this->generateUrl('RessourceBunde_FenetreHoraire_index'));
+                    return $this->redirect($this->generateUrl('RessourceBundle_FenetreHoraire_index'));
                 }
             }
 

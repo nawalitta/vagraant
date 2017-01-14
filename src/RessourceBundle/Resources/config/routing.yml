@@ -1,35 +1,35 @@
  #---------------FENETRE HORAIRE-----------------------------
 RessourceBundle_FenetreHoraire_index:
-    path:     FenetreHoraire/index
+    path:     fenetreHoraire/index
     defaults: { _controller: RessourceBundle:FenetreHoraire:index }
 
 RessourceBundle_FenetreHoraire_edit:
-    path:     FenetreHoraire/edit/{id}
-    defaults: { _controller: RessourceBundle:FenetreHoraire:edit, id : null }
+    path:     fenetreHoraire/edit/{id}.{pageRequete}
+    defaults: { _controller: RessourceBundle:FenetreHoraire:edit, id : null, pageRequete : null }
 
 RessourceBundle_FenetreHoraire_delete:
-    path:     FenetreHoraire/delete/{id}
+    path:     fenetreHoraire/delete/{id}
     defaults: { _controller: RessourceBundle:FenetreHoraire:delete }
 
 RessourceBundle_FenetreHoraire_show:
-    path:     FenetreHoraire/show/{id}
+    path:     fenetreHoraire/show/{id}
     defaults: { _controller: RessourceBundle:FenetreHoraire:show }
 
 #---------------RESSOURCE-----------------------------
 RessourceBundle_Ressource_index:
-    path:     Ressource/index
+    path:     ressource/index
     defaults: { _controller: RessourceBundle:Ressource:index }
 
 RessourceBundle_Ressource_edit:
-    path:     Ressource/edit/{id}
+    path:     ressource/edit/{id}
     defaults: { _controller: RessourceBundle:Ressource:edit, id : null }
 
 RessourceBundle_Ressource_delete:
-    path:     Ressource/delete/{id}
+    path:     ressource/delete/{id}
     defaults: { _controller: RessourceBundle:Ressource:delete }
 
 RessourceBundle_Ressource_show:
-    path:     Ressource/show/{id}
+    path:     ressource/show/{id}
     defaults: { _controller: RessourceBundle:Ressource:show }
 
 #---------------BESOIN TYPE RESSOURCE-----------------------------
