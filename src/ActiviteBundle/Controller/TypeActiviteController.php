@@ -63,7 +63,7 @@ class TypeActiviteController extends Controller
      * @param Request $request
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function editAction($id=null,Request $request)
+    public function editAction($id=null, $nomTypeActivite = null,Request $request)
     {
         $entityManager = $this->getDoctrine()->getManager();
         $typeActiviteRepository = $entityManager->getRepository("ActiviteBundle:TypeActivite");
@@ -71,6 +71,14 @@ class TypeActiviteController extends Controller
 
         if($typeActivite==null){
             $typeActivite=new \ActiviteBundle\Entity\TypeActivite();
+        }
+
+        // Si on est dans activite et qu'on utilise la modal
+        if ($nomTypeActivite!= null) {
+            $typeActivite->setDesignation($nomTypeActivite);
+            $entityManager->persist($typeActivite);
+            $entityManager->flush();
+            return new Response($typeActivite->getId());
         }
 
         $form = $this->createForm(TypeActiviteType::class,$typeActivite);

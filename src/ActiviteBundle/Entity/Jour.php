@@ -38,17 +38,17 @@ class Jour
 
     
     /**
-     * @ORM\OneToMany(targetEntity="ActiviteRealisee", mappedBy="jour")
+     * @ORM\OneToMany(targetEntity="ActiviteRealisee", mappedBy="jour",cascade={"persist"})
      */
     private $activitesRealisees;
     
     /**
-     * @ORM\OneToMany(targetEntity="ActiviteFixee", mappedBy="jour")
+     * @ORM\OneToMany(targetEntity="ActiviteFixee", mappedBy="jour",cascade={"persist"})
      */
     private $activitesFixees;
     
     /**
-     * @ORM\OneToMany(targetEntity="CalendarBundle\Entity\EventEntity", mappedBy="jour")
+     * @ORM\OneToMany(targetEntity="CalendarBundle\Entity\EventEntity", mappedBy="jour",cascade={"persist"})
      */
     private $evenements;
 

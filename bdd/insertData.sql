@@ -212,7 +212,7 @@ INSERT INTO `besoin_type_ressource` (`id`, `activite_id`, `type_ressource_id`, `
 
 
 -- --------------------------------------------------------
-
+/**
 --
 -- Contenu de la table `evenement`
 --
@@ -220,7 +220,7 @@ INSERT INTO `besoin_type_ressource` (`id`, `activite_id`, `type_ressource_id`, `
 INSERT INTO `evenement` (`id`, `titre`, `dateDebut`, `dateFin`) VALUES
 (1, 'Fete du nouvel an', '2017-01-03 08:00:00', '2017-01-03 17:00:00'),
 (2, 'Theatre', '2016-12-06 12:00:00', '2016-12-12 17:00:00');
-
+*/
 -- --------------------------------------------------------
 
 --

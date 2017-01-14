@@ -3,7 +3,7 @@
 {% block title %}Edition activité{% endblock %}
 
 {% block body %}
-  <h3 class="h3">Créer une nouvelle activité</h3>
+  <h3 class="h3">Edition d'une activité</h3>
   {{ form_start(form) }}
   <form>
     <div class="form-group row">
@@ -51,35 +51,56 @@
     <div class="form-group row">
         <label for="example-text-input" class="col-md-4 col-form-label">Type activité :</label>
             <div class="col-md-5">
-                {{ form_errors(form.typeActivite) }}
-                {{form_widget(form.typeActivite) }}
+                <div class="input-group">
+                    <span class="input-group-btn">
+                            <button class="btn btn-default" type="button" data-toggle="modal" data-target="#myModal">+</button>
+                    </span>
+                    {{ form_errors(form.typeActivite) }}
+                    {{form_widget(form.typeActivite) }}
+                </div>
             </div>
-            <a href="{{path('ActiviteBundle_TypeActivite_edit')}}">
-                <button type="button" class="btn btn-default btn-lg">
-                    <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
-                </button>
-            </a>
     </div>
     <div class="form-group row">
         <label for="example-text-input" class="col-md-4 col-form-label">Fenetre horaire :</label>
             <div class="col-md-5">
+                <div class="input-group">
+                    <span class="input-group-btn">
+                        <a href="{{path('RessourceBundle_FenetreHoraire_edit',{'id': 'null' ,'pageRequete': 'Activite'})}}">
+                            <button type="button" class="btn btn-default btn-lg">+</button>
+                        </a>
+                    </span>
                 {{ form_errors(form.fenetreHoraire) }}
                 {{form_widget(form.fenetreHoraire) }}
             </div>
-            <a href="{{path('RessourceBundle_FenetreHoraire_edit',{'id': 'null' ,'pageRequete': 'Activite'})}}">
-                <button type="button" class="btn btn-default btn-lg">
-                    <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
-                </button>
-            </a>
     </div>
     <div class="form-group row">
         <div class="col-md-4">
 
         </div>
         <div class="col-md-4 col-sm-10">
-            {{ form_widget(form.ok,{ 'label': 'Enregistrer' }, { 'attr': {'class': 'btn btn-primary btn', 'type': 'button'} }) }}
+            <button type="submit" class="btn btn-primary"> Enregistrer </button>
         </div>
     </div>
   </form>
   {{ form_end(form) }}
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">Ajouter un type activité</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="nom-groupe">Nom du type activité :</label>
+                        <input id="nom-groupe" name="input-type-activite" class="form-control" autofocus>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Annuler</button>
+                    <button type="button" class="btn btn-primary" onclick="ajouterTypeActivite(document.getElementsByName('input-type-activite')[0].value)">Ajouter</button>
+                </div>
+            </div>
+        </div>
+    </div>
 {% endblock %}

@@ -1,3 +1,8 @@
+{% if obligatoire %}
+    <h3> Affecter des activités obligatoire à un enfant </h3>
+{% else %}
+    <h3> Affecter des activités optionnel à un enfant </h3>
+{% endif %}
 <div class="row">
     <div class="col-md-2">
         <div class="row">
@@ -47,7 +52,7 @@
                             <th> Ecart</th>
                             <th> Quotas</th>
                         {% endif %}
-                        <th> Case à cocher</th>
+                        <th> Selection</th>
                     </tr>
                     {% for activite in activites %}
                         <tr>
@@ -69,14 +74,16 @@
                             </td>
                         </tr>
                     {% endfor %}
+                    <tr>
+                        <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+                        {% if obligatoire %}
+                            <td></td><td></td>
+                        {% endif %}
+                        <td><button type="submit" class="btn btn-primary">Affecter</button></td>
+                    </tr>
                 </table>
             </div>
         </div>
-    </div>
-</div>
-<div class="row">
-    <div class="col-md-offset-10 col-md-2">
-        <button type="submit" class="btn btn-primary">Ok</button>
     </div>
 </div>
 

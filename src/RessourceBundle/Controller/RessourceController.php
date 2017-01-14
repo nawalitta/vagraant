@@ -90,10 +90,19 @@ class RessourceController extends Controller
   
       $ressourceRepository = $entityManager->getRepository("RessourceBundle:Ressource");
      $ressource = $ressourceRepository->findOneById($id);
+     $erreurMsg ="";
        if($ressource!=null)
            $entityManager->remove ($ressource);
-       $entityManager->flush();
-       
+          
+       try{
+            $entityManager->flush();                   
+        } catch (\Exception $ex) {
+            //Pb suppression
+            $erreurMsg = " Les ressources sont encore affectées à une activité";
+            return $this->render('RessourceBundle:Ressource:show.html.twig', array(
+                "ressource"=>$ressource,"erreur"=>$erreurMsg
+            ));
+        }
         return $this->redirect($this->generateUrl('RessourceBunde_Ressource_index'));
     }
 
@@ -103,12 +112,12 @@ class RessourceController extends Controller
      */
     public function showAction($id)
     {
-         $entityManager = $this->getDoctrine()->getManager();
-             $ressourceRepository = $entityManager->getRepository("RessourceBundle:Ressource");
-         $ressource = $ressourceRepository->findOneById($id);
-        
+        $entityManager = $this->getDoctrine()->getManager();
+        $ressourceRepository = $entityManager->getRepository("RessourceBundle:Ressource");
+        $ressource = $ressourceRepository->findOneById($id);
+        $erreurMsg ="";
         return $this->render('RessourceBundle:Ressource:show.html.twig', array(
-            "ressource"=>$ressource
+            "ressource"=>$ressource,"erreur"=>$erreurMsg
         ));
     }
 
