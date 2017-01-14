@@ -2,24 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6dc076d3-332f-4bc4-8121-fb82bb8217e0" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/RessourceBundle/Resources/views/Ressource/preview.html.twig" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/RessourceBundle/Resources/views/TypeRessource/preview.html.twig" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Resources/views/menu.html.twig" afterPath="$PROJECT_DIR$/app/Resources/views/menu.html.twig" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ActiviteBundle/Controller/TypeActiviteController.php" afterPath="$PROJECT_DIR$/src/ActiviteBundle/Controller/TypeActiviteController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ActiviteBundle/Resources/views/Activite/index.html.twig" afterPath="$PROJECT_DIR$/src/ActiviteBundle/Resources/views/Activite/index.html.twig" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ActiviteBundle/Resources/views/TypeActivite/edit.html.twig" afterPath="$PROJECT_DIR$/src/ActiviteBundle/Resources/views/TypeActivite/edit.html.twig" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ActiviteBundle/Resources/views/TypeActivite/index.html.twig" afterPath="$PROJECT_DIR$/src/ActiviteBundle/Resources/views/TypeActivite/index.html.twig" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ActiviteBundle/Resources/views/TypeActivite/preview.html.twig" afterPath="$PROJECT_DIR$/src/ActiviteBundle/Resources/views/TypeActivite/preview.html.twig" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ActiviteBundle/Resources/views/TypeActivite/show.html.twig" afterPath="$PROJECT_DIR$/src/ActiviteBundle/Resources/views/TypeActivite/show.html.twig" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/CoreBundle/Resources/views/Default/index.html.twig" afterPath="$PROJECT_DIR$/src/CoreBundle/Resources/views/Default/index.html.twig" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/RessourceBundle/Controller/TypeRessourceController.php" afterPath="$PROJECT_DIR$/src/RessourceBundle/Controller/TypeRessourceController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/RessourceBundle/Resources/config/routing.yml" afterPath="$PROJECT_DIR$/src/RessourceBundle/Resources/config/routing.yml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/RessourceBundle/Resources/views/Groupe/show.html.twig" afterPath="$PROJECT_DIR$/src/RessourceBundle/Resources/views/Groupe/show.html.twig" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/RessourceBundle/Resources/views/Ressource/show.html.twig" afterPath="$PROJECT_DIR$/src/RessourceBundle/Resources/views/Ressource/show.html.twig" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/RessourceBundle/Resources/views/TypeRessource/edit.html.twig" afterPath="$PROJECT_DIR$/src/RessourceBundle/Resources/views/TypeRessource/edit.html.twig" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/RessourceBundle/Resources/views/TypeRessource/index.html.twig" afterPath="$PROJECT_DIR$/src/RessourceBundle/Resources/views/TypeRessource/index.html.twig" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/RessourceBundle/Resources/views/TypeRessource/show.html.twig" afterPath="$PROJECT_DIR$/src/RessourceBundle/Resources/views/TypeRessource/show.html.twig" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/css/getiem.css" afterPath="$PROJECT_DIR$/web/css/getiem.css" />
     </list>
     <ignored path="gpac.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -63,23 +47,7 @@
     <favorites_list name="gpac" />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
-      <file leaf-file-name="gpac.groupe" pinned="false" current-in-tab="true">
-        <entry file="dbDummy://dbtable:/c92415a6/c709e7fb-dda2-4f29-a879-50bc7cf3714b/gpac.groupe">
-          <provider editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-          <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-            <state>
-              <filtering enabled="true" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="375" />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -118,7 +86,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/ActiviteBundle/Entity/ActiviteObligatoire.php" />
         <option value="$PROJECT_DIR$/src/ActiviteBundle/Entity/Activite.php" />
         <option value="$PROJECT_DIR$/src/CoreBundle/Resources/views/Affectation/affecter_enfant_activite_preview.html.twig" />
         <option value="$PROJECT_DIR$/src/CoreBundle/Resources/views/Affectation/affecter_enfant_activite_obligatoire.html.twig" />
@@ -149,9 +116,7 @@
         <option value="$PROJECT_DIR$/src/RessourceBundle/Controller/EnfantController.php" />
         <option value="$PROJECT_DIR$/src/RessourceBundle/Controller/RessourceController.php" />
         <option value="$PROJECT_DIR$/src/RessourceBundle/Resources/views/Ressource/index.html.twig" />
-        <option value="$PROJECT_DIR$/src/RessourceBundle/Resources/views/Enfant/edit.html.twig" />
         <option value="$PROJECT_DIR$/src/RessourceBundle/Resources/views/Ressource/edit.html.twig" />
-        <option value="$PROJECT_DIR$/web/js/ajouterEntityByModal.js" />
         <option value="$PROJECT_DIR$/src/ActiviteBundle/Resources/views/Activite/index.html.twig" />
         <option value="$PROJECT_DIR$/src/ActiviteBundle/Resources/views/TypeActivite/preview.html.twig" />
         <option value="$PROJECT_DIR$/src/ActiviteBundle/Controller/TypeActiviteController.php" />
@@ -169,6 +134,9 @@
         <option value="$PROJECT_DIR$/src/RessourceBundle/Resources/config/routing.yml" />
         <option value="$PROJECT_DIR$/src/RessourceBundle/Resources/views/Ressource/preview.html.twig" />
         <option value="$PROJECT_DIR$/src/RessourceBundle/Resources/views/Ressource/show.html.twig" />
+        <option value="$PROJECT_DIR$/web/css/getiem.css" />
+        <option value="$PROJECT_DIR$/web/js/ajouterEntityByModal.js" />
+        <option value="$PROJECT_DIR$/src/RessourceBundle/Resources/views/Enfant/edit.html.twig" />
       </list>
     </option>
   </component>
@@ -844,7 +812,153 @@
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="web" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="gpac" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="gpac" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="web" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="js" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="gpac" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="gpac" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="web" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="css" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="gpac" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="gpac" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="gpac" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="gpac" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="RessourceBundle" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="gpac" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="gpac" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="RessourceBundle" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Resources" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="gpac" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="gpac" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="RessourceBundle" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Resources" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Enfant" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="gpac" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="gpac" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="RessourceBundle" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Resources" />
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
           </PATH>
@@ -988,7 +1102,7 @@
       <workItem from="1484294060950" duration="11684000" />
       <workItem from="1484310866060" duration="8098000" />
       <workItem from="1484329170669" duration="9181000" />
-      <workItem from="1484338786624" duration="14189000" />
+      <workItem from="1484338786624" duration="14859000" />
     </task>
     <task id="LOCAL-00001" summary="add missing files">
       <created>1479728865350</created>
@@ -1060,17 +1174,24 @@
       <option name="project" value="LOCAL" />
       <updated>1484349218006</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="Add typeResource and type activité">
+      <created>1484353214544</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1484353214544</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="102071000" />
+    <option name="totallyTimeSpent" value="102741000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-9" y="-9" width="1938" height="1050" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.21911922" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.21911922" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3735363" sideWeight="0.5102041" order="12" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.15145005" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -1151,7 +1272,8 @@
     <MESSAGE value="merge" />
     <MESSAGE value="add enfant edit" />
     <MESSAGE value="Add activite edit&#10;Change menu and welcome page&#10;Change title" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add activite edit&#10;Change menu and welcome page&#10;Change title" />
+    <MESSAGE value="Add typeResource and type activité" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add typeResource and type activité" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1163,16 +1285,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/RessourceBundle/Resources/views/Enfant/delete.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="44">
-          <caret line="2" column="5" selection-start-line="2" selection-start-column="5" selection-end-line="2" selection-end-column="5" />
-          <folding>
-            <element signature="e#12#28#0#Twig" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/RessourceBundle/Form/FenetreHoraireType.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="22">
@@ -1349,14 +1461,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/RessourceBundle/Resources/views/Enfant/edit.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="657">
-          <caret line="94" column="0" selection-start-line="94" selection-start-column="0" selection-end-line="94" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/RessourceBundle/Controller/GroupeController.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="227">
@@ -1377,14 +1481,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="166">
           <caret line="65" column="0" selection-start-line="65" selection-start-column="0" selection-end-line="65" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/js/ajouterEntityByModal.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="352">
-          <caret line="22" column="81" selection-start-line="22" selection-start-column="81" selection-end-line="22" selection-end-column="81" />
           <folding />
         </state>
       </provider>
@@ -1462,15 +1558,15 @@
         <state relative-caret-position="264">
           <caret line="12" column="46" selection-start-line="12" selection-start-column="46" selection-end-line="12" selection-end-column="46" />
           <folding>
-            <element signature="e#409#437#0#Twig" expanded="true" />
-            <element signature="e#517#545#0#Twig" expanded="true" />
-            <element signature="e#977#1006#0#Twig" expanded="true" />
-            <element signature="e#1088#1121#0#Twig" expanded="true" />
-            <element signature="e#1589#1620#0#Twig" expanded="true" />
-            <element signature="e#1703#1738#0#Twig" expanded="true" />
-            <element signature="e#2182#2224#0#Twig" expanded="true" />
-            <element signature="e#2332#2379#0#Twig" expanded="true" />
-            <element signature="e#2503#2550#0#Twig" expanded="true" />
+            <element signature="e#409#437#0#Twig" expanded="false" />
+            <element signature="e#517#545#0#Twig" expanded="false" />
+            <element signature="e#977#1006#0#Twig" expanded="false" />
+            <element signature="e#1088#1121#0#Twig" expanded="false" />
+            <element signature="e#1589#1620#0#Twig" expanded="false" />
+            <element signature="e#1703#1738#0#Twig" expanded="false" />
+            <element signature="e#2182#2224#0#Twig" expanded="false" />
+            <element signature="e#2332#2379#0#Twig" expanded="false" />
+            <element signature="e#2503#2550#0#Twig" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1480,16 +1576,16 @@
         <state relative-caret-position="316">
           <caret line="42" column="45" selection-start-line="42" selection-start-column="45" selection-end-line="42" selection-end-column="45" />
           <folding>
-            <element signature="e#1053#1081#0#Twig" expanded="true" />
-            <element signature="e#1159#1187#0#Twig" expanded="true" />
-            <element signature="e#1574#1603#0#Twig" expanded="true" />
-            <element signature="e#1685#1718#0#Twig" expanded="true" />
-            <element signature="e#2103#2134#0#Twig" expanded="true" />
-            <element signature="e#2217#2252#0#Twig" expanded="true" />
-            <element signature="e#2430#2466#0#Twig" expanded="true" />
-            <element signature="e#2808#2850#0#Twig" expanded="true" />
-            <element signature="e#2931#2978#0#Twig" expanded="true" />
-            <element signature="e#3068#3115#0#Twig" expanded="true" />
+            <element signature="e#1053#1081#0#Twig" expanded="false" />
+            <element signature="e#1159#1187#0#Twig" expanded="false" />
+            <element signature="e#1574#1603#0#Twig" expanded="false" />
+            <element signature="e#1685#1718#0#Twig" expanded="false" />
+            <element signature="e#2103#2134#0#Twig" expanded="false" />
+            <element signature="e#2217#2252#0#Twig" expanded="false" />
+            <element signature="e#2430#2466#0#Twig" expanded="false" />
+            <element signature="e#2808#2850#0#Twig" expanded="false" />
+            <element signature="e#2931#2978#0#Twig" expanded="false" />
+            <element signature="e#3068#3115#0#Twig" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1524,8 +1620,8 @@
         <state relative-caret-position="-22">
           <caret line="11" column="119" selection-start-line="11" selection-start-column="119" selection-end-line="11" selection-end-column="119" />
           <folding>
-            <element signature="e#240#274#0#Twig" expanded="true" />
-            <element signature="e#1345#1392#0#Twig" expanded="true" />
+            <element signature="e#240#274#0#Twig" expanded="false" />
+            <element signature="e#1345#1392#0#Twig" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1543,8 +1639,8 @@
         <state relative-caret-position="66">
           <caret line="3" column="0" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
           <folding>
-            <element signature="e#22#56#0#Twig" expanded="true" />
-            <element signature="e#140#174#0#Twig" expanded="true" />
+            <element signature="e#22#56#0#Twig" expanded="false" />
+            <element signature="e#140#174#0#Twig" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1554,18 +1650,10 @@
         <state relative-caret-position="195">
           <caret line="42" column="20" selection-start-line="42" selection-start-column="20" selection-end-line="42" selection-end-column="20" />
           <folding>
-            <element signature="e#234#266#0#Twig" expanded="true" />
-            <element signature="e#458#492#0#Twig" expanded="true" />
-            <element signature="e#1906#1947#0#Twig" expanded="true" />
+            <element signature="e#234#266#0#Twig" expanded="false" />
+            <element signature="e#458#492#0#Twig" expanded="false" />
+            <element signature="e#1906#1947#0#Twig" expanded="false" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/RessourceBundle/Resources/views/Groupe/edit.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="308">
-          <caret line="14" column="36" selection-start-line="14" selection-start-column="36" selection-end-line="14" selection-end-column="36" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1592,7 +1680,7 @@
         <state relative-caret-position="176">
           <caret line="8" column="114" selection-start-line="8" selection-start-column="114" selection-end-line="8" selection-end-column="114" />
           <folding>
-            <element signature="e#12#28#0#Twig" expanded="true" />
+            <element signature="e#12#28#0#Twig" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1610,8 +1698,8 @@
         <state relative-caret-position="242">
           <caret line="11" column="11" selection-start-line="11" selection-start-column="11" selection-end-line="11" selection-end-column="11" />
           <folding>
-            <element signature="e#218#248#0#Twig" expanded="true" />
-            <element signature="e#400#432#0#Twig" expanded="true" />
+            <element signature="e#218#248#0#Twig" expanded="false" />
+            <element signature="e#400#432#0#Twig" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1621,9 +1709,9 @@
         <state relative-caret-position="264">
           <caret line="12" column="17" selection-start-line="12" selection-start-column="17" selection-end-line="12" selection-end-column="17" />
           <folding>
-            <element signature="e#235#269#0#Twig" expanded="true" />
-            <element signature="e#462#498#0#Twig" expanded="true" />
-            <element signature="e#1669#1712#0#Twig" expanded="true" />
+            <element signature="e#235#269#0#Twig" expanded="false" />
+            <element signature="e#462#498#0#Twig" expanded="false" />
+            <element signature="e#1669#1712#0#Twig" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1647,8 +1735,8 @@
         <state relative-caret-position="0">
           <caret line="0" column="52" selection-start-line="0" selection-start-column="22" selection-end-line="0" selection-end-column="52" />
           <folding>
-            <element signature="e#22#52#0#Twig" expanded="true" />
-            <element signature="e#128#158#0#Twig" expanded="true" />
+            <element signature="e#22#52#0#Twig" expanded="false" />
+            <element signature="e#128#158#0#Twig" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1671,6 +1759,38 @@
       <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
         <state>
           <filtering enabled="true" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/RessourceBundle/Resources/views/Groupe/edit.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="122">
+          <caret line="11" column="26" selection-start-line="11" selection-start-column="26" selection-end-line="11" selection-end-column="26" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/js/ajouterEntityByModal.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="22">
+          <caret line="1" column="27" selection-start-line="1" selection-start-column="27" selection-end-line="1" selection-end-column="27" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/css/getiem.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="528">
+          <caret line="24" column="1" selection-start-line="24" selection-start-column="1" selection-end-line="24" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/RessourceBundle/Resources/views/Enfant/edit.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1496">
+          <caret line="68" column="20" selection-start-line="68" selection-start-column="20" selection-end-line="68" selection-end-column="20" />
+          <folding />
         </state>
       </provider>
     </entry>
