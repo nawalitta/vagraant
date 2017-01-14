@@ -6,7 +6,7 @@
 <nav class = "navbar navbar-default" >
     <div>
         <ul class = "nav navbar-nav">
-            <li><a href = "{{path('RessourceBunde_Ressource_edit')}}"><input type="button" class="btn btn-primary" name="btnAjout" value="Ajouter une ressource"/></a></li>
+            <li><a href = "{{path('RessourceBundle_Ressource_edit')}}"><input type="button" class="btn btn-primary" name="btnAjout" value="Ajouter une ressource"/></a></li>
         </ul>
      </div>
 </nav>
@@ -28,8 +28,8 @@
             </tr>
         {% for ressource in ressources %}
             <tr>
-                <td><a href={{path('RessourceBunde_Ressource_show',{ 'id': ressource.id })}}> {{ressource.id}}</a> </td>
-                <td><a href={{path('RessourceBunde_Ressource_show',{ 'id': ressource.id })}}> {{ressource.designation}}</a> </td>
+                <td><a href={{path('RessourceBundle_Ressource_show',{ 'id': ressource.id })}}> {{ressource.id}}</a> </td>
+                <td><a href={{path('RessourceBundle_Ressource_show',{ 'id': ressource.id })}}> {{ressource.designation}}</a> </td>
                 <td> 
                     <div class="form-check">
                         <label class="form-check-label">
