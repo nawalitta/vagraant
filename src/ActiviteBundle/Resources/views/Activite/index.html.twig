@@ -3,7 +3,6 @@
 {% block title %}Liste activités{% endblock %}
 
 {% block body %}
-
     <nav class="navbar navbar-default">
         <div>
             <ul class="nav navbar-nav">
@@ -41,7 +40,8 @@
                         <td>
                             <div class="form-check">
                                 <label class="form-check-label">
-                                    <input type="checkbox" name="idActivites[]" value="{{ activite.id }}" class="form-check-input">
+                                    <input type="checkbox" name="idActivites[]" value="{{ activite.id }}"
+                                           class="form-check-input">
                                 </label>
                             </div>
                         </td>
@@ -61,7 +61,6 @@
                     </td>
                 </tr>
             </table>
-
+        </div>
     </form>
-    </div>
 {% endblock %}

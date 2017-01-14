@@ -56,12 +56,10 @@
                         <td></td>
                         <td></td>
                     </tr>
-                    {% for enfant in enfants %}
-                        {% if enfant.groupe.id == groupe.id %}
-                            <tr>
-                                {% include 'RessourceBundle:Enfant:preview.html.twig' %}
-                            </tr>
-                        {% endif %}
+                    {% for enfant in groupe.enfants %}
+                        <tr>
+                            {% include 'RessourceBundle:Enfant:preview.html.twig' %}
+                        </tr>
                     {% endfor %}
                 </table>
             </div>

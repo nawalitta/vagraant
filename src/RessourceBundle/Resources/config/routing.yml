@@ -1,34 +1,34 @@
  #---------------FENETRE HORAIRE-----------------------------
-RessourceBunde_FenetreHoraire_index:
+RessourceBundle_FenetreHoraire_index:
     path:     FenetreHoraire/index
     defaults: { _controller: RessourceBundle:FenetreHoraire:index }
 
-RessourceBunde_FenetreHoraire_edit:
+RessourceBundle_FenetreHoraire_edit:
     path:     FenetreHoraire/edit/{id}
     defaults: { _controller: RessourceBundle:FenetreHoraire:edit, id : null }
 
-RessourceBunde_FenetreHoraire_delete:
+RessourceBundle_FenetreHoraire_delete:
     path:     FenetreHoraire/delete/{id}
     defaults: { _controller: RessourceBundle:FenetreHoraire:delete }
 
-RessourceBunde_FenetreHoraire_show:
+RessourceBundle_FenetreHoraire_show:
     path:     FenetreHoraire/show/{id}
     defaults: { _controller: RessourceBundle:FenetreHoraire:show }
 
 #---------------RESSOURCE-----------------------------
-RessourceBunde_Ressource_index:
+RessourceBundle_Ressource_index:
     path:     Ressource/index
     defaults: { _controller: RessourceBundle:Ressource:index }
 
-RessourceBunde_Ressource_edit:
+RessourceBundle_Ressource_edit:
     path:     Ressource/edit/{id}
     defaults: { _controller: RessourceBundle:Ressource:edit, id : null }
 
-RessourceBunde_Ressource_delete:
+RessourceBundle_Ressource_delete:
     path:     Ressource/delete/{id}
     defaults: { _controller: RessourceBundle:Ressource:delete }
 
-RessourceBunde_Ressource_show:
+RessourceBundle_Ressource_show:
     path:     Ressource/show/{id}
     defaults: { _controller: RessourceBundle:Ressource:show }
 
@@ -52,7 +52,7 @@ RessourceBundle_BesoinTypeRessource_delete:
 #---------------TYPE RESSOURCE-----------------------------
 RessourceBundle_TypeRessource_edit:
     path:     typeRessource/edit/{id}/{nomTypeRessource}
-    defaults: { _controller: RessourceBundle:TypeRessource:edit, id : null, nomTypeRessource : null }
+    defaults: { _controller: RessourceBundle:TypeRessource:edit, id : null, nomTypeRessource : null   }
 
 RessourceBundle_TypeRessource_delete:
     path:     typeRessource/delete/{id}

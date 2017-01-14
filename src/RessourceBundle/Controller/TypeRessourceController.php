@@ -9,41 +9,64 @@ use RessourceBundle\Form\TypeRessourceType;
 use Symfony\Component\HttpFoundation\Response;
 
 class TypeRessourceController extends Controller
-{    /**
-     * Affichage de toutes les TypeRessource présentes dans la bdd
+{
+    /**
+     * Affichage de tous les type ressource présentes dans la bdd
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function indexAction() {
+    public function indexAction(Request $request)
+    {
         $entityManager = $this->getDoctrine()->getManager();
         $typeRessourceRepository = $entityManager->getRepository("RessourceBundle:TypeRessource");
-        $typesRessource = $typeRessourceRepository->findAll();
+        $erreurMsg = "";
+        //Récupere la liste des types de ressources cochées afin de les supprimer
+        $listTypesRessources = $request->get('idTypesRessources');
+        if ($listTypesRessources != null) {
+            foreach ($listTypesRessources as $id) {
+                $typeRessource = $typeRessourceRepository->findOneById($id);
+                try {
+                    if ($typeRessource != null) {
+                        $entityManager->remove($typeRessource);
+                    }
+                    $entityManager->flush();
+                } catch (\Exception $ex) {
+                    //Pb suppression
+                    $erreurMsg = " Les types de ressources sont encore affectées à au moins une ressource";
+                }
+
+            }
+        }
+
+        $typeRessources = $typeRessourceRepository->findAll();
 
         return $this->render('RessourceBundle:TypeRessource:index.html.twig', array(
-                    "typesRessource" => $typesRessource
+            "typeRessources" => $typeRessources, "erreur" => $erreurMsg
         ));
     }
 
     /**
-     * Affichage d'une TypeRessource présent dans la bdd
+     * Affichage d'un type de ressource présent dans la bdd
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function showAction($id) {
+    public function showAction($id)
+    {
         $entityManager = $this->getDoctrine()->getManager();
         $typeRessourceRepository = $entityManager->getRepository("RessourceBundle:TypeRessource");
         $typeRessource = $typeRessourceRepository->findOneById($id);
 
         return $this->render('RessourceBundle:TypeRessource:show.html.twig', array(
-                    "typeRessource" => $typeRessource
+            "typeRessource" => $typeRessource
         ));
     }
 
     /**
      * @param null $id : si null alors ajout
-     *                   sinon édition d'une TypeRessource
+     *                   sinon édition d'un type de ressource
      * @param Request $request
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function editAction($id = null, $nomTypeRessource = null, Request $request) {
+    public function editAction($id = null, $nomTypeRessource = null, Request $request)
+    {
         $entityManager = $this->getDoctrine()->getManager();
         $typeActivitRepository = $entityManager->getRepository('RessourceBundle:TypeRessource');
         if ($typeActivitRepository->findOneBy(array()) == null) {
@@ -80,17 +103,18 @@ class TypeRessourceController extends Controller
         }
 
         return $this->render('RessourceBundle:TypeRessource:edit.html.twig', array(
-                    'typeRessource' => $typeRessource,
-                    'form' => $form->createView()
+            'typeRessource' => $typeRessource,
+            'form' => $form->createView()
         ));
     }
 
     /**
-     * Suppression d'une TypeRessource
+     * Suppression d'un type de ressource
      * @param null $id
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function deleteAction($id) {
+    public function deleteAction($id)
+    {
         $entityManager = $this->getDoctrine()->getManager();
 
         $typeRessourceRepository = $entityManager->getRepository("RessourceBundle:TypeRessource");
