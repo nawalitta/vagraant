@@ -130,8 +130,8 @@ $(function () {
 
                     console.log('Event added with succes', response);
                     event.id = response.eventid;
-                    displayConstraint(response.constraints);
                     $('#calendar-holder').fullCalendar('updateEvent', event);
+                    displayConstraint(response.constraints);
                 },
                 error: function (e) {
 
@@ -149,8 +149,8 @@ $(function () {
                     dataType: 'json',
                     success: function (response) {
                         console.log("Element supprimé");
-                        displayConstraint(response.constraints);
                         $('#calendar-holder').fullCalendar('removeEvents', event.id);
+                        displayConstraint(response.constraints);
                     }
                 });
             }
@@ -217,6 +217,7 @@ function displayConstraint(liste) {
     liste.forEach(ConstraintList);
     function ConstraintList(element) {
         var li = document.createElement('li');
+        li.style.color = "red";
         ul.appendChild(li);
         t = document.createTextNode(element);
         li.innerHTML = li.innerHTML + element;

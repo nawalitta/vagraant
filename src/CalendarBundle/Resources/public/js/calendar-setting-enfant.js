@@ -217,6 +217,7 @@ function displayConstraint(liste) {
     liste.forEach(ConstraintList);
     function ConstraintList(element) {
         var li = document.createElement('li');
+        li.style.color = "red";
         ul.appendChild(li);
         t = document.createTextNode(element);
         li.innerHTML = li.innerHTML + element;
