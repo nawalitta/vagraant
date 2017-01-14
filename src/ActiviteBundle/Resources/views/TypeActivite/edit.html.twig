@@ -1,8 +1,21 @@
 {% extends "::base.html.twig" %}
 
-{% block title %}ActiviteBundle:TypeActivite:edit{% endblock %}
-
 {% block body %}
-<h1>Welcome to the TypeActivite:edit page</h1>
-{{ form(form) }}
+  <h3 class="h3">Créer un nouveau type d'activité</h3>
+  {{ form_start(form) }}
+  <form>
+    <div class="form-group row">
+      <label for="example-text-input" class="col-md-4 col-form-label">Designation :</label>
+          <div class="col-md-5">
+            {{ form_errors(form.designation) }}
+            {{form_widget(form.designation) }}
+          </div>
+    </div>
+    <div class="form-group row">
+        <div class="col-md-offset-4 col-sm-10">
+            {{ form_widget(form.ok,{ 'label': 'Enregistrer' }, { 'attr': {'class': 'btn btn-primary btn', 'type': 'button'} }) }}
+        </div>
+    </div>
+  </form>
+  {{ form_end(form) }}           
 {% endblock %}

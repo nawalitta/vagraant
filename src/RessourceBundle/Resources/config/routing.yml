@@ -3,7 +3,7 @@ RessourceBunde_FenetreHoraire_index:
     defaults: { _controller: RessourceBundle:FenetreHoraire:index }
 
 RessourceBunde_FenetreHoraire_edit:
-    path:     FenetreHoraire/edit/{id}
+    path:     FenetreHoraire/edit/{id}.{pageRequete}
     defaults: { _controller: RessourceBundle:FenetreHoraire:edit, id : null }
 
 RessourceBunde_FenetreHoraire_delete:
@@ -31,16 +31,16 @@ RessourceBunde_Ressource_show:
     defaults: { _controller: RessourceBundle:Ressource:show }
 
 RessourceBundle_BesoinTypeRessource_edit:
-    path:     besoinTypeRessource/edit/{id}
-    defaults: { _controller: RessourceBundle:BesoinTypeRessourceController:edit, id : null  }
+    path:     besoinTypeRessource/edit/{id}.{idActivite}
+    defaults: { _controller: RessourceBundle:BesoinTypeRessource:edit, id : null  }
 
 RessourceBundle_BesoinTypeRessource_index:
     path:     besoinTypeRessource
-    defaults: { _controller: RessourceBundle:BesoinTypeRessourceController:index }
+    defaults: { _controller: RessourceBundle:BesoinTypeRessource:index }
 
 RessourceBundle_BesoinTypeRessource_show:
     path:     besoinTypeRessource/show/{id}
-    defaults: { _controller: RessourceBundle:BesoinTypeRessourceController:show }
+    defaults: { _controller: RessourceBundle:BesoinTypeRessource:show }
 
 RessourceBundle_BesoinTypeRessource_delete:
     path:     besoinTypeRessource/delete/{id}

@@ -23,6 +23,7 @@ class ActiviteType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
+            'csrf_protection' => false,
             'data_class' => 'ActiviteBundle\Entity\Activite'
         ));
     }
@@ -34,6 +35,5 @@ class ActiviteType extends AbstractType
     {
         return 'activitebundle_activite';
     }
-
 
 }

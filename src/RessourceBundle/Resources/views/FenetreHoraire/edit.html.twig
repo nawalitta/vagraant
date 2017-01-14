@@ -1,10 +1,70 @@
 {% extends "base.html.twig" %}
 
 {% block body %}
-    
-    
+    <h3 class="h3">Créer une nouvelle fenetre horaire</h3>
+    {{ form_start(form) }}
+    <form>
 
-{{ form(form) }}
-
-    
+        <div class="form-group row">
+          <label for="example-text-input" class="col-md-2 col-form-label">Lundi de :</label>
+                <div class="col-md-3">                  
+                    {{ form_errors(form.lundiDebut)}} 
+                    {{ form_widget(form.lundiDebut) }}  
+                </div>
+                <div class="col-md-3">
+                    {{ form_errors(form.lundiFin)}}
+                    {{ form_widget(form.lundiFin) }}
+                </div>
+        </div>
+        <div class="form-group row">
+          <label for="example-text-input" class="col-md-2 col-form-label">Mardi de :</label>
+                <div class="col-md-3">                  
+                    {{ form_errors(form.mardiDebut)}} 
+                    {{ form_widget(form.mardiDebut) }}  
+                </div>
+                <div class="col-md-3">
+                    {{ form_errors(form.mardiFin)}}
+                    {{ form_widget(form.mardiFin) }}
+                </div>
+        </div>
+        <div class="form-group row">
+          <label for="example-text-input" class="col-md-2 col-form-label">Mercredi de :</label>
+                <div class="col-md-3">                  
+                    {{ form_errors(form.mercrediDebut)}} 
+                    {{ form_widget(form.mercrediDebut) }}  
+                </div>
+                <div class="col-md-3">
+                    {{ form_errors(form.mercrediFin)}}
+                    {{ form_widget(form.mercrediFin) }}
+                </div>
+        </div>
+        <div class="form-group row">
+          <label for="example-text-input" class="col-md-2 col-form-label">Jeudi de :</label>
+                <div class="col-md-3">                  
+                    {{ form_errors(form.jeudiDebut)}} 
+                    {{ form_widget(form.jeudiDebut) }}  
+                </div>
+                <div class="col-md-3">
+                    {{ form_errors(form.jeudiFin)}}
+                    {{ form_widget(form.jeudiFin) }}
+                </div>
+        </div>
+        <div class="form-group row">
+          <label for="example-text-input" class="col-md-2 col-form-label">Vendredi de :</label>
+                <div class="col-md-3">                  
+                    {{ form_errors(form.vendrediDebut)}} 
+                    {{ form_widget(form.vendrediDebut) }}  
+                </div>
+                <div class="col-md-3">
+                    {{ form_errors(form.vendrediFin)}}
+                    {{ form_widget(form.vendrediFin) }}
+                </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-md-offset-4 col-sm-10">
+                {{ form_widget(form.ok,{ 'label': 'Enregistrer' }, { 'attr': {'class': 'btn btn-primary btn', 'type': 'button'} }) }}
+            </div>
+        </div>
+    </form>
+    {{ form_end(form) }}    
 {% endblock %}

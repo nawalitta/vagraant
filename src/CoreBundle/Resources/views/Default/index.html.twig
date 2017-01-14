@@ -9,8 +9,9 @@
                 </div>
                 <div class="panel-body">
                     <ul>
-                        <li><a href="#">Enfants</a></li>
-                        <li><a href="#">Groupe</a></li>
+                        <li><a href="{{path('RessourceBundle_Enfant_index')}}">Enfants</a></li>
+                        <li><a href="{{path('RessourceBunde_Ressource_index')}}">Ressource</a></li>
+                        <li><a href="{{path('RessourceBunde_FenetreHoraire_index')}}">Fenetre Horaire</a></li>
                     </ul>
                 </div>
             </div>
@@ -22,9 +23,8 @@
                 </div>
                 <div class="panel-body">
                     <ul>
-                        <li><a href="#">Liste Activités</a></li>
-                        <li><a href="#">Types activités</a></li>
-                        <li><a href="#">Ressource</a></li>
+                        <li><a href="{{path('ActiviteBundle_Activite_index')}}">Activités</a></li>
+                        <li><a href="{{path('ActiviteBundle_ActiviteFixee_index')}}">Activités fixées</a></li>
                     </ul>
                 </div>
             </div>
@@ -32,9 +32,14 @@
         <div class="col-lg-4">
             <div class="panel panel-success">
                 <div class="panel-heading">
-                    <h3 class="panel-title">Utilisateurs</h3>
+                    <h3 class="panel-title">Affectation</h3>
                 </div>
                 <div class="panel-body">
+                    <ul>
+                        <li><a href="{{path('RessourceBundle_AffectationRessource_index')}}">Affecter une ressource</a></li>
+                        <li><a href="{{path('CoreBundle_affecter_enfant_activite_obligatoire')}}">Affecter une activité obligatoire</a></li>
+                        <li><a href="{{path('CoreBundle_affecter_enfant_activite_optionnelle')}}">Affecter une activité optionnelle</a></li>
+                    </ul>
                 </div>
             </div>
         </div>

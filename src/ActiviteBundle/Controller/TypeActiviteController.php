@@ -64,7 +64,8 @@ class TypeActiviteController extends Controller
 
             $this->get('session')->getFlashBag()->add('notice', 'TypeActivite bien enregistrée.');
 
-            return $this->redirect($this->generateUrl('ActiviteBundle_TypeActivite_index'));
+            return $this->redirect($this->generateUrl('ActiviteBundle_Activite_edit'));               
+
         }
 
         return $this->render('ActiviteBundle:TypeActivite:edit.html.twig', array(

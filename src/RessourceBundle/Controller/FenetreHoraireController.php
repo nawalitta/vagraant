@@ -63,7 +63,7 @@ class FenetreHoraireController extends Controller
      * @param Request $request
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function editAction($id = null, Request $request)
+    public function editAction($id = null,$pageRequete, Request $request)
     {
         $entityManager = $this->getDoctrine()->getManager();
         $fenetreHoraireRepository = $entityManager->getRepository("RessourceBundle:FenetreHoraire");
@@ -82,8 +82,16 @@ class FenetreHoraireController extends Controller
             $entityManager->flush();
 
             $this->get('session')->getFlashBag()->add('notice', 'FenetreHoraire bien enregistrée.');
+            if($pageRequete=="Activite"){
+                return $this->redirect($this->generateUrl('ActiviteBundle_Activite_edit'));  
+            }else{
+                if($pageRequete=="Enfant"){
+                    return $this->redirect($this->generateUrl('RessourceBundle_Enfant_edit'));    
+                }else{
+                    return $this->redirect($this->generateUrl('RessourceBunde_FenetreHoraire_index'));                   
+                }
+            }
 
-            return $this->redirect($this->generateUrl('RessourceBunde_FenetreHoraire_index'));
         }
 
         return $this->render('RessourceBundle:FenetreHoraire:edit.html.twig', array(

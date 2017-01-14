@@ -102,12 +102,12 @@ class Enfant
     private $activitesRealisees;
 
     /**
-     * @ORM\OneToMany(targetEntity="ActiviteBundle\Entity\ActiviteObligatoire", mappedBy="enfant")
+     * @ORM\OneToMany(targetEntity="ActiviteBundle\Entity\ActiviteObligatoire", mappedBy="enfant" , cascade={"persist", "remove"})
      */
     private $activitesObligatoires;
 
     /**
-     * @ORM\OneToMany(targetEntity="Preaffection", mappedBy="enfant")
+     * @ORM\OneToMany(targetEntity="Preaffection", mappedBy="enfant", cascade={"persist", "remove"})
      */
     private $preAffections;
 
