@@ -69,7 +69,7 @@ class RessourceController extends Controller
 
             $entityManager->flush();
             $request->getSession()->getFlashBag()->add('notice', 'La Ressource est bien enregistrée.');
-            return $this->redirect($this->generateUrl('RessourceBunde_Ressource_index'));
+            return $this->redirect($this->generateUrl('RessourceBundle_Ressource_index'));
         }
 
         return $this->render('RessourceBundle:Ressource:edit.html.twig', array(
