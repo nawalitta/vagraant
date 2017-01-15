@@ -20,6 +20,8 @@ class AppKernel extends Kernel
             new CoreBundle\CoreBundle(),
             new UtilisateurBundle\UtilisateurBundle(),
             new CalendarBundle\ADesignsCalendarBundle(),
+            new StatsBundle\StatsBundle(),
+            new Ob\HighchartsBundle\ObHighchartsBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'), true)) {
