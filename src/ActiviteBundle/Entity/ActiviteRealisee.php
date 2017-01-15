@@ -14,7 +14,8 @@ use RessourceBundle\Entity\Ressource;
  * @ORM\Table(name="activite_realisee")
  * @ORM\Entity(repositoryClass="ActiviteBundle\Repository\ActiviteRealiseeRepository")
  */
-class ActiviteRealisee {
+class ActiviteRealisee
+{
 
     /**
      * @var int
@@ -67,7 +68,8 @@ class ActiviteRealisee {
      *
      * @return int
      */
-    public function getId() {
+    public function getId()
+    {
         return $this->id;
     }
 
@@ -78,7 +80,8 @@ class ActiviteRealisee {
      *
      * @return ActiviteRealisee
      */
-    public function setHeureDebut($heureDebut) {
+    public function setHeureDebut($heureDebut)
+    {
         $this->heureDebut = $heureDebut;
 
         return $this;
@@ -89,7 +92,8 @@ class ActiviteRealisee {
      *
      * @return DateTime
      */
-    public function getHeureDebut() {
+    public function getHeureDebut()
+    {
         return $this->heureDebut;
     }
 
@@ -100,7 +104,8 @@ class ActiviteRealisee {
      *
      * @return ActiviteRealisee
      */
-    public function setHeureFin($heureFin) {
+    public function setHeureFin($heureFin)
+    {
         $this->heureFin = $heureFin;
 
         return $this;
@@ -111,20 +116,23 @@ class ActiviteRealisee {
      *
      * @return DateTime
      */
-    public function getHeureFin() {
+    public function getHeureFin()
+    {
         return $this->heureFin;
     }
 
     /**
      * Constructor
      */
-    public function __construct() {
+    public function __construct()
+    {
         $this->ressources = new ArrayCollection();
     }
 
-    public function __toString() {
+    public function __toString()
+    {
 
-        return $this->activite->getDesignation() . " " . $this->heureDebut . "-" . $this->heureFin;
+        return $this->activite->getDesignation() . " " . $this->heureDebut->format('Y-m-d H:i:s') . "-" . $this->heureFin->format('Y-m-d H:i:s');
     }
 
     /**
@@ -134,7 +142,8 @@ class ActiviteRealisee {
      *
      * @return ActiviteRealisee
      */
-    public function setActivite(Activite $activite = null) {
+    public function setActivite(Activite $activite = null)
+    {
         $this->activite = $activite;
 
         return $this;
@@ -145,7 +154,8 @@ class ActiviteRealisee {
      *
      * @return Activite
      */
-    public function getActivite() {
+    public function getActivite()
+    {
         return $this->activite;
     }
 
@@ -156,7 +166,8 @@ class ActiviteRealisee {
      *
      * @return ActiviteRealisee
      */
-    public function addRessource(Ressource $ressource) {
+    public function addRessource(Ressource $ressource)
+    {
         $this->ressources[] = $ressource;
 
         return $this;
@@ -167,7 +178,8 @@ class ActiviteRealisee {
      *
      * @param Ressource $ressource
      */
-    public function removeRessource(Ressource $ressource) {
+    public function removeRessource(Ressource $ressource)
+    {
         $this->ressources->removeElement($ressource);
     }
 
@@ -176,14 +188,16 @@ class ActiviteRealisee {
      *
      * @return ArrayCollection
      */
-    public function getRessources() {
+    public function getRessources()
+    {
         return $this->ressources;
     }
 
     /**
      * @Assert\IsTrue(message = "L'heure de début doit etre avant l'heure de fin")
      */
-    public function isValidHeure() {
+    public function isValidHeure()
+    {
         return ($this->heureDebut <= $this->heureFin);
     }
 
@@ -194,7 +208,8 @@ class ActiviteRealisee {
      *
      * @return ActiviteRealisee
      */
-    public function setEnfant(Enfant $enfant) {
+    public function setEnfant(Enfant $enfant)
+    {
         $this->enfant = $enfant;
 
         return $this;
@@ -205,7 +220,8 @@ class ActiviteRealisee {
      *
      * @return Enfant
      */
-    public function getEnfant() {
+    public function getEnfant()
+    {
         return $this->enfant;
     }
 
@@ -216,7 +232,8 @@ class ActiviteRealisee {
      *
      * @return ActiviteRealisee
      */
-    public function setJour(Jour $jour) {
+    public function setJour(Jour $jour)
+    {
         $this->jour = $jour;
 
         return $this;
@@ -227,7 +244,8 @@ class ActiviteRealisee {
      *
      * @return Jour
      */
-    public function getJour() {
+    public function getJour()
+    {
         return $this->jour;
     }
 
@@ -235,7 +253,8 @@ class ActiviteRealisee {
      * Return array of activiteRealisee
      * @return type array
      */
-    public function toArray() {
+    public function toArray()
+    {
         $event = array();
 
         if ($this->id !== null) {
@@ -247,7 +266,7 @@ class ActiviteRealisee {
         if ($this->heureFin !== null) {
             $event['end'] = $this->heureFin->format("H:i:s");
         }
-        $event['resourceId'] = $this->enfant->getId() ."-". $this->jour->getId();
+        $event['resourceId'] = $this->enfant->getId() . "-" . $this->jour->getId();
 
         return $event;
     }

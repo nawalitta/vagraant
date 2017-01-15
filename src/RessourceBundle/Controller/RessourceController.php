@@ -48,7 +48,7 @@ class RessourceController extends Controller
      * @param Request $request
      * @return Response
      */
-    public function editAction($id = null, $idActivite = null, Request $request)
+    public function editAction($id = null, Request $request)
     {
         $entityManager = $this->getDoctrine()->getManager();
 
@@ -102,7 +102,7 @@ class RessourceController extends Controller
                 "ressource" => $ressource, "erreur" => $erreurMsg
             ));
         }
-        return $this->redirect($this->generateUrl('RessourceBunde_Ressource_index'));
+        return $this->redirect($this->generateUrl('RessourceBundle_Ressource_index'));
     }
 
     /**

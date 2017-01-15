@@ -113,8 +113,8 @@
 
                     <tr>
                         {% for affectation in activite.preAffections %}
-                            <td><a href="{{path('RessourceBunde_Ressource_edit',{ 'id': affectation.ressource.getId() })}}">{{ affectation.ressource.getId() }}</a></td>
-                            <td><a href="{{path('RessourceBunde_Ressource_edit',{ 'id': affectation.ressource.getId() })}}">{{ affectation.ressource.getDesignation() }}</a></td>
+                            <td><a href="{{path('RessourceBundle_Ressource_edit',{ 'id': affectation.ressource.getId() })}}">{{ affectation.ressource.getId() }}</a></td>
+                            <td><a href="{{path('RessourceBundle_Ressource_edit',{ 'id': affectation.ressource.getId() })}}">{{ affectation.ressource.getDesignation() }}</a></td>
                         {% endfor %}
                     </tr>
                 </table>
