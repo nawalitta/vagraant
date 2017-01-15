@@ -2,51 +2,56 @@
 {% block title %}Besoin en ressource edition{% endblock %}
 {% block body %}
 
-<h3 class="h3">Edition des Besoins en ressources :</h3>
-{% if erreur != "" %}
-    <div class="alert alert-danger" role="alert">
-        <label>
-            {{ erreur }}
-        </label>
-    </div>
-{% endif %}
+    <h3 class="h3">Edition des Besoins en ressources :</h3>
+    {% if erreur != "" %}
+        <div class="alert alert-danger" role="alert">
+            <label>
+                {{ erreur }}
+            </label>
+        </div>
+    {% endif %}
     <form>
         <div class="col-sm-8">
             <div class="table-responsive">
-                <table class ="table">
+                <table class="table">
                     <caption> Liste des ressources</caption>
                     <tr>
-                        <th> # </th>
-                        <th> Nom ressource </th>
-                        <th> Quantité </th>
-                        <th> Ratio </th>
-                        <th> preference </th>
-                        <th> choisir </th>
+                        <th> #</th>
+                        <th> Nom ressource</th>
+                        <th> Quantité</th>
+                        <th> Ratio</th>
+                        <th> preference</th>
+                        <th> choisir</th>
                     </tr>
                     {% for ressource in typesRessource %}
-                    <tr>
+                        <tr>
                             <td>{{ ressource.id }} </td>
                             <td> {{ ressource.designation }} </td>
-                            <td> 
+                            <td>
                                 <input input type="number" name="quantite[{{ ressource.id }}]">
                             </td>
                             <td>
                                 <input input type="number" name="ratio[{{ ressource.id }}]">
                             </td>
                             <td>
-                                <input input type="number" name="preference[{{ ressource.id }}]">                             
+                                <input input type="number" name="preference[{{ ressource.id }}]">
                             </td>
                             <td>
                                 <div class="form-check">
                                     <label class="form-check-label">
-                                        <input type="checkbox" name="idTypeRessource[]" value="{{ressource.id}}" class="form-check-input">
+                                        <input type="checkbox" name="idTypeRessource[]" value="{{ ressource.id }}"
+                                               class="form-check-input">
                                     </label>
                                 </div>
                             </td>
-                    </tr>
+                        </tr>
                     {% endfor %}
                     <tr>
-                        <td></td><td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
                         <td>
                             <button type="submit" class="btn btn-primary">Enregistrer</button>
                         </td>

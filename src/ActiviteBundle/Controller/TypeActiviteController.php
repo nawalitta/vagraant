@@ -5,6 +5,7 @@ namespace ActiviteBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use ActiviteBundle\Form\TypeActiviteType;
+use Symfony\Component\HttpFoundation\Response;
 
 class TypeActiviteController extends Controller
 {
