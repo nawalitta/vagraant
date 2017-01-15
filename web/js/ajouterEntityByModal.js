@@ -27,3 +27,17 @@ function ajouterTypeRessource(nomTypeRessource) {
         }
     });
 }
+function ajouterTypeActivite(nomTypeActivite) {
+    console.log(nomTypeActivite);
+    $.ajax({
+        type: "POST",
+        url: window.location.origin + "/gpac/web/app_dev.php/typeActivite/edit/null/" + nomTypeActivite,
+        data: nomTypeActivite,
+        success: function (newTypeActiviteId) {
+            var selectTypeRessource = $('#activitebundle_activite_typeActivite');
+            selectTypeRessource.append($("<option>" + nomTypeActivite + "</option>").val(newTypeActiviteId));
+            console.log(selectTypeRessource);
+            $('#myModal').modal('toggle');
+        }
+    });
+}

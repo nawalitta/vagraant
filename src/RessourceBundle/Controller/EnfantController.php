@@ -53,6 +53,7 @@ class EnfantController extends Controller
         $entityManager = $this->getDoctrine()->getManager();
         $enfantRepository = $entityManager->getRepository("RessourceBundle:Enfant");
         $enfant = $enfantRepository->findOneById($id);
+        $erreurMsg ="";
 
         $activteRepository = $entityManager->getRepository("ActiviteBundle:Activite");
 
@@ -88,7 +89,7 @@ class EnfantController extends Controller
         }
 
         return $this->render('RessourceBundle:Enfant:show.html.twig', array(
-                    "enfant" => $enfant
+                    "enfant" => $enfant,"erreur"=>$erreurMsg
         ));
     }
 
@@ -158,8 +159,16 @@ class EnfantController extends Controller
         if ($enfant != null) {
             $entityManager->remove($enfant);
         }
-        $entityManager->flush();
-
+        $erreurMsg ="";
+        try{
+            $entityManager->flush();
+        } catch (\Exception $ex) {
+            //Problème de clé étrangère encore présente
+            $erreurMsg = " Ces activités sont encore affectées quelque part";
+            return $this->render('RessourceBundle:Enfant:show.html.twig', array(
+                    "enfant" => $enfant,"erreur"=>$erreurMsg
+        ));
+        }
         return $this->redirect($this->generateUrl('RessourceBundle_Enfant_index'));
     }
 }

@@ -1,92 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="6dc076d3-332f-4bc4-8121-fb82bb8217e0" name="Default" comment="Merge branch 'navigation'">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/nbproject/private/private.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/RessourceBundle/Controller/GroupeController.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/RessourceBundle/Resources/views/Groupe/edit.html.twig" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/RessourceBundle/Resources/views/Groupe/index.html.twig" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/RessourceBundle/Resources/views/Groupe/preview.html.twig" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/RessourceBundle/Resources/views/Groupe/show.html.twig" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/RessourceBundle/Resources/views/Ressource/preview.html.twig" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/RessourceBundle/Resources/views/TypeRessource/preview.html.twig" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/RessourceBundle/Tests/Controller/GroupeControllerControllerTest.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/ActiviteFilter.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/ajouterEntityByModal.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/groupFilter.js" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/RessourceBundle/Resources/config/routing/enfant.yml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/RessourceBundle/Resources/views/BesoinTypeRessourceController/delete.html.twig" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/RessourceBundle/Resources/views/BesoinTypeRessourceController/edit.html.twig" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/RessourceBundle/Resources/views/BesoinTypeRessourceController/index.html.twig" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/RessourceBundle/Resources/views/BesoinTypeRessourceController/show.html.twig" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/RessourceBundle/Resources/views/Enfant/new.html.twig" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/deployment.xml" afterPath="$PROJECT_DIR$/.idea/deployment.xml" />
+    <list default="true" id="6dc076d3-332f-4bc4-8121-fb82bb8217e0" name="Default" comment="modification gui et js">
+      <change type="DELETED" beforePath="$PROJECT_DIR$/web/js/ActiviteFilter.js" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Resources/views/base.html.twig" afterPath="$PROJECT_DIR$/app/Resources/views/base.html.twig" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Resources/views/footer.html.twig" afterPath="$PROJECT_DIR$/app/Resources/views/footer.html.twig" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Resources/views/menu.html.twig" afterPath="$PROJECT_DIR$/app/Resources/views/menu.html.twig" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ActiviteBundle/Controller/ActiviteController.php" afterPath="$PROJECT_DIR$/src/ActiviteBundle/Controller/ActiviteController.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bdd/insertData.sql" afterPath="$PROJECT_DIR$/bdd/insertData.sql" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ActiviteBundle/Controller/ActiviteFixeeController.php" afterPath="$PROJECT_DIR$/src/ActiviteBundle/Controller/ActiviteFixeeController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ActiviteBundle/Controller/ActiviteRealiseeController.php" afterPath="$PROJECT_DIR$/src/ActiviteBundle/Controller/ActiviteRealiseeController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ActiviteBundle/Controller/TypeActiviteController.php" afterPath="$PROJECT_DIR$/src/ActiviteBundle/Controller/TypeActiviteController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ActiviteBundle/Entity/Activite.php" afterPath="$PROJECT_DIR$/src/ActiviteBundle/Entity/Activite.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ActiviteBundle/Entity/ActiviteFixee.php" afterPath="$PROJECT_DIR$/src/ActiviteBundle/Entity/ActiviteFixee.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ActiviteBundle/Entity/ActiviteObligatoire.php" afterPath="$PROJECT_DIR$/src/ActiviteBundle/Entity/ActiviteObligatoire.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ActiviteBundle/Entity/ActiviteRealisee.php" afterPath="$PROJECT_DIR$/src/ActiviteBundle/Entity/ActiviteRealisee.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ActiviteBundle/Entity/TypeActivite.php" afterPath="$PROJECT_DIR$/src/ActiviteBundle/Entity/TypeActivite.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ActiviteBundle/Form/ActiviteType.php" afterPath="$PROJECT_DIR$/src/ActiviteBundle/Form/ActiviteType.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ActiviteBundle/Form/TypeActiviteType.php" afterPath="$PROJECT_DIR$/src/ActiviteBundle/Form/TypeActiviteType.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ActiviteBundle/Resources/config/routing.yml" afterPath="$PROJECT_DIR$/src/ActiviteBundle/Resources/config/routing.yml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ActiviteBundle/Resources/views/Activite/edit.html.twig" afterPath="$PROJECT_DIR$/src/ActiviteBundle/Resources/views/Activite/edit.html.twig" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ActiviteBundle/Resources/views/Activite/index.html.twig" afterPath="$PROJECT_DIR$/src/ActiviteBundle/Resources/views/Activite/index.html.twig" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ActiviteBundle/Resources/views/Activite/preview.html.twig" afterPath="$PROJECT_DIR$/src/ActiviteBundle/Resources/views/Activite/preview.html.twig" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ActiviteBundle/Resources/views/Activite/show.html.twig" afterPath="$PROJECT_DIR$/src/ActiviteBundle/Resources/views/Activite/show.html.twig" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ActiviteBundle/Resources/views/ActiviteFixee/index.html.twig" afterPath="$PROJECT_DIR$/src/ActiviteBundle/Resources/views/ActiviteFixee/index.html.twig" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ActiviteBundle/Resources/views/ActiviteFixee/preview.html.twig" afterPath="$PROJECT_DIR$/src/ActiviteBundle/Resources/views/ActiviteFixee/preview.html.twig" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ActiviteBundle/Resources/views/ActiviteObligatoire/preview.html.twig" afterPath="$PROJECT_DIR$/src/ActiviteBundle/Resources/views/ActiviteObligatoire/preview.html.twig" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ActiviteBundle/Resources/views/ActiviteRealisee/index.html.twig" afterPath="$PROJECT_DIR$/src/ActiviteBundle/Resources/views/ActiviteRealisee/index.html.twig" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ActiviteBundle/Resources/views/ActiviteRealisee/preview.html.twig" afterPath="$PROJECT_DIR$/src/ActiviteBundle/Resources/views/ActiviteRealisee/preview.html.twig" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ActiviteBundle/Resources/views/TypeActivite/edit.html.twig" afterPath="$PROJECT_DIR$/src/ActiviteBundle/Resources/views/TypeActivite/edit.html.twig" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ActiviteBundle/Resources/views/TypeActivite/index.html.twig" afterPath="$PROJECT_DIR$/src/ActiviteBundle/Resources/views/TypeActivite/index.html.twig" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ActiviteBundle/Resources/views/TypeActivite/preview.html.twig" afterPath="$PROJECT_DIR$/src/ActiviteBundle/Resources/views/TypeActivite/preview.html.twig" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ActiviteBundle/Resources/views/TypeActivite/show.html.twig" afterPath="$PROJECT_DIR$/src/ActiviteBundle/Resources/views/TypeActivite/show.html.twig" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/CoreBundle/Controller/AffectationController.php" afterPath="$PROJECT_DIR$/src/CoreBundle/Controller/AffectationController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/CoreBundle/Resources/views/Affectation/affecter_enfant_activite_obligatoire.html.twig" afterPath="$PROJECT_DIR$/src/CoreBundle/Resources/views/Affectation/affecter_enfant_activite_obligatoire.html.twig" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/CoreBundle/Resources/views/Affectation/affecter_enfant_activite_preview.html.twig" afterPath="$PROJECT_DIR$/src/CoreBundle/Resources/views/Affectation/affecter_enfant_activite_preview.html.twig" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/CoreBundle/Resources/views/Default/index.html.twig" afterPath="$PROJECT_DIR$/src/CoreBundle/Resources/views/Default/index.html.twig" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/RessourceBundle/Controller/AffectationRessourceController.php" afterPath="$PROJECT_DIR$/src/RessourceBundle/Controller/AffectationRessourceController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/RessourceBundle/Controller/BesoinTypeRessourceController.php" afterPath="$PROJECT_DIR$/src/RessourceBundle/Controller/BesoinTypeRessourceController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/RessourceBundle/Controller/EnfantController.php" afterPath="$PROJECT_DIR$/src/RessourceBundle/Controller/EnfantController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/RessourceBundle/Controller/FenetreHoraireController.php" afterPath="$PROJECT_DIR$/src/RessourceBundle/Controller/FenetreHoraireController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/RessourceBundle/Controller/RessourceController.php" afterPath="$PROJECT_DIR$/src/RessourceBundle/Controller/RessourceController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/RessourceBundle/Controller/TypeRessourceController.php" afterPath="$PROJECT_DIR$/src/RessourceBundle/Controller/TypeRessourceController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/RessourceBundle/Entity/BesoinTypeRessource.php" afterPath="$PROJECT_DIR$/src/RessourceBundle/Entity/BesoinTypeRessource.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/RessourceBundle/Entity/Enfant.php" afterPath="$PROJECT_DIR$/src/RessourceBundle/Entity/Enfant.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/RessourceBundle/Entity/FenetreHoraire.php" afterPath="$PROJECT_DIR$/src/RessourceBundle/Entity/FenetreHoraire.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/RessourceBundle/Entity/Groupe.php" afterPath="$PROJECT_DIR$/src/RessourceBundle/Entity/Groupe.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/RessourceBundle/Entity/Preaffection.php" afterPath="$PROJECT_DIR$/src/RessourceBundle/Entity/Preaffection.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/RessourceBundle/Entity/Ressource.php" afterPath="$PROJECT_DIR$/src/RessourceBundle/Entity/Ressource.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/RessourceBundle/Form/BesoinTypeRessourceType.php" afterPath="$PROJECT_DIR$/src/RessourceBundle/Form/BesoinTypeRessourceType.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/RessourceBundle/Form/FenetreHoraireType.php" afterPath="$PROJECT_DIR$/src/RessourceBundle/Form/FenetreHoraireType.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/RessourceBundle/Resources/config/routing.yml" afterPath="$PROJECT_DIR$/src/RessourceBundle/Resources/config/routing.yml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/RessourceBundle/Resources/views/AffectationRessource/index.html.twig" afterPath="$PROJECT_DIR$/src/RessourceBundle/Resources/views/AffectationRessource/index.html.twig" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/RessourceBundle/Resources/views/BesoinTypeRessource/edit.html.twig" afterPath="$PROJECT_DIR$/src/RessourceBundle/Resources/views/BesoinTypeRessource/edit.html.twig" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/RessourceBundle/Resources/views/Enfant/edit.html.twig" afterPath="$PROJECT_DIR$/src/RessourceBundle/Resources/views/Enfant/edit.html.twig" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/RessourceBundle/Resources/views/Enfant/index.html.twig" afterPath="$PROJECT_DIR$/src/RessourceBundle/Resources/views/Enfant/index.html.twig" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/RessourceBundle/Resources/views/Enfant/preview.html.twig" afterPath="$PROJECT_DIR$/src/RessourceBundle/Resources/views/Enfant/preview.html.twig" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/RessourceBundle/Resources/views/Enfant/show.html.twig" afterPath="$PROJECT_DIR$/src/RessourceBundle/Resources/views/Enfant/show.html.twig" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/RessourceBundle/Resources/views/FenetreHoraire/edit.html.twig" afterPath="$PROJECT_DIR$/src/RessourceBundle/Resources/views/FenetreHoraire/edit.html.twig" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/RessourceBundle/Resources/views/FenetreHoraire/index.html.twig" afterPath="$PROJECT_DIR$/src/RessourceBundle/Resources/views/FenetreHoraire/index.html.twig" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/RessourceBundle/Resources/views/FenetreHoraire/preview.html.twig" afterPath="$PROJECT_DIR$/src/RessourceBundle/Resources/views/FenetreHoraire/preview.html.twig" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/RessourceBundle/Resources/views/FenetreHoraire/show.html.twig" afterPath="$PROJECT_DIR$/src/RessourceBundle/Resources/views/FenetreHoraire/show.html.twig" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/RessourceBundle/Resources/views/Ressource/edit.html.twig" afterPath="$PROJECT_DIR$/src/RessourceBundle/Resources/views/Ressource/edit.html.twig" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/RessourceBundle/Resources/views/Ressource/index.html.twig" afterPath="$PROJECT_DIR$/src/RessourceBundle/Resources/views/Ressource/index.html.twig" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/RessourceBundle/Resources/views/Ressource/show.html.twig" afterPath="$PROJECT_DIR$/src/RessourceBundle/Resources/views/Ressource/show.html.twig" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/RessourceBundle/Resources/views/TypeRessource/edit.html.twig" afterPath="$PROJECT_DIR$/src/RessourceBundle/Resources/views/TypeRessource/edit.html.twig" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/RessourceBundle/Resources/views/TypeRessource/index.html.twig" afterPath="$PROJECT_DIR$/src/RessourceBundle/Resources/views/TypeRessource/index.html.twig" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/RessourceBundle/Resources/views/TypeRessource/show.html.twig" afterPath="$PROJECT_DIR$/src/RessourceBundle/Resources/views/TypeRessource/show.html.twig" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/css/getiem.css" afterPath="$PROJECT_DIR$/web/css/getiem.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/RessourceBundle/Resources/views/Groupe/index.html.twig" afterPath="$PROJECT_DIR$/src/RessourceBundle/Resources/views/Groupe/index.html.twig" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/web/js/groupFilter.js" afterPath="$PROJECT_DIR$/web/js/filters.js" />
     </list>
     <ignored path="gpac.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -108,12 +37,6 @@
     <option name="SHOW_TABLE_DETAILS" value="true" />
     <option name="SHOW_EMPTY_GROUPS" value="false" />
     <option name="AUTO_SCROLL_FROM_SOURCE" value="false" />
-    <PATH>
-      <PATH_ELEMENT>
-        <option name="myItemId" />
-        <option name="myItemType" value="com.intellij.database.view.DatabaseStructure$Root" />
-      </PATH_ELEMENT>
-    </PATH>
   </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FavoritesManager">
@@ -121,45 +44,76 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
-      <file leaf-file-name="EnfantController.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/RessourceBundle/Controller/EnfantController.php">
+      <file leaf-file-name="insertData.sql" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/bdd/insertData.sql">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2134">
-              <caret line="103" column="0" selection-start-line="103" selection-start-column="0" selection-end-line="103" selection-end-column="0" />
-              <folding>
-                <element signature="e#46#80#0#PHP" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="base.html.twig" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/Resources/views/base.html.twig">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+            <state relative-caret-position="220">
+              <caret line="28" column="66" selection-start-line="28" selection-start-column="66" selection-end-line="28" selection-end-column="66" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="menu.html.twig" pinned="false" current-in-tab="true">
+      <file leaf-file-name="menu.html.twig" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/Resources/views/menu.html.twig">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="836">
-              <caret line="38" column="37" selection-start-line="38" selection-start-column="37" selection-end-line="38" selection-end-column="37" />
+            <state relative-caret-position="242">
+              <caret line="26" column="112" selection-start-line="26" selection-start-column="112" selection-end-line="26" selection-end-column="112" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ActiviteFixeeController.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/ActiviteBundle/Controller/ActiviteFixeeController.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="134">
+              <caret line="28" column="60" selection-start-line="28" selection-start-column="60" selection-end-line="28" selection-end-column="60" />
               <folding>
-                <element signature="e#2634#2642#0#Twig" expanded="true" />
+                <element signature="e#45#84#0#PHP" expanded="true" />
+                <element signature="e#607#637#1#PHP" expanded="true" />
+                <element signature="e#762#786#1#PHP" expanded="true" />
+                <element signature="e#1600#1646#0#PHP" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file leaf-file-name="index.html.twig" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/RessourceBundle/Resources/views/Ressource/index.html.twig">
+        <entry file="file://$PROJECT_DIR$/src/ActiviteBundle/Resources/views/ActiviteFixee/index.html.twig">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="616">
-              <caret line="40" column="20" selection-start-line="40" selection-start-column="20" selection-end-line="40" selection-end-column="20" />
+            <state relative-caret-position="145">
+              <caret line="22" column="62" selection-start-line="22" selection-start-column="62" selection-end-line="22" selection-end-column="62" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="filters.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/web/js/filters.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="312">
+              <caret line="25" column="12" selection-start-line="25" selection-start-column="12" selection-end-line="25" selection-end-column="12" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index.html.twig" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/RessourceBundle/Resources/views/Groupe/index.html.twig">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="874">
+              <caret line="44" column="14" selection-start-line="44" selection-start-column="14" selection-end-line="44" selection-end-column="14" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index.html.twig" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/CoreBundle/Resources/views/Default/index.html.twig">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="174">
+              <caret line="27" column="112" selection-start-line="27" selection-start-column="112" selection-end-line="27" selection-end-column="112" />
               <folding />
             </state>
           </provider>
@@ -167,8 +121,48 @@
       </file>
     </leaf>
   </component>
+  <component name="FrameworkCommandLineHistory">
+    <commandsHistory>
+      <command text="s doctrine:database:drop" />
+      <command text="s doctrine:database:drop --force " />
+      <command text="s doctrine:database:create" />
+      <command text="s doctrine:schema:update" />
+      <command text="s doctrine:schema:update --force " />
+    </commandsHistory>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="master" />
+      </map>
+    </option>
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="mock:///Dummy.txt" root0="SKIP_INSPECTION" />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/src/ActiviteBundle/Resources/views/Activite/edit.html.twig" />
+        <option value="$PROJECT_DIR$/src/ActiviteBundle/Resources/views/TypeActivite/index.html.twig" />
+        <option value="$PROJECT_DIR$/src/RessourceBundle/Resources/views/Ressource/index.html.twig" />
+        <option value="$PROJECT_DIR$/src/RessourceBundle/Controller/FenetreHoraireController.php" />
+        <option value="$PROJECT_DIR$/src/RessourceBundle/Resources/config/routing.yml" />
+        <option value="$PROJECT_DIR$/web/js/groupFilter.js" />
+        <option value="$PROJECT_DIR$/src/ActiviteBundle/Resources/views/ActiviteFixee/preview.html.twig" />
+        <option value="$PROJECT_DIR$/bdd/insertData_Activite_Fixees.sql" />
+        <option value="$PROJECT_DIR$/bdd/insertData.sql" />
+        <option value="$PROJECT_DIR$/web/js/filters.js" />
+        <option value="$PROJECT_DIR$/src/ActiviteBundle/Resources/views/ActiviteFixee/index.html.twig" />
+        <option value="$PROJECT_DIR$/src/RessourceBundle/Resources/views/FenetreHoraire/index.html.twig" />
+        <option value="$PROJECT_DIR$/src/RessourceBundle/Resources/views/FenetreHoraire/edit.html.twig" />
+        <option value="$PROJECT_DIR$/src/RessourceBundle/Resources/views/Groupe/index.html.twig" />
+        <option value="$PROJECT_DIR$/src/CoreBundle/Resources/views/Default/index.html.twig" />
+        <option value="$PROJECT_DIR$/app/Resources/views/menu.html.twig" />
+        <option value="$PROJECT_DIR$/src/ActiviteBundle/Controller/ActiviteFixeeController.php" />
+      </list>
+    </option>
   </component>
   <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
   <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER" />
@@ -181,6 +175,7 @@
       <server host="localhost" id="503892a3-9ebe-49aa-aedb-afd42bd199e5" name="php" />
     </servers>
   </component>
+  <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
   <component name="ProjectFrameBounds">
     <option name="x" value="-9" />
     <option name="y" value="-9" />
@@ -212,221 +207,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scratches" />
-      <pane id="Scope">
-        <subPane subId="Project Files">
-          <PATH>
-            <PATH_ELEMENT USER_OBJECT="Root">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="gpac">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT USER_OBJECT="Root">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="gpac">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="web">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT USER_OBJECT="Root">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="gpac">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="web">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="css">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT USER_OBJECT="Root">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="gpac">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="src">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT USER_OBJECT="Root">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="gpac">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="src">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="RessourceBundle">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT USER_OBJECT="Root">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="gpac">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="src">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="RessourceBundle">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="Resources">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="views">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT USER_OBJECT="Root">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="gpac">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="src">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="RessourceBundle">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="Resources">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="views">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="Ressource">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT USER_OBJECT="Root">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="gpac">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="src">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="RessourceBundle">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="Resources">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT USER_OBJECT="Root">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="gpac">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="src">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="RessourceBundle">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="Entity">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT USER_OBJECT="Root">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="gpac">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="app">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT USER_OBJECT="Root">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="gpac">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="app">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="Resources">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="views">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-          </PATH>
-        </subPane>
-      </pane>
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -501,64 +281,137 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scope">
+        <subPane subId="Project Files">
+          <PATH>
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="gpac">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
+      <pane id="Scratches" />
     </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="js-jscs-nodeInterpreter" value="C:\Apps\nodejs\node.exe" />
+    <property name="SearchEverywhereHistoryKey" value="enfant&#9;null&#9;null" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\Users\fpaquere\Documents\Cours\Semestre_9\Projet SI\gpac\bdd" />
+    </key>
+  </component>
+  <component name="RunManager" selected="PHP Web Application.gpac">
+    <configuration default="true" type="JavascriptDebugType" factoryName="JavaScript Debug">
+      <method />
+    </configuration>
+    <configuration default="true" type="NodeJSConfigurationType" factoryName="Node.js" path-to-node="project" working-dir="">
+      <method />
+    </configuration>
+    <configuration default="true" type="PHPUnitRunConfigurationType" factoryName="PHPUnit">
+      <TestRunner />
+      <method />
+    </configuration>
+    <configuration default="true" type="PhpBehatConfigurationType" factoryName="Behat">
+      <BehatRunner />
+      <method />
+    </configuration>
+    <configuration default="true" type="PhpLocalRunConfigurationType" factoryName="PHP Console">
+      <method />
+    </configuration>
+    <configuration default="true" type="PhpWebAppRunConfigurationType" factoryName="PHP Web Application">
+      <method />
+    </configuration>
+    <configuration default="true" type="js.build_tools.gulp" factoryName="Gulp.js">
+      <method />
+    </configuration>
+    <configuration default="true" type="js.build_tools.npm" factoryName="npm">
+      <command value="run-script" />
+      <scripts />
+      <node-interpreter value="project" />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="mocha-javascript-test-runner" factoryName="Mocha">
+      <node-interpreter>project</node-interpreter>
+      <node-options />
+      <working-directory />
+      <pass-parent-env>true</pass-parent-env>
+      <envs />
+      <ui />
+      <extra-mocha-options />
+      <test-kind>DIRECTORY</test-kind>
+      <test-directory />
+      <recursive>false</recursive>
+      <method />
+    </configuration>
+    <configuration default="false" name="gpac" type="PhpWebAppRunConfigurationType" factoryName="PHP Web Application" server_name="php" start_url="/gpac/web/app_dev.php">
+      <method />
+    </configuration>
+    <list size="1">
+      <item index="0" class="java.lang.String" itemvalue="PHP Web Application.gpac" />
+    </list>
   </component>
   <component name="ShelveChangesManager" show_recycled="false">
     <option name="remove_strategy" value="false" />
   </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
   <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="6dc076d3-332f-4bc4-8121-fb82bb8217e0" name="Default" comment="Merge branch 'navigation'" />
+      <created>1484412213085</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1484412213085</updated>
+      <workItem from="1484412214810" duration="15452000" />
+    </task>
+    <task id="LOCAL-00001" summary="just some little modifications before commit">
+      <created>1484416335900</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1484416335900</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="640000" />
+    <option name="totallyTimeSpent" value="16092000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-9" y="-9" width="1938" height="1050" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.20837809" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.20608899" sideWeight="0.51611173" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.45081967" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.20608899" sideWeight="0.51611173" order="12" side_tool="true" content_ui="tabs" />
+      <window_info id="Command Line Tools Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.31030446" sideWeight="0.4838883" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4379391" sideWeight="0.4924812" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2740047" sideWeight="0.48979592" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3290398" sideWeight="0.49785176" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18367347" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.22126746" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4379391" sideWeight="0.4924812" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3290398" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.17024705" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3290398" sideWeight="0.49785176" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.352459" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3290398" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Command Line Tools Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.40515223" sideWeight="0.4838883" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2740047" sideWeight="0.48979592" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Database Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3290398" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Database Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3290398" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3290398" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39929742" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
     </layout>
-    <layout-to-restore>
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3290398" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.40398127" sideWeight="0.51611173" order="8" side_tool="true" content_ui="tabs" />
-      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Command Line Tools Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.40515223" sideWeight="0.4838883" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4379391" sideWeight="0.4924812" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2740047" sideWeight="0.48979592" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3290398" sideWeight="0.49785176" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="Database Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3290398" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.20300752" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.22126746" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3290398" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.17024705" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39929742" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-    </layout-to-restore>
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
@@ -586,155 +439,21 @@
       <collection />
     </option>
   </component>
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="just some little modifications before commit" />
+    <MESSAGE value="modification gui et js" />
+    <option name="LAST_COMMIT_MESSAGE" value="modification gui et js" />
+  </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="4" />
+      <option name="time" value="6" />
     </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/ActiviteBundle/Controller/ActiviteRealiseeController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="308">
-          <caret line="56" column="8" selection-start-line="56" selection-start-column="8" selection-end-line="56" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/UtilisateurBundle/Form/UtilisateurType.php" />
-    <entry file="file://$PROJECT_DIR$/src/ActiviteBundle/Controller/ActiviteObligatoireController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="591">
-          <caret line="35" column="11" selection-start-line="35" selection-start-column="11" selection-end-line="35" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="dbDummy://dbtable:/c92415a6/df350063-444d-472e-8b19-9a1beb61241b/gpac.utilisateur" />
-    <entry file="file://$PROJECT_DIR$/src/UtilisateurBundle/Controller/UtilisateurController.php" />
-    <entry file="file://$PROJECT_DIR$/src/RessourceBundle/Resources/views/Vehicule/edit.html.twig" />
-    <entry file="file://$PROJECT_DIR$/src/ActiviteBundle/Form/ActiviteType.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="286">
-          <caret line="16" column="187" selection-start-line="16" selection-start-column="157" selection-end-line="16" selection-end-column="187" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/RessourceBundle/Resources/views/Vehicule/index.html.twig" />
-    <entry file="dbDummy://dbtable:/c92415a6/df350063-444d-472e-8b19-9a1beb61241b/gpac.vehicule" />
-    <entry file="file://$PROJECT_DIR$/src/UtilisateurBundle/Resources/views/Utilisateur/index.html.twig" />
-    <entry file="file://$PROJECT_DIR$/composer.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="506">
-          <caret line="23" column="18" selection-start-line="23" selection-start-column="18" selection-end-line="23" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/favicon.ico">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/RessourceBundle/Controller/VehiculeController.php" />
-    <entry file="file://$PROJECT_DIR$/src/RessourceBundle/Form/VehiculeType.php" />
-    <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/c709e7fb-dda2-4f29-a879-50bc7cf3714b/console.sql">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ActiviteBundle/Entity/ActiviteRealiseeRepository.php" />
-    <entry file="file://$PROJECT_DIR$/src/UtilisateurBundle/Entity/Utilisateur.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="88" column="6" selection-start-line="88" selection-start-column="6" selection-end-line="88" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ActiviteBundle/Entity/Activite.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="562" column="30" selection-start-line="562" selection-start-column="20" selection-end-line="562" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ActiviteBundle/Entity/ActiviteFixee.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="176">
-          <caret line="8" column="3" selection-start-line="8" selection-start-column="3" selection-end-line="8" selection-end-column="3" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ActiviteBundle/Entity/ActiviteRealisee.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="241">
-          <caret line="183" column="6" selection-start-line="183" selection-start-column="6" selection-end-line="183" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ActiviteBundle/Entity/TypeActivite.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="264">
-          <caret line="96" column="6" selection-start-line="96" selection-start-column="6" selection-end-line="96" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/CalendrierBundle/Entity/Evenement.php" />
-    <entry file="file://$PROJECT_DIR$/src/RessourceBundle/Entity/BesoinTypeRessource.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4048">
-          <caret line="187" column="7" selection-start-line="187" selection-start-column="7" selection-end-line="187" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/RessourceBundle/Entity/Enfant.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="7678">
-          <caret line="356" column="5" selection-start-line="356" selection-start-column="5" selection-end-line="356" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/RessourceBundle/Entity/Groupe.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="924">
-          <caret line="42" column="14" selection-start-line="42" selection-start-column="14" selection-end-line="42" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/RessourceBundle/Entity/Preaffection.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1914">
-          <caret line="88" column="21" selection-start-line="88" selection-start-column="21" selection-end-line="88" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/RessourceBundle/Entity/Ressource.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4114">
-          <caret line="189" column="0" selection-start-line="189" selection-start-column="0" selection-end-line="189" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/RessourceBundle/Entity/TypeRessource.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1914">
-          <caret line="88" column="7" selection-start-line="88" selection-start-column="7" selection-end-line="88" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/RessourceBundle/Entity/Vehicule.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="16" column="6" selection-start-line="16" selection-start-column="6" selection-end-line="16" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ActiviteBundle/Entity/Jour.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="110">
-          <caret line="6" column="0" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/ActiviteBundle/Entity/ActiviteObligatoire.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="3256">
@@ -794,19 +513,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/RessourceBundle/Controller/FenetreHoraireController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/RessourceBundle/Entity/FenetreHoraire.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="198">
           <caret line="54" column="20" selection-start-line="54" selection-start-column="20" selection-end-line="54" selection-end-column="20" />
           <folding>
-            <element signature="e#42#55#0#PHP" expanded="true" />
+            <element signature="e#42#55#0#PHP" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -861,25 +573,215 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/cache/dev/twig/23/2344cf6583fbb54e714c650e5c15a7e082fd9275bd682bded9d58e1cb47efa43.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="169">
+          <caret line="151" column="28" selection-start-line="151" selection-start-column="28" selection-end-line="151" selection-end-column="28" />
+          <folding>
+            <marker date="1484410437083" expanded="false" signature="1943:1960" ph="..." />
+            <marker date="1484410437083" expanded="true" signature="1962:2275" ph="..." />
+            <marker date="1484410437083" expanded="true" signature="1995:2275" ph="..." />
+            <marker date="1484410437083" expanded="true" signature="2040:2275" ph="..." />
+            <marker date="1484410437083" expanded="true" signature="2086:2168" ph="..." />
+            <marker date="1484410437083" expanded="true" signature="2211:2275" ph="..." />
+            <marker date="1484410437083" expanded="true" signature="2236:2275" ph="..." />
+            <marker date="1484410437083" expanded="true" signature="3043:3328" ph="..." />
+            <marker date="1484410437083" expanded="true" signature="3091:3328" ph="..." />
+            <marker date="1484410437083" expanded="true" signature="3137:3221" ph="..." />
+            <marker date="1484410437083" expanded="true" signature="3264:3328" ph="..." />
+            <marker date="1484410437083" expanded="true" signature="3289:3328" ph="..." />
+            <marker date="1484410437083" expanded="true" signature="3871:4158" ph="..." />
+            <marker date="1484410437083" expanded="true" signature="3919:4158" ph="..." />
+            <marker date="1484410437083" expanded="true" signature="3965:4051" ph="..." />
+            <marker date="1484410437083" expanded="true" signature="4094:4158" ph="..." />
+            <marker date="1484410437083" expanded="true" signature="4119:4158" ph="..." />
+            <marker date="1484410437083" expanded="false" signature="5037:5055" ph="..." />
+            <marker date="1484410437083" expanded="true" signature="5057:5170" ph="..." />
+            <marker date="1484410437083" expanded="true" signature="5091:5170" ph="..." />
+            <marker date="1484410437083" expanded="true" signature="5121:5170" ph="..." />
+            <marker date="1484410437083" expanded="false" signature="6526:6543" ph="..." />
+            <marker date="1484410437083" expanded="true" signature="6545:8579" ph="..." />
+            <marker date="1484410437083" expanded="true" signature="6578:7215" ph="..." />
+            <marker date="1484410437083" expanded="true" signature="6623:7200" ph="..." />
+            <marker date="1484410437083" expanded="true" signature="6669:6751" ph="..." />
+            <marker date="1484410437083" expanded="true" signature="6794:7181" ph="..." />
+            <marker date="1484410437083" expanded="true" signature="6819:7158" ph="..." />
+            <marker date="1484410437083" expanded="true" signature="7248:7791" ph="..." />
+            <marker date="1484410437083" expanded="true" signature="7296:7776" ph="..." />
+            <marker date="1484410437083" expanded="true" signature="7342:7426" ph="..." />
+            <marker date="1484410437083" expanded="true" signature="7469:7757" ph="..." />
+            <marker date="1484410437083" expanded="true" signature="7494:7734" ph="..." />
+            <marker date="1484410437083" expanded="true" signature="7824:8568" ph="..." />
+            <marker date="1484410437083" expanded="true" signature="7872:8553" ph="..." />
+            <marker date="1484410437083" expanded="true" signature="7918:8004" ph="..." />
+            <marker date="1484410437083" expanded="true" signature="8047:8534" ph="..." />
+            <marker date="1484410437083" expanded="true" signature="8072:8511" ph="..." />
+            <marker date="1484410437083" expanded="false" signature="8612:8630" ph="..." />
+            <marker date="1484410437083" expanded="true" signature="8632:8835" ph="..." />
+            <marker date="1484410437083" expanded="true" signature="8666:8824" ph="..." />
+            <marker date="1484410437083" expanded="true" signature="8696:8809" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="dbDummy://dbtable:/c92415a6/c709e7fb-dda2-4f29-a879-50bc7cf3714b/gpac.fenetre_horaire">
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="dbDummy://dbtable:/c92415a6/c709e7fb-dda2-4f29-a879-50bc7cf3714b/gpac.fenetre_horaire">
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="dbDummy://dbtable:/c92415a6/c709e7fb-dda2-4f29-a879-50bc7cf3714b/gpac.fenetre_horaire">
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="dbDummy://dbtable:/c92415a6/c709e7fb-dda2-4f29-a879-50bc7cf3714b/gpac.activite">
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/RessourceBundle/Controller/EnfantController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2134">
-          <caret line="103" column="0" selection-start-line="103" selection-start-column="0" selection-end-line="103" selection-end-column="0" />
+        <state relative-caret-position="228">
+          <caret line="20" column="0" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Resources/views/base.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-174">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ActiviteBundle/Resources/views/TypeActivite/index.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="286">
+          <caret line="13" column="17" selection-start-line="13" selection-start-column="17" selection-end-line="13" selection-end-column="17" />
           <folding>
-            <element signature="e#46#80#0#PHP" expanded="false" />
+            <element signature="e#12#28#0#Twig" expanded="false" />
+            <element signature="e#236#268#0#Twig" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ActiviteBundle/Resources/views/Activite/edit.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="462">
+          <caret line="69" column="69" selection-start-line="69" selection-start-column="69" selection-end-line="69" selection-end-column="69" />
+          <folding>
+            <element signature="e#12#28#0#Twig" expanded="false" />
+            <element signature="e#2802#2837#0#Twig" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/RessourceBundle/Resources/views/Ressource/index.html.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="616">
-          <caret line="40" column="20" selection-start-line="40" selection-start-column="20" selection-end-line="40" selection-end-column="20" />
+        <state relative-caret-position="235">
+          <caret line="37" column="69" selection-start-line="37" selection-start-column="69" selection-end-line="37" selection-end-column="69" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Resources/views/base.html.twig">
+    <entry file="file://$PROJECT_DIR$/src/RessourceBundle/Controller/FenetreHoraireController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="235">
+          <caret line="94" column="0" selection-start-line="94" selection-start-column="0" selection-end-line="94" selection-end-column="0" />
+          <folding>
+            <element signature="e#3518#3556#1#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/RessourceBundle/Resources/views/Enfant/show.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2969">
+          <caret line="22" column="25" selection-start-line="22" selection-start-column="25" selection-end-line="22" selection-end-column="25" />
+          <folding>
+            <element signature="e#227#254#0#Twig" expanded="false" />
+            <element signature="e#409#438#0#Twig" expanded="false" />
+            <element signature="e#4748#4789#0#Twig" expanded="false" />
+            <element signature="e#6711#6763#0#Twig" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/RessourceBundle/Resources/views/Enfant/preview.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="e#22#49#0#Twig" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/js/ajouterEntityByModal.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="616">
+          <caret line="28" column="1" selection-start-line="28" selection-start-column="1" selection-end-line="28" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/RessourceBundle/Controller/GroupeController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="374">
+          <caret line="67" column="48" selection-start-line="67" selection-start-column="32" selection-end-line="67" selection-end-column="48" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/RessourceBundle/Resources/views/Enfant/edit.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="441">
+          <caret line="67" column="19" selection-start-line="67" selection-start-column="0" selection-end-line="68" selection-end-column="0" />
+          <folding>
+            <element signature="e#12#28#0#Twig" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/c709e7fb-dda2-4f29-a879-50bc7cf3714b/console.sql">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -887,12 +789,168 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/RessourceBundle/Resources/config/routing.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1826">
+          <caret line="83" column="59" selection-start-line="83" selection-start-column="59" selection-end-line="83" selection-end-column="59" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/RessourceBundle/Controller/AffectationRessourceController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="440">
+          <caret line="24" column="26" selection-start-line="24" selection-start-column="26" selection-end-line="24" selection-end-column="26" />
+          <folding>
+            <element signature="e#636#669#1#PHP" expanded="false" />
+            <element signature="e#733#760#1#PHP" expanded="false" />
+            <element signature="e#821#845#1#PHP" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/RessourceBundle/Resources/views/AffectationRessource/index.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="330">
+          <caret line="15" column="32" selection-start-line="15" selection-start-column="32" selection-end-line="15" selection-end-column="32" />
+          <folding>
+            <element signature="e#12#28#0#Twig" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/js/ActiviteFilter.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="11" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ActiviteBundle/Resources/views/ActiviteFixee/preview.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="88">
+          <caret line="4" column="91" selection-start-line="4" selection-start-column="91" selection-end-line="4" selection-end-column="91" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bdd/insertData_Activite_Fixees.sql">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="311">
+          <caret line="25" column="0" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/RessourceBundle/Entity/Enfant.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="356">
+          <caret line="96" column="28" selection-start-line="96" selection-start-column="13" selection-end-line="96" selection-end-column="28" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="dbDummy://dbtable:/c92415a6/c709e7fb-dda2-4f29-a879-50bc7cf3714b/gpac.activite_fixee">
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ActiviteBundle/Resources/views/Activite/index.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="374">
+          <caret line="17" column="25" selection-start-line="17" selection-start-column="25" selection-end-line="17" selection-end-column="25" />
+          <folding>
+            <element signature="e#12#28#0#Twig" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/RessourceBundle/Resources/views/FenetreHoraire/edit.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1738">
+          <caret line="79" column="48" selection-start-line="79" selection-start-column="48" selection-end-line="79" selection-end-column="48" />
+          <folding>
+            <element signature="e#12#28#0#Twig" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/RessourceBundle/Resources/views/FenetreHoraire/index.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-696">
+          <caret line="12" column="21" selection-start-line="12" selection-start-column="21" selection-end-line="12" selection-end-column="21" />
+          <folding>
+            <element signature="e#12#28#0#Twig" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bdd/insertData.sql">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="220">
+          <caret line="28" column="66" selection-start-line="28" selection-start-column="66" selection-end-line="28" selection-end-column="66" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/RessourceBundle/Resources/views/Groupe/index.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="874">
+          <caret line="44" column="14" selection-start-line="44" selection-start-column="14" selection-end-line="44" selection-end-column="14" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/CoreBundle/Resources/views/Default/index.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="174">
+          <caret line="27" column="112" selection-start-line="27" selection-start-column="112" selection-end-line="27" selection-end-column="112" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/Resources/views/menu.html.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="836">
-          <caret line="38" column="37" selection-start-line="38" selection-start-column="37" selection-end-line="38" selection-end-column="37" />
+        <state relative-caret-position="242">
+          <caret line="26" column="112" selection-start-line="26" selection-start-column="112" selection-end-line="26" selection-end-column="112" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/js/filters.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="312">
+          <caret line="25" column="12" selection-start-line="25" selection-start-column="12" selection-end-line="25" selection-end-column="12" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ActiviteBundle/Resources/views/ActiviteFixee/index.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="145">
+          <caret line="22" column="62" selection-start-line="22" selection-start-column="62" selection-end-line="22" selection-end-column="62" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ActiviteBundle/Controller/ActiviteFixeeController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="134">
+          <caret line="28" column="60" selection-start-line="28" selection-start-column="60" selection-end-line="28" selection-end-column="60" />
           <folding>
-            <element signature="e#2634#2642#0#Twig" expanded="true" />
+            <element signature="e#45#84#0#PHP" expanded="true" />
+            <element signature="e#607#637#1#PHP" expanded="true" />
+            <element signature="e#762#786#1#PHP" expanded="true" />
+            <element signature="e#1600#1646#0#PHP" expanded="true" />
           </folding>
         </state>
       </provider>

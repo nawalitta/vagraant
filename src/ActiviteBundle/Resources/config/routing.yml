@@ -4,8 +4,8 @@ ActiviteBundle_TypeActivite_index:
     defaults: { _controller: ActiviteBundle:TypeActivite:index }
 
 ActiviteBundle_TypeActivite_edit:
-    path:     typeActivite/edit/{id}
-    defaults: { _controller: ActiviteBundle:TypeActivite:edit,id : null }
+    path:     typeActivite/edit/{id}/{nomTypeActivite}
+    defaults: { _controller: ActiviteBundle:TypeActivite:edit,id : null, nomTypeActivite : null }
 
 ActiviteBundle_TypeActivite_delete:
     path:     typeActivite/delete/{id}

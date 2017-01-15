@@ -30,7 +30,7 @@ class Groupe
     private $designation;
 
         /**
-     * @ORM\OneToMany(targetEntity="Enfant", mappedBy="groupe")
+     * @ORM\OneToMany(targetEntity="Enfant", mappedBy="groupe",cascade={"persist"})
      */
     private $enfants;
     

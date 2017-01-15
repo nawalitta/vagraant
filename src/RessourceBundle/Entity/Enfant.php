@@ -112,7 +112,7 @@ class Enfant
     private $preAffections;
     
         /**
-     * @ORM\OneToMany(targetEntity="CalendarBundle\Entity\EventEntity", mappedBy="enfant")
+     * @ORM\OneToMany(targetEntity="CalendarBundle\Entity\EventEntity", mappedBy="enfant",cascade={"persist"})
      */
     private $evenements;
     

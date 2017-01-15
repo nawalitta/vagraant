@@ -1,64 +1,68 @@
 {% extends "::base.html.twig" %}
 
+{% block title %}Liste activités fixées / enfant{% endblock %}
+
+
 {% block body %}
-
-<nav class = "navbar navbar-default" >
-    <div>
-        <ul class = "nav navbar-nav">
-            <li><a href = "{{path('ActiviteBundle_Activite_edit')}}"><input type="button" class="btn btn-primary" name="btnAjout" value="Ajouter une activite"/></a></li>
-        </ul>
-     </div>
-</nav>
-{% if erreur!="" %}
-    <div class="alert alert-danger" role="alert">
-        <label>
-            {{ erreur }}
-        </label>
+    {% if erreur != "" %}
+        <div class="alert alert-danger" role="alert">
+            <label>
+                {{ erreur }}
+            </label>
+        </div>
+    {% endif %}
+    <div class="form-group row">
+        <div class="col-md-1">
+            <label for="sel1">Liste des enfants :</label>
+        </div>
+        <div class="col-md-2">
+            <select class="form-control" id="sel1" name="enfantId"
+                    onchange="selectActiviteFixeByEnfant(document.getElementsByName('enfantId')[0].value)">
+                <option value="aucun">Veuillez sélectionner un enfant</option>
+                {% for enfant in enfants %}
+                    <option value="{{ enfant.id }}">{{ enfant.prenom ~" "~ enfant.nom }}</option>
+                {% endfor %}
+            </select>
+        </div>
     </div>
-{% endif %}
-<form>
-    <div class="form-group">
-        <label for="sel1">Liste des enfants :</label>
-        <select class="form-control" id="enfantId" name="enfant" onchange="selectEnfant(document.getElementsByName('enfant')[0].value)">
-            {% for enfant in enfants %}
-                <option value="{{enfant.id}}">{{ enfant.prenom ~" "~ enfant.nom}}</option>
-            {% endfor %}
-        </select>
-<button type="submit" class="btn btn-default">Selectionner</button>
-</div>   
-</form>
-<form>
-    <div class="table-responsive">
-        <table class="table" name="tableActivite">
-             <caption>Liste des activités fixées</caption>
-            <tr>
-                <th> # </th>
-                <th> Designation </th>
-                <th> Type Activite </th>
-                <th> Heure </th>
-                <th> Jour/parité </th>
-                <th> Enfant </th>
-                <th> Selection </th>
-            </tr>
-        {% for activiteF in activitesFixees %}
-            <tr>
-                {% include 'ActiviteBundle:ActiviteFixee:preview.html.twig' %}  
-                <td>
-                    <div class="form-check">
-                        <label class="form-check-label">
-                            <input type="checkbox" name="idActiviteFixee[]" value="{{activiteF.id}}" class="form-check-input">
-                        </label>
-                    </div>
-                </td>
-            </tr>
-        {% endfor %}
-        <tr>
-            <td></td><td></td><td></td><td></td><td></td><td></td>
-            <td><button type="submit" class="btn btn-primary">Supprimer</button></td>
-        </tr>
-        </table>
-        
-</form>
-</div>
-
+    <form method="post">
+        <div class="table-responsive">
+            <table id="tableActiviteFixees" class="table">
+                <caption>Liste des activités fixées</caption>
+                <tr>
+                    <th> #</th>
+                    <th> Designation</th>
+                    <th> Type Activite</th>
+                    <th> Heure</th>
+                    <th> Jour/parité</th>
+                    <th> Selection</th>
+                </tr>
+                {% for enfant in enfants %}
+                    {% for activiteFixees in enfant.activitesFixees %}
+                        <tr id="{{ enfant.id }}" hidden>
+                            {% include 'ActiviteBundle:ActiviteFixee:preview.html.twig' %}
+                            <td id="{{ enfant.id }}">
+                                <div class="form-check">
+                                    <label class="form-check-label">
+                                        <input type="checkbox" name="idActivitesFixee[]" value="{{ activiteFixees.id }}"
+                                               class="form-check-input">
+                                    </label>
+                                </div>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                {% endfor %}
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>
+                        <button type="submit" class="btn btn-primary">Supprimer</button>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </form>
 {% endblock %}

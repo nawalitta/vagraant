@@ -1,6 +1,5 @@
-<td> {{ activiteF.id }} </td>
-<td> {{ activiteF.activite.getDesignation() }}</td>
-<td> {{ activiteF.activite.getTypeActivite().getDesignation() }} </td>
-<td> {{ activiteF.heureDebut|date('H:i') ~ "-"~ activiteF.heureFin|date('H:i') }} </td>
-<td> {{ activiteF.jour.getDesignation() ~'/'~ activiteF.jour.getParite() }} </td>
-<td> {{ activiteF.enfant.getPrenom() ~" "~ activiteF.enfant.getNom() }} </td>
+<td> {{ activiteFixees.id }} </td>
+<td> {{ activiteFixees.activite.getDesignation() }}</td>
+<td> {{ activiteFixees.activite.getTypeActivite().getDesignation() }} </td>
+<td> {{ activiteFixees.heureDebut|date('H:i') ~ "-"~ activiteFixees.heureFin|date('H:i') }} </td>
+<td> {{ activiteFixees.jour.getDesignation() ~'/'~ activiteFixees.jour.getParite() }} </td>

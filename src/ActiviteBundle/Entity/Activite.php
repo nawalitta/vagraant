@@ -103,32 +103,32 @@ class Activite {
     private $enfantsOptionnels;
 
     /**
-     * @ORM\OneToMany(targetEntity="ActiviteBundle\Entity\ActiviteRealisee", mappedBy="activite")
+     * @ORM\OneToMany(targetEntity="ActiviteBundle\Entity\ActiviteRealisee", mappedBy="activite",cascade={"persist"})
      */
     private $activitesRealisees;
 
     /**
-     * @ORM\OneToMany(targetEntity="RessourceBundle\Entity\Preaffection", mappedBy="activite")
+     * @ORM\OneToMany(targetEntity="RessourceBundle\Entity\Preaffection", mappedBy="activite",cascade={"persist"})
      */
     private $preAffections;
 
     /**
-     * @ORM\OneToMany(targetEntity="ActiviteObligatoire", mappedBy="activite")
+     * @ORM\OneToMany(targetEntity="ActiviteObligatoire", mappedBy="activite",cascade={"persist"})
      */
     private $enfantsObligatoires;
 
     /**
-     * @ORM\OneToMany(targetEntity="ActiviteFixee", mappedBy="activite")
+     * @ORM\OneToMany(targetEntity="ActiviteFixee", mappedBy="activite",cascade={"persist"})
      */
     private $activitesFixees;
 
     /**
-     * @ORM\OneToMany(targetEntity="RessourceBundle\Entity\BesoinTypeRessource", mappedBy="activite")
+     * @ORM\OneToMany(targetEntity="RessourceBundle\Entity\BesoinTypeRessource", mappedBy="activite",cascade={"persist"})
      */
     private $besoinsTypeRessources;
 
     /**
-     * @ORM\OneToMany(targetEntity="CalendarBundle\Entity\EventEntity", mappedBy="evenement")
+     * @ORM\OneToMany(targetEntity="CalendarBundle\Entity\EventEntity", mappedBy="evenement",cascade={"persist"})
      */
     private $evenements;
 

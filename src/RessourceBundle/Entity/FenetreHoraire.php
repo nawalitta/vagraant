@@ -95,17 +95,17 @@ class FenetreHoraire
     private $vendrediFin;
 
     /**
-     * @ORM\OneToMany(targetEntity="Ressource", mappedBy="fenetreHoraire")
+     * @ORM\OneToMany(targetEntity="Ressource", mappedBy="fenetreHoraire",cascade={"persist"})
      */
     private $ressources;
 
     /**
-     * @ORM\OneToMany(targetEntity="ActiviteBundle\Entity\Activite", mappedBy="fenetreHoraire" )
+     * @ORM\OneToMany(targetEntity="ActiviteBundle\Entity\Activite", mappedBy="fenetreHoraire",cascade={"persist"} )
      */
     private $activites;
 
     /**
-     * @ORM\OneToMany(targetEntity="Enfant", mappedBy="fenetreHoraire")
+     * @ORM\OneToMany(targetEntity="Enfant", mappedBy="fenetreHoraire",cascade={"persist"})
      */
     private $enfants;
 

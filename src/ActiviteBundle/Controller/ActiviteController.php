@@ -7,7 +7,8 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use ActiviteBundle\Form\ActiviteType;
 use Symfony\Component\HttpFoundation\Response;
-
+use ActiviteBundle\Entity\TypeActivite;
+use ActiviteBundle\Form\TypeActiviteType;
 class ActiviteController extends Controller
 {
 
@@ -54,9 +55,9 @@ class ActiviteController extends Controller
         $entityManager = $this->getDoctrine()->getManager();
         $activiteRepository = $entityManager->getRepository("ActiviteBundle:Activite");
         $activite = $activiteRepository->findOneById($id);
-
+        $erreurMsg ="";
         return $this->render('ActiviteBundle:Activite:show.html.twig', array(
-            "activite" => $activite
+            "activite" => $activite,"erreur"=>$erreurMsg
         ));
     }
 
@@ -69,17 +70,13 @@ class ActiviteController extends Controller
     public function editAction($id = null, Request $request)
     {
         $entityManager = $this->getDoctrine()->getManager();
-        /*
-        $typeActivitRepository = $entityManager->getRepository('ActiviteBundle:TypeActivite');
-        if ($typeActivitRepository->findOneBy(array()) == null) {
-            $this->get('session')->getFlashBag()->add('alert', 'Type Activite requis.');
-            return $this->redirect($this->generateUrl('ActiviteBundle_TypeActivite_edit'));
-        }
-        */
-
+        
         $activiteRepository = $entityManager->getRepository("ActiviteBundle:Activite");
         $activite = $activiteRepository->findOneById($id);
-
+        
+        //Modal
+        $typeActivite = new TypeActivite();
+        $formType = $this->createForm(TypeActiviteType::class, $typeActivite);
         if ($activite == null) {
             $activite = new Activite();
         }
@@ -99,7 +96,9 @@ class ActiviteController extends Controller
 
         return $this->render('ActiviteBundle:Activite:edit.html.twig', array(
             'activite' => $activite,
-            'form' => $form->createView()
+            'form' => $form->createView(),
+            'formType'=>$formType->createView(),
+            'typeActivite'=>$typeActivite
         ));
     }
 
@@ -114,12 +113,20 @@ class ActiviteController extends Controller
 
         $activiteRepository = $entityManager->getRepository("ActiviteBundle:Activite");
         $activite = $activiteRepository->findOneById($id);
+        $erreurMsg ="";
         if ($activite != null) {
             $entityManager->remove($activite);
         }
-        $entityManager->flush();
-
-        return $this->redirect($this->generateUrl('ActiviteBundle_Activite_index'));
+        try{
+            $entityManager->flush();
+        } catch (\Exception $ex) {
+        //Problème de clé étrangère encore présente
+            $erreurMsg = " Ces activités sont encore affectées quelque part";
+            return $this->render('ActiviteBundle:Activite:show.html.twig', array(
+                "activite" => $activite,"erreur"=>$erreurMsg
+            ));
+        }
+        return $this->redirect($this->generateUrl('ActiviteBundle_Activite_show',array('id'=>$id,'erreur'=>$erreurMsg)));
     }
 
 }

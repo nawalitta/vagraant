@@ -83,11 +83,6 @@ RessourceBundle_Enfant_index:
     path:     enfant
     defaults: { _controller: RessourceBundle:Enfant:index }
 
-#---------------AFFECTATION RESSOURCE-----------------------------
-RessourceBundle_AffectationRessource_index:
-    path:     affectationRessource/index/{id}
-    defaults: { _controller: RessourceBundle:AffectationRessource:index, id : null }
-
 #---------------GROUPE-----------------------------
 RessourceBundle_Groupe_index:
     path:     groupe

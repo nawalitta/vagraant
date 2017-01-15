@@ -11,7 +11,7 @@
             <a class="navbar-brand" href="{{path('CoreBundle_core_homepage')}}">GETIEM</a>
         </div>
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-            <ul class="nav navbar-nav navbar-right">
+            <ul class="nav navbar-nav navbar-left">
                 <li>
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Enfants<span class="caret"></span></a>
                     <ul class="dropdown-menu">
@@ -24,7 +24,7 @@
                     <ul class="dropdown-menu">
                         <li><a href="{{path('ActiviteBundle_Activite_index')}}">Listes des activités</a></li>
                         <li><a href="{{ path('ActiviteBundle_TypeActivite_index') }}">Listes des types d'activités</a></li>
-                        <li><a href="{{path('ActiviteBundle_ActiviteFixee_index')}}"> Activités fixées</a></li>
+                        <li><a href="{{path('ActiviteBundle_ActiviteFixee_index')}}"> Liste activités fixées par enfant</a></li>
 
                     </ul>
                 </li>
@@ -40,7 +40,6 @@
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Affectation<span class="caret"></span></a>
                     <ul class="dropdown-menu">
-                        <li><a href="{{path('RessourceBundle_AffectationRessource_index')}}">Ressource / Activite</a></li>
                         <li><a href="{{path('CoreBundle_affecter_enfant_activite_obligatoire')}}">Enfant / Activité Obligatoire</a></li>
                         <li><a href="{{path('CoreBundle_affecter_enfant_activite_optionnelle')}}">Enfant / Activité Optionnelle</a></li>
                     </ul>

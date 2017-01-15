@@ -12,7 +12,13 @@
             </ul>
         </div>
     </nav>
-
+    {% if erreur!="" %}
+        <div class="alert alert-danger" role="alert">
+            <label>
+                {{ erreur }}
+            </label>
+        </div>
+    {% endif %}
     <div class="row">
         <div class="col-sm-4">
             <!--Sidebar content-->
@@ -69,8 +75,8 @@
                     <caption> Disponibilité</caption>
                     <tr>
                         <td> Lundi :</td>
-                        <td> {{ activite.fenetreHoraire.getLundiDebut()|date("H:i") }}
-                            - {{ activite.fenetreHoraire.getLundiFin()|date("H:i") }}</td>
+                        <td> {{ activite.fenetreHoraire.getLundiDebut()|date('H:i') }}
+                            - {{ activite.fenetreHoraire.getLundiFin()|date('H:i') }}</td>
                     </tr>
                     <tr>
                         <td> Mardi :</td>
@@ -132,6 +138,7 @@
                         <td></td>
                         <td></td>
                         <td></td>
+                        <td></td>
                     </tr>
                     {% for enfant in activite.enfantsOptionnels %}
                         <tr>
@@ -141,6 +148,7 @@
 
                     <tr>
                         <td> Obligatoire</td>
+                        <td></td>
                         <td></td>
                         <td></td>
                         <td></td>

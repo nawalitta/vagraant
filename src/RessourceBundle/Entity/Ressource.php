@@ -52,7 +52,7 @@ class Ressource
     private $typeRessource;
 
     /**
-     * @ORM\OneToMany(targetEntity="Preaffection", mappedBy="ressource", cascade={"persist", "remove"})
+     * @ORM\OneToMany(targetEntity="Preaffection", mappedBy="ressource", cascade={"persist"})
      */
     private $preAffections;
 
