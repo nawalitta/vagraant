@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Client :  127.0.0.1
--- Généré le :  Dim 15 Janvier 2017 à 13:10
+-- Généré le :  Jeu 15 Décembre 2016 à 17:01
 -- Version du serveur :  5.7.14
 -- Version de PHP :  5.6.25
 
@@ -39,9 +39,7 @@ VALUES
   (6, '08:15:00', '18:00:00', '08:30:00', '17:00:00', '10:30:00', '18:15:00', '08:45:00', '18:30:00', '08:15:00',
       '16:30:00'),
   (7, '09:00:00', '17:00:00', '08:30:00', '18:15:00', '08:30:00', '18:30:00', '08:30:00', '18:00:00', '08:00:00',
-      '16:30:00'),
-  (8, '00:00:00', '00:01:00', '00:00:00', '00:01:00', '00:00:00', '00:01:00', '00:00:00', '00:02:00', '00:00:00',
-      '00:02:00');
+      '16:30:00');
 
 --
 -- Contenu de la table `type_activite`
@@ -51,9 +49,7 @@ INSERT INTO `type_activite` (`id`, `designation`) VALUES
   (3, 'Educative'),
   (1, 'Extérieure'),
   (4, 'Médicale'),
-  (2, 'Scolaire'),
-  (9, 'Tota'),
-  (8, 'Toto');
+  (2, 'Scolaire');
 
 --
 -- Contenu de la table `activite`
@@ -85,7 +81,15 @@ VALUES
   (1, 1, 2, 'Pierre', 'Moreau', '', '2015-09-01', 0, 'enfant00125'),
   (2, 1, 1, 'Kevin', 'Gauthier', '', '2016-09-14', 1, 'etu00123'),
   (3, 2, 1, 'Guillaume', 'Leblanc', '0', '2016-04-20', 3, 'etu0013'),
-  (4, 3, 2, 'Sébastien', 'Bouvier', '0', '2016-04-20', 1, 'etu0014');
+  (4, 3, 2, 'Sébastien', 'Bouvier', '0', '2016-04-20', 1, 'etu0014'),
+  (5, 4, 1, 'Kevin', 'Masson', '0', '2016-04-20', 2, 'etu0055'),
+  (6, 5, 2, 'Alexis', 'Robin', '0', '2016-04-20', 3, 'etu0016'),
+  (7, 2, 1, 'Edouard', 'Denis', '0', '2016-04-20', 1, 'etu0027'),
+  (8, 6, 2, 'Arthur', 'Michell', '0', '2016-04-20', 2, 'etu0028'),
+  (9, 7, 1, 'Quentin', 'Morel', '0', '2016-04-20', 3, 'etu0029'),
+  (10, 4, 2, 'Nicolas', 'Perrot', '1', '2016-04-20', 1, 'etu0010'),
+  (11, 2, 1, 'Pascal', 'Albert', '0', '2016-04-20', 2, 'etu0011'),
+  (12, 5, 2, 'Bernard', 'Remy', '0', '2016-04-20', 3, 'etu0012');
 
 --
 -- Contenu de la table `jour`
@@ -128,17 +132,17 @@ INSERT INTO `activite_fixee` (`id`, `jour_id`, `enfant_id`, `activite_id`, `heur
 INSERT INTO `activite_obligatoire` (`id`, `activite_id`, `enfant_id`, `quotas`, `ecart`) VALUES
   (1, 1, 1, 1, 2),
   (2, 2, 1, 1, 2),
-  (3, 3, 1, 1, 2),
+  (3, 3, 2, 1, 2),
   (4, 2, 2, 1, 2),
-  (5, 3, 2, 1, 2),
-  (6, 4, 2, 1, 2),
-  (7, 4, 3, 1, 2),
-  (8, 5, 3, 1, 2),
-  (9, 6, 3, 1, 2),
-  (10, 6, 4, 1, 2),
-  (11, 7, 4, 1, 2),
-  (12, 8, 4, 1, 2),
-  (13, 5, 4, 1, 2);
+  (5, 3, 3, 1, 2),
+  (6, 4, 3, 1, 2),
+  (7, 4, 4, 1, 2),
+  (8, 5, 4, 1, 2),
+  (9, 6, 5, 1, 2),
+  (10, 6, 5, 1, 2),
+  (11, 7, 6, 1, 2),
+  (12, 8, 7, 1, 2),
+  (13, 5, 8, 1, 2);
 
 --
 -- Contenu de la table `activite_optionnelle`
@@ -147,51 +151,46 @@ INSERT INTO `activite_obligatoire` (`id`, `activite_id`, `enfant_id`, `quotas`, 
 INSERT INTO `activite_optionnelle` (`enfant_id`, `activite_id`) VALUES
   (1, 1),
   (1, 2),
-  (1, 3),
-  (1, 4),
-  (1, 7),
-  (1, 8),
   (2, 1),
   (2, 2),
-  (2, 3),
-  (2, 4),
-  (2, 7),
-  (2, 8),
   (3, 1),
   (3, 2),
-  (3, 3),
-  (3, 4),
-  (3, 7),
-  (3, 8),
   (4, 1),
   (4, 2),
-  (4, 3),
-  (4, 4),
-  (4, 7),
-  (4, 8);
+  (5, 1),
+  (5, 2),
+  (6, 1),
+  (6, 2),
+  (7, 1),
+  (7, 2),
+  (8, 1),
+  (8, 2),
+  (9, 1),
+  (9, 2),
+  (10, 1),
+  (10, 2),
+  (11, 1),
+  (11, 2),
+  (12, 1);
 
 --
 -- Contenu de la table `activite_realisee`
 --
 
 INSERT INTO `activite_realisee` (`id`, `activite_id`, `enfant_id`, `jour_id`, `heureDebut`, `heureFin`) VALUES
-  (110, 1, 1, 1, '10:00:00', '12:00:00'),
-  (111, 2, 1, 3, '12:00:00', '14:00:00'),
-  (112, 2, 2, 1, '08:15:00', '10:15:00'),
-  (113, 1, 2, 1, '13:00:00', '15:00:00'),
-  (114, 3, 1, 1, '14:30:00', '16:30:00'),
-  (115, 7, 1, 5, '08:15:00', '10:15:00'),
-  (116, 8, 1, 5, '15:15:00', '17:15:00'),
-  (117, 4, 3, 1, '08:15:00', '10:15:00'),
-  (118, 7, 3, 5, '14:30:00', '16:30:00'),
-  (119, 8, 3, 5, '10:15:00', '12:15:00'),
-  (120, 8, 3, 1, '15:45:00', '17:45:00'),
-  (121, 2, 4, 1, '08:45:00', '10:45:00'),
-  (122, 4, 4, 1, '15:30:00', '17:30:00'),
-  (123, 3, 4, 5, '09:30:00', '11:30:00'),
-  (124, 2, 4, 5, '15:00:00', '17:00:00'),
-  (125, 7, 2, 5, '09:30:00', '11:30:00'),
-  (126, 4, 2, 5, '13:00:00', '15:00:00');
+  (1, 7, 2, 1, '09:00:00', '11:00:00'),
+  (15, 4, 1, 4, '10:30:00', '11:45:00'),
+  (16, 4, 1, 4, '14:00:00', '15:00:00'),
+  (17, 4, 1, 4, '08:00:00', '09:00:00'),
+  (18, 4, 1, 4, '15:00:00', '15:30:00'),
+  (19, 4, 1, 4, '16:00:00', '18:00:00'),
+  (20, 4, 1, 4, '11:00:00', '12:15:00'),
+  (21, 4, 2, 4, '10:15:00', '11:30:00'),
+  (22, 4, 2, 4, '14:30:00', '15:30:00'),
+  (23, 4, 2, 4, '16:30:00', '17:15:00'),
+  (24, 8, 1, 8, '15:30:00', '16:30:00'),
+  (25, 7, 1, 8, '11:30:00', '12:45:00'),
+  (28, 3, 1, 8, '00:00:12', '00:00:07');
 
 --
 -- Contenu de la table `type_ressource`
@@ -239,51 +238,6 @@ INSERT INTO `preaffection` (`id`, `enfant_id`, `activite_id`, `ressource_id`) VA
 INSERT INTO `ressource_affectee` (`ressource_id`, `activite_realisee_id`) VALUES
   (1, 15),
   (1, 28);
-
---
--- Contenu de la table `utilisateur`
---
-
-INSERT INTO `utilisateur` (`id`, `login`, `password`) VALUES
-  (1, 'admin', 'password'),
-  (2, 'user', 'password');
-
---
--- Contenu de la table `vehicule`
---
-
-INSERT INTO `vehicule` (`id`, `nbPlaceAssise`, `designation`) VALUES
-  (1, 5, 'Petite Voiture'),
-  (2, 12, 'Grande voiture');
-
-
---
--- Contenu de la table `evenement`
---
-
-INSERT INTO `evenement` (`id`, `enfant_id`, `activite_id`, `jour_id`, `titre`, `url`, `couleur`, `cssClass`, `dateDebut`, `dateFin`)
-VALUES
-  (1, 1, 1, 1, 'Jardinage', NULL, NULL, NULL, '10:00:00', '12:00:00'),
-  (2, 1, 2, 3, 'Football', NULL, NULL, NULL, '12:00:00', '14:00:00'),
-  (3, 2, 2, 1, 'Football', NULL, NULL, NULL, '08:15:00', '10:15:00'),
-  (4, 2, 1, 1, 'Jardinage', NULL, NULL, NULL, '13:00:00', '15:00:00'),
-  (5, 1, 3, 1, 'Français', NULL, NULL, NULL, '14:30:00', '16:30:00'),
-  (6, 1, 7, 5, 'Théatre', NULL, NULL, NULL, '08:15:00', '10:15:00'),
-  (7, 1, 8, 5, 'Peinture', NULL, NULL, NULL, '15:15:00', '17:15:00'),
-  (8, 3, 4, 1, 'Mathématiques', NULL, NULL, NULL, '08:15:00', '10:15:00'),
-  (9, 3, 7, 5, 'Théatre', NULL, NULL, NULL, '14:30:00', '16:30:00'),
-  (10, 3, 8, 5, 'Peinture', NULL, NULL, NULL, '10:15:00', '12:15:00'),
-  (11, 3, 8, 1, 'Peinture', NULL, NULL, NULL, '15:45:00', '17:45:00'),
-  (12, 4, 2, 1, 'Football', NULL, NULL, NULL, '08:45:00', '10:45:00'),
-  (13, 4, 4, 1, 'Mathématiques', NULL, NULL, NULL, '15:30:00', '17:30:00'),
-  (14, 4, 3, 5, 'Français', NULL, NULL, NULL, '09:30:00', '11:30:00'),
-  (15, 4, 2, 5, 'Football', NULL, NULL, NULL, '15:00:00', '17:00:00'),
-  (16, 2, 7, 5, 'Théatre', NULL, NULL, NULL, '09:30:00', '11:30:00'),
-  (17, 2, 4, 5, 'Mathématiques', NULL, NULL, NULL, '13:00:00', '15:00:00'),
-  (18, 1, 7, 3, 'Théatre', NULL, NULL, NULL, '09:45:00', '11:45:00'),
-  (19, 1, 3, 2, 'Français', NULL, NULL, NULL, '09:00:00', '11:00:00'),
-  (20, 1, 3, 5, 'Français', NULL, NULL, NULL, '12:45:00', '14:45:00'),
-  (21, 1, 2, 2, 'Football', NULL, NULL, NULL, '14:45:00', '16:45:00');
 
 --
 -- Contenu de la table `utilisateur`
