@@ -1,37 +1,4 @@
-fullcalendar_loader:
-    path: /fc-load-calendar-events
-    defaults: { _controller: ADesignsCalendarBundle:Calendar:loadCalendar }
-    options:
-        expose: true
-        
-        
-events_loader:
-    path: /Calendar/Events
-    defaults: { _controller: ADesignsCalendarBundle:Calendar:loadCalendar }
-    options:
-        expose: true
-   
-
-        
-ressources_loader_inverted:
-    path: /Calendar/RessourcesInverted
-    defaults: { _controller: ADesignsCalendarBundle:Calendar:loadAllRessourceInverted }
-    options:
-        expose: true 
-        
-activite_loader :
-    path: /Calendar/Activite/{id}
-    defaults: { _controller: ADesignsCalendarBundle:Calendar:loadAllRessource }
-    options:
-        expose: true 
-      
-ressources_enfant_loader :
-    path: /Calendar/Ressources/{id}
-    defaults: { _controller: ADesignsCalendarBundle:Calendar:loadRessource }
-    options:
-        expose: true   
-        
-# app/config/routing.yml
+#Pages de Calendrier
 Calendar:
     path:     /Calendar
     defaults: { _controller: ADesignsCalendarBundle:Calendar:index }
@@ -40,6 +7,8 @@ Calendar_enfant:
     path: /Calendar/{id}
     defaults: {_controller:  ADesignsCalendarBundle:Calendar:show }
     
+    
+# Fonction CRUD
 Calendar_event_add:
     path: /Calendar/AddEvent/
     defaults: {_controller:  ADesignsCalendarBundle:Calendar:editEvent }
@@ -48,27 +17,42 @@ Calendar_event_delete:
     path: /Calendar/DeleteEvent/
     defaults: {_controller:  ADesignsCalendarBundle:Calendar:deleteEvent }
     
-ressources_loader_inverted_id:
-    path: /Calendar/RessourcesInverted/{id}
-    defaults: { _controller: ADesignsCalendarBundle:Calendar:loadRessourceById }
-    options:
-        expose: true
-        
-events_enfant_loader :
-    path: /Calendar/Events/{id}
-    defaults: { _controller: ADesignsCalendarBundle:Calendar:loadCalendarById }
-    options:
-        expose: true
-
 Calendar_event_save:
     path: /Calendar/Save/
     defaults: { _controller : ADesignsCalendarBundle:Calendar:saveActivity }
     
 Calendar_event_restore:
     path: /Calendar/Restore/
-    defaults: { _controller : ADesignsCalendarBundle:Calendar:restoreActivity }
+    defaults: { _controller : ADesignsCalendarBundle:Calendar:restoreActivity }    
+    
+# Loader AJAX
+# Ressources Json
+Ressources_loader_:
+    path: /Calendar/Ressources/
+    defaults: { _controller: ADesignsCalendarBundle:Calendar:loadAllRessource }
+    options:
+        expose: true 
 
-events_enfant_loader_static :
+RessourcesById_loader:
+    path: /Calendar/Ressources/{id}
+    defaults: { _controller: ADesignsCalendarBundle:Calendar:loadRessourceById }
+    options:
+        expose: true
+
+# Events Json 
+Events_loader:
+    path: /Calendar/Events/
+    defaults: { _controller: ADesignsCalendarBundle:Calendar:loadCalendar }
+    options:
+        expose: true      
+       
+EventsById_loader :
+    path: /Calendar/Events/{id}
+    defaults: { _controller: ADesignsCalendarBundle:Calendar:loadCalendarById }
+    options:
+        expose: true
+
+EventsByIdStatic_loader :
     path: /Calendar/EventsStatic/{id}
     defaults: { _controller: ADesignsCalendarBundle:Calendar:loadCalendarStaticById }
     options:

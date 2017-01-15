@@ -22,6 +22,14 @@ $(function () {
         }
         return false;
     }
+
+
+
+
+    $('#selector button').click(function () {
+        $(this).addClass('active').siblings().removeClass('active');
+        // TODO: insert whatever you want to do with $(this) here
+    });
     /* initialize the calendar
      -----------------------------------------------------------------*/
 
@@ -67,16 +75,23 @@ $(function () {
                     }
         },
         resourceAreaWidth: '25%',
-
         resourceLabelText: 'Enfants',
         resourceGroupField: 'enfant',
+        resources: function (callback) {
+            $.ajax({
+                url: 'Calendar/Ressources/',
+                data: 'parite=' + parite,
+                type: 'POST',
+                dataType: 'json',
+                success: function (response) {
+                    callback(response);
+                }
 
-        resources: {
-            url: 'Calendar/RessourcesInverted',
-            type: 'GET'
+
+            });
         },
         events: {
-            url: 'Calendar/Events',
+            url: 'Calendar/Events/',
             type: 'GET',
         },
         eventDragStop: function (event) {
@@ -89,10 +104,8 @@ $(function () {
                     dataType: 'json',
                     success: function (response) {
                         console.log("Element supprimé");
-                        if (response.status === 'success') {
-                            $('#calendar-holder').fullCalendar('removeEvents', event.id);
-                        }
-
+                        displayConstraint(response.constraints);
+                        $('#calendar-holder').fullCalendar('removeEvents', event.id);
                     }
                 });
             }
@@ -100,7 +113,47 @@ $(function () {
         eventDrop: function (event) { // called when an event (already on the calendar) is moved
             console.log('eventDrop', event);
         },
+        eventResize: function (event) {
+            console.log("eventResize", event);
+            var id = event.id;
+            var start = event.start.toString();
+            var end = event.end.toString();
+            $.ajax({
+                url: 'Calendar/AddEvent/',
+                data: 'startdate=' + start + '&enddate=' + end + '&id=' + id,
+                type: 'POST',
+                dataType: 'json',
+                success: function (response) {
+                    console.log('Event added with succes', response);
+                    displayConstraint(response.constraints);
+                },
+                error: function (e) {
 
+                    console.log('error', e.responseText);
+                }
+            });
+        },
+        eventDrop: function (event) { // called when an event (already on the calendar) is moved
+            console.log('eventDrop', event);
+            var id = event.id;
+            var start = event.start.toString();
+            var end = event.end.toString();
+            var resource = event.resourceId;
+            $.ajax({
+                url: 'Calendar/AddEvent/',
+                data: 'startdate=' + start + '&enddate=' + end + '&resourceId=' + resource + '&id=' + id,
+                type: 'POST',
+                dataType: 'json',
+                success: function (response) {
+                    console.log('Event added with succes', response);
+                    displayConstraint(response.constraints);
+                },
+                error: function (e) {
+
+                    console.log('error', e.responseText);
+                }
+            });
+        },
         resourceRender: function (resourceObj, labelTds) {
             labelTds.on('click', function () {
                 var route = routeEnfant.replace("/1", "/" + resourceObj.idEnfant);
@@ -109,3 +162,18 @@ $(function () {
         }
     });
 });
+
+function displayConstraint(liste) {
+    var ul = document.getElementById("ul_constraints");
+    $('#ul_constraints').empty();
+    var t;
+    document.getElementById('constraints').appendChild(ul);
+    liste.forEach(ConstraintList);
+    function ConstraintList(element) {
+        var li = document.createElement('li');
+        li.style.color = "red";
+        ul.appendChild(li);
+        t = document.createTextNode(element);
+        li.innerHTML = li.innerHTML + element;
+    }
+}

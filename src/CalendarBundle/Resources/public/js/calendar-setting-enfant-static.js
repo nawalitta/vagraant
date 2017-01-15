@@ -1,6 +1,13 @@
 $(function () {
     /* initialize the calendar
      -----------------------------------------------------------------*/
+  $('#selector button').click(function () {
+        $(this).addClass('active').siblings().removeClass('active');
+
+
+        // TODO: insert whatever you want to do with $(this) here
+    });
+
 
     $('#calendar-holder').fullCalendar({
         schedulerLicenseKey: 'GPL-My-Project-Is-Open-Source',
@@ -48,10 +55,19 @@ $(function () {
         resourceLabelText: 'Enfants',
         resourceGroupField: 'enfant',
         droppable: true, // this allows things to be dropped onto the calendar
+        
+        resources: function (callback) {
+            $.ajax({
+                 url: '../../Calendar/Ressources/' + id,
+                data: 'parite=' + parite,
+                type: 'POST',
+                dataType: 'json',
+                success: function (response) {
+                    callback(response);
+                }
 
-        resources: {
-            url: '../../Calendar/RessourcesInverted/' + id,
-            type: 'GET'
+
+            });
         },
         events: {
             url: '../../Calendar/EventsStatic/' + id,

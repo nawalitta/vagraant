@@ -247,7 +247,7 @@ class ActiviteRealisee {
         if ($this->heureFin !== null) {
             $event['end'] = $this->heureFin->format("H:i:s");
         }
-        $event['resourceId'] = $this->enfant->getId() . $this->jour->getDesignation();
+        $event['resourceId'] = $this->enfant->getId() ."-". $this->jour->getId();
 
         return $event;
     }

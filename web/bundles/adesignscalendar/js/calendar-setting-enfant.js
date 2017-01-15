@@ -23,7 +23,12 @@ $(function () {
         return false;
     }
 
+    $('#selector button').click(function () {
+        $(this).addClass('active').siblings().removeClass('active');
 
+
+        // TODO: insert whatever you want to do with $(this) here
+    });
 
     /* initialize the external events
      -----------------------------------------------------------------*/
@@ -91,10 +96,20 @@ $(function () {
         resourceGroupField: 'enfant',
         droppable: true, // this allows things to be dropped onto the calendar
 
-        resources: {
-            url: 'RessourcesInverted/' + id,
-            type: 'GET'
+        resources: function (callback) {
+            $.ajax({
+                url: 'Ressources/' + id,
+                data: 'parite=' + parite,
+                type: 'POST',
+                dataType: 'json',
+                success: function (response) {
+                    callback(response);
+                }
+
+
+            });
         },
+
         events: {
             url: 'Events/' + id,
             type: 'GET',
@@ -115,8 +130,8 @@ $(function () {
 
                     console.log('Event added with succes', response);
                     event.id = response.eventid;
-
                     $('#calendar-holder').fullCalendar('updateEvent', event);
+                    displayConstraint(response.constraints);
                 },
                 error: function (e) {
 
@@ -134,10 +149,8 @@ $(function () {
                     dataType: 'json',
                     success: function (response) {
                         console.log("Element supprimé");
-                        if (response.status === 'success') {
-                            $('#calendar-holder').fullCalendar('removeEvents', event.id);
-                        }
-
+                        $('#calendar-holder').fullCalendar('removeEvents', event.id);
+                        displayConstraint(response.constraints);
                     }
                 });
             }
@@ -155,9 +168,8 @@ $(function () {
                 type: 'POST',
                 dataType: 'json',
                 success: function (response) {
-
                     console.log('Event added with succes', response);
-
+                    displayConstraint(response.constraints);
                 },
                 error: function (e) {
 
@@ -183,9 +195,8 @@ $(function () {
                 type: 'POST',
                 dataType: 'json',
                 success: function (response) {
-
                     console.log('Event added with succes', response);
-
+                    displayConstraint(response.constraints);
                 },
                 error: function (e) {
 
@@ -197,3 +208,18 @@ $(function () {
         }
     });
 });
+
+function displayConstraint(liste) {
+    var ul = document.getElementById("ul_constraints");
+    $('#ul_constraints').empty();
+    var t;
+    document.getElementById('constraints').appendChild(ul);
+    liste.forEach(ConstraintList);
+    function ConstraintList(element) {
+        var li = document.createElement('li');
+        li.style.color = "red";
+        ul.appendChild(li);
+        t = document.createTextNode(element);
+        li.innerHTML = li.innerHTML + element;
+    }
+}
