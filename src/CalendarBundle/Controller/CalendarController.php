@@ -511,41 +511,41 @@ class CalendarController extends Controller {
         switch ($jourDesignation) {
             case "Lundi":
                 if ($pDebutHeure < $fenetreHoraireEnfant->getLundiDebut() || $pDebutHeure > $fenetreHoraireEnfant->getLundiFin()) {
-                    $resultEnfantPlanifie;
+                    $resultEnfantPlanifie = false;
                 } elseif ($pFinHeure < $fenetreHoraireEnfant->getLundiDebut() || $pFinHeure > $fenetreHoraireEnfant->getLundiFin()) {
-                    $resultEnfantPlanifie;
+                    $resultEnfantPlanifie = false;
                 }
                 break;
 
             case "Mardi":
                 if ($pDebutHeure < $fenetreHoraireEnfant->getMardiDebut() || $pDebutHeure > $fenetreHoraireEnfant->getMardiFin()) {
-                    $resultEnfantPlanifie;
+                    $resultEnfantPlanifie = false;
                 } elseif ($pFinHeure < $fenetreHoraireEnfant->getMardiDebut() || $pFinHeure > $fenetreHoraireEnfant->getMardiFin()) {
-                    $resultEnfantPlanifie;
+                    $resultEnfantPlanifie = false;
                 }
                 break;
 
             case "Mercredi":
                 if ($pDebutHeure < $fenetreHoraireEnfant->getMercrediDebut() || $pDebutHeure > $fenetreHoraireEnfant->getMercrediFin()) {
-                    $resultEnfantPlanifie;
+                    $resultEnfantPlanifie = false;
                 } elseif ($pFinHeure < $fenetreHoraireEnfant->getMercrediDebut() || $pFinHeure > $fenetreHoraireEnfant->getMercrediFin()) {
-                    $resultEnfantPlanifie;
+                    $resultEnfantPlanifie = false;
                 }
                 break;
 
             case "Jeudi":
                 if ($pDebutHeure < $fenetreHoraireEnfant->getJeudiDebut() || $pDebutHeure > $fenetreHoraireEnfant->getJeudiFin()) {
-                    $resultEnfantPlanifie;
+                    $resultEnfantPlanifie = false;
                 } elseif ($pFinHeure < $fenetreHoraireEnfant->getJeudiDebut() || $pFinHeure > $fenetreHoraireEnfant->getJeudiFin()) {
-                    $resultEnfantPlanifie;
+                    $resultEnfantPlanifie = false;
                 }
                 break;
 
             case "Vendredi":
                 if ($pDebutHeure < $fenetreHoraireEnfant->getVendrediDebut() || $pDebutHeure > $fenetreHoraireEnfant->getVendrediFin()) {
-                    $resultEnfantPlanifie;
+                    $resultEnfantPlanifie = false;
                 } elseif ($pFinHeure < $fenetreHoraireEnfant->getVendrediDebut() || $pFinHeure > $fenetreHoraireEnfant->getVendrediFin()) {
-                    $resultEnfantPlanifie;
+                    $resultEnfantPlanifie = false;
                 }
                 break;
         }
