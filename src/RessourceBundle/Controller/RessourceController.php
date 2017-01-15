@@ -13,32 +13,32 @@ class RessourceController extends Controller
      */
     public function indexAction(Request $request)
     {
-       $entityManager = $this->getDoctrine()->getManager();
-       $ressourceRepository = $entityManager->getRepository("RessourceBundle:Ressource");
-       $erreurMsg = "";
-       //Récupere la liste des ressources coché afin de les supprimer
-       $listRessources=$request->get('idRessources');
-        if($listRessources !=null){
-            foreach ($listRessources as $id){
+        $entityManager = $this->getDoctrine()->getManager();
+        $ressourceRepository = $entityManager->getRepository("RessourceBundle:Ressource");
+        $erreurMsg = "";
+        //Récupere la liste des ressources coché afin de les supprimer
+        $listRessources = $request->get('idRessources');
+        if ($listRessources != null) {
+            foreach ($listRessources as $id) {
 
                 $ressource = $ressourceRepository->findOneById($id);
-                try{
+                try {
                     if ($ressource != null) {
                         $entityManager->remove($ressource);
                     }
-                $entityManager->flush();                   
+                    $entityManager->flush();
                 } catch (\Exception $ex) {
                     //Pb suppression
                     $erreurMsg = " Les ressources sont encore affectées à une activité";
                 }
 
-            }           
+            }
         }
-       
-       $ressources = $ressourceRepository->findAll();
-        
+
+        $ressources = $ressourceRepository->findAll();
+
         return $this->render('RessourceBundle:Ressource:index.html.twig', array(
-            "ressources"=>$ressources,"erreur"=>$erreurMsg
+            "ressources" => $ressources, "erreur" => $erreurMsg
         ));
     }
 
@@ -48,33 +48,32 @@ class RessourceController extends Controller
      * @param Request $request
      * @return Response
      */
-    public function editAction($id=null,$idActivite=null,Request $request)
+    public function editAction($id = null, $idActivite = null, Request $request)
     {
-       $entityManager = $this->getDoctrine()->getManager();
-  
-       $ressourceRepository = $entityManager->getRepository("RessourceBundle:Ressource");
-        
-       $ressource = $ressourceRepository->findOneById($id);
-       if($ressource==null)
-       { 
-           $ressource=new \RessourceBundle\Entity\Ressource();
-       }
-       $form = $this->createForm(\RessourceBundle\Form\RessourceType::class,$ressource);
-        
-        
+        $entityManager = $this->getDoctrine()->getManager();
+
+        $ressourceRepository = $entityManager->getRepository("RessourceBundle:Ressource");
+
+        $ressource = $ressourceRepository->findOneById($id);
+        if ($ressource == null) {
+            $ressource = new \RessourceBundle\Entity\Ressource();
+        }
+        $form = $this->createForm(\RessourceBundle\Form\RessourceType::class, $ressource);
+
+
         $form->handleRequest($request);
-        
-        if($form->isValid()){
-            
+
+        if ($form->isValid()) {
+
             $entityManager->persist($ressource);
-            
+
             $entityManager->flush();
-             $request->getSession()->getFlashBag()->add('notice', 'La Ressource est bien enregistrée.');
+            $request->getSession()->getFlashBag()->add('notice', 'La Ressource est bien enregistrée.');
             return $this->redirect($this->generateUrl('RessourceBunde_Ressource_index'));
         }
-        
+
         return $this->render('RessourceBundle:Ressource:edit.html.twig', array(
-            'ressource'=>$ressource,
+            'ressource' => $ressource,
             'form' => $form->createView()
         ));
     }
@@ -87,20 +86,20 @@ class RessourceController extends Controller
     public function deleteAction($id)
     {
         $entityManager = $this->getDoctrine()->getManager();
-  
-      $ressourceRepository = $entityManager->getRepository("RessourceBundle:Ressource");
-     $ressource = $ressourceRepository->findOneById($id);
-     $erreurMsg ="";
-       if($ressource!=null)
-           $entityManager->remove ($ressource);
-          
-       try{
-            $entityManager->flush();                   
+
+        $ressourceRepository = $entityManager->getRepository("RessourceBundle:Ressource");
+        $ressource = $ressourceRepository->findOneById($id);
+        $erreurMsg = "";
+        if ($ressource != null)
+            $entityManager->remove($ressource);
+
+        try {
+            $entityManager->flush();
         } catch (\Exception $ex) {
             //Pb suppression
             $erreurMsg = " Les ressources sont encore affectées à une activité";
             return $this->render('RessourceBundle:Ressource:show.html.twig', array(
-                "ressource"=>$ressource,"erreur"=>$erreurMsg
+                "ressource" => $ressource, "erreur" => $erreurMsg
             ));
         }
         return $this->redirect($this->generateUrl('RessourceBunde_Ressource_index'));
@@ -115,9 +114,9 @@ class RessourceController extends Controller
         $entityManager = $this->getDoctrine()->getManager();
         $ressourceRepository = $entityManager->getRepository("RessourceBundle:Ressource");
         $ressource = $ressourceRepository->findOneById($id);
-        $erreurMsg ="";
+        $erreurMsg = "";
         return $this->render('RessourceBundle:Ressource:show.html.twig', array(
-            "ressource"=>$ressource,"erreur"=>$erreurMsg
+            "ressource" => $ressource, "erreur" => $erreurMsg
         ));
     }
 

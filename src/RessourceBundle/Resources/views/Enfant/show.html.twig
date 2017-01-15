@@ -51,9 +51,9 @@
                     <tr>
                         <td> Est archivé :</td>
                         <td>{% if enfant.estArchive==0 %}
-                                {{ 'Non'}}
+                                {{ 'Non' }}
                             {% else %}
-                                {{ 'Oui'}}
+                                {{ 'Oui' }}
                             {% endif %}
                         </td>
                     </tr>
@@ -99,8 +99,8 @@
         <div class="col-sm-8">
             <form method="post">
                 <div class="table-responsive">
-                    <caption> Liste des activités</caption>
                     <table class="table">
+                        <caption> Liste des activités</caption>
                         <tr>
                             <th> #</th>
                             <th> Nom activite</th>
@@ -202,10 +202,10 @@
 
             </form>
         </div>
-        <div class="row">
-            <div class="col-md-12">
-                {% include "ADesignsCalendarBundle:Calendar:calendar-enfant-static.html.twig" %}
-            </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            {% include "ADesignsCalendarBundle:Calendar:calendar-enfant-static.html.twig" %}
         </div>
     </div>
 {% endblock %}
