@@ -3,83 +3,106 @@
 {% block title %}Edition activité{% endblock %}
 
 {% block body %}
-  <h3 class="h3">Créer une nouvelle activité</h3>
-  {{ form_start(form) }}
-  <form>
-    <div class="form-group row">
-      <label for="example-text-input" class="col-md-4 col-form-label">Designation :</label>
-          <div class="col-md-5">
-            {{ form_errors(form.designation) }}
-            {{form_widget(form.designation) }}
-          </div>
-    </div>
-    <div class="form-group row">
-      <label for="example-number-input" class="col-md-4 col-form-label">Durée minimal: </label>
-          <div class="col-md-5">
-            {{ form_errors(form.dureeMin) }}
-            {{form_widget(form.dureeMin) }}
-          </div>
-    </div>
-    <div class="form-group row">
-      <label for="example-number-input" class="col-md-4 col-form-label">Durée maximal: </label>
-          <div class="col-md-5">
-            {{ form_errors(form.dureeMax) }}
-            {{form_widget(form.dureeMax) }}
-          </div>
-    </div>
-    <div class="form-group row">
-      <label for="example-number-input" class="col-md-4 col-form-label">Nombre d'enfants minimal : </label>
-          <div class="col-md-5">
-            {{ form_errors(form.nbEnfantsMin) }}
-            {{form_widget(form.nbEnfantsMin) }}
-          </div>
-    </div>
-    <div class="form-group row">
-      <label for="example-number-input" class="col-md-4 col-form-label">Nombre d'enfants maximal :</label>
-          <div class="col-md-5">
-            {{ form_errors(form.nbEnfantsMax) }}
-            {{form_widget(form.nbEnfantsMax) }}
-          </div>
-    </div>
-    <div class="form-group row">
-      <label for="example-number-input" class="col-md-4 col-form-label">Durée transport :</label>
-          <div class="col-md-5">
-            {{ form_errors(form.dureeTransport) }}
-            {{form_widget(form.dureeTransport) }}
-          </div>
-    </div>
-    <div class="form-group row">
-        <label for="example-text-input" class="col-md-4 col-form-label">Type activité :</label>
+    <h3 class="h3">Edition d'une activité</h3>
+    <form method="post">
+        <div class="form-group row">
+            <label for="example-text-input" class="col-md-4 col-form-label">Designation :</label>
             <div class="col-md-5">
-                {{ form_errors(form.typeActivite) }}
-                {{form_widget(form.typeActivite) }}
+                {{ form_errors(form.designation) }}
+                {{ form_widget(form.designation) }}
             </div>
-            <a href="{{path('ActiviteBundle_TypeActivite_edit')}}">
-                <button type="button" class="btn btn-default btn-lg">
-                    <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
-                </button>
-            </a>
-    </div>
-    <div class="form-group row">
-        <label for="example-text-input" class="col-md-4 col-form-label">Fenetre horaire :</label>
+        </div>
+        <div class="form-group row">
+            <label for="example-number-input" class="col-md-4 col-form-label">Durée minimal: </label>
             <div class="col-md-5">
-                {{ form_errors(form.fenetreHoraire) }}
-                {{form_widget(form.fenetreHoraire) }}
+                {{ form_errors(form.dureeMin) }}
+                {{ form_widget(form.dureeMin) }}
             </div>
-            <a href="{{path('RessourceBundle_FenetreHoraire_edit',{'id': 'null' ,'pageRequete': 'Activite'})}}">
-                <button type="button" class="btn btn-default btn-lg">
-                    <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
-                </button>
-            </a>
-    </div>
-    <div class="form-group row">
-        <div class="col-md-4">
+        </div>
+        <div class="form-group row">
+            <label for="example-number-input" class="col-md-4 col-form-label">Durée maximal: </label>
+            <div class="col-md-5">
+                {{ form_errors(form.dureeMax) }}
+                {{ form_widget(form.dureeMax) }}
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="example-number-input" class="col-md-4 col-form-label">Nombre d'enfants minimal : </label>
+            <div class="col-md-5">
+                {{ form_errors(form.nbEnfantsMin) }}
+                {{ form_widget(form.nbEnfantsMin) }}
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="example-number-input" class="col-md-4 col-form-label">Nombre d'enfants maximal :</label>
+            <div class="col-md-5">
+                {{ form_errors(form.nbEnfantsMax) }}
+                {{ form_widget(form.nbEnfantsMax) }}
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="example-number-input" class="col-md-4 col-form-label">Durée transport :</label>
+            <div class="col-md-5">
+                {{ form_errors(form.dureeTransport) }}
+                {{ form_widget(form.dureeTransport) }}
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="example-text-input" class="col-md-4 col-form-label">Type activité :</label>
+            <div class="col-md-5">
+                <div class="input-group">
+                    <span class="input-group-btn">
+                            <button class="btn btn-default" type="button" data-toggle="modal"
+                                    data-target="#myModal">+</button>
+                    </span>
+                    {{ form_errors(form.typeActivite) }}
+                    {{ form_widget(form.typeActivite) }}
+                </div>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="example-text-input" class="col-md-4 col-form-label">Fenetre horaire :</label>
+            <div class="col-md-5">
+                <div class="input-group">
+                    <span class="input-group-btn">
+                        <a href="{{ path('RessourceBundle_FenetreHoraire_edit',{'id': 'null' ,'pageRequete': 'Activite'}) }}">
+                            <button type="submit" class="btn btn-default">+</button>
+                            </a>
+                    </span>
+                    {{ form_errors(form.fenetreHoraire) }}
+                    {{ form_widget(form.fenetreHoraire) }}
+                </div>
+            </div>
+        </div>
+        <div class=" form-group row">
+            <div class="col-md-offset-8 col-md-4">
+                <button type="submit" class="btn btn-primary"> Enregistrer</button>
+            </div>
+        </div>
+    </form>
 
-        </div>
-        <div class="col-md-4 col-sm-10">
-            {{ form_widget(form.ok,{ 'label': 'Enregistrer' }, { 'attr': {'class': 'btn btn-primary btn', 'type': 'button'} }) }}
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                                aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">Ajouter un type activité</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="nom-groupe">Nom du type activité :</label>
+                        <input id="nom-groupe" name="input-type-activite" class="form-control" autofocus>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Annuler</button>
+                    <button type="button" class="btn btn-primary"
+                            onclick="ajouterTypeActivite(document.getElementsByName('input-type-activite')[0].value)">
+                        Ajouter
+                    </button>
+                </div>
+            </div>
         </div>
     </div>
-  </form>
-  {{ form_end(form) }}
 {% endblock %}

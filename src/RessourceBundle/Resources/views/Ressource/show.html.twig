@@ -11,6 +11,14 @@
         </ul>
      </div>
 </nav>
+    {% if erreur!="" %}
+        <div class="alert alert-danger" role="alert">
+            <label>
+                {{ erreur }}
+            </label>
+        </div>
+    {% endif %}
+
   <div class="row">
     <div class="col-sm-4">
       <!--Sidebar content-->

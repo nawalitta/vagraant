@@ -11,6 +11,13 @@
             </ul>
         </div>
     </nav>
+    {% if erreur!="" %}
+        <div class="alert alert-danger" role="alert">
+            <label>
+                {{ erreur }}
+            </label>
+        </div>
+    {% endif %}
     <div class="row">
         <div class="col-sm-4">
             <!--Sidebar content-->
@@ -35,7 +42,12 @@
                     </tr>
                     <tr>
                         <td> Est archivé :</td>
-                        <td>{{ enfant.estArchive }}</td>
+                        <td>{% if enfant.estArchive==0 %}
+                                {{ 'Non'}}
+                            {% else %}
+                                {{ 'Oui'}}
+                            {% endif %}
+                        </td>
                     </tr>
                     <tr>
                         <td> Date d'arrivée :</td>
@@ -50,28 +62,28 @@
                     <caption> Présence</caption>
                     <tr>
                         <td> Lundi :</td>
-                        <td> {{ enfant.fenetreHoraire.getLundiDebut()|date("H:I") }}
-                            - {{ enfant.fenetreHoraire.getLundiFin()|date("H:I") }}</td>
+                        <td> {{ enfant.fenetreHoraire.getLundiDebut()|date("H:i") }}
+                            - {{ enfant.fenetreHoraire.getLundiFin()|date("H:i") }}</td>
                     </tr>
                     <tr>
                         <td> Mardi :</td>
-                        <td> {{ enfant.fenetreHoraire.getMardiDebut()|date("H:I") }}
-                            - {{ enfant.fenetreHoraire.getMardiFin()|date("H:I") }}</td>
+                        <td> {{ enfant.fenetreHoraire.getMardiDebut()|date("H:i") }}
+                            - {{ enfant.fenetreHoraire.getMardiFin()|date("H:i") }}</td>
                     </tr>
                     <tr>
                         <td> Mercredi :</td>
-                        <td> {{ enfant.fenetreHoraire.getMercrediDebut()|date("H:I") }}
-                            - {{ enfant.fenetreHoraire.getMercrediFin()|date("H:I") }}</td>
+                        <td> {{ enfant.fenetreHoraire.getMercrediDebut()|date("H:i") }}
+                            - {{ enfant.fenetreHoraire.getMercrediFin()|date("H:i") }}</td>
                     </tr>
                     <tr>
                         <td> Jeudi :</td>
-                        <td> {{ enfant.fenetreHoraire.getJeudiDebut()|date("H:I") }}
-                            - {{ enfant.fenetreHoraire.getJeudiFin()|date("H:I") }}</td>
+                        <td> {{ enfant.fenetreHoraire.getJeudiDebut()|date("H:i") }}
+                            - {{ enfant.fenetreHoraire.getJeudiFin()|date("H:i") }}</td>
                     </tr>
                     <tr>
                         <td> Vendredi :</td>
-                        <td> {{ enfant.fenetreHoraire.getVendrediDebut()|date("H:I") }}
-                            - {{ enfant.fenetreHoraire.getVendrediFin()|date("H:I") }}</td>
+                        <td> {{ enfant.fenetreHoraire.getVendrediDebut()|date("H:i") }}
+                            - {{ enfant.fenetreHoraire.getVendrediFin()|date("H:i") }}</td>
                     </tr>
                 </table>
             </div>
@@ -90,7 +102,7 @@
                             <th> Nombre d'enfants minimum</th>
                             <th> Nombre d'enfants maximum</th>
                             <th> Duree transport</th>
-                            <th> Supprimer</th>
+                            <th> Selection</th>
                         </tr>
 
                         <tr>
@@ -132,7 +144,7 @@
                             <th> Duree transport</th>
                             <th> Ecart</th>
                             <th> Quotas</th>
-                            <th> Supprimer</th>
+                            <th> Selection</th>
                         </tr>
                         <tr>
                             <td> Activites Obligatoires</td>
@@ -173,7 +185,7 @@
                             <td></td>
                             <td></td>
                             <td>
-                                <button type="submit" class="btn btn-primary">Ok</button>
+                                <button type="submit" class="btn btn-primary">Supprimer</button>
                             </td>
                         </tr>
                     </table>
