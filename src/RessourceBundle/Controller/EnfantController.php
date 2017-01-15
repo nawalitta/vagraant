@@ -25,7 +25,6 @@ class EnfantController extends Controller
         $listEnfants=$request->get('idEnfants');
         if($listEnfants !=null){
             foreach ($listEnfants as $id){
-
                 $enfant = $enfantRepository->findOneById($id);
                 try{
                     if ($enfant != null) {
@@ -50,10 +49,43 @@ class EnfantController extends Controller
      * Affichage d'un enfant présent dans la bdd
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function showAction($id) {
+    public function showAction($id, Request $request) {
         $entityManager = $this->getDoctrine()->getManager();
         $enfantRepository = $entityManager->getRepository("RessourceBundle:Enfant");
         $enfant = $enfantRepository->findOneById($id);
+
+        $activteRepository = $entityManager->getRepository("ActiviteBundle:Activite");
+
+        $listActivitesOption = $request->get('idActivitesOption');
+        if($listActivitesOption !=null){
+            foreach ($listActivitesOption as $id){
+                $activite = $activteRepository->findOneById($id);
+                try{
+                    if ($activite != null) {
+                        $enfant->removeActivitesOptionelle($activite);
+                    }
+                    $entityManager->flush();
+                } catch (\Exception $ex) {
+                    //Pb de suppression
+                    $erreurMsg = "les enfants selectionnées ont encore des activités !";
+                }
+            }
+        }
+        $listActivitesObligatoires = $request->get('idActivitesObligatoires');
+        if($listActivitesObligatoires !=null){
+            foreach ($listActivitesObligatoires as $id){
+                $activite = $activteRepository->findOneById($id);
+                try{
+                    if ($activite != null) {
+                        $enfant->removeActivitesObligatoire($activite);
+                    }
+                    $entityManager->flush();
+                } catch (\Exception $ex) {
+                    //Pb de suppression
+                    $erreurMsg = "les enfants selectionnées ont encore des activités !";
+                }
+            }
+        }
 
         return $this->render('RessourceBundle:Enfant:show.html.twig', array(
                     "enfant" => $enfant
