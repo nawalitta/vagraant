@@ -10,7 +10,13 @@
             <link rel="stylesheet" type="text/css" media="screen" href="{{ asset('css/getiem.css') }}"/>
         {% endblock %}
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
-
+        {% block javascripts %}
+            <script type="text/javascript" src="{{ asset('bundles/adesignscalendar/js/jquery/jquery.min.js') }}"></script>
+            <script type="text/javascript" src="{{ asset('js/jquery.js') }}"></script>
+            <script type="text/javascript" src="{{ asset('js/bootstrap.js') }}"></script>
+            <script type="text/javascript" src="{{ asset('js/groupFilter.js') }}"></script>
+            <script type="text/javascript" src="{{ asset('js/ajouterEntityByModal.js') }}"></script>
+        {% endblock %}
     </head>
     <div class="container-fluid">
         <div class="row">
@@ -27,13 +33,7 @@
                         </div>
                     </div>
                 </div>
-                {% block javascripts %}
-                    <script type="text/javascript" src="{{ asset('bundles/adesignscalendar/js/jquery/jquery.min.js') }}"></script>
-                    <script type="text/javascript" src="{{ asset('js/jquery.js') }}"></script>
-                    <script type="text/javascript" src="{{ asset('js/bootstrap.js') }}"></script>
-                    <script type="text/javascript" src="{{ asset('js/groupFilter.js') }}"></script>
-                    <script type="text/javascript" src="{{ asset('js/ajouterEntityByModal.js') }}"></script>
-                {% endblock %}
+
             </body>
            {% include 'footer.html.twig' %}
         </div>
