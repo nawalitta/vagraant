@@ -10,18 +10,15 @@
             <link rel="stylesheet" type="text/css" media="screen" href="{{ asset('css/getiem.css') }}"/>
         {% endblock %}
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
-        {% block javascripts %}
-            <script type="text/javascript" src="{{ asset('bundles/adesignscalendar/js/jquery/jquery.min.js') }}"></script>
-            <script type="text/javascript" src="{{ asset('js/jquery.js') }}"></script>
-            <script type="text/javascript" src="{{ asset('js/bootstrap.js') }}"></script>
-            <script type="text/javascript" src="{{ asset('js/filters.js') }}"></script>
-            <script type="text/javascript" src="{{ asset('js/ajouterEntityByModal.js') }}"></script>
-        {% endblock %}
     </head>
     <div class="container-fluid">
         <div class="row">
             <header>
                 {% block header %} {% endblock %}
+                {% block javascripts %}
+                    <script type="text/javascript" src="{{ asset('bundles/adesignscalendar/js/jquery/jquery.min.js') }}"></script>
+                    <script src="{{ asset('js/bootstrap.js') }}"></script>
+                {% endblock %}
             </header>
             {% include 'menu.html.twig' %}
             <body>
@@ -29,13 +26,13 @@
                     <div class="row">
                         <div class="col-md-12">
                             {% block body %}
+                                <p> A REDEFINIR SUR CHAQUE PAGE</p>
                             {% endblock %}
                         </div>
                     </div>
                 </div>
-
             </body>
-           {% include 'footer.html.twig' %}
+            {#{% include 'footer.html.twig' %}#}
         </div>
     </div>
 </html>
