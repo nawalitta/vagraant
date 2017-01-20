@@ -2,17 +2,21 @@
 
 {% block stylesheets %}
     {{ parent() }}
-    <link rel="stylesheet" href="{{ asset('bundles/adesignscalendar/css/fullcalendar/fullcalendar.min.css') }}" />
-    <link rel="stylesheet" href="{{ asset('bundles/adesignscalendar/css/fullcalendar/scheduler.min.css') }}" />
-    <link rel="stylesheet" href="{{ asset('bundles/adesignscalendar/css/fullcalendar/jquery-ui.css') }}" />
-    <link rel="stylesheet" href="{{ asset('bundles/adesignscalendar/css/fullcalendar/jquery-ui.min.css') }}" />
-    <link rel="stylesheet" href="{{ asset('bundles/adesignscalendar/css/fullcalendar/calendar.css') }}" />
+    <link rel="stylesheet" href="{{ asset('bundles/adesignscalendar/css/fullcalendar/fullcalendar.min.css') }}"/>
+    <link rel="stylesheet" href="{{ asset('bundles/adesignscalendar/css/fullcalendar/scheduler.min.css') }}"/>
+    <link rel="stylesheet" href="{{ asset('bundles/adesignscalendar/css/fullcalendar/jquery-ui.css') }}"/>
+    <link rel="stylesheet" href="{{ asset('bundles/adesignscalendar/css/fullcalendar/jquery-ui.min.css') }}"/>
+    <link rel="stylesheet" href="{{ asset('bundles/adesignscalendar/css/fullcalendar/calendar.css') }}"/>
 {% endblock %}
 
 {% block body %}
     <div class="row">
-        <a href="{{ path('Calendar_event_save',{ 'id': app.request.attributes.get('id') }) }}"><button style="margin-left: 25px" type="submit" class="btn btn-success">Sauvegarder</button></a>
-        <a href="{{ path('Calendar_event_save',{ 'id': app.request.attributes.get('id') }) }}"><button style="margin-left: 25px" type="submit" class="btn btn-primary">Restaurer</button></a>
+        <a href="{{ path('Calendar_event_save',{ 'id': app.request.attributes.get('id') }) }}">
+            <button style="margin-left: 25px" type="submit" class="btn btn-success">Sauvegarder</button>
+        </a>
+        <a href="{{ path('Calendar_event_save',{ 'id': app.request.attributes.get('id') }) }}">
+            <button style="margin-left: 25px" type="submit" class="btn btn-primary">Restaurer</button>
+        </a>
         <div style="margin-left: 20px" id="selector" class="btn-group">
             <button type="radio" checked onclick="setParite(0)" class="btn btn-primary active">Semaine 1</button>
             <button type="radio" onclick="setParite(1)" class="btn btn-primary">Semaine 2</button>
@@ -21,48 +25,55 @@
 
     </div>
     <div class="row">
-        <div style="margin-left:25px; margin-top: 20px" id='external-events'>
-            <h4>Activités obligatoire</h4>
-            {% for activite in activitesObligatoire %}
-                <div class='fc-event' activiteId="{{ activite.activite.id }}">{{ activite.activite.designation }}</div> 
-            {% endfor %}
+        <div class="col-md-5">
+            <div style="margin-left:25px; margin-top: 20px; min-height: 155px" id='external-events'>
+                <h4>Activités obligatoire</h4>
+                {% for activite in activitesObligatoire %}
+                    <div class='fc-event'
+                         activiteId="{{ activite.activite.id }}">{{ activite.activite.designation }}</div>
+                {% endfor %}
+            </div>
+            <div style="margin-left:25px; margin-top: 20px; min-height: 155px" id='external-events'>
+                <div>
+                    <h4>Activités optionnelles</h4>
+                </div>
+                <div style="height : 110px; overflow-y: auto">
+                    {% for activite in activitesOptionnel %}
+                        <div class='fc-event' activiteId="{{ activite.id }}">{{ activite.designation }}</div>
+                    {% endfor %}
+                </div>
+            </div>
 
-
-        </div>
-        <div style="margin-left:25px; margin-top: 20px" id='external-events'>
-            <h4>Activités optionnelles</h4>
-            {% for activite in activitesOptionnel %}
-                <div class='fc-event' activiteId="{{ activite.id }}">{{ activite.designation }}</div> 
-            {% endfor %}
-
-        </div>
-
-        <div style="margin-left:25px; margin-top: 20px; width: 250px" id='external-events'>
-            <div id="trash">
-                <h4>Suppression</h4>
-                <p>
-                    <img src="{{ asset('/Images/trashcan.png') }} "alt="">
-                </p>
+            <div style="margin-left:25px; margin-top: 20px; width: 250px" id='external-events'>
+                <div id="trash">
+                    <h4>Suppression</h4>
+                    <p>
+                        <img src="{{ asset('/Images/trashcan.png') }} " alt="">
+                    </p>
+                </div>
             </div>
         </div>
-    </div>
-    <div style="margin-top: 20px" class="row">
         <div class="col-md-6">
             <div class="panel panel-info">
                 <div class="panel-heading">
                     <h3 class="panel-title">Infos sur la plannification</h3>
                 </div>
-                <div class="panel-body">
+                <div class="panel-body" style="height: 120px; overflow: auto">
                     <div id="constraints">
                         <ul id="ul_constraints">
                             {% for constraint in constraints %}
-                                <li style="color: red"> {{constraint }}</li>
-                                {% endfor %}
+                                <li style="color: red"> {{ constraint }}</li>
+                            {% endfor %}
                         </ul>
                     </div>
                 </div>
             </div>
         </div>
+    </div>
+    <div style="margin-top: 20px" class="row">
+
+
+    </div>
     </div>
 
     <div id="calendar-holder"></div>
@@ -73,22 +84,24 @@
     <script type="text/javascript" src="{{ asset('bundles/adesignscalendar/js/jquery/jquery-ui.js') }}"></script>
     <script type="text/javascript" src="{{ asset('bundles/adesignscalendar/js/jquery/jquery-ui.min.js') }}"></script>
     <script type="text/javascript" src="{{ asset('bundles/adesignscalendar/js/fullcalendar/moment.min.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('bundles/adesignscalendar/js/fullcalendar/fullcalendar.min.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('bundles/adesignscalendar/js/fullcalendar/scheduler.min.js') }}"></script>
+    <script type="text/javascript"
+            src="{{ asset('bundles/adesignscalendar/js/fullcalendar/fullcalendar.min.js') }}"></script>
+    <script type="text/javascript"
+            src="{{ asset('bundles/adesignscalendar/js/fullcalendar/scheduler.min.js') }}"></script>
 
     <script src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>
 
     <script type="text/javascript" src="{{ asset('bundles/adesignscalendar/js/calendar-setting-enfant.js') }}"></script>
 
     <script>
-                var id = "{{ app.request.attributes.get('id') }}";
-                var parite = 0;
-                function setParite(semaine) {
-                    if (semaine != parite) {
-                        parite = semaine;
-                        $('#calendar-holder').fullCalendar('refetchResources');
-                    }
+        var id = "{{ app.request.attributes.get('id') }}";
+        var parite = 0;
+        function setParite(semaine) {
+            if (semaine != parite) {
+                parite = semaine;
+                $('#calendar-holder').fullCalendar('refetchResources');
+            }
 
-                }
+        }
     </script>
 {% endblock %}
