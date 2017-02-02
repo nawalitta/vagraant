@@ -447,7 +447,7 @@ class CalendarController extends Controller {
             // Contrainte du nombre d'enfants minimum pour une activité
             $activite_min_enfant = $activite->getNbEnfantsMin();
 
-            if ((int)$nombreEnfant_event < $activite_min_enfant) {
+            if ((int)$nombreEnfant_event < (int)$activite_min_enfant) {
                 $return_constraint_text[] = "L'activité " . $activite->getDesignation() . " ne respecte pas le nombre d'enfants minimum !\n";
                 $erreur = true;
             }

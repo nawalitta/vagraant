@@ -23,7 +23,9 @@ function ajouterTypeRessource(nomTypeRessource) {
             var selectTypeRessource = $('#ressourcebundle_ressource_typeRessource');
             selectTypeRessource.append($("<option>" + nomTypeRessource + "</option>").val(newTypeRessourceId));
             console.log(selectTypeRessource);
-            $('#myModal').modal('toggle');
+            var myModal = $('#myModal');
+            console.log(myModal);
+            myModal.modal('toggle')
         }
     });
 }
@@ -37,7 +39,7 @@ function ajouterTypeActivite(nomTypeActivite) {
             var selectTypeRessource = $('#activitebundle_activite_typeActivite');
             selectTypeRessource.append($("<option>" + nomTypeActivite + "</option>").val(newTypeActiviteId));
             console.log(selectTypeRessource);
-            $('#myModal').modal('toggle');
+            $('#myModal').modal.modal('toggle');
         }
     });
 }
