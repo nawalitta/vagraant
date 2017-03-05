@@ -1,0 +1,10 @@
+/app/bootstrap.php.cache
+/app/cache/*
+/app/logs/*
+!app/cache/.gitkeep
+!app/logs/.gitkeep
+.idea/*
+/nbproject/private/
+src/RessourceBundle/Entity/Groupe.php~
+Would skip repository vendor/friendsofsymfony/jsrouting-bundle
+
